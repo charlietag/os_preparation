@@ -71,8 +71,8 @@ rm -fr ~/.vim
 FILES="$(ls -a $LIB | grep -E "^\.")"
 for FILE in $FILES
 do
-  rm -f ~/$FILE
-  cp $LIB/$FILE > ~/$FILE
+  test -f ~/$FILE && rm -f ~/$FILE
+  cp $LIB/$FILE ~/$FILE
 done
 
 #-----------------------------------------------------------------------------------------
