@@ -1,0 +1,52 @@
+#----------------------bindkey----------------------
+#remove some stupid / dangerous key bindings
+bind s
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
+#bind F5 to create a new screen
+bindkey -k k5 screen
+#bind F6 to detach screen session (to background)
+bindkey -k k6 detach
+#bind F7 to move to previous window
+bindkey -k k7 prev
+#bind F8 to move to next window
+bindkey -k k8 next 
+#bind F9 to move to next window
+bindkey -k k9 other
+
+#bind Alt 0~9 to screen0~9
+bindkey "^[0" select 0
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+
+# Dynamic title
+shelltitle '$ |bash'
+
+#----------------------Support 256 color, t_Co=256----------------------
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+#----------------------Screen Style----------------------
+#caption always "%{=u .Bk} %-w%<%{=ub .WB}%n* %t%{=u .Bk}%+w "
+caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0c:%s "
+hardstatus alwayslastline "%{= .K} %l%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0c:%s "
+
+defscrollback 50000
+
+#----------------------set to utf8----------------------
+# Set default encoding using utf8
+defutf8 on
