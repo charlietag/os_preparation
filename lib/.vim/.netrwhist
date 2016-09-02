@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/etc/httpd/conf.d'
-let g:netrw_dirhist_2='/home/laravel/html/app/views/auth'
-let g:netrw_dirhist_3='/home/laravel/html/app/views/layouts'
-let g:netrw_dirhist_4='/home/laravel/html/app/config'
-let g:netrw_dirhist_5='/root/.vim'
-let g:netrw_dirhist_6='/home/laravel/html/app/controllers'
-let g:netrw_dirhist_7='/root/.vim'
