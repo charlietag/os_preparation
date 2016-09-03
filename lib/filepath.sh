@@ -29,6 +29,7 @@ do
     #  touch ${CONFIG_FOLDER}/.keep
     #fi
     . ${FUNCTIONS}/${FUNC_NAME}.sh
+    cd $CURRENT_FOLDER
   }
   "
   eval "${MAKE_FUNC}"

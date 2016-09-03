@@ -4,5 +4,11 @@
 #*****************************************************************************
 . lib/filepath.sh
 
-install_nginx
-print_config
+print_path
+
+#environment
+#install_mariadb
+#install_php7
+#install_ruby
+#install_nginx
+
