@@ -247,7 +247,8 @@ hi SignColumn       guifg=#9fafaf           guibg=#181818           gui=none
 hi SignColumn       ctermfg=145             ctermbg=233             cterm=none
 " line numbers
 hi LineNr           guifg=#857b6f           guibg=#444444
-hi LineNr           ctermfg=101             ctermbg=238
+hi LineNr           ctermfg=darkgray             ctermbg=none
+"hi LineNr           ctermfg=101             ctermbg=238
 " match parenthesis, brackets  
 hi MatchParen       guifg=#fd544e           guibg=NONE              gui=none
 hi MatchParen       ctermfg=46              ctermbg=NONE            cterm=none

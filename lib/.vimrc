@@ -20,6 +20,7 @@ set smartindent
 set cursorline 
 set cursorcolumn
 set showtabline=2
+set number
 "set mouse=a
 
 "pastetoggle
@@ -37,7 +38,7 @@ map <C-k> :tabp<CR>
 
 "------------Plugin: gitgutter------------
 set updatetime=250
-let g:gitgutter_override_sign_column_highlight = 0
+"let g:gitgutter_override_sign_column_highlight = 0
 
 "------------Plugin: vim-airline------------
 set laststatus=2
