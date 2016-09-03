@@ -101,6 +101,7 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 cd ~/.vim/bundle
+git clone git://github.com/godlygeek/tabular.git
 git clone https://github.com/Raimondi/delimitMate.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/vim-airline/vim-airline.git
