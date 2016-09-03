@@ -5,6 +5,7 @@ CURRENT_FOLDER="$(dirname $(readlink -m $0))"
 
 TEMPLATES="${CURRENT_FOLDER}/templates"
 FUNCTIONS="${CURRENT_FOLDER}/functions"
+TMP="${CURRENT_FOLDER}/tmp"
 
 
 #-----------------------------------------------------------------------------------------
@@ -22,11 +23,11 @@ do
     echo \"==============================\"
 
     CONFIG_FOLDER=\"${CONFIG_FOLDER}\"
-    if [ ! -d ${CONFIG_FOLDER} ]
-    then
-      mkdir -p ${CONFIG_FOLDER}
-      touch ${CONFIG_FOLDER}/.keep
-    fi
+    #if [ ! -d ${CONFIG_FOLDER} ]
+    #then
+    #  mkdir -p ${CONFIG_FOLDER}
+    #  touch ${CONFIG_FOLDER}/.keep
+    #fi
     . ${FUNCTIONS}/${FUNC_NAME}.sh
   }
   "
