@@ -31,5 +31,5 @@ do
   }
   "
   eval "${MAKE_FUNC}"
-  #echo "${MAKE_FUNC}"
+  #echo "${MAKE_FUNC}" #debug use
 done
