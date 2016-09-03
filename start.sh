@@ -2,7 +2,7 @@
 #*****************************************************************************
 #* Choose "Minimal Server" during the intstallation (works With Minimal ISO)
 #*****************************************************************************
-. lib/filepath.sh
+. "$(dirname $(readlink -m $0))/lib/filepath.sh"
 
 print_path
 
