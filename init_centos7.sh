@@ -9,6 +9,27 @@
 LIB="$(dirname $0)/lib"
 
 #-----------------------------------------------------------------------------------------
+# YUM Repo
+#-----------------------------------------------------------------------------------------
+#PHP 7
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+#NodeJS 6
+curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+
+#MariaDB
+cp $LIB/yum_repo/*.repo /etc/yum.repos.d/
+
+#Make sure repo exists before running
+REPOS="$(ls |grep -E "webtatic|MariaDB|node")"
+if [ -z "${REPOS}" ]
+then
+  echo "Some repos not exists!"
+  exit
+fi
+
+#-----------------------------------------------------------------------------------------
 #SELINUX OFF
 #-----------------------------------------------------------------------------------------
 sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
@@ -16,6 +37,7 @@ sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
 #-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
+yum install -y nodejs
 yum remove -y chrony
 yum groupinstall -y "Development Tools"
 yum install -y bash redhat-lsb screen git vim ntpdate sysstat mtr net-tools wget openssl-devel bind-utils
@@ -57,6 +79,8 @@ systemctl disable NetworkManager
 #-----------------------------------------------------------------------------------------
 sed -i s/'#GSSAPIAuthentication yes'/'GSSAPIAuthentication no'/ /etc/ssh/sshd_config
 sed -i s/'GSSAPIAuthentication yes'/'#GSSAPIAuthentication yes'/ /etc/ssh/sshd_config
+# Disable sshd acceptenv
+sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
@@ -81,6 +105,9 @@ git clone https://github.com/Raimondi/delimitMate.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/vim-airline/vim-airline.git
 #git clone https://github.com/vim-airline/vim-airline-themes
+
+#Show git branch name
+git clone git://github.com/tpope/vim-fugitive.git
 git clone git://github.com/airblade/vim-gitgutter.git
 
 
