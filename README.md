@@ -11,6 +11,7 @@
   * Deprecated
     ~~```no-ri, no-rdoc```~~
   * Config
+
     ```bash
     echo "gem: --no-document" > ~/.gemrc
     ```
