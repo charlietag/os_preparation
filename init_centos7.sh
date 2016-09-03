@@ -117,4 +117,4 @@ git clone git://github.com/tpope/vim-fugitive.git
 #-----------------------------------------------------------------------------------------
 sync;sync;sync;
 echo "Successful......maybe reboot OS to verify......"
-echo "
+echo ""
