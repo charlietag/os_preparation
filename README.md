@@ -15,6 +15,7 @@
 
 ## Built-in vim colorscheme
 * /usr/share/vim/vim72/colors
+
   ```bash
   colorscheme desert
   colorscheme elflord
