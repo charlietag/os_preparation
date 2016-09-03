@@ -16,21 +16,16 @@
 ## Built-in vim colorscheme
 * /usr/share/vim/vim72/colors
 
-  > colorscheme desert
-
-  > colorscheme elflord
-
-  > colorscheme koehler
-
-  > colorscheme ron
-
-  > colorscheme torte <--- Most proper
-
-  > colorscheme 256-jungle
-
-  > colorscheme lucid
-
-  > colorscheme motus
+  ```bash
+  colorscheme desert
+  colorscheme elflord
+  colorscheme koehler
+  colorscheme ron
+  colorscheme torte <--- Most proper
+  colorscheme 256-jungle
+  colorscheme lucid
+  colorscheme motus
+  ```
 
 ## Optional
   * VSFTPD
