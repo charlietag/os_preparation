@@ -9,7 +9,7 @@
 ## Ruby gem config
 * gem install without making document
   * Deprecated
-    ~~no-ri, no-rdoc ~~
+    ~~```no-ri, no-rdoc```~~
   * Config
 
     ```bash
