@@ -3,7 +3,7 @@
 "*********************************
 
 "------------VIM Colorscheme------------
-colorscheme lucid
+"colorscheme lucid
 "colorscheme slate
 
 "------------VIM Setting------------
