@@ -35,3 +35,12 @@ do
   eval "${MAKE_FUNC}"
   #echo "${MAKE_FUNC}" #debug use
 done
+
+#-----------------------------------------------------------------------------------------
+# Getopts , Print Help
+#-----------------------------------------------------------------------------------------
+for FUNC_NAME in $FUNC_NAMES
+do
+  eval "echo \"on going\""
+  PREDEFINED="True"
+done

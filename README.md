@@ -1,6 +1,11 @@
 ## Environment
   * CentOS 7
 
+## Usage (Not ready)
+  ```bash
+  ./start.sh -h
+  ```
+
 ## Packages
   * PHP7 (Ref.https://webtatic.com/packages/php70)
   * MariaDB 10.1 (equal to MySQL 5.7)

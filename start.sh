@@ -6,9 +6,11 @@
 
 print_path
 
+if [ -z "$PREDEFINED" ]
+then
 #environment
 #install_mariadb
 #install_php7
 #install_ruby
 #install_nginx
-
+fi
