@@ -38,5 +38,4 @@
     yum install -y vsftpd
     sed -i s/^root/'#root'/g /etc/vsftpd/ftpusers
     sed -i s/^root/'#root'/g /etc/vsftpd/user_list
-    ```
 
