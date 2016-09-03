@@ -1,13 +1,3 @@
-#!/bin/bash
-#*****************************************************************************
-#* Choose "Minimal Server" during the intstallation (works With Minimal ISO)
-#*****************************************************************************
-
-#-----------------------------------------------------------------------------------------
-# Filepath Setup
-#-----------------------------------------------------------------------------------------
-LIB="$(dirname $0)/lib"
-
 #-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
@@ -19,7 +9,7 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
 #MariaDB
-cp $LIB/yum_repo/*.repo /etc/yum.repos.d/
+cp $CONFIGS/yum_repo/*.repo /etc/yum.repos.d/
 
 #Make sure repo exists before running
 REPOS="$(ls |grep -E "webtatic|MariaDB|node")"
@@ -87,11 +77,11 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 rm -fr ~/.vim
 
-FILES="$(ls -a $LIB | grep -E "^\.")"
+FILES="$(ls -a $CONFIGS | grep -E "^\.")"
 for FILE in $FILES
 do
   test -f ~/$FILE && rm -f ~/$FILE
-  cp $LIB/$FILE ~/$FILE
+  cp $CONFIGS/$FILE ~/$FILE
 done
 
 #-----------------------------------------------------------------------------------------
@@ -116,5 +106,7 @@ git clone git://github.com/tpope/vim-fugitive.git
 #Finish and Reboot
 #-----------------------------------------------------------------------------------------
 sync;sync;sync;
-echo "Successful......maybe reboot OS to verify......"
+echo "------------------------------------------------"
+echo "   Environments setup successful"
+echo "------------------------------------------------"
 echo ""
