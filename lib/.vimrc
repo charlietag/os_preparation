@@ -73,3 +73,8 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 
+
+"------------Plugin: vim-airline------------
+map t= :Tabularize /=<CR>
+map t, :Tabularize /,<CR>
+map t: :Tabularize /:<CR>
