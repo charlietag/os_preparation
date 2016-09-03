@@ -109,7 +109,7 @@ git clone https://github.com/vim-airline/vim-airline.git
 
 #Show git branch name
 git clone git://github.com/tpope/vim-fugitive.git
-git clone git://github.com/airblade/vim-gitgutter.git
+#git clone git://github.com/airblade/vim-gitgutter.git
 
 
 #-----------------------------------------------------------------------------------------

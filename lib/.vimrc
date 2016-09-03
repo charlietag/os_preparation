@@ -35,8 +35,8 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-l> :tabn<CR>
 map <C-k> :tabp<CR>
 
-"------------Plugin: gitgutter------------
-set updatetime=250
+"------------Plugin: gitgutter (Useless)------------
+"set updatetime=250
 "let g:gitgutter_override_sign_column_highlight = 0
 "let g:gitgutter_signs = 0
 

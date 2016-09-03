@@ -40,4 +40,3 @@
     sed -i s/^root/'#root'/g /etc/vsftpd/user_list
     ```
 
-
