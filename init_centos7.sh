@@ -20,8 +20,6 @@ yum remove -y chrony
 yum groupinstall -y "Development Tools"
 yum install -y bash redhat-lsb screen git vim ntpdate sysstat mtr net-tools wget openssl-devel bind-utils
 
-#For Laravel (Install later while installing php-fpm)
-# rpm --quiet -q php70w-xml || yum -y install php70w-xml
 
 #For Rails
 # rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite
@@ -34,12 +32,9 @@ yum -y install curl-devel
 yum install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel
 
 # For sql server connection (freetds)
-#yum install freetds freetds-devel openssl openssl-libs openssl-devel libticonv-devel -y
+yum install freetds freetds-devel openssl openssl-libs openssl-devel libticonv-devel -y
 
 
-#yum install -y vsftpd
-#sed -i s/^root/'#root'/g /etc/vsftpd/ftpusers
-#sed -i s/^root/'#root'/g /etc/vsftpd/user_list
 #-----------------------------------------------------------------------------------------
 #Setup ntpdate
 #-----------------------------------------------------------------------------------------
@@ -85,8 +80,7 @@ cd ~/.vim/bundle
 git clone https://github.com/Raimondi/delimitMate.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/vim-airline/vim-airline.git
-git clone https://github.com/vim-airline/vim-airline-themes
-git clone git://github.com/tpope/vim-fugitive.git
+#git clone https://github.com/vim-airline/vim-airline-themes
 git clone git://github.com/airblade/vim-gitgutter.git
 
 
