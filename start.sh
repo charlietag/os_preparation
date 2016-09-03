@@ -5,3 +5,4 @@
 . lib/filepath.sh
 
 install_nginx
+print_config

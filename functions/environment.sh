@@ -9,10 +9,11 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
 #MariaDB
-cp $CONFIGS/yum_repo/*.repo /etc/yum.repos.d/
+CENTOS_REPO="/etc/yum.repos.d/"
+cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
 
 #Make sure repo exists before running
-REPOS="$(ls |grep -E "webtatic|MariaDB|node")"
+REPOS="$(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node")"
 if [ -z "${REPOS}" ]
 then
   echo "Some repos not exists!"
@@ -77,11 +78,11 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 rm -fr ~/.vim
 
-FILES="$(ls -a $CONFIGS | grep -E "^\.")"
+FILES="$(ls -a $CONFIG_FOLDER | grep -E "^\.")"
 for FILE in $FILES
 do
   test -f ~/$FILE && rm -f ~/$FILE
-  cp $CONFIGS/$FILE ~/$FILE
+  cp $CONFIG_FOLDER/$FILE ~/$FILE
 done
 
 #-----------------------------------------------------------------------------------------
@@ -100,7 +101,7 @@ git clone https://github.com/vim-airline/vim-airline.git
 #Show git branch name
 git clone git://github.com/tpope/vim-fugitive.git
 #git clone git://github.com/airblade/vim-gitgutter.git
-
+cd $CURRENT_FOLDER
 
 #-----------------------------------------------------------------------------------------
 #Finish and Reboot
