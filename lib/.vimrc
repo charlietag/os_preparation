@@ -38,8 +38,6 @@ map <C-k> :tabp<CR>
 "------------Plugin: gitgutter------------
 set updatetime=250
 "let g:gitgutter_override_sign_column_highlight = 0
-nmap <C-[> <Plug>GitGutterPrevHunk
-nmap <C-]> <Plug>GitGutterNextHunk
 
 "------------Plugin: vim-airline------------
 set laststatus=2
