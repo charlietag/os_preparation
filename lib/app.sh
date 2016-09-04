@@ -6,6 +6,8 @@ LIB="$(dirname $(readlink -m $0))/lib"
 #------------------------------------
 # Include libaries
 #------------------------------------
-. $LIB/filepath.sh
-. $LIB/function.sh
-. $LIB/help.sh
+LIB_SCRIPTS="$(ls $LIB |grep -E "^L[0-9][0-9]_[^[:space:]]+(.sh)$")"
+for LIB_SCRIPT in $LIB_SCRIPTS
+do
+  . $LIB/$LIB_SCRIPT
+done
