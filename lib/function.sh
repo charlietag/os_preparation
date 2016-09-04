@@ -1,8 +1,9 @@
 #-----------------------------------------------------------------------------------------
-# Filepath Setup
+# Getopts , Print Help
 #-----------------------------------------------------------------------------------------
-CURRENT_FOLDER="$(dirname $(readlink -m $0))"
+for FUNC_NAME in $FUNC_NAMES
+do
+  eval "echo \"on going\""
+  PREDEFINED="True"
+done
 
-TEMPLATES="${CURRENT_FOLDER}/templates"
-FUNCTIONS="${CURRENT_FOLDER}/functions"
-TMP="${CURRENT_FOLDER}/tmp"
