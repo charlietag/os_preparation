@@ -4,9 +4,19 @@
 #***** lib use ******
 CURRENT_FOLDER="$(dirname $(readlink -m $0))"
 FUNCTIONS="${CURRENT_FOLDER}/functions"
+# * Defined in app.sh
+# LIB ===> "${CURRENT_FOLDER}/lib"
+# LIB_SCRIPTS ===> "${CURRENT_FOLDER}/lib/L_xx_xxx.sh"
+# MAKE_FUNC ===> Used for make function name
 
 #***** functions use ******
 TEMPLATES="${CURRENT_FOLDER}/templates"
 TMP="${CURRENT_FOLDER}/tmp"
+# * Defined in lib/function.sh
 # CONFIG_FOLDER ===> ${TEMPLATES}/{FUNC_NAME}
-# Defined in lib/function.sh
+
+#-----------------------------------------------------------------------------------------
+# lib use only - special variables
+#-----------------------------------------------------------------------------------------
+FUNC_NAMES="$(ls $FUNCTIONS | grep -E "^F_[0-9][0-9]_[^[:space:]]+(.sh)$" | sort -n | sed 's/\.sh$//g')"
+GIVEN_ARGVS=$@

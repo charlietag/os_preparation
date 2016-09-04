@@ -1,8 +1,6 @@
 #-----------------------------------------------------------------------------------------
 # Convert functions into function
 #-----------------------------------------------------------------------------------------
-FUNC_NAMES="$(ls $FUNCTIONS |grep -E '\.sh$'| sed 's/\.sh$//g')"
-
 for FUNC_NAME in $FUNC_NAMES
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
