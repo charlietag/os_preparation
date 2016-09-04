@@ -1,4 +1,4 @@
-## Default Variables
+## Pre-defined Variables
 ```json
 -----------lib use only--------
 CURRENT_FOLDER : /<PATH>/os_preparation
