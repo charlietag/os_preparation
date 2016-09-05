@@ -35,8 +35,8 @@ L_RUN_SPECIFIED_FUNC (){
   then
     for L_ARGVS_UNIQ in ${L_ARGVS_UNIQS[@]}
     do
-      #eval "${L_ARGVS_UNIQ}"
-      echo ${L_ARGVS_UNIQ}
+      eval "${L_ARGVS_UNIQ}"
+      #echo ${L_ARGVS_UNIQ}
     done
   else
     echo "Function name \"${ALL_ARGVS[@]}\" not found. Please try again..."
@@ -49,6 +49,15 @@ L_RUN_SPECIFIED_FUNC (){
 #-----------------------------------------------------------------------------------------
 if [ "${FIRST_ARGV}" == "-a" ]
 then
+  echo "You are going to run all functions."
+  echo -n "Are you sure (y/N)? "
+  L_CONFIRM="N"
+  read L_CONFIRM
+  if [ "${L_CONFIRM}" != 'y' ]
+  then
+    echo "canceled..."
+    exit
+  fi
   #===========Select all funcs to run=======
   for FUNC_NAME in ${FUNC_NAMES[@]}
   do
