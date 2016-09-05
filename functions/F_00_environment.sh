@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
-# Prefer packages
+CENTOS_REPO="/etc/yum.repos.d/"
 REPOS=($(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node"))
 
 # Install repo if not exists
@@ -15,7 +15,6 @@ then
   curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
   #MariaDB
-  CENTOS_REPO="/etc/yum.repos.d/"
   cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
 fi
 
@@ -42,7 +41,7 @@ yum install -y bash redhat-lsb screen git vim ntpdate sysstat mtr net-tools wget
 
 #For Rails
 # rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite
-#rpm --quiet -q mariadb-devel || yum -y install mariadb-devel
+# rpm --quiet -q mariadb-devel || yum -y install mariadb-devel
 
 #For Passenger
 yum -y install curl-devel
