@@ -1,12 +1,12 @@
-TGZ_URL="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
-TGZ_NAME="ruby-2.3.1.tar.gz"
-UTGZ_FOLDER="ruby-2.3.1"
+local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
+local tgz_name="ruby-2.3.1.tar.gz"
+local untgz_folder="ruby-2.3.1"
 
 cd $TMP
-wget $RUBY_TGZ
-tar -xzvf $TGZ_NAME
+wget $ruby_url
+tar -xzvf $tgz_name
 
-cd $TMP/$UTGZ_FOLDER
+cd $TMP/$untgz_folder
 ./configure
 make
 make install
@@ -19,7 +19,7 @@ gem install rails
 
 cd $TMP
 rails new TestRails -d mysql #Create rails project, to verify
-rm -fr $TMP/$TGZ_NAME
-rm -fr $TMP/$UTGZ_FOLDER
+rm -fr $TMP/$tgz_name
+rm -fr $TMP/$untgz_folder
 rm -fr $TMP/TestRails
 

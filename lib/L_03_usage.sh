@@ -15,28 +15,28 @@ L_PRINT_HELP (){
 }
 
 L_IF_FUNC_EXISTS (){
-  local L_ARGVS=()
+  local l_argvs=()
   for FUNC_NAME in ${FUNC_NAMES[@]}
   do
     for ALL_ARGV in ${ALL_ARGVS[@]}
     do
       if [ "${FUNC_NAME}" == "${ALL_ARGV}" ]
       then
-        L_ARGVS+=($FUNC_NAME)
+        l_argvs+=($FUNC_NAME)
       fi
     done
   done
-  echo "${L_ARGVS[@]}"
+  echo "${l_argvs[@]}"
 }
 
 L_RUN_SPECIFIED_FUNC (){
-  local L_ARGVS_UNIQS=($@)
-  if [ ! -z "${L_ARGVS_UNIQS}" ]
+  local l_argvs_uniqs=($@)
+  if [ ! -z "${l_argvs_uniqs}" ]
   then
-    for L_ARGVS_UNIQ in ${L_ARGVS_UNIQS[@]}
+    for l_argvs_uniq in ${l_argvs_uniqs[@]}
     do
-      eval "${L_ARGVS_UNIQ}"
-      #echo ${L_ARGVS_UNIQ}
+      eval "${l_argvs_uniq}"
+      #echo ${l_argvs_uniq}
     done
   else
     echo "Function name \"${ALL_ARGVS[@]}\" not found. Please try again..."

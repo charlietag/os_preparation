@@ -1,11 +1,11 @@
 #-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
-CENTOS_REPO="/etc/yum.repos.d/"
-REPOS=($(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node"))
+local centos_repo="/etc/yum.repos.d/"
+local repos=($(ls $centos_repo |grep -E "webtatic|MariaDB|node"))
 
 # Install repo if not exists
-if [ -z "${REPOS}" ]
+if [ -z "${repos}" ]
 then
   #PHP 7
   rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -15,11 +15,11 @@ then
   curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
   #MariaDB
-  cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
+  cp $CONFIG_FOLDER/yum_repo/*.repo $centos_repo
 fi
 
 #Make sure repo exists before running
-if [ -z "${REPOS}" ]
+if [ -z "${repos}" ]
 then
   echo "Some repos not exists!"
   exit
@@ -83,11 +83,11 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 rm -fr ~/.vim
 
-FILES=($(ls -a $CONFIG_FOLDER | grep -E "^\."))
-for FILE in ${FILES[@]}
+local files=($(ls -a $CONFIG_FOLDER | grep -E "^\."))
+for file in ${files[@]}
 do
-  test -f ~/$FILE && rm -f ~/$FILE
-  cp $CONFIG_FOLDER/$FILE ~/$FILE
+  test -f ~/$file && rm -f ~/$file
+  cp $CONFIG_FOLDER/$file ~/$file
 done
 
 #-----------------------------------------------------------------------------------------
