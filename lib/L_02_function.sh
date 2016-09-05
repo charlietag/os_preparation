@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------
 # Convert functions into function
 #-----------------------------------------------------------------------------------------
-for FUNC_NAME in $FUNC_NAMES
+for FUNC_NAME in ${FUNC_NAMES[@]}
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
   MAKE_FUNC="
