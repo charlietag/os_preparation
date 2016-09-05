@@ -81,12 +81,10 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
 #-----------------------------------------------------------------------------------------
-rm -fr ~/.vim
-
 local files=($(ls -a $CONFIG_FOLDER | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
-  test -f ~/$file && rm -f ~/$file
+  test -f ~/$file && rm -rf ~/$file
   cp -a $CONFIG_FOLDER/$file ~/$file
 done
 
