@@ -50,10 +50,10 @@ L_RUN_SPECIFIED_FUNC (){
 if [ "${FIRST_ARGV}" == "-a" ]
 then
   echo "You are going to run all functions."
-  echo -n "Are you sure (y/N)? "
+  echo -n "Are you sure (Yes/No)? "
   L_CONFIRM="N"
   read L_CONFIRM
-  if [ "${L_CONFIRM}" != 'y' ]
+  if [ "${L_CONFIRM}" != 'Yes' ]
   then
     echo "canceled..."
     exit
