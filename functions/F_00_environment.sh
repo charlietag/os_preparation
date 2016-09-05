@@ -1,19 +1,25 @@
 #-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
-#PHP 7
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+# Prefer packages
+REPOS=($(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node"))
 
-#NodeJS 6
-curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+# Install repo if not exists
+if [ -z "${REPOS}" ]
+then
+  #PHP 7
+  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
-#MariaDB
-CENTOS_REPO="/etc/yum.repos.d/"
-cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
+  #NodeJS 6
+  curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+
+  #MariaDB
+  CENTOS_REPO="/etc/yum.repos.d/"
+  cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
+fi
 
 #Make sure repo exists before running
-REPOS=($(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node"))
 if [ -z "${REPOS}" ]
 then
   echo "Some repos not exists!"
