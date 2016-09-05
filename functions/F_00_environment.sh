@@ -13,7 +13,7 @@ CENTOS_REPO="/etc/yum.repos.d/"
 cp $CONFIG_FOLDER/yum_repo/*.repo $CENTOS_REPO
 
 #Make sure repo exists before running
-REPOS="$(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node")"
+REPOS=($(ls $CENTOS_REPO |grep -E "webtatic|MariaDB|node"))
 if [ -z "${REPOS}" ]
 then
   echo "Some repos not exists!"
@@ -78,8 +78,8 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 rm -fr ~/.vim
 
-FILES="$(ls -a $CONFIG_FOLDER | grep -E "^\.")"
-for FILE in $FILES
+FILES=($(ls -a $CONFIG_FOLDER | grep -E "^\."))
+for FILE in ${FILES[@]}
 do
   test -f ~/$FILE && rm -f ~/$FILE
   cp $CONFIG_FOLDER/$FILE ~/$FILE
