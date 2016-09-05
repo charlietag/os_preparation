@@ -49,7 +49,9 @@ L_RUN_SPECIFIED_FUNC (){
 #-----------------------------------------------------------------------------------------
 if [ "${FIRST_ARGV}" == "-a" ]
 then
-  echo "Packages: ${FUNC_NAMES[@]}"
+  echo "Packages will be installed:"
+  echo "\"${FUNC_NAMES[@]}\""
+  echo ""
   echo "You are going to run all functions above."
   echo -n "Are you sure (Yes/No)? "
   L_CONFIRM="N"
