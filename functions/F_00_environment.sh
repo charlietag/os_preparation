@@ -81,7 +81,7 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
 #-----------------------------------------------------------------------------------------
-local files=($(ls -a $CONFIG_FOLDER | grep -E "^\.[A-Za-z0-9_]+$"))
+local files=($(ls -a $CONFIG_FOLDER/home_setting | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
   rm -rf ~/$file
