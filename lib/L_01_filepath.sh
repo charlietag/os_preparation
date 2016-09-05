@@ -2,7 +2,8 @@
 # Filepath Setup
 #-----------------------------------------------------------------------------------------
 #***** lib use ******
-CURRENT_FOLDER="$(dirname $(readlink -m $0))"
+CURRENT_SCRIPT="$(readlink -m $0)"
+CURRENT_FOLDER="$(dirname "${CURRENT_SCRIPT}")"
 FUNCTIONS="${CURRENT_FOLDER}/functions"
 # * Defined in app.sh
 # LIB ===> "${CURRENT_FOLDER}/lib"
@@ -18,5 +19,6 @@ TMP="${CURRENT_FOLDER}/tmp"
 #-----------------------------------------------------------------------------------------
 # lib use only - special variables
 #-----------------------------------------------------------------------------------------
-FUNC_NAMES="$(ls $FUNCTIONS | grep -E "^F_[0-9][0-9]_[^[:space:]]+(.sh)$" | sort -n | sed 's/\.sh$//g')"
-GIVEN_ARGVS=$@
+FUNC_NAMES=($(ls $FUNCTIONS | grep -E "^F_[0-9][0-9]_[^[:space:]]+(.sh)$" | sort -n | sed 's/\.sh$//g'))
+FIRST_ARGV=$1 ; shift
+ALL_ARGVS=($@)
