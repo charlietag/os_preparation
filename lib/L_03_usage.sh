@@ -29,15 +29,21 @@ L_IF_FUNC_EXISTS (){
   echo "${l_argvs[@]}"
 }
 
+L_RUN (){
+  local l_argvs_uniqs=($@)
+  for l_argvs_uniq in ${l_argvs_uniqs[@]}
+  do
+    eval "${l_argvs_uniq}"
+    #echo ${l_argvs_uniq}
+  done
+}
+
 L_RUN_SPECIFIED_FUNC (){
   local l_argvs_uniqs=($@)
   if [ ! -z "${l_argvs_uniqs}" ]
   then
-    for l_argvs_uniq in ${l_argvs_uniqs[@]}
-    do
-      eval "${l_argvs_uniq}"
-      #echo ${l_argvs_uniq}
-    done
+    # run
+    L_RUN ${l_argvs_uniqs[@]}
   else
     echo "Function name \"${ALL_ARGVS[@]}\" not found. Please try again..."
     exit
@@ -62,11 +68,7 @@ then
     exit
   fi
   #===========Select all funcs to run=======
-  for FUNC_NAME in ${FUNC_NAMES[@]}
-  do
-    eval "${FUNC_NAME}"
-    #echo "${FUNC_NAME}"
-  done
+  L_RUN ${FUNC_NAMES[@]}
   #===========Select all funcs to run=======
 
 elif [ "${FIRST_ARGV}" == "-i" ]
