@@ -27,8 +27,8 @@ then
   then
     for L_ARGVS_UNIQ in ${L_ARGVS_UNIQS[@]}
     do
-      #echo ${L_ARGVS_UNIQ}
-      eval "${L_ARGVS_UNIQ}"
+      echo ${L_ARGVS_UNIQ}
+      #eval "${L_ARGVS_UNIQ}"
     done
   else
     echo "Given argv is wrong!"
@@ -37,8 +37,10 @@ then
   fi
   #**** Check if given argvs is in function lists ****
 else
+  # if -a is defined
   for FUNC_NAME in $FUNC_NAMES
   do
-    eval "${FUNC_NAME}"
+    #eval "${FUNC_NAME}"
+    echo "${FUNC_NAME}"
   done
 fi
