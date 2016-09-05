@@ -15,7 +15,7 @@ then
   curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
   #MariaDB
-  cp $CONFIG_FOLDER/yum_repo/*.repo $centos_repo
+  cp -a $CONFIG_FOLDER/yum_repo/*.repo $centos_repo
 fi
 
 #Make sure repo exists before running
@@ -83,11 +83,11 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 #-----------------------------------------------------------------------------------------
 rm -fr ~/.vim
 
-local files=($(ls -a $CONFIG_FOLDER | grep -E "^\."))
+local files=($(ls -a $CONFIG_FOLDER | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
   test -f ~/$file && rm -f ~/$file
-  cp $CONFIG_FOLDER/$file ~/$file
+  cp -a $CONFIG_FOLDER/$file ~/$file
 done
 
 #-----------------------------------------------------------------------------------------
