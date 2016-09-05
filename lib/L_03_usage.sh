@@ -61,8 +61,8 @@ then
   #===========Select all funcs to run=======
   for FUNC_NAME in ${FUNC_NAMES[@]}
   do
-    #eval "${FUNC_NAME}"
-    echo "${FUNC_NAME}"
+    eval "${FUNC_NAME}"
+    #echo "${FUNC_NAME}"
   done
   #===========Select all funcs to run=======
 
