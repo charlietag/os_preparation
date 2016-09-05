@@ -1,0 +1,19 @@
+#/usr/lib/systemd/system/optnginx.service
+
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+#PIDFile=/run/nginx.pid  #systemctl start nginx, will be crashed! if this setting does not exists.
+PIDFile=/opt/nginx/logs/nginx.pid
+ExecStartPre=/opt/nginx/sbin/nginx -t -c /opt/nginx/conf/nginx.conf
+ExecStart=/opt/nginx/sbin/nginx -c /opt/nginx/conf/nginx.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+# Sleep for 1 second to give PassengerAgent a chance to clean up.
+ExecStop=/bin/kill -s QUIT $MAINPID ; /bin/sleep 1
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
