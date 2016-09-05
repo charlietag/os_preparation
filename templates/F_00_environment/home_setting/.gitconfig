@@ -13,6 +13,7 @@
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
     l = log --pretty=oneline --abbrev-commit --graph --decorate
+    lo = log --graph --stat --decorate
     amend = commit --amend
     who = shortlog -n -s --no-merges
     g = grep -n --color -E
