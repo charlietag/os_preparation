@@ -1,6 +1,9 @@
 ## Environment
   * CentOS 7
 
+## Warning
+  * Please do this in fresh install OS
+
 ## Usage (Not ready)
   ```bash
   ./start.sh -h
