@@ -6,7 +6,7 @@
 #-----------------------------------------------------------------------------------------
 # Functions
 #-----------------------------------------------------------------------------------------
-PRINT_HELP (){
+L_PRINT_HELP (){
   echo "usage: $(basename "${CURRENT_SCRIPT}")"
   echo "  -a                   ,  run all functions"
   echo "  -i func1 func2 func3 ,  run specified functions"
@@ -72,5 +72,5 @@ then
 
   #===========Select specific funcs to run=======
 else
-  PRINT_HELP
+  L_PRINT_HELP
 fi
