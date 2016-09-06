@@ -87,6 +87,7 @@ do
   rm -rf ~/$file
   cp -a $CONFIG_FOLDER/home_setting/$file ~/$file
 done
+RENDER_CP $CONFIG_FOLDER/home_setting/.gitconfig ~/.gitconfig
 
 #-----------------------------------------------------------------------------------------
 #Setup Vim Setting
