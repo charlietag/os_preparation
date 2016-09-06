@@ -1,3 +1,4 @@
 *.yml
 *.swp
+/databag/*.cfg
 !*.keep
