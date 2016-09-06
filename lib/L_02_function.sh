@@ -17,6 +17,7 @@ do
     #  mkdir -p ${CONFIG_FOLDER}
     #  touch ${CONFIG_FOLDER}/.keep
     #fi
+    . ${DATABAG_FILE}
     . ${FUNCTIONS}/${FUNC_NAME}.sh
     cd $CURRENT_FOLDER
   }
