@@ -21,7 +21,9 @@
 * gem install without making document
   * Deprecated
   
+    ```
     ~~no-ri, no-rdoc~~
+    ```
 
   * Config
 
