@@ -25,7 +25,7 @@ alias b='cd -'
 alias be='bundle exec'
 alias bk='bundle exec rake'
 alias bl='bundle exec rails'
-alias gitpush='git pull && git push'
+alias gpush='git pull && git push'
 
 export HISTTIMEFORMAT='%F %T '
 export HISTSIZE=1000000
