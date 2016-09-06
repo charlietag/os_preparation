@@ -5,6 +5,7 @@ for FUNC_NAME in ${FUNC_NAMES[@]}
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
   DATABAG_FILE="${DATABAG}/${FUNC_NAME}.cfg"
+  IF_RENDER_USE="$(grep "RENDER_CP" "${FUNCTIONS}/${FUNC_NAME}.sh")"
   MAKE_FUNC="
   ${FUNC_NAME} (){
     echo \"==============================\"
@@ -17,7 +18,18 @@ do
     #  mkdir -p ${CONFIG_FOLDER}
     #  touch ${CONFIG_FOLDER}/.keep
     #fi
-    . ${DATABAG_FILE}
+    if [ ! -z \"${IF_RENDER_USE}\" ]
+    then
+      if [ -f \"${DATABAG_FILE}\" ]
+      then
+        echo \"Reading data file: ${DATABAG_FILE}...\"
+        . ${DATABAG_FILE}
+      else
+        echo \"Data file for databag not found:\"
+        echo \"${DATABAG_FILE}\"
+        exit
+      fi
+    fi
     . ${FUNCTIONS}/${FUNC_NAME}.sh
     cd $CURRENT_FOLDER
   }
