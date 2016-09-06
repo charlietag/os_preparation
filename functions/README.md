@@ -12,6 +12,6 @@ TMP            : /<PATH>/os_preparation/tmp
 CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 
 -----------function use only - predefined vars--------
-FIRST_ARGV     : -i
-ALL_ARGVS      : F_00_echo_path
+FIRST_ARGV     : [ -i | -a ]
+ALL_ARGVS      : <FUNCTION_NAMES>
 ```
