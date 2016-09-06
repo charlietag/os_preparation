@@ -1,6 +1,6 @@
 [user]
-    name = Charlie Hsieh
-    email = charlieofficial@gmail.com
+    name = ${git_name}
+    email = ${git_email}
 [color]
     ui = true
 
