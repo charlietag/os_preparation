@@ -4,6 +4,7 @@
 for FUNC_NAME in ${FUNC_NAMES[@]}
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
+  DATABAG_FILE="${DATABAG}/${FUNC_NAME}.cfg"
   MAKE_FUNC="
   ${FUNC_NAME} (){
     echo \"==============================\"
