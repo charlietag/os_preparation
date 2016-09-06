@@ -85,7 +85,7 @@ local files=($(ls -a $CONFIG_FOLDER/home_setting | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
   rm -rf ~/$file
-  cp -a $CONFIG_FOLDER/$file ~/$file
+  cp -a $CONFIG_FOLDER/home_setting/$file ~/$file
 done
 
 #-----------------------------------------------------------------------------------------
