@@ -4,9 +4,12 @@
 ## Warning
   * Please do this in fresh install OS
 
-## Usage (Not ready)
+## Usage
   ```bash
   ./start.sh -h
+  usage: start.sh
+    -a                   ,  run all functions
+    -i func1 func2 func3 ,  run specified functions
   ```
 
 ## Packages
@@ -17,6 +20,7 @@
 ## Ruby gem config
 * gem install without making document
   * Deprecated
+  
     ~~no-ri, no-rdoc~~
 
   * Config
