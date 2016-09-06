@@ -78,6 +78,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 map t= :Tabularize /=<CR>
 map t, :Tabularize /,<CR>
 map t: :Tabularize /:<CR>
+map t\| :Tabularize /\|<CR>
 map t<SPACE>  :Tabularize /\S\+<CR>
 
 
