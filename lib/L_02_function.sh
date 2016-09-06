@@ -5,7 +5,7 @@ for FUNC_NAME in ${FUNC_NAMES[@]}
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
   DATABAG_FILE="${DATABAG}/${FUNC_NAME}.cfg"
-  IF_RENDER_USE="$(grep "RENDER_CP" "${FUNCTIONS}/${FUNC_NAME}.sh")"
+  L_IF_RENDER_USE="$(grep "RENDER_CP" "${FUNCTIONS}/${FUNC_NAME}.sh")"
   MAKE_FUNC="
   ${FUNC_NAME} (){
     echo \"==============================\"
@@ -18,7 +18,7 @@ do
     #  mkdir -p ${CONFIG_FOLDER}
     #  touch ${CONFIG_FOLDER}/.keep
     #fi
-    if [ ! -z \"${IF_RENDER_USE}\" ]
+    if [ ! -z \"${L_IF_RENDER_USE}\" ]
     then
       if [ -f \"${DATABAG_FILE}\" ]
       then
