@@ -22,7 +22,15 @@ do
     then
       if [ -f \"${DATABAG_FILE}\" ]
       then
-        echo \"Reading data file: ${DATABAG_FILE}...\"
+        echo -n \"Reading data file: ${DATABAG_FILE}.\"
+        slee 1
+        echo -n \".\"
+        slee 1
+        echo -n \".\"
+        slee 1
+        echo -n \".\"
+        slee 1
+        echo \".\"
         . ${DATABAG_FILE}
       else
         echo \"Data file for databag not found:\"
