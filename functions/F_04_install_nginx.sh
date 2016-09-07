@@ -13,7 +13,7 @@ useradd -d /opt_home/optnginx -s /sbin/nologin -m -r optnginx
 useradd -d /opt_home/optpass -s /sbin/nologin -m -r optpass
 
 #--------------------------
-#  Install via ruby gem
+#  Install nginx via ruby gem using passenger-install
 #--------------------------
 echo "========================================="
 echo "      gem install passenger"
@@ -24,19 +24,3 @@ echo "     passenger-install-nginx-module --auto-download --languages ruby --aut
 echo "========================================="
 passenger-install-nginx-module --auto-download --languages ruby --auto
 
-#--------------------------
-#  Setup nginx sample configs
-#--------------------------
-echo "========================================="
-echo "      setup nginx configs"
-echo "========================================="
-local nginx_confs=($(find ${CONFIG_FOLDER} -type f))
-local nginx_path=""
-for nginx_conf in ${nginx_confs[@]}
-do
-  nginx_path="$(head -n 1 $nginx_conf | sed 's/^#//')"
-  #echo "$nginx_conf"
-  #echo "$nginx_path"
-  test -d $nginx_path || mkdir -p $nginx_path
-  \cp -a --backup=t $nginx_conf $nginx_path
-done
