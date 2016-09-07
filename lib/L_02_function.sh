@@ -23,13 +23,13 @@ do
       if [ -f \"${DATABAG_FILE}\" ]
       then
         echo -n \"Reading data file: ${DATABAG_FILE}.\"
-        slee 1
+        sleep 1
         echo -n \".\"
-        slee 1
+        sleep 1
         echo -n \".\"
-        slee 1
+        sleep 1
         echo -n \".\"
-        slee 1
+        sleep 1
         echo \".\"
         . ${DATABAG_FILE}
       else
