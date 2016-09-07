@@ -37,7 +37,7 @@ sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
 yum install -y nodejs
 yum remove -y chrony
 yum groupinstall -y "Development Tools"
-yum install -y bash redhat-lsb screen git vim ntpdate sysstat mtr net-tools wget openssl-devel bind-utils
+yum install -y bash redhat-lsb screen git tree vim ntpdate sysstat mtr net-tools wget openssl-devel bind-utils
 
 
 #For Rails
