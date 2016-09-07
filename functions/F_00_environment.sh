@@ -19,6 +19,7 @@ then
 fi
 
 #Make sure repo exists before running
+repos=($(ls $centos_repo |grep -E "webtatic|MariaDB|node"))
 if [ -z "${repos}" ]
 then
   echo "Some repos not exists!"
