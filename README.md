@@ -7,7 +7,7 @@
 ## Usage
 
   ```bash
-  yum install -y
+  yum install -y git
   git clone https://github.com/charlietag/os_preparation.git
   ```
 
