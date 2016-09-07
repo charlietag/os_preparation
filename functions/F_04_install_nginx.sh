@@ -37,5 +37,6 @@ do
   nginx_path="$(head -n 1 $nginx_conf | sed 's/^#//')"
   #echo "$nginx_conf"
   #echo "$nginx_path"
+  test -d $nginx_path || mkdir -p $nginx_path
   \cp -a --backup=t $nginx_conf $nginx_path
 done
