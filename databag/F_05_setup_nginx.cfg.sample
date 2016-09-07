@@ -1,0 +1,3 @@
+
+local passenger_root="$(passenger-config about root)"
+local passenger_ruby="$(which ruby)"

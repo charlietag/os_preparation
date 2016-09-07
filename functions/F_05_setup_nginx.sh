@@ -12,6 +12,11 @@ do
   #echo "$nginx_conf"
   #echo "$nginx_path"
   test -d $nginx_path || mkdir -p $nginx_path
-  \cp -a --backup=t $nginx_conf $nginx_path
+  if [ -f $DATABAG_FILE ]
+  then
+    RENDER_CP $nginx_conf $nginx_path
+  else
+    \cp -a --backup=t $nginx_conf $nginx_path
+  fi
 done
 
