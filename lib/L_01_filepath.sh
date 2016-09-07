@@ -16,7 +16,6 @@ DATABAG="${CURRENT_FOLDER}/databag"
 TMP="${CURRENT_FOLDER}/tmp"
 # * Defined in lib/function.sh
 # CONFIG_FOLDER ===> ${TEMPLATES}/{FUNC_NAME}
-# DATABAG_FILE===> ${DATABAG}/{FUNC_NAME}
 
 #-----------------------------------------------------------------------------------------
 # lib use only - special variables

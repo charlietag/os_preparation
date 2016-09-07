@@ -4,7 +4,7 @@
 for FUNC_NAME in ${FUNC_NAMES[@]}
 do
   CONFIG_FOLDER="${TEMPLATES}/${FUNC_NAME}"
-  DATABAG_FILE="${DATABAG}/${FUNC_NAME}.cfg"
+  L_DATABAG_FILE="${DATABAG}/${FUNC_NAME}.cfg"
   L_IF_RENDER_USE="$(grep "RENDER_CP" "${FUNCTIONS}/${FUNC_NAME}.sh")"
   MAKE_FUNC="
   ${FUNC_NAME} (){
@@ -20,9 +20,9 @@ do
     #fi
     if [ ! -z \"${L_IF_RENDER_USE}\" ]
     then
-      if [ -f \"${DATABAG_FILE}\" ]
+      if [ -f \"${L_DATABAG_FILE}\" ]
       then
-        echo -n \"Reading data file: ${DATABAG_FILE}.\"
+        echo -n \"Reading data file: ${L_DATABAG_FILE}.\"
         sleep 1
         echo -n \".\"
         sleep 1
@@ -31,10 +31,10 @@ do
         echo -n \".\"
         sleep 1
         echo \".\"
-        . ${DATABAG_FILE}
+        . ${L_DATABAG_FILE}
       else
         echo \"Data file for databag not found:\"
-        echo \"${DATABAG_FILE}\"
+        echo \"${L_DATABAG_FILE}\"
         exit
       fi
     fi

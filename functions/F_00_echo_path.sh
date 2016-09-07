@@ -11,7 +11,6 @@ echo "-----------function use only--------"
 echo "TEMPLATES      : ${TEMPLATES}"
 echo "TMP            : ${TMP}"
 echo "CONFIG_FOLDER  : ${CONFIG_FOLDER}"
-echo "DATABAG_FILE   : ${DATABAG_FILE}"
 echo ""
 
 #-----------Function Use -predefined vars----------
