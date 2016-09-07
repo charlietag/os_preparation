@@ -12,7 +12,7 @@ do
   #echo "$nginx_conf"
   #echo "$nginx_path"
   test -d $nginx_path || mkdir -p $nginx_path
-  if [ -f $DATABAG_FILE ]
+  if [ "$(basename $nginx_conf)" == "passenger.conf" ]
   then
     RENDER_CP $nginx_conf $nginx_path
   else
