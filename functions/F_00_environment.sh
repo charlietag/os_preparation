@@ -34,6 +34,7 @@ sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
 #-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
+yum clean all
 yum install -y nodejs
 yum remove -y chrony
 yum groupinstall -y "Development Tools"
