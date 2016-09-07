@@ -25,7 +25,23 @@ alias b='cd -'
 alias be='bundle exec'
 alias bk='bundle exec rake'
 alias bl='bundle exec rails'
-alias gpush='git status ; git pull && git push ; git status'
+alias gpush='
+  echo "==========================="; \
+  echo "     git status"; \
+  echo "==========================="; \
+  git status ; \
+  echo "" ; \
+  echo "==========================="; \
+  echo "     git pull and git push"; \
+  echo "==========================="; \
+  git pull && git push ; \
+  echo "" ; \
+  echo "==========================="; \
+  echo "     git status"; \
+  echo "==========================="; \
+  git status
+  echo "" ; \
+  '
 
 export HISTTIMEFORMAT='%F %T '
 export HISTSIZE=1000000
