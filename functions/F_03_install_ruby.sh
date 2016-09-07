@@ -30,7 +30,7 @@ gem update --system
 echo "========================================="
 echo "      gem update"
 echo "========================================="
-gem update
+yes n | gem update
 echo "========================================="
 echo "      gem install bundler"
 echo "========================================="
