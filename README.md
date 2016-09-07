@@ -5,6 +5,12 @@
   * Please do this in fresh install OS
 
 ## Usage
+
+  ```bash
+  yum install -y
+  git clone https://github.com/charlietag/os_preparation.git
+  ```
+
   ```bash
   ./start.sh -h
   usage: start.sh
