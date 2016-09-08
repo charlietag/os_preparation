@@ -19,6 +19,7 @@
   ```
 
 ## Customization your own function
+### Folder
   * functions/*
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
     * Run command `./start.sh -i YourOwnFuntionName`
@@ -33,7 +34,7 @@
         * You can use ${your_vars_here}
       * In **YourOwnFuntionName** , you can call **RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** instead of **cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** command
 
-## Customization - predefined variables
+### Predefined variables
 
 ```bash
 -----------lib use only--------
