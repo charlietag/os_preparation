@@ -1,4 +1,6 @@
 # CentOS Linux Server OS Preparation
+You can initialize your linux server by your own script. Or just leverage my centos 7 server environment settings here.
+
 ## Environment
   * CentOS 7
 
