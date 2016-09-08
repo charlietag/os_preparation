@@ -39,15 +39,15 @@
         * You can use ${your_vars_here}
       * In **YourOwnFuntionName** , you can call
 
-      ```bash
-      RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
-      ```
+        ```bash
+        RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+        ```
 
-      instead of
-      
-      ```bash
-      cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
-      ```
+        instead of
+        
+        ```bash
+        cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+        ```
 
 ### Predefined variables
 
