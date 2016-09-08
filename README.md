@@ -22,7 +22,12 @@
 ### Folder
   * functions/*
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
-    * Run command `./start.sh -i YourOwnFuntionName`
+    * Run command 
+    
+      ```bash
+      ./start.sh -i YourOwnFuntionName
+      ```
+
   * templates/*
     * Put your own templates here, **folder** named the same as **YourOwnFuntionName**
   * databag/*
@@ -32,7 +37,10 @@
         * local your_vars_here
       * In templates/YourOwnFunctionName/yourowntemplate_file
         * You can use ${your_vars_here}
-      * In **YourOwnFuntionName** , you can call **RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** instead of **cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** command
+      * In **YourOwnFuntionName** , you can call
+      `RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere`
+      instead of
+      `cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere`
 
 ### Predefined variables
 
