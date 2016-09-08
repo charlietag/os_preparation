@@ -38,9 +38,16 @@
       * In templates/YourOwnFunctionName/yourowntemplate_file
         * You can use ${your_vars_here}
       * In **YourOwnFuntionName** , you can call
-      `RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere`
+
+      ```bash
+      RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+      ```
+
       instead of
-      `cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere`
+      
+      ```bash
+      cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+      ```
 
 ### Predefined variables
 
