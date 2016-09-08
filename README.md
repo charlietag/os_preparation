@@ -18,7 +18,7 @@
     -i func1 func2 func3 ,  run specified functions
   ```
 
-## Customization your own function
+## Customize your own function
 ### Folder
   * functions/*
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
