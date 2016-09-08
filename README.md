@@ -18,12 +18,18 @@
     -i func1 func2 func3 ,  run specified functions
   ```
 
-## Packages
+## Customization your own
+  * functions/*
+    * write your own script here, named start with **F_[0-9][0-9]_yourown.sh**
+    * Run command `./start.sh -i **yourown**`
+
+## Note
+### Packages
   * PHP7 (Ref.https://webtatic.com/packages/php70)
   * MariaDB 10.1 (equal to MySQL 5.7)
   * nodejs (latest version - 6)
 
-## Ruby gem config
+### Ruby gem config
 * gem install without making document
   * Deprecated
 
@@ -35,7 +41,7 @@
     echo "gem: --no-document" > ~/.gemrc
     ```
 
-## Built-in vim colorscheme
+### Built-in vim colorscheme
 * /usr/share/vim/vim72/colors
 
   ```bash
@@ -49,7 +55,7 @@
   colorscheme motus
   ```
 
-## Optional
+### Optional
   * VSFTPD
 
     ```bash
