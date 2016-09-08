@@ -41,15 +41,14 @@ echo "========================================="
 gem install rails
 
 
-cd $TMP
+cd /home
 echo "========================================="
-echo "      rails new TestRails -d mysql"
+echo "      rails new MyRails -d mysql"
 echo "========================================="
-rails new TestRails -d mysql #Create rails project, to verify
+rails new MyRails -d mysql #Create rails project, to verify
 echo "========================================="
 echo "      rm all files in tmp"
 echo "========================================="
 rm -fr $TMP/$tgz_name
 rm -fr $TMP/$untgz_folder
-rm -fr $TMP/TestRails
 
