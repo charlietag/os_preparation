@@ -64,8 +64,15 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 
 ## Note
 
+### Installed Packages
+  * PHP7 (Ref.https://webtatic.com/packages/php70)
+  * PHP-FPM (Ref.https://webtatic.com/packages/php70)
+  * MariaDB 10.1 (equal to MySQL 5.7)
+  * nodejs (latest version - 6)
+  * Nginx (latest version - via passenger)
+
 ### Nginx related
-  * To be distinguish between passenger_install , yum install nginx (nginx yum repo)
+  * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
   * There are some differences here.
     * Nginx config folder
 
@@ -114,12 +121,23 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
       12 directories, 8 files
 
       ```
+    
+### Folder privilege
+After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is the "folder privilege" you have to keep an eye on it.
+  * Rails Project
+    
+    ```bash
+    cd <rails_project>
+    chown -R optpass.optpass log tmp
+    ```
 
-### Packages
-  * PHP7 (Ref.https://webtatic.com/packages/php70)
-  * MariaDB 10.1 (equal to MySQL 5.7)
-  * nodejs (latest version - 6)
-  * Nginx (via passenger)
+  * Laravel Project
+    
+    ```bash
+    cd <laravel_project>
+    chown -R apache.apache storage
+    chown -R apache.apache bootstrap/cache
+    ```
 
 ### Ruby gem config
 * gem install without making document
