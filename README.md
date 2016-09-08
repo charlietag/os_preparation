@@ -60,10 +60,63 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 ```
 
 ## Note
+
+### Nginx related
+  * To be distinguish between passenger_install , yum install nginx (nginx yum repo)
+  * There are some differences here.
+    * Nginx config folder
+
+      ```
+      /opt/nginx/
+      ```
+
+    * Running user
+    
+      ```
+      optnginx
+      optpass
+      ```
+
+    * Start process (**optnginx**)
+    
+      ```
+      systemctl start optnginx
+      ```
+
+    * Config folder tree
+
+      ```
+      F_05_setup_nginx/
+      ├── etc
+      │   └── logrotate.d
+      │       └── optnginx
+      ├── opt
+      │   └── nginx
+      │       └── conf
+      │           ├── conf.d
+      │           │   ├── default.conf
+      │           │   ├── laravel.conf
+      │           │   └── rails.conf
+      │           ├── default.d
+      │           ├── nginx.conf
+      │           └── passenger.conf
+      └── usr
+          └── lib
+              ├── systemd
+              │   └── system
+              │       └── optnginx.service
+              └── tmpfiles.d
+                  └── passenger.conf
+
+      12 directories, 8 files
+
+      ```
+
 ### Packages
   * PHP7 (Ref.https://webtatic.com/packages/php70)
   * MariaDB 10.1 (equal to MySQL 5.7)
   * nodejs (latest version - 6)
+  * Nginx (via passenger)
 
 ### Ruby gem config
 * gem install without making document
