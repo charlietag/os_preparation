@@ -18,10 +18,39 @@
     -i func1 func2 func3 ,  run specified functions
   ```
 
-## Customization your own
+## Customization your own function
   * functions/*
-    * write your own script here, named start with **F_[0-9][0-9]_yourown.sh**
-    * Run command `./start.sh -i **yourown**`
+    * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
+    * Run command `./start.sh -i YourOwnFuntionName`
+  * templates/*
+    * Put your own templates here, **folder** named the same as **YourOwnFuntionName**
+  * databag/*
+    * Put your special config variables here, **file** named the same as **YourOwnFuntionName**
+    * How to use
+      * In databag/YourOwnFunctionName
+        * local your_vars_here
+      * In templates/YourOwnFunctionName/yourowntemplate_file
+        * You can use ${your_vars_here}
+      * In **YourOwnFuntionName** , you can call **RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** instead of **cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere** command
+
+## Customization - predefined variables
+
+```bash
+-----------lib use only--------
+CURRENT_SCRIPT : /<PATH>/os_preparation/start.sh
+CURRENT_FOLDER : /<PATH>/os_preparation
+FUNCTIONS      : /<PATH>/os_preparation/functions
+LIB            : /<PATH>/os_preparation/lib
+
+-----------function use only--------
+TEMPLATES      : /<PATH>/os_preparation/templates
+TMP            : /<PATH>/os_preparation/tmp
+CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
+
+-----------function use only - predefined vars--------
+FIRST_ARGV     : [ -i | -a ]
+ALL_ARGVS      : <FUNCTION_NAMES>
+```
 
 ## Note
 ### Packages
