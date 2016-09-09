@@ -16,7 +16,10 @@ echo "================================"
 for toggle_service in ${toggle_services[@]}
 do
   service_name="${toggle_service}.service"
+  echo ""
+  echo "------------------------------------------"
   echo "systemctl ${toggle} \"${service_name}\""
+  echo "------------------------------------------"
 
   if [ "${toggle}" == "enable" ]
   then
