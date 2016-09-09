@@ -46,6 +46,8 @@ echo "========================================="
 echo "      rails new myrails -d mysql"
 echo "========================================="
 rails new myrails -d mysql #Create rails project, to verify
+cd /home/myrails
+chown -R optpass.optpass log tmp
 
 echo "========================================="
 echo "      rm all files in tmp"
