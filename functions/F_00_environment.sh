@@ -86,18 +86,18 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 local files=($(ls -a $CONFIG_FOLDER/home_setting | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
-  rm -rf ~/$file
-  cp -a $CONFIG_FOLDER/home_setting/$file ~/$file
+  rm -rf ${HOME}/$file
+  cp -a $CONFIG_FOLDER/home_setting/$file ${HOME}/$file
 done
-RENDER_CP $CONFIG_FOLDER/home_setting/.gitconfig ~/.gitconfig
+RENDER_CP $CONFIG_FOLDER/home_setting/.gitconfig ${HOME}/.gitconfig
 
 #-----------------------------------------------------------------------------------------
 #Setup Vim Setting
 #-----------------------------------------------------------------------------------------
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+mkdir -p ${HOME}/.vim/autoload ${HOME}/.vim/bundle && \
+curl -LSso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-cd ~/.vim/bundle
+cd ${HOME}/.vim/bundle
 git clone git://github.com/godlygeek/tabular.git
 git clone https://github.com/Raimondi/delimitMate.git
 git clone https://github.com/scrooloose/nerdtree.git

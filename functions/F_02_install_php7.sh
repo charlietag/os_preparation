@@ -11,7 +11,7 @@ systemctl disable httpd
 echo "====================================="
 echo "        install composer"
 echo "====================================="
-local home_bin="~/bin"
+local home_bin="${HOME}/bin"
 test -d $home_bin || mkdir -p $home_bin
 cd $home_bin
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -22,10 +22,10 @@ php -r "unlink('composer-setup.php');"
 mv composer*.phar composer
 
 
-cd /home
 echo "========================================="
 echo "      composer create-project ---> mylaravel"
 echo "========================================="
+cd /home
 composer create-project --prefer-dist laravel/laravel mylaravel
 
 cd /home/mylaravel
