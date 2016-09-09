@@ -1,0 +1,4 @@
+
+local toggle="enable" # enable | disable
+local toggle_services=(mariadb php-fpm optnginx)
+
