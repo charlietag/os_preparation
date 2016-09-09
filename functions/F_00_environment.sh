@@ -90,7 +90,7 @@ do
   cp -a $CONFIG_FOLDER/home_setting/$file ${HOME}/$file
 done
 RENDER_CP $CONFIG_FOLDER/home_setting/.gitconfig ${HOME}/.gitconfig
-mv /etc/screenrc /etc/screenrc.bak
+test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 
 #-----------------------------------------------------------------------------------------
 #Setup Vim Setting
