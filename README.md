@@ -123,10 +123,13 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
       ```
     
 ### Folder privilege
-After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is the "folder privilege" you have to keep an eye on it.
+After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
+1. **folder privilege**
+
   * Rails Project
     
     ```bash
+    rails new <rails_project> -d mysql
     cd <rails_project>
     chown -R optpass.optpass log tmp
     ```
@@ -134,10 +137,21 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Laravel Project
     
     ```bash
+    composer create-project --prefer-dist laravel/laravel <laravel_project>
     cd <laravel_project>
     chown -R apache.apache storage
     chown -R apache.apache bootstrap/cache
     ```
+
+2. **Command**
+
+  ```bash
+  rails new <rails_project> -d mysql
+  ```
+
+  ```bash
+  composer create-project --prefer-dist laravel/laravel <laravel_project>
+  ```
 
 ### Ruby gem config
 * gem install without making document
