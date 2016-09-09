@@ -45,7 +45,7 @@ I'm a lazy person.  I want to install all and give me default configurations run
   <192.168.x.x> mylaravel.xxx.com
   ```
 
-* Browse url
+* Browse URL
 
   ```bash
   http://myrails.xxx.com
