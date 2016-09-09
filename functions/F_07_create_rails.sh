@@ -7,5 +7,5 @@ cd /home/myrails
 chown -R optpass.optpass log tmp
 
 systemctl start mariadb.service
-bundle exec rails db:create:all
+bundle exec rails db:create
 systemctl stop mariadb.service
