@@ -46,6 +46,7 @@ echo "========================================="
 echo "      rails new MyRails -d mysql"
 echo "========================================="
 rails new MyRails -d mysql #Create rails project, to verify
+
 echo "========================================="
 echo "      rm all files in tmp"
 echo "========================================="
