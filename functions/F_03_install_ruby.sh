@@ -9,10 +9,10 @@ cd $TMP
 wget $ruby_url
 tar -xzvf $tgz_name
 
-cd $TMP/$untgz_folder
 echo "========================================="
 echo "      Configure"
 echo "========================================="
+cd $TMP/$untgz_folder
 ./configure
 echo "========================================="
 echo "      make"
@@ -41,10 +41,10 @@ echo "========================================="
 gem install rails
 
 
-cd /home
 echo "========================================="
 echo "      rails new myrails -d mysql"
 echo "========================================="
+cd /home
 rails new myrails -d mysql #Create rails project, to verify
 cd /home/myrails
 chown -R optpass.optpass log tmp
