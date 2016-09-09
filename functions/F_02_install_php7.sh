@@ -24,6 +24,6 @@ mv composer*.phar composer
 
 cd /home
 echo "========================================="
-echo "      composer create-project ---> MyLaravel"
+echo "      composer create-project ---> mylaravel"
 echo "========================================="
-composer create-project --prefer-dist laravel/laravel MyLaravel
+composer create-project --prefer-dist laravel/laravel mylaravel

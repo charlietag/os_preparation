@@ -43,9 +43,9 @@ gem install rails
 
 cd /home
 echo "========================================="
-echo "      rails new MyRails -d mysql"
+echo "      rails new myrails -d mysql"
 echo "========================================="
-rails new MyRails -d mysql #Create rails project, to verify
+rails new myrails -d mysql #Create rails project, to verify
 
 echo "========================================="
 echo "      rm all files in tmp"
