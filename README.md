@@ -154,6 +154,37 @@ After this installation repo, the server will setup with "passenger-install-ngin
   composer create-project --prefer-dist laravel/laravel <laravel_project>
   ```
 
+### General Installation
+I'm a lazy person.  I want to install all and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
+
+* Full install command
+
+  ```bash
+  ./start -a
+  reboot
+  ```
+
+* Default project path
+
+  ```bash
+  /home/myrails/
+  /home/mylaravel/
+  ```
+
+* Config your own hosts file (/etc/hosts)
+
+  ```bash
+  <192.168.x.x> myrails.xxx.com
+  <192.168.x.x> mylaravel.xxx.com
+  ```
+
+* Browse url
+
+  ```bash
+  http://myrails.xxx.com
+  http://mylaravel.xxx.com
+  ```
+
 ### Ruby gem config
 * gem install without making document
   * Deprecated
