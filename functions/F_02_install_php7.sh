@@ -6,6 +6,7 @@ yum install -y php70w-xml
 
 # Disable httpd
 systemctl disable httpd
+systemctl disable php-fpm
 
 # Install composer
 echo "====================================="
