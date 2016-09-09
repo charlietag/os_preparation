@@ -20,3 +20,10 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
 mv composer*.phar composer
+
+
+cd /home
+echo "========================================="
+echo "      composer create-project ---> MyLaravel"
+echo "========================================="
+composer create-project --prefer-dist laravel/laravel MyLaravel
