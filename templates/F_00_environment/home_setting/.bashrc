@@ -44,7 +44,7 @@ alias gpush='
   '
 
 export HISTTIMEFORMAT='%F %T '
-export HISTSIZE=1000000
+export HISTSIZE=5000000
 unset PROMPT_COMMAND
 
 function parse_git_dirty_branch {                                         
