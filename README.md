@@ -124,6 +124,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
     
 ### Folder privilege
 After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
+
 1. **folder privilege**
 
   * Rails Project
