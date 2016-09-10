@@ -1,5 +1,6 @@
 # CentOS Linux Server OS Preparation
 You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF**.  You can just leverage my initialization project here.
+
   (centos 7 server environment settings)
 
 
