@@ -197,3 +197,11 @@ After this installation repo, the server will setup with "passenger-install-ngin
     echo "gem: --no-document" > ~/.gemrc
     ```
 
+### Databasse configuration for Production
+* Remove test database and setup root password
+(After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
+
+```bash
+mysql_secure_installation
+```
+
