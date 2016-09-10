@@ -103,6 +103,14 @@ I want to choose specific part to install.
         cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
         ```
 
+      * In **YourOwnFuntionName** , you just want to **LOAD VARIABLES ONLY** from databag, try add a comment into your function script
+
+        ```bash
+        # For Load Variables Only Usage, add comment line with keyword RENDER_CP
+        # RENDER_CP
+        ```
+
+
 ### Predefined variables
 
 ```bash
