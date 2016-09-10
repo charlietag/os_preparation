@@ -62,7 +62,7 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
   ```
 
 ## Advanced Installation
-I want to choose which part to install.
+I want to choose specific part to install.
 * Command
 
   ```bash
