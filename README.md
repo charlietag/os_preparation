@@ -14,6 +14,15 @@ You can initialize your linux server by your own script. Or just leverage my cen
   git clone https://github.com/charlietag/os_preparation.git
   ```
 
+  Make sure config files exists , you can reference sample config.
+
+  ```bash
+  databag/
+  ├── F_00_environment.cfg
+  ├── F_05_setup_nginx.cfg
+  └── F_08_toggle_service.cfg
+  ```
+
   ```bash
   ./start.sh -h
   usage: start.sh
