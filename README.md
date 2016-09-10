@@ -8,27 +8,36 @@ You can initialize your linux server by your own script. Or just leverage my cen
   * Please do this in fresh install OS
 
 ## Usage
+  * Before installation
 
-  ```bash
-  yum install -y git
-  git clone https://github.com/charlietag/os_preparation.git
-  ```
+    ```bash
+    yum install -y git
+    git clone https://github.com/charlietag/os_preparation.git
+    ```
 
-  * Make sure config files exists , you can reference sample config.
+  * Make sure config files exists , you can copy from sample to modify.
 
-  ```bash
-  databag/
-  ├── F_00_environment.cfg
-  ├── F_05_setup_nginx.cfg
-  └── F_08_toggle_service.cfg
-  ```
+    ```bash
+    cd databag
+    ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
+    ```
 
-  ```bash
-  ./start.sh -h
-  usage: start.sh
-    -a                   ,  run all functions
-    -i func1 func2 func3 ,  run specified functions
-  ```
+
+    ```bash
+    databag/
+    ├── F_00_environment.cfg
+    ├── F_05_setup_nginx.cfg
+    └── F_08_toggle_service.cfg
+    ```
+
+  * Start to install
+
+    ```bash
+    ./start.sh -h
+    usage: start.sh
+      -a                   ,  run all functions
+      -i func1 func2 func3 ,  run specified functions
+    ```
 
 ## Full Installation
 I'm a lazy person.  I want to install all and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
