@@ -7,7 +7,7 @@ You can initialize your linux server by your own script. Or just leverage my cen
 ## Warning
   * Please do this in fresh install OS
 
-## Usage
+## Configuration
   * Before installation
 
     ```bash
@@ -30,17 +30,8 @@ You can initialize your linux server by your own script. Or just leverage my cen
     └── F_08_toggle_service.cfg
     ```
 
-  * Start to install
-
-    ```bash
-    ./start.sh -h
-    usage: start.sh
-      -a                   ,  run all functions
-      -i func1 func2 func3 ,  run specified functions
-    ```
-
-## Full Installation
-I'm a lazy person.  I want to install all and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
+## Easy Installation
+I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
 
 * Full install command
 
@@ -69,6 +60,15 @@ I'm a lazy person.  I want to install all and give me default configurations run
   http://myrails.xxx.com
   http://mylaravel.xxx.com
   ```
+
+## Advanced Installation
+
+    ```bash
+    ./start.sh -h
+    usage: start.sh
+      -a                   ,  run all functions
+      -i func1 func2 func3 ,  run specified functions
+    ```
 
 ## Customize your own function
 ### Folder
