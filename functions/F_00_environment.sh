@@ -110,6 +110,11 @@ git clone git://github.com/tpope/vim-fugitive.git
 #git clone git://github.com/airblade/vim-gitgutter.git
 
 #-----------------------------------------------------------------------------------------
+# etc/hostname for hostname setup
+#-----------------------------------------------------------------------------------------
+RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
+
+#-----------------------------------------------------------------------------------------
 #Finish and Reboot
 #-----------------------------------------------------------------------------------------
 sync;sync;sync;

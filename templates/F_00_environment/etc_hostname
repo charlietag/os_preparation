@@ -1,0 +1,2 @@
+#/etc/hostname
+${host_name}
