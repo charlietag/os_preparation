@@ -25,7 +25,6 @@ alias b='cd -'
 alias be='bundle exec'
 alias bk='bundle exec rake'
 alias bl='bundle exec rails'
-alias gst='git status'
 alias glo='git log --graph --stat --decorate'
 alias gpush='
   echo "==================================="; \
