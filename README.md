@@ -14,7 +14,7 @@ You can initialize your linux server by your own script. Or just leverage my cen
   git clone https://github.com/charlietag/os_preparation.git
   ```
 
-  Make sure config files exists , you can reference sample config.
+  * Make sure config files exists , you can reference sample config.
 
   ```bash
   databag/
