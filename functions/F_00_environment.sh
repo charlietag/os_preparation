@@ -125,6 +125,7 @@ git clone git://github.com/tpope/vim-fugitive.git
 # etc/hostname for hostname setup
 #-----------------------------------------------------------------------------------------
 RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
+hostname -F /etc/hostname
 
 #-----------------------------------------------------------------------------------------
 #Finish and Reboot
