@@ -26,19 +26,29 @@ then
   exit
 fi
 
+# Clean yum repo
+yum clean all
+
 #-----------------------------------------------------------------------------------------
 #SELINUX OFF
 #-----------------------------------------------------------------------------------------
 sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
 
 #-----------------------------------------------------------------------------------------
+# NTP update date time and hwclock to prevent mariadb cause systemd warning
+#-----------------------------------------------------------------------------------------
+yum remove -y chrony
+yum install -y ntpdate
+ntpdate pool.ntp.org
+hwclock -w
+
+
+#-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
-yum clean all
 yum install -y nodejs
-yum remove -y chrony
 yum groupinstall -y "Development Tools"
-yum install -y bash redhat-lsb screen git tree vim ntpdate sysstat mtr net-tools wget openssl-devel bind-utils
+yum install -y bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
 
 
 #For Rails
@@ -58,8 +68,10 @@ yum install freetds freetds-devel openssl openssl-libs openssl-devel libticonv-d
 #-----------------------------------------------------------------------------------------
 #Setup ntpdate
 #-----------------------------------------------------------------------------------------
-#sed -i /ntpdate/d /etc/crontab ; echo "*/5 * * * * root ntpdate clock.stdtime.gov.tw >/dev/null 2>/dev/null" >> /etc/crontab
-sed -i /ntpdate/d /etc/crontab ; echo "*/5 * * * * root ntpdate pool.ntp.org >/dev/null 2>/dev/null" >> /etc/crontab
+sed -i /ntpdate/d /etc/crontab
+echo "*/5 * * * * root ntpdate pool.ntp.org >/dev/null 2>/dev/null ; hwclock -w  >/dev/null 2>/dev/null" >> /etc/crontab
+
+#echo "*/5 * * * * root ntpdate clock.stdtime.gov.tw >/dev/null 2>/dev/null" >> /etc/crontab
 
 #-----------------------------------------------------------------------------------------
 #Firewall OFF
