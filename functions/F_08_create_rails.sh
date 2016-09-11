@@ -6,6 +6,6 @@ rails new myrails -d mysql #Create rails project, to verify
 cd /home/myrails
 chown -R optpass.optpass log tmp
 
-systemctl start mariadb.service
+systemctl start mariadb
 bundle exec rails db:create
-systemctl stop mariadb.service
+systemctl stop mariadb
