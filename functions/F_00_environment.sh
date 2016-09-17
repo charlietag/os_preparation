@@ -83,6 +83,8 @@ systemctl disable firewalld.service
 #-----------------------------------------------------------------------------------------
 systemctl disable postfix
 systemctl disable NetworkManager
+systemctl disable avahi-daemon.socket
+systemctl disable avahi-daemon.service
 
 #-----------------------------------------------------------------------------------------
 #Solve sshd login waiting issue (GSSAuth)
