@@ -55,15 +55,15 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 * Config your own hosts file (/etc/hosts)
 
   ```bash
-  <192.168.x.x> myrails.xxx.com
-  <192.168.x.x> mylaravel.xxx.com
+  <192.168.x.x> myrails.centos7.localdomain
+  <192.168.x.x> mylaravel.centos7.localdomain
   ```
 
 * Browse URL
 
   ```bash
-  http://myrails.xxx.com
-  http://mylaravel.xxx.com
+  http://myrails.centos7.localdomain
+  http://mylaravel.centos7.localdomain
   ```
 
 ## Advanced Installation
