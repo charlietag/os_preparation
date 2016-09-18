@@ -94,6 +94,10 @@ sed -i s/'GSSAPIAuthentication yes'/'#GSSAPIAuthentication yes'/ /etc/ssh/sshd_c
 # Disable sshd acceptenv
 sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 
+# Disable sshd UseDNS
+sed -i '/UseDNS/d' /etc/ssh/sshd_config
+echo "UseDNS no" >> /etc/ssh/sshd_config
+
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
 #-----------------------------------------------------------------------------------------
