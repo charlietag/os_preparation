@@ -130,8 +130,14 @@ git clone git://github.com/tpope/vim-fugitive.git
 #-----------------------------------------------------------------------------------------
 # etc/hostname for hostname setup
 #-----------------------------------------------------------------------------------------
+# hostname
 RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
 hostname -F /etc/hostname
+# nameserver
+RENDER_CP $CONFIG_FOLDER/etc_resolv.conf /etc/resolv.conf
+# Disable IPv6
+RENDER_CP $CONFIG_FOLDER/etc_sysctl.conf /etc/sysctl.conf
+
 
 #-----------------------------------------------------------------------------------------
 #Finish and Reboot
