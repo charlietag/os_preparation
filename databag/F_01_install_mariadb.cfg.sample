@@ -1,0 +1,4 @@
+#Put local vars here for the specific function
+
+# Bind-address
+local mariadb_listen_address="127.0.0.1"
