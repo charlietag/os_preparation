@@ -64,6 +64,14 @@ yum install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-deve
 # For sql server connection (freetds)
 yum install freetds freetds-devel openssl openssl-libs openssl-devel libticonv-devel -y
 
+#-----------------------------------------------------------------------------------------
+#Setup timezone
+#-----------------------------------------------------------------------------------------
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+timedatectl set-timezone "${current_timezone}"
 
 #-----------------------------------------------------------------------------------------
 #Setup ntpdate

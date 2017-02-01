@@ -1,5 +1,8 @@
 #Put local vars here for the specific function
 
+# Set Timezone
+local current_timezone="Asia/Taipei"
+
 # Git
 local git_name="Firstname Lastname"
 local git_email="email@gmail.com"
