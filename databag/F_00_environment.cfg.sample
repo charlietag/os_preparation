@@ -4,6 +4,10 @@
 local git_name="Firstname Lastname"
 local git_email="email@gmail.com"
 
+# SSH
+local ssh_listen_port="2222"
+local ssh_listen_address="0.0.0.0"
+
 # Network
 local host_name="centos7.localdomain"
 local disable_ipv6=1

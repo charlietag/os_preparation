@@ -98,6 +98,20 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 sed -i '/UseDNS/d' /etc/ssh/sshd_config
 echo "UseDNS no" >> /etc/ssh/sshd_config
 
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
+# Change listen port
+sed -i '/Port 22/d' /etc/ssh/sshd_config
+echo "Port ${ssh_listen_port}" >> /etc/ssh/sshd_config
+
+# Change listen address
+sed -i '/ListenAddress ::/d' /etc/ssh/sshd_config
+echo "ListenAddress ${ssh_listen_address}" >> /etc/ssh/sshd_config
+
+
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
 #-----------------------------------------------------------------------------------------
