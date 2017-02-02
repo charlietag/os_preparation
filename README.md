@@ -31,8 +31,9 @@ This is a small light bash project.  Suit small companies which have only few se
     ```bash
     databag/
     ├── F_00_environment.cfg
+    ├── F_01_install_mariadb.cfg
     ├── F_05_setup_nginx.cfg
-    └── F_08_toggle_service.cfg
+    └── F_09_toggle_service.cfg
     ```
 
 ## Easy Installation
