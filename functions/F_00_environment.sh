@@ -1,4 +1,16 @@
 #-----------------------------------------------------------------------------------------
+# etc/hostname for hostname setup
+#-----------------------------------------------------------------------------------------
+# hostname
+RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
+hostname -F /etc/hostname
+# nameserver
+RENDER_CP $CONFIG_FOLDER/etc_resolv.conf /etc/resolv.conf
+# Disable IPv6
+RENDER_CP $CONFIG_FOLDER/etc_sysctl.conf /etc/sysctl.conf
+sysctl -p
+
+#-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
 local centos_repo="/etc/yum.repos.d/"
@@ -136,7 +148,7 @@ test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 #Setup Vim Setting
 #-----------------------------------------------------------------------------------------
 mkdir -p ${HOME}/.vim/autoload ${HOME}/.vim/bundle && \
-curl -LSso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+curl -LSso ${HOME}/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 cd ${HOME}/.vim/bundle
 git clone git://github.com/godlygeek/tabular.git
@@ -148,18 +160,6 @@ git clone https://github.com/vim-airline/vim-airline.git
 #Show git branch name
 git clone git://github.com/tpope/vim-fugitive.git
 #git clone git://github.com/airblade/vim-gitgutter.git
-
-#-----------------------------------------------------------------------------------------
-# etc/hostname for hostname setup
-#-----------------------------------------------------------------------------------------
-# hostname
-RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
-hostname -F /etc/hostname
-# nameserver
-RENDER_CP $CONFIG_FOLDER/etc_resolv.conf /etc/resolv.conf
-# Disable IPv6
-RENDER_CP $CONFIG_FOLDER/etc_sysctl.conf /etc/sysctl.conf
-sysctl -p
 
 
 #-----------------------------------------------------------------------------------------
