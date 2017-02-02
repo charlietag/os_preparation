@@ -16,7 +16,6 @@ yum install -y \
   php71w-ldap \
   php71w-mbstring \
   php71w-mcrypt \
-  php71w-mysql \
   php71w-mysqlnd \
   php71w-odbc \
   php71w-opcache \
