@@ -1,6 +1,6 @@
-local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.0.tar.gz"
-local tgz_name="ruby-2.4.0.tar.gz"
-local untgz_folder="ruby-2.4.0"
+local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
+local tgz_name="ruby-2.3.1.tar.gz"
+local untgz_folder="ruby-2.3.1"
 
 echo "========================================="
 echo "      Download Ruby Source"
