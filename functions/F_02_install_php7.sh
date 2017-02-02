@@ -1,8 +1,40 @@
 # Install php 7
-yum install -y php70w php70w-opcache php70w-fpm php70w-opcache php70w-mbstring php70w-mcrypt php70w-mysql php70w-pdo php70w-pdo_dblib php70w-gd php70w-common
-
-# For composer
-yum install -y php70w-xml
+yum install -y \
+  mod_php71w \
+  php71w-bcmath \
+  php71w-cli \
+  php71w-common \
+  php71w-dba \
+  php71w-devel \
+  php71w-embedded \
+  php71w-enchant \
+  php71w-fpm \
+  php71w-gd \
+  php71w-imap \
+  php71w-interbase \
+  php71w-intl \
+  php71w-ldap \
+  php71w-mbstring \
+  php71w-mcrypt \
+  php71w-mysql \
+  php71w-mysqlnd \
+  php71w-odbc \
+  php71w-opcache \
+  php71w-pdo \
+  php71w-pdo_dblib \
+  php71w-pear \
+  php71w-pecl-apcu \
+  php71w-pecl-mongodb \
+  php71w-pecl-redis \
+  php71w-pgsql \
+  php71w-phpdbg \
+  php71w-process \
+  php71w-pspell \
+  php71w-recode \
+  php71w-snmp \
+  php71w-soap \
+  php71w-tidy \
+  php71w-xml
 
 # Disable httpd
 systemctl disable httpd
