@@ -135,7 +135,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * MariaDB 10.1 (equal to MySQL 5.7)
   * nodejs (stable version - 6)
   * Nginx (latest version - via passenger)
-  * Ruby 2.4.0
+  * Ruby 2.3.1
   * Rails 5.0.1
 
 ### Nginx related
