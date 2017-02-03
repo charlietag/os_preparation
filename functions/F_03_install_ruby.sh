@@ -41,7 +41,7 @@ echo "========================================="
 gem install rails
 
 echo "========================================="
-echo "      gem cleanup"
+echo "      gem cleanup, delete old gems"
 echo "========================================="
 gem cleanup
 
