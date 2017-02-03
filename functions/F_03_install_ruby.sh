@@ -1,6 +1,6 @@
-local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
-local tgz_name="ruby-2.3.1.tar.gz"
-local untgz_folder="ruby-2.3.1"
+local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.0.tar.gz"
+local tgz_name="ruby-2.4.0.tar.gz"
+local untgz_folder="ruby-2.4.0"
 
 echo "========================================="
 echo "      Download Ruby Source"
@@ -39,6 +39,11 @@ echo "========================================="
 echo "      gem install rails"
 echo "========================================="
 gem install rails
+
+echo "========================================="
+echo "      gem cleanup"
+echo "========================================="
+gem cleanup
 
 echo "========================================="
 echo "      rm all files in tmp"
