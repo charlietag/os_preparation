@@ -80,5 +80,6 @@ map t, :Tabularize /,<CR>
 map t: :Tabularize /:<CR>
 map t\| :Tabularize /\|<CR>
 map t<SPACE>  :Tabularize /\S\+<CR>
+map tt  :Tabularize /\t<CR>
 
 
