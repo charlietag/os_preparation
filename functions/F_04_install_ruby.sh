@@ -4,7 +4,7 @@
 # RENDER_CP
 # config set
 local tgz_name="$(basename $ruby_src_url)"
-local untgz_folder="$(echo $tgz_name |sed 's/\.tar\.gz//')"
+local untgz_folder="$(basename $ruby_src_url .tar.gz)"
 
 # Start to install
 echo "========================================="
