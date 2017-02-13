@@ -22,6 +22,7 @@ check_repo_exist (){
 # =============================
 #Make sure repo exists before running
 # =============================
+repo_fail=0
 check_repo_exist
 
 # =============================
@@ -43,6 +44,7 @@ fi
 # =============================
 #Make sure repo exists before running
 # =============================
+repo_fail=0
 check_repo_exist
 if [ $repo_fail -eq 1 ]
 then
