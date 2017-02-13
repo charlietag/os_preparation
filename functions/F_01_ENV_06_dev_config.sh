@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------------------
 #Self Customize /root/.all
 #-----------------------------------------------------------------------------------------
-local files=($(ls -a $CONFIG_FOLDER/home_setting | grep -E "^\.[A-Za-z0-9_]+$"))
+local files=($(ls -a $CONFIG_FOLDER/root | grep -E "^\.[A-Za-z0-9_]+$"))
 for file in ${files[@]}
 do
   rm -rf ${HOME}/$file
-  cp -a $CONFIG_FOLDER/home_setting/$file ${HOME}/$file
+  cp -a $CONFIG_FOLDER/root/$file ${HOME}/$file
 done
-RENDER_CP $CONFIG_FOLDER/home_setting/.gitconfig ${HOME}/.gitconfig
+RENDER_CP $CONFIG_FOLDER/root/.gitconfig ${HOME}/.gitconfig
 test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 
 #-----------------------------------------------------------------------------------------
