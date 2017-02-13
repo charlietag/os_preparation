@@ -1,4 +1,4 @@
-local ruby_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
+local ruby_src_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
 local tgz_name="ruby-2.3.1.tar.gz"
 local untgz_folder="ruby-2.3.1"
 
@@ -6,7 +6,7 @@ echo "========================================="
 echo "      Download Ruby Source"
 echo "========================================="
 cd $TMP
-wget $ruby_url
+wget $ruby_src_url
 tar -xzvf $tgz_name
 
 echo "========================================="
