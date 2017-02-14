@@ -2,12 +2,12 @@
 # etc/hostname for hostname setup
 #-----------------------------------------------------------------------------------------
 # hostname
-RENDER_CP $CONFIG_FOLDER/etc_hostname /etc/hostname
+RENDER_CP $CONFIG_FOLDER/etc/hostname /etc/hostname
 hostname -F /etc/hostname
 # nameserver
-RENDER_CP $CONFIG_FOLDER/etc_resolv.conf /etc/resolv.conf
+RENDER_CP $CONFIG_FOLDER/etc/resolv.conf /etc/resolv.conf
 # Disable IPv6
-RENDER_CP $CONFIG_FOLDER/etc_sysctl.conf /etc/sysctl.conf
+RENDER_CP $CONFIG_FOLDER/etc/sysctl.conf /etc/sysctl.conf
 sysctl -p
 
 #-----------------------------------------------------------------------------------------

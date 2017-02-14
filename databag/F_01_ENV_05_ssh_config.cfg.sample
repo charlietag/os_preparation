@@ -1,0 +1,6 @@
+#Put local vars here for the specific function
+
+# SSH
+local ssh_listen_port="2222"
+local ssh_listen_address="0.0.0.0"
+

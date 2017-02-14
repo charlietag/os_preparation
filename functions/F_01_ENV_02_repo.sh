@@ -22,6 +22,7 @@ check_repo_exist (){
 # =============================
 #Make sure repo exists before running
 # =============================
+repo_fail=0
 check_repo_exist
 
 # =============================
@@ -37,12 +38,13 @@ then
   curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
   #MariaDB
-  cp -a $CONFIG_FOLDER/yum_repo/*.repo $centos_repo
+  cp -a $CONFIG_FOLDER/etc/yum.repos.d/*.repo $centos_repo
 fi
 
 # =============================
 #Make sure repo exists before running
 # =============================
+repo_fail=0
 check_repo_exist
 if [ $repo_fail -eq 1 ]
 then

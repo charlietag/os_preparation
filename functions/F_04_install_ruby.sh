@@ -1,7 +1,12 @@
-local ruby_src_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
-local tgz_name="ruby-2.3.1.tar.gz"
-local untgz_folder="ruby-2.3.1"
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+# config set
+local tgz_name="$(basename $ruby_src_url)"
+local untgz_folder="$(basename $ruby_src_url .tar.gz)"
 
+# Start to install
 echo "========================================="
 echo "      Download Ruby Source"
 echo "========================================="
