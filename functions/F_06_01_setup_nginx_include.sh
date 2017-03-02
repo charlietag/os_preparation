@@ -13,6 +13,8 @@ do
   nginx_target_folder="$(dirname $nginx_target)"
 
   test -d $nginx_target_folder || mkdir -p $nginx_target_folder
+
+  # use RENDER_CP to fetch var from datadog
   RENDER_CP $nginx_conf $nginx_target
 done
 
