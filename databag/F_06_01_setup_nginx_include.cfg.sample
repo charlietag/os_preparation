@@ -9,7 +9,9 @@ local passenger_ruby="$(which ruby)"
 # For limit_req_zone.conf
 # ################################
 
-# setup nginx concurrent user limit per ip(binary_remote_addr)
+# setup nginx concurrent user limit:
+#   n+1 request per second (n+1 r/s)
+#   per ip (binary_remote_addr)
 local nginx_concurrency="1000"
 
 # setup responsed http code , after nginx concurrent user limit is reached
