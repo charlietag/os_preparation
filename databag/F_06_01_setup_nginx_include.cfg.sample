@@ -12,6 +12,7 @@ local passenger_ruby="$(which ruby)"
 # setup nginx concurrent user limit:
 #   n+1 request per second (n+1 r/s)
 #   per ip (binary_remote_addr)
+#   if n set to 2, then your max concurrent user is 3 users per second.
 local nginx_concurrency="1000"
 
 # setup responsed http code , after nginx concurrent user limit is reached
