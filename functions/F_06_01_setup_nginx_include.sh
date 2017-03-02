@@ -1,9 +1,9 @@
 #--------------------------
 #  Setup nginx sample configs
 #--------------------------
-echo "========================================="
-echo "      setup nginx configs"
-echo "========================================="
+echo "-----------"
+echo "setup nginx configs include.d"
+echo "-----------"
 local nginx_confs=($(find ${CONFIG_FOLDER} -type f))
 local nginx_target=""
 local nginx_target_folder=""
