@@ -1,3 +1,8 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 #-----------------------------------------------------------------------------------------
 #Solve sshd login waiting issue (GSSAuth)
 #-----------------------------------------------------------------------------------------
@@ -10,10 +15,6 @@ sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 sed -i '/UseDNS/d' /etc/ssh/sshd_config
 echo "UseDNS no" >> /etc/ssh/sshd_config
 
-# =====================
-# Enable databag
-# =====================
-# RENDER_CP
 
 # Change listen port
 sed -i '/Port /d' /etc/ssh/sshd_config
