@@ -13,6 +13,7 @@ do
   nginx_target_folder="$(dirname $nginx_target)"
 
   test -d $nginx_target_folder || mkdir -p $nginx_target_folder
+  echo "Setting up config file \"${nginx_target}\"......"
   \cp -a --backup=t $nginx_conf $nginx_target
 done
 
