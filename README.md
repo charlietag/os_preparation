@@ -24,13 +24,13 @@ This is a small light bash project.  Suit small companies which have only few se
   (centos 7 server environment settings)
 
 
-## Environment
+# Environment
   * CentOS 7
 
-## Warning
+# Warning
   * Please do this in fresh install OS
 
-## Configuration
+# Configuration
   * Before installation
 
     ```bash
@@ -54,7 +54,7 @@ This is a small light bash project.  Suit small companies which have only few se
     └── F_09_toggle_service.cfg
     ```
 
-## Easy Installation
+# Easy Installation
 I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
 
 * Command
@@ -85,7 +85,7 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
   http://mylaravel.centos7.localdomain
   ```
 
-## Advanced Installation
+# Advanced Installation
 I want to choose specific part to install.
 * Command
 
@@ -96,8 +96,8 @@ I want to choose specific part to install.
     -i func1 func2 func3 ,  run specified functions
   ```
 
-## Customize your own function
-### Folder
+# Customize your own function
+## Folder
   * functions/*
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
     * Run command 
@@ -135,7 +135,7 @@ I want to choose specific part to install.
         ```
 
 
-### Predefined variables
+## Predefined variables
 
 ```bash
 CURRENT_SCRIPT : /<PATH>/os_preparation/start.sh
@@ -145,9 +145,9 @@ TMP            : /<PATH>/os_preparation/tmp
 CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 ```
 
-## Note
+# Note
 
-### Installed Packages
+## Installed Packages
   * PHP7.1 (Ref.https://webtatic.com/packages)
   * PHP-FPM (Ref.https://webtatic.com/packages)
   * MariaDB 10.1 (equal to MySQL 5.7)
@@ -156,7 +156,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * Ruby 2.3.1
   * Rails 5.0.1
 
-### Nginx related
+## Nginx related
   * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
   * There are some differences here.
     * Nginx config folder
@@ -207,7 +207,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 
       ```
     
-### Folder privilege
+## Folder privilege
 After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
 
 1. **folder privilege**
@@ -239,7 +239,7 @@ After this installation repo, the server will setup with "passenger-install-ngin
   composer create-project --prefer-dist laravel/laravel <laravel_project>
   ```
 
-### Ruby gem config
+## Ruby gem config
 * gem install without making document
   * Deprecated
 
@@ -251,7 +251,7 @@ After this installation repo, the server will setup with "passenger-install-ngin
     echo "gem: --no-document" > ~/.gemrc
     ```
 
-### Database configuration for production
+## Database configuration for production
 * Remove test database and setup root password
 (After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
 
