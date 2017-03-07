@@ -1,3 +1,21 @@
+Table of Contents
+=================
+   * [CentOS Linux Server OS Preparation](#centos-linux-server-os-preparation)
+      * [Environment](#environment)
+      * [Warning](#warning)
+      * [Configuration](#configuration)
+      * [Easy Installation](#easy-installation)
+      * [Advanced Installation](#advanced-installation)
+      * [Customize your own function](#customize-your-own-function)
+         * [Folder](#folder)
+         * [Predefined variables](#predefined-variables)
+      * [Note](#note)
+         * [Installed Packages](#installed-packages)
+         * [Nginx related](#nginx-related)
+         * [Folder privilege](#folder-privilege)
+         * [Ruby gem config](#ruby-gem-config)
+         * [Database configuration for production](#database-configuration-for-production)
+
 # CentOS Linux Server OS Preparation
 You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF**.  You can just leverage my initialization project here.
 
