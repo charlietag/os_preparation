@@ -2,8 +2,13 @@
 # etc/hostname for hostname setup
 #-----------------------------------------------------------------------------------------
 # hostname
-RENDER_CP $CONFIG_FOLDER/etc/hostname /etc/hostname
-hostname -F /etc/hostname
+# -------------------
+#RENDER_CP $CONFIG_FOLDER/etc/hostname /etc/hostname
+#hostname -F /etc/hostname
+# -------------------
+# comment 2 steps above, use hostnamectl command instead
+hostnamectl set-hostname ${host_name}
+
 # nameserver
 RENDER_CP $CONFIG_FOLDER/etc/resolv.conf /etc/resolv.conf
 # Disable IPv6
