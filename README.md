@@ -15,6 +15,7 @@ Table of Contents
   * [Folder privilege](#folder-privilege)
   * [Ruby gem config](#ruby-gem-config)
   * [Database configuration for production](#database-configuration-for-production)
+- [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
 You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF**.  You can just leverage my initialization project here.
@@ -259,3 +260,6 @@ After this installation repo, the server will setup with "passenger-install-ngin
 mysql_secure_installation
 ```
 
+# CHANGELOG
+* 2017/03/02
+  * Add Nginx req limit to avoid DDOS.
