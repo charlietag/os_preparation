@@ -49,7 +49,7 @@ gem install bundler
 echo "========================================="
 echo "      gem install rails"
 echo "========================================="
-gem install rails
+gem install rails -v "~> ${rails_version}.0"
 
 echo "========================================="
 echo "      rm all files in tmp"
