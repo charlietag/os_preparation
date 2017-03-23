@@ -8,4 +8,5 @@ local php_max_file_uploads="20"
 local php_post_max_size="512M"
 local php_upload_max_filesize="512M"
 local php_memory_limit="512M"
+local php_date_timezone="Asia/Taipei"
 
