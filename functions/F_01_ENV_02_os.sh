@@ -9,8 +9,17 @@
 # comment 2 steps above, use hostnamectl command instead
 hostnamectl set-hostname ${host_name}
 
+# set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
+local eth_cards="$(ls /etc/sysconfig/network-scripts/ifcfg-* |grep -v "lo$")"
+for eth_card in $eth_cards
+do
+  sed -i /PEERDNS/d $eth_card
+  echo "PEERDNS=\"no\"" >> $eth_card
+done
+
 # nameserver
 RENDER_CP $CONFIG_FOLDER/etc/resolv.conf /etc/resolv.conf
+
 # Disable IPv6
 RENDER_CP $CONFIG_FOLDER/etc/sysctl.conf /etc/sysctl.conf
 sysctl -p
