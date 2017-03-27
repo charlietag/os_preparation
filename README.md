@@ -256,9 +256,15 @@ After this installation repo, the server will setup with "passenger-install-ngin
 * Remove test database and setup root password
 (After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
 
-```bash
-mysql_secure_installation
-```
+  ```bash
+  mysql_secure_installation
+  ```
+
+* Database tools - Adminer
+  * Easy to manage database
+    * [adminer.php](https://www.adminer.org/)
+  * **Stronger than scaffold, and any other admin panel. For quick CRUD**
+    * [Adminer-editor.php](https://www.adminer.org/en/editor/)
 
 # CHANGELOG
 * 2017/03/02
