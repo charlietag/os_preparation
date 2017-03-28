@@ -24,6 +24,7 @@ This is a small light bash project.  Suit small companies which have only few se
 
   (centos 7 server environment settings)
 
+* This is useful if you have less than 5 CentOS7 servers to maintain.
 
 # Environment
   * CentOS 7
