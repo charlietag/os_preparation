@@ -26,7 +26,46 @@ alias b='cd -'
 alias be='bundle exec'
 alias bk='bundle exec rake'
 alias bl='bundle exec rails'
+
+alias bn='
+  echo "==================================="; \
+  echo "     rails tmp:clear"; \
+  echo "==================================="; \
+  bundle exec rails tmp:clear ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     rails assets:clobber"; \
+  echo "==================================="; \
+  bundle exec rails assets:clobber ; \
+  echo ""
+  '
+
+alias ba='
+  echo "==================================="; \
+  echo "     rails tmp:clear"; \
+  echo "==================================="; \
+  bundle exec rails tmp:clear ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     rails assets:clobber"; \
+  echo "==================================="; \
+  bundle exec rails assets:clobber ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     rails assets:precompile RAILS_ENV=production"; \
+  echo "==================================="; \
+  bundle exec rails assets:precompile RAILS_ENV=production ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     touch tmp/restart.txt"; \
+  echo "==================================="; \
+  test -d tmp && touch tmp/restart.txt ; \
+  test -d tmp || echo "Folder tmp does not exists!" ; \
+  echo ""
+  '
+
 alias glo='git log --graph --stat --decorate'
+
 alias gpush='
   echo "==================================="; \
   echo "     git status"; \
@@ -41,8 +80,8 @@ alias gpush='
   echo "==================================="; \
   echo "     git status"; \
   echo "==================================="; \
-  git status
-  echo "" ; \
+  git status ; \
+  echo ""
   '
 
 export HISTTIMEFORMAT='%F %T '
