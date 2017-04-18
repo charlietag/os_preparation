@@ -36,9 +36,9 @@ check_repo_exist
 # =============================
 if [ $repo_fail -eq 1 ]
 then
-  #PHP 7
-  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+  #PHP
+  rpm -Uvh $epel_yum_repo
+  rpm -Uvh $php_yum_repo
 
   #NodeJS
   curl --silent --location "${node_yum_repo}" | bash -
