@@ -1,0 +1,6 @@
+#Put local vars here for the specific function
+
+# Node version of YUM
+# Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
+local node_yum_repo="https://rpm.nodesource.com/setup_6.x"
+

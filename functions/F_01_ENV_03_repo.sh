@@ -1,3 +1,9 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+# config set
+
 #-----------------------------------------------------------------------------------------
 # YUM Repo
 #-----------------------------------------------------------------------------------------
@@ -34,8 +40,8 @@ then
   rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
-  #NodeJS 6
-  curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+  #NodeJS
+  curl --silent --location "${node_yum_repo}" | bash -
 
   #MariaDB
   cp -a $CONFIG_FOLDER/etc/yum.repos.d/*.repo $centos_repo
