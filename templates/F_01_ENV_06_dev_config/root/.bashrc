@@ -59,8 +59,7 @@ alias ba='
   echo "==================================="; \
   echo "     touch tmp/restart.txt"; \
   echo "==================================="; \
-  test -d tmp && touch tmp/restart.txt ; \
-  test -d tmp || echo "Folder tmp does not exists!" ; \
+  bundle exec rails restart ; \
   echo ""
   '
 
