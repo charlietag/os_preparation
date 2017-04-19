@@ -40,7 +40,7 @@ alias bn='
   echo ""
   '
 
-alias ba='
+alias br='
   echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
