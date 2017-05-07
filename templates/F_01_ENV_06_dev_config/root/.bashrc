@@ -97,4 +97,4 @@ function git_since_last_commit {
 }
 
 # For PS1 console (31m -> RED prompt, 32m GREEN 33m YELLOW)
-PS1='\[\e[1;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(parse_git_dirty_branch)\[\e[0;33m\]$(git_since_last_commit)\[\033[00m\]\n# '
+PS1='\[\e[1;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w $(parse_git_dirty_branch)\[\e[0;33m\]$(git_since_last_commit)\[\033[00m\]\n# '
