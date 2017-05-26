@@ -22,6 +22,7 @@ local node_yum_repo="https://rpm.nodesource.com/setup_6.x"
 local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 # MariaDB YUM base url
+# Please use 10.1 if you are creating Rails project, to avoid compatibility issue between ruby gem mysql2 and MariaDB 10.2
 # 10.1
 local mariadb_baseurl="http://yum.mariadb.org/10.1/centos7-amd64"
 
