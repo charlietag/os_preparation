@@ -1,10 +1,30 @@
 #Put local vars here for the specific function
 
+#----------------------------------------
+# PHP
+#----------------------------------------
 # PHP version of webtatic YUM
 local epel_yum_repo="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
 local php_yum_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
 
+#----------------------------------------
+# NodeJS
+#----------------------------------------
 # Node version of YUM
 # Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
 local node_yum_repo="https://rpm.nodesource.com/setup_6.x"
 
+
+#----------------------------------------
+# MariaDB
+#----------------------------------------
+# MariaDB YUM GPG Key
+local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
+
+# MariaDB YUM base url
+# 10.1
+local mariadb_baseurl="http://yum.mariadb.org/10.1/centos7-amd64"
+
+# Please use 10.2 if you are creating LARAVEL 5.4 project, to avoid error of database key too long
+# 10.2
+#local mariadb_baseurl="http://yum.mariadb.org/10.2/centos7-amd64"

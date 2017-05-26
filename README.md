@@ -152,7 +152,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 ## Installed Packages
   * PHP7.1 (Ref.https://webtatic.com/packages)
   * PHP-FPM (Ref.https://webtatic.com/packages)
-  * MariaDB 10.2 (equal to MySQL 5.7)
+  * MariaDB 10.1 (equal to MySQL 5.7)
   * nodejs (stable version - 6)
   * Nginx (latest version - via passenger)
   * Ruby 2.3.1
@@ -272,3 +272,7 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Add Nginx req limit to avoid DDOS.
 * 2017/05/25
   * Update MariaDB to 10.2
+* 2017/05/26
+  * Due to compatibility issue of ruby gem mysql2 - 0.4.6
+  * Change default version of MariaDB to 10.1
+  * Move MariaDB YUM baseurl to databag config file for easy install configuration

@@ -44,7 +44,23 @@ then
   curl --silent --location "${node_yum_repo}" | bash -
 
   #MariaDB
-  cp -a $CONFIG_FOLDER/etc/yum.repos.d/*.repo $centos_repo
+  echo "-----------"
+  echo "setup mariadb configs include.d"
+  echo "-----------"
+  local mariadb_confs=($(find ${CONFIG_FOLDER} -type f))
+  local mariadb_target=""
+  local mariadb_target_folder=""
+  for mariadb_conf in ${mariadb_confs[@]}
+  do
+    mariadb_target="${mariadb_conf/${CONFIG_FOLDER}/}"
+    mariadb_target_folder="$(dirname $mariadb_target)"
+
+    test -d $mariadb_target_folder || mkdir -p $mariadb_target_folder
+
+    # use RENDER_CP to fetch var from datadog
+    RENDER_CP $mariadb_conf $mariadb_target
+  done
+
 fi
 
 # =============================
