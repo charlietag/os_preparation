@@ -48,7 +48,7 @@ echo "      gem install bundler"
 echo "========================================="
 gem install bundler
 echo "========================================="
-echo "      gem install rails"
+echo "(Rails:${rails_version}) gem install rails"
 echo "========================================="
 gem install rails -v "~> ${rails_version}.0"
 

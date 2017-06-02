@@ -1,8 +1,13 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 echo "========================================="
-echo "      composer create-project ---> mylaravel"
+echo "(Laravel:${laravel_version}) composer create-project ---> mylaravel"
 echo "========================================="
 cd /home
-composer create-project --prefer-dist laravel/laravel mylaravel
+composer create-project --prefer-dist laravel/laravel mylaravel "${laravel_version}"
 
 cd /home/mylaravel
 chown -R apache.apache storage
