@@ -2,6 +2,7 @@
 # Enable databag
 # =====================
 # RENDER_CP
+
 # config set
 local tgz_name="$(basename $ruby_src_url)"
 local untgz_folder="$(basename $ruby_src_url .tar.gz)"
