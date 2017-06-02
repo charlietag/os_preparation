@@ -1,5 +1,10 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 echo "========================================="
-echo "      rails new myrails -d mysql"
+echo "(Rails:${rails_version}) rails new myrails -d mysql"
 echo "========================================="
 cd /home
 rails new myrails -d mysql #Create rails project, to verify

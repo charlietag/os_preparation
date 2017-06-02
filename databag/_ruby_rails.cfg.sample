@@ -1,0 +1,9 @@
+#Put local vars here for the specific function
+
+# Download ruby source code from the following url
+local ruby_src_url="https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz"
+
+# Specify rails version here
+# ex. 5.0 presents ~> 5.0.0
+# ex. 4.2 presents ~> 4.2.0
+local rails_version="5.0"
