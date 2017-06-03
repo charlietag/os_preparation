@@ -38,7 +38,7 @@ This is a small light bash project.  Suit small companies which have only few se
     * /etc/ssh/sshd_config
       * PermitRootLogin no
     * RAM
-      * mkswap if Ram is insufficient for MariaDB to start
+      * mkswap if Ram is insufficient to start MariaDB
 
       ```bash
       mkdir /swap
