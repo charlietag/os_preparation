@@ -37,6 +37,7 @@ This is a small light bash project.  Suit small companies which have only few se
       * Add GENERAL USER and setup password of GENERAL USER
     * /etc/ssh/sshd_config
       * PermitRootLogin no
+      * PasswordAuthentication yes
     * RAM
       * mkswap if Ram is insufficient to start MariaDB
 
