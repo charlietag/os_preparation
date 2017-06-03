@@ -31,6 +31,27 @@ This is a small light bash project.  Suit small companies which have only few se
 
 # Warning
   * Please do this in fresh install OS
+  * What does this not cover, DO the following manually
+    * Login user
+      * Change password of root
+      * Add GENERAL USER and setup password of GENERAL USER
+    * /etc/ssh/sshd_config
+      * PermitRootLogin no
+    * RAM
+      * mkswap if Ram is insufficient for MariaDB to start
+
+      ```bash
+      mkdir /swap
+      dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
+      mkswap /swap/swapfile
+      chmod 0600 /swap/swapfile
+      /sbin/swapon /swap/swapfile
+      ```
+
+      ```bash
+      chmod 755 /etc/rc.d/rc.local
+      echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
+      ```
 
 # Configuration
   * Before installation
