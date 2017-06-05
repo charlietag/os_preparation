@@ -3,7 +3,16 @@ yum install -y MariaDB-server MariaDB-client mariadb-devel
 echo "==============================="
 echo "        Disable mariadb"
 echo "==============================="
-chkconfig mysql off # avoid using SysV, use systemd instead
+# avoid using SysV, use systemd instead
+# Run this several times stupidly to avoid SysV-mysql on suddenly
+chkconfig mysql on
+chkconfig mysql off
+systemctl enable mariadb
+systemctl disable mariadb
+
+chkconfig mysql on
+chkconfig mysql off
+systemctl enable mariadb
 systemctl disable mariadb
 
 echo "==============================="
