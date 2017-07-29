@@ -9,7 +9,7 @@
 #-----------------------------------------------------------------------------------------
 local centos_repo="/etc/yum.repos.d/"
 local repo_fail=0
-local repos=(webtatic MariaDB node)
+local repos=(webtatic MariaDB node yarn)
 
 # =============================
 # check repo exists function
@@ -42,6 +42,9 @@ then
 
   #NodeJS
   curl --silent --location "${node_yum_repo}" | bash -
+
+  #Yarn
+  wget "${yarn_yum_repo}" -O /etc/yum.repos.d/yarn.repo
 
   #MariaDB
   echo "-----------"

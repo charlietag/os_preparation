@@ -177,8 +177,8 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * MariaDB 10.1 (equal to MySQL 5.7)
   * nodejs (stable version - 6)
   * Nginx (latest version - via passenger)
-  * Ruby 2.3.1
-  * Rails 5.0.1
+  * Ruby 2.4.1
+  * Rails 5.1.2
 
 ## Nginx related
   * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
@@ -255,13 +255,60 @@ After this installation repo, the server will setup with "passenger-install-ngin
 
 2. **Command**
 
-  ```bash
-  rails new <rails_project> -d mysql
-  ```
+  * Rails
 
-  ```bash
-  composer create-project --prefer-dist laravel/laravel <laravel_project>
-  ```
+    ```bash
+    rails new <rails_project> -d mysql
+    ```
+
+  * Rails 5.1 has dropped dependency on jQuery, you might want it back via yarn
+
+    1. Add npm of jquery using Yarn
+
+        ```bash
+        cd <rails_project>
+        yarn add jquery
+        ```
+
+    2. Setup jquery npm for asset pipeline
+
+        ```bash
+        vi <rails_project>/app/assets/javascripts/application.js
+        ```
+
+        ```bash
+        //= require rails-ujs
+        //= require turbolinks
+        //= require jquery/dist/jquery
+        //= require bootstrap/dist/js/bootstrap
+        //= require_tree .
+        ```
+
+    3. Yarn works with rails 5.1 asset pipeline as below
+      * Usage for default path:  <rails_project>/node_modules/{pkg_name}/dist/{pkgname}.{js,css}
+
+        ```bash
+        //= require jquery
+        ```
+
+      * If package is different from this rule, ex: bootstrap.  You might specify explicitly **(better)**
+
+        ```bash
+        //= require jquery
+        ```
+
+        ```bash
+        //= require jquery/dist/jquery
+        //= require bootstrap/dist/js/bootstrap
+        ```
+
+
+
+  * Laravel
+
+    ```bash
+    composer create-project --prefer-dist laravel/laravel <laravel_project>
+    ```
 
 ## Ruby gem config
 * gem install without making document
@@ -298,3 +345,5 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Due to compatibility issue of ruby gem mysql2 - 0.4.6
   * Change default version of MariaDB to 10.1
   * Move MariaDB YUM baseurl to databag config file for easy install configuration
+* 2017/07/29
+  * For Rails 5.1 support, add yarn for default npm packages management

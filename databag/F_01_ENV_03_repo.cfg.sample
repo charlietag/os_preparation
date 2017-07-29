@@ -14,6 +14,13 @@ local php_yum_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
 # Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
 local node_yum_repo="https://rpm.nodesource.com/setup_6.x"
 
+#----------------------------------------
+# Yarn
+#----------------------------------------
+# Use yarn to manage npm packages
+# Ref. https://yarnpkg.com/zh-Hans/docs/install#linux-tab
+local yarn_yum_repo="https://dl.yarnpkg.com/rpm/yarn.repo"
+
 
 #----------------------------------------
 # MariaDB
