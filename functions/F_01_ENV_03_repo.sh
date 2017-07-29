@@ -44,7 +44,7 @@ then
   curl --silent --location "${node_yum_repo}" | bash -
 
   #Yarn
-  wget "${yarn_yum_repo}" -O /etc/yum.repos.d/yarn.repo
+  curl "${yarn_yum_repo}" -o /etc/yum.repos.d/yarn.repo
 
   #MariaDB
   echo "-----------"
