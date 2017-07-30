@@ -13,9 +13,15 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore Byebug command history file.
 .byebug_history
 
+# Rails 5.1
+/node_modules
+/yarn-error.log
+/public/packs
+config/secrets.yml.key
+
+# Extra
 /config/*.yml
 *.swp
 /public/assets
