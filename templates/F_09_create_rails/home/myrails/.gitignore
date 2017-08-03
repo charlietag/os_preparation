@@ -25,3 +25,4 @@ config/secrets.yml.key
 /config/*.yml
 *.swp
 /public/assets
+/public/uploads
