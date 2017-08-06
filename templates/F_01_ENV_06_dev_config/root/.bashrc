@@ -27,6 +27,24 @@ alias be='bundle exec'
 alias bk='bundle exec rake'
 alias bl='bundle exec rails'
 
+alias bv='
+  echo "==================================="; \
+  echo "     rails tmp:clear"; \
+  echo "==================================="; \
+  bundle exec rails tmp:clear ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     rails assets:clobber"; \
+  echo "==================================="; \
+  bundle exec rails assets:clobber ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     Start Rails in Dev Mode"; \
+  echo "==================================="; \
+  bundle exec rails server -b 0.0.0.0 ; \
+  echo ""
+  '
+
 alias bn='
   echo "==================================="; \
   echo "     rails tmp:clear"; \
