@@ -10,6 +10,8 @@ cd /home
 rails new myrails -d mysql #Create rails project, to verify
 cd /home/myrails
 chown -R optpass.optpass log tmp
+cd /home/myrails/config
+ls *.yml | xargs -i cp -a {} {}.sample
 
 systemctl start mariadb
 
