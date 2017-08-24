@@ -81,7 +81,7 @@ alias br='
   echo ""
   '
 
-alias glo='git log --graph --stat --decorate'
+alias glo='git log --graph --stat --decorate --all'
 
 alias gpush='
   echo "==================================="; \
