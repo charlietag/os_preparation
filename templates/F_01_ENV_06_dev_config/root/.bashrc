@@ -82,9 +82,9 @@ alias br='
   '
 
 alias gl='git log --graph --stat --decorate --all'
-alias glo='git log --graph --stat --decorate --all --oneline'
+alias gls='git log --graph --stat --decorate --all --oneline'
 alias gl-current='git log --graph --stat --decorate'
-alias glo-current='git log --graph --stat --decorate --oneline'
+alias gls-current='git log --graph --stat --decorate --oneline'
 
 alias gpush='
   echo "==================================="; \
