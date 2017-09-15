@@ -160,7 +160,7 @@ function git_last_commit {
 }
 
 function git_is_on_tag {
-  local git_is_on_tag="$(git describe --exact-match --tags $(git rev-parse HEAD) 2>/dev/null)"
+  local git_is_on_tag="$(git describe --exact-match --tags $(git rev-parse HEAD 2>/dev/null) 2>/dev/null)"
   if [[ ! -z "${git_is_on_tag}" ]]
   then
     echo -e "${COLOR_DARK_GREEN}(${GIT_SYMBOL_TAG}${git_is_on_tag})${COLOR_END} "
