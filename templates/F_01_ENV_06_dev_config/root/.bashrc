@@ -95,9 +95,9 @@ alias gpush='
   git status ; \
   echo "" ; \
   echo "==================================="; \
-  echo "     git pull and git push"; \
+  echo "     git pull and git push" and git push --tags; \
   echo "==================================="; \
-  git pull && git push ; \
+  git pull && git push && git push --tags ; \
   echo "" ; \
   echo "==================================="; \
   echo "     git status"; \
@@ -108,16 +108,44 @@ alias gpush='
 
 export HISTTIMEFORMAT='%F %T '
 export HISTSIZE=5000000
+
+#------------------------------------------------------
+#               Bash Prompt Config
+#------------------------------------------------------
+# Color
+COLOR_RED='\[\e[1;31m\]'
+COLOR_DARK_RED='\[\e[0;31m\]'
+COLOR_GREEN='\[\e[1;32m\]'
+COLOR_DARK_GREEN='\[\e[0;32m\]'
+COLOR_YELLOW='\[\e[1;33m\]'
+COLOR_DARK_YELLOW='\[\e[0;33m\]'
+COLOR_BLUE='\[\e[1;34m\]'
+COLOR_DARK_BLUE='\[\e[0;34m\]'
+COLOR_END='\[\033[00m\]'
 unset PROMPT_COMMAND
+PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
 
-function parse_git_dirty_branch {                                         
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo -e "\033[01;31m$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/")" || echo -e "\033[1;32m$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/")"
-}                                         
+#------------------------------------------------------
+#               Bash Prompt - For Git
+#------------------------------------------------------
+# ---Symbol---
+GIT_SYMBOL_LOCAL="ᄉ"
+GIT_SYMBOL_REMOTE="⚯"
+GIT_SYMBOL_AHEAD="↑"
+GIT_SYMBOL_BEHIND="↓"
+GIT_SYMBOL_TAG="⚑"
+GIT_SYMBOL_STASHED="☲"
+GIT_SYMBOL_CHANGED="✎"
+#GIT_SYMBOL_UNTRACKED="+"
+GIT_SYMBOL_UNTRACKED="∿"
+GIT_SYMBOL_STAGED="→"
+GIT_SYMBOL_CLEAN="✔"
+GIT_SYMBOL_CONFLICT="✖"
 
-function git_since_last_commit {                                                                                                                                               
-    LAST_COMMIT=$(git log --pretty=format:%ar -1 2> /dev/null)                                                                                                                 
-    [[ ! -z "${LAST_COMMIT}" ]] && echo "(${LAST_COMMIT})"                                                                                                                     
-}
+# ---Git Prompt Setting---
+GIT_PROMPT_SIMPLE_MODE=0
+#GIT_PROMPT_FETCH_TIMEOUT=1
+GIT_PROMPT_FETCH_TIMEOUT=5
+AUTO_FETCH_REMOTE_STATUS=1
 
-# For PS1 console (31m -> RED prompt, 32m GREEN 33m YELLOW)
-PS1='\[\e[1;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w $(parse_git_dirty_branch)\[\e[0;33m\]$(git_since_last_commit)\[\033[00m\]\n# '
+source $HOME/.prompt_for_git/init.sh

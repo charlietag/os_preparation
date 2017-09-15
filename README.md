@@ -348,3 +348,5 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Move MariaDB YUM baseurl to databag config file for easy install configuration
 * 2017/07/29
   * For Rails 5.1 support.  Install yarn for default npm packages management
+* 2017/09/15
+  * Add bash prompt for git detail information into bashrc
