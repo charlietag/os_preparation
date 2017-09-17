@@ -111,7 +111,7 @@ function git_track {
       fi
       if [[ "$remote_field" == "behind "* ]] || [[ "$remote_field" == " behind "* ]]; then
         num_behind="${remote_field:7}"
-        num_behind="${num_behind}"
+        num_behind="${num_behind// }"
       fi
     done
   fi
