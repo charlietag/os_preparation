@@ -2,11 +2,13 @@
 #------------------------------------------------------
 #               Bash Prompt Setting - Function
 #------------------------------------------------------
+ORIGIN_PS="${PS1%\\n# }"
 unset PROMPT_COMMAND PS1
+
 function set_bash_prompt {
   local append_here="$1"
-  bash_prompt_template="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_BLUE}\w${COLOR_END} ${append_here}\n# "
-  echo -e "${bash_prompt_template}"
+  bash_prompt_template="${ORIGIN_PS} ${append_here}\n# "
+  echo "${bash_prompt_template}"
 }
 
 #------------------------------------------------------
@@ -63,7 +65,6 @@ function check_upstream {
 }
 function git_track {
   local git_track=""
-  local git_clean=""
   local gitstatus=$( git status --untracked-files=all --porcelain --branch )
   # if the status is fatal, exit now
   [[ "$?" -ne 0 ]] && exit 0
@@ -105,16 +106,18 @@ function git_track {
     IFS="[,]" read -ra remote_fields <<< "${branch_fields[1]}"
     for remote_field in "${remote_fields[@]}"; do
       if [[ "$remote_field" == "ahead "* ]]; then
-        num_ahead=$(echo -e "${remote_field:6}" |sed 's/ //g')
+        num_ahead="${remote_field:6}"
+        num_ahead="${num_ahead// }"
       fi
       if [[ "$remote_field" == "behind "* ]] || [[ "$remote_field" == " behind "* ]]; then
-        num_behind=$(echo -e "${remote_field:7}"|sed 's/ //g')
+        num_behind="${remote_field:7}"
+        num_behind="${num_behind}"
       fi
     done
   fi
   
-  [[ $num_ahead -ne 0 ]] && echo -ne "${COLOR_YELLOW}${GIT_SYMBOL_AHEAD}${num_ahead}${COLOR_END} "
-  [[ $num_behind -ne 0 ]] && echo -ne "${COLOR_YELLOW}${GIT_SYMBOL_BEHIND}${num_behind}${COLOR_END} "
+  [[ $num_ahead -ne 0 ]] && git_track="${git_track}${COLOR_YELLOW}${GIT_SYMBOL_AHEAD}${num_ahead}${COLOR_END} "
+  [[ $num_behind -ne 0 ]] && git_track="${git_track}${COLOR_YELLOW}${GIT_SYMBOL_BEHIND}${num_behind}${COLOR_END} "
   # ahead / behind----
 
   local num_stashed=$(git stash list |wc -l)
@@ -122,13 +125,13 @@ function git_track {
   if (( num_changed == 0 && num_staged == 0 && num_untracked == 0 && num_stashed == 0 && num_conflicts == 0)) ; then
     clean=1
   fi
-  [[ $num_staged -ne 0 ]] && git_track="${git_track}${GIT_SYMBOL_STAGED}${num_staged} "
-  [[ $num_changed -ne 0 ]] && git_track="${git_track}${GIT_SYMBOL_CHANGED}${num_changed} "
-  [[ $num_untracked -ne 0 ]] && git_track="${git_track}${GIT_SYMBOL_UNTRACKED}${num_untracked} "
-  [[ $num_conflicts -ne 0 ]] && git_track="${git_track}${GIT_SYMBOL_CONFLICT}${num_conflicts} "
-  [[ $clean -ne 0 ]] && git_clean="${GIT_SYMBOL_CLEAN} "
-  echo -ne "${COLOR_RED}${git_track}${COLOR_END}"
-  echo -e " ${COLOR_GREEN}${git_clean}${COLOR_END}"
+  [[ $num_staged -ne 0 ]] && git_track="${git_track}${COLOR_MAGENTA}${GIT_SYMBOL_STAGED}${num_staged}${COLOR_END} "
+  [[ $num_changed -ne 0 ]] && git_track="${git_track}${COLOR_RED}${GIT_SYMBOL_CHANGED}${num_changed}${COLOR_END} "
+  [[ $num_untracked -ne 0 ]] && git_track="${git_track}${COLOR_RED}${GIT_SYMBOL_UNTRACKED}${num_untracked}${COLOR_END} "
+  [[ $num_conflicts -ne 0 ]] && git_track="${git_track}${COLOR_RED}${GIT_SYMBOL_CONFLICT}${num_conflicts}${COLOR_END} "
+  [[ $clean -ne 0 ]] && git_track="${git_track}${COLOR_GREEN}${GIT_SYMBOL_CLEAN}${COLOR_END} "
+
+  echo -e "${git_track}"
 }
 
 function git_local_remote {
