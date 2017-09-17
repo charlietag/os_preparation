@@ -41,7 +41,7 @@ function older_than_minutes {
 # 2>&1 >/dev/null
 GIT_FETCH_LOCK_FILE="$HOME/.prompt_for_git/.git_fetch_lock_file"
 function async_git_fetch {
-  flock -n $GIT_FETCH_LOCK_FILE nohup git fetch --quiet &>/dev/null &
+  nohup &>/dev/null flock -n $GIT_FETCH_LOCK_FILE -c "git fetch --quiet" &
 }
 
 
