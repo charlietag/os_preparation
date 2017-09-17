@@ -133,8 +133,10 @@ PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}\t${COLOR_END} ${COLOR_BL
 #               Bash Prompt - For Git
 #------------------------------------------------------
 # ---Symbol---
-GIT_SYMBOL_LOCAL="ᄉ"
-GIT_SYMBOL_REMOTE="⚯"
+GIT_SYMBOL_LOCAL="Ⓛ"
+GIT_SYMBOL_REMOTE="Ⓡ"
+#GIT_SYMBOL_LOCAL="ᄉ"
+#GIT_SYMBOL_REMOTE="⚯"
 GIT_SYMBOL_AHEAD="⬆"
 GIT_SYMBOL_BEHIND="⬇"
 GIT_SYMBOL_TAG="⚑"

@@ -137,11 +137,11 @@ function git_track {
 function git_local_remote {
   if [ -z "$(git remote show)" ]
   then
-    echo -e "${COLOR_DARK_BLUE}Local${COLOR_END} "
-    #echo -e "${COLOR_DARK_BLUE}${GIT_SYMBOL_LOCAL}${COLOR_END} "
+    #echo -e "${COLOR_DARK_BLUE}Local${COLOR_END} "
+    echo -e "${COLOR_DARK_BLUE}${GIT_SYMBOL_LOCAL}${COLOR_END} "
   else
-    echo -e "${COLOR_YELLOW}Remote${COLOR_END} "
-    #echo -e "${COLOR_YELLOW}${GIT_SYMBOL_REMOTE}${COLOR_END} "
+    #echo -e "${COLOR_YELLOW}Remote${COLOR_END} "
+    echo -e "${COLOR_YELLOW}${GIT_SYMBOL_REMOTE}${COLOR_END} "
   fi
 }
 
