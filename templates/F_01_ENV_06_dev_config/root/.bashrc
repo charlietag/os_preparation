@@ -127,7 +127,7 @@ COLOR_MAGENTA='\[\e[1;35m\]'
 COLOR_DARK_MAGENTA='\[\e[0;35m\]'
 COLOR_END='\[\033[00m\]'
 unset PROMPT_COMMAND
-PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_CYAN}\t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
+PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}\t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
 
 #------------------------------------------------------
 #               Bash Prompt - For Git
