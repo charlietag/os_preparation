@@ -349,4 +349,4 @@ After this installation repo, the server will setup with "passenger-install-ngin
 * 2017/07/29
   * For Rails 5.1 support.  Install yarn for default npm packages management
 * 2017/09/15
-  * Add bash prompt for git detail information into bashrc
+  * Add bash prompt for git detail information into bashrc (Some symbol format might not fit on all terminals)
