@@ -202,7 +202,7 @@ function git_info_init {
 #             Bash Prompt Setting - Start
 #------------------------------------------------------
 function is_git {
-  if $(git rev-parse --git-dir >/dev/null 2>/devnull)
+  if $(git rev-parse --git-dir >/dev/null 2>/dev/null)
   then
     PS1="$(set_bash_prompt "$(git_info_init)")"
   else
