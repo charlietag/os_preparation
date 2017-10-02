@@ -41,19 +41,19 @@ function older_than_minutes {
 # 2>&1 >/dev/null
 GIT_FETCH_LOCK_FILE="$HOME/.prompt_for_git/.git_fetch_lock_file"
 function async_git_fetch {
-  nohup &>/dev/null flock -n $GIT_FETCH_LOCK_FILE -c "git fetch --quiet" &
+  nohup &>/dev/null flock -n $GIT_FETCH_LOCK_FILE -c "git fetch --quiet 2>/dev/null" &
 }
 
 
 function check_upstream {
   local git_prompt_fetch_timeout="${GIT_PROMPT_FETCH_TIMEOUT}"
 
-  local repo="$(git rev-parse --show-toplevel 2> /dev/null)"
+  local repo="$(git rev-parse --show-toplevel 2>/dev/null)"
   local fetch_head="$repo/.git/FETCH_HEAD"
   # Fetch repo if local is stale for more than $GIT_FETCH_TIMEOUT minutes
   if [ ! -e "$fetch_head" ] || $(older_than_minutes "$fetch_head" "$git_prompt_fetch_timeout")
   then
-    if [ ! -z "$(git remote show)" ]
+    if [ ! -z "$(git remote show 2>/dev/null)" ]
     then
       #(
       #  async_run "git fetch --quiet"
@@ -65,7 +65,7 @@ function check_upstream {
 }
 function git_track {
   local git_track=""
-  local gitstatus=$( git status --untracked-files=all --porcelain --branch )
+  local gitstatus=$( git status --untracked-files=all --porcelain --branch 2>/dev/null )
   # if the status is fatal, exit now
   [[ "$?" -ne 0 ]] && exit 0
 
@@ -120,7 +120,7 @@ function git_track {
   [[ $num_behind -ne 0 ]] && git_track="${git_track}${COLOR_YELLOW}${GIT_SYMBOL_BEHIND}${num_behind}${COLOR_END} "
   # ahead / behind----
 
-  local num_stashed=$(git stash list |wc -l)
+  local num_stashed=$(git stash list 2>/dev/null |wc -l)
   local clean=0
   if (( num_changed == 0 && num_staged == 0 && num_untracked == 0 && num_stashed == 0 && num_conflicts == 0)) ; then
     clean=1
@@ -135,7 +135,7 @@ function git_track {
 }
 
 function git_local_remote {
-  if [ -z "$(git remote show)" ]
+  if [ -z "$(git remote show 2>/dev/null)" ]
   then
     #echo -e "${COLOR_DARK_BLUE}Local${COLOR_END} "
     echo -e "${COLOR_DARK_BLUE}${GIT_SYMBOL_LOCAL}${COLOR_END} "
@@ -146,10 +146,10 @@ function git_local_remote {
 }
 
 function git_branch {
-  local git_branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/")"
+  local git_branch="$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/")"
 
   # File changed, untracked
-  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]]
+  if [[ $(git status 2>/dev/null | tail -n1) != "nothing to commit, working directory clean" ]]
   then
     echo -e "${COLOR_RED}${git_branch}${COLOR_END} "
   else
@@ -158,7 +158,7 @@ function git_branch {
 }
 
 function git_last_commit {
-  local git_last_commit=$(git log --pretty=format:%ar -1 2> /dev/null)
+  local git_last_commit=$(git log --pretty=format:%ar -1 2>/dev/null)
   echo -e "${COLOR_DARK_YELLOW}(${git_last_commit})${COLOR_END} "
 }
 
@@ -171,7 +171,7 @@ function git_is_on_tag {
 }
 
 function git_stash {
-  local git_stash_count="$(git stash list |wc -l)"
+  local git_stash_count="$(git stash list 2>/dev/null |wc -l)"
   if [ "${git_stash_count}" -ne 0 ] 
   then
     echo -e "${COLOR_RED}${GIT_SYMBOL_STASHED}${git_stash_count}${COLOR_END} "
