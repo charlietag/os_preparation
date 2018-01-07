@@ -173,8 +173,9 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 # Note
 
 ## Installed Packages
-  * PHP7.1 (Ref.https://webtatic.com/packages)
-  * PHP-FPM (Ref.https://webtatic.com/packages)
+  * PHP7.1 (Ref. https://webtatic.com/packages)
+  * PHP-FPM (Ref. https://webtatic.com/packages)
+  * Laravel 5.5 (Ref. https://laravel.com/)
   * MariaDB 10.2 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via passenger)
@@ -351,5 +352,6 @@ After this installation repo, the server will setup with "passenger-install-ngin
 * 2017/09/15
   * Add bash prompt for git detail information into bashrc (Some symbol format might not fit on all terminals)
 * 2018/01/07
-  * Update MariaDB to 10.2
-  * Update NodeJS to 8
+  * Update MariaDB from 10.1 to 10.2
+  * Update NodeJS from 6 to 8
+  * Update Laravel from 5.3 to 5.5
