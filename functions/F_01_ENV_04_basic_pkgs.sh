@@ -10,7 +10,11 @@ hwclock -w
 #-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
+# NodeJS
 yum install -y nodejs
+yum install -y gcc-c++ make
+
+# Basic dev packages
 yum groupinstall -y "Development Tools"
 yum install -y bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
 

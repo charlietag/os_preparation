@@ -175,11 +175,11 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 ## Installed Packages
   * PHP7.1 (Ref.https://webtatic.com/packages)
   * PHP-FPM (Ref.https://webtatic.com/packages)
-  * MariaDB 10.1 (equal to MySQL 5.7)
-  * nodejs (stable version - 6)
+  * MariaDB 10.2 (equal to MySQL 5.7)
+  * nodejs (stable version - 8)
   * Nginx (latest version - via passenger)
   * Ruby 2.4.1
-  * Rails 5.1.2
+  * Rails 5.1.4
 
 ## Nginx related
   * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
@@ -350,3 +350,6 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * For Rails 5.1 support.  Install yarn for default npm packages management
 * 2017/09/15
   * Add bash prompt for git detail information into bashrc (Some symbol format might not fit on all terminals)
+* 2018/01/07
+  * Update MariaDB to 10.2
+  * Update NodeJS to 8

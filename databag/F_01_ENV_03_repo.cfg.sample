@@ -12,7 +12,7 @@ local php_yum_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
 #----------------------------------------
 # Node version of YUM
 # Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
-local node_yum_repo="https://rpm.nodesource.com/setup_6.x"
+local node_yum_repo="https://rpm.nodesource.com/setup_8.x"
 
 #----------------------------------------
 # Yarn
@@ -29,10 +29,5 @@ local yarn_yum_repo="https://dl.yarnpkg.com/rpm/yarn.repo"
 local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 # MariaDB YUM base url
-# Please use 10.1 if you are creating Rails project, to avoid compatibility issue between ruby gem mysql2 and MariaDB 10.2
-# 10.1
-local mariadb_baseurl="http://yum.mariadb.org/10.1/centos7-amd64"
-
-# Please use 10.2 if you are creating LARAVEL 5.4 project, to avoid error of database key too long
 # 10.2
-#local mariadb_baseurl="http://yum.mariadb.org/10.2/centos7-amd64"
+local mariadb_baseurl="http://yum.mariadb.org/10.2/centos7-amd64"
