@@ -74,6 +74,7 @@ This is a small light bash project.  Suit small companies which have only few se
 
     ```bash
     cd databag
+
     ls *.cfg | xargs -i bash -c "echo ---------------------------; \
     echo {}; echo ---------------------------; \
     cat {} | grep -v '#' |sed '/^\s*$/d'; echo "
