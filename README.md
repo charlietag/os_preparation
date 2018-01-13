@@ -70,6 +70,16 @@ This is a small light bash project.  Suit small companies which have only few se
     ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
+  * Verify **modified** config files.
+
+    ```bash
+    cd databag
+    ls *.cfg | xargs -i bash -c "echo ---------------------------; \
+    echo {}; echo ---------------------------; \
+    cat {} | grep -v '#' |sed '/^\s*$/d'; echo "
+    ```
+
+  * Config files copied as follow
 
     ```bash
     databag/
@@ -77,15 +87,8 @@ This is a small light bash project.  Suit small companies which have only few se
     ├── F_01_install_mariadb.cfg
     ├── F_05_setup_nginx.cfg
     └── F_09_toggle_service.cfg
+    ...
     ```
-
-  * Verify **modify** config files.
-
-    ```bash
-    cd databag
-    ls *.cfg | xargs -i bash -c "echo ---------------------------; echo {}; echo ---------------------------; cat {} | grep -v '#' |sed '/^\s*$/d'; echo "
-    ```
-
 
 # Easy Installation
 I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
