@@ -191,12 +191,12 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
 ## Installed Packages
   * PHP7.1 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 5.3 (Ref. https://laravel.com/)
-  * MariaDB 10.1 (equal to MySQL 5.7)
+  * Laravel 5.6 (Ref. https://laravel.com/)
+  * MariaDB 10.2 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via passenger)
-  * Ruby 2.4.1
-  * Rails 5.1.4
+  * Ruby 2.5
+  * Rails 5.1
 
 ## Nginx related
   * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
