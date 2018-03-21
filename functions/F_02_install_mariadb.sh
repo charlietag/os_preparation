@@ -1,5 +1,8 @@
 yum install -y MariaDB-server MariaDB-client mariadb-devel
 
+# This is used for gem mysql2 - espacial MariaDB-shared
+yum install -y MariaDB-common MariaDB-compat MariaDB-shared
+
 echo "==============================="
 echo "        Disable mariadb"
 echo "==============================="
