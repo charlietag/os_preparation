@@ -7,4 +7,4 @@ local ruby_src_url="https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.gz"
 # ex. 5.0 presents ~> 5.0.0
 # ex. 4.2 presents ~> 4.2.0
 #local rails_version="5.0"
-local rails_version="5.1"
+local rails_version="5.2"

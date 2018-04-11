@@ -195,8 +195,8 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * MariaDB 10.2 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via passenger)
-  * Ruby 2.5
-  * Rails 5.1
+  * Ruby 2.5.1
+  * Rails 5.2
 
 ## Nginx related
   * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
@@ -377,3 +377,4 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Ruby 2.5.0
 * 2018/04/11
   * Ruby 2.5.1
+  * Ruby on Rails 5.2
