@@ -375,3 +375,5 @@ After this installation repo, the server will setup with "passenger-install-ngin
   * Laravel 5.6
   * MariaDB 10.2
   * Ruby 2.5.0
+* 2018/04/11
+  * Ruby 2.5.1
