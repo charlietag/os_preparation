@@ -192,7 +192,7 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * PHP7.1 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
   * Laravel 5.6 (Ref. https://laravel.com/)
-  * MariaDB 10.2 (equal to MySQL 5.7)
+  * MariaDB 10.3 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via passenger)
   * Ruby 2.5.1
@@ -378,3 +378,5 @@ After this installation repo, the server will setup with "passenger-install-ngin
 * 2018/04/11
   * Ruby 2.5.1
   * Ruby on Rails 5.2
+* 2018/06/22
+  * MariaDB 10.3

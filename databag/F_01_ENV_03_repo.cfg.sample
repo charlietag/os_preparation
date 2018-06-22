@@ -29,10 +29,6 @@ local yarn_yum_repo="https://dl.yarnpkg.com/rpm/yarn.repo"
 local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 # MariaDB YUM base url
-# Please use 10.1 if you are creating Rails project, to avoid compatibility issue between ruby gem mysql2 and MariaDB 10.2
-# 10.1
-#local mariadb_baseurl="http://yum.mariadb.org/10.1/centos7-amd64"
-
-# Please use 10.2 if you are creating LARAVEL 5.4+ project, to avoid error of database key too long
-# 10.2
-local mariadb_baseurl="http://yum.mariadb.org/10.2/centos7-amd64"
+# MariaDB 10.3 is compatible with Rails (gem: mysql2) , Laravel 5.5+
+# 10.3
+local mariadb_baseurl="http://yum.mariadb.org/10.3/centos7-amd64"
