@@ -75,6 +75,19 @@ alias br='
   bundle exec rails assets:precompile RAILS_ENV=production ; \
   echo "" ; \
   echo "==================================="; \
+  echo "     yarn install again(under dev mode)"; \
+  echo "     (because precomile do the yarn install under PROD mode)"; \
+  echo "     (config/environments/development.rb:  config.webpacker.check_yarn_integrity = true)"; \
+  echo "==================================="; \
+  yarn install ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     chown -R optpass.optpass log tmp storage"; \
+  echo "     (due to webpacker changed owner of tmp/*)"; \
+  echo "==================================="; \
+  chown -R optpass.optpass log tmp storage ; \
+  echo "" ; \
+  echo "==================================="; \
   echo "     touch tmp/restart.txt"; \
   echo "==================================="; \
   bundle exec rails restart ; \
