@@ -21,7 +21,7 @@ systemctl start mariadb
 bundle exec rails db:create
 systemctl stop mariadb
 
-# Cleanup firewall rules which means block all incoming traffice
+# Add extra config into .gitignore file
 echo "========================================="
 echo "      Add default ignore into myrails"
 echo "========================================="
@@ -35,5 +35,8 @@ do
 
   test -d $rails_target_folder || mkdir -p $rails_target_folder
   echo "Setting up config file \"${rails_target}\"......"
-  \cp -a --backup=t $rails_conf $rails_target
+  if [[ -f "${rails_conf}" ]]
+  then
+    cat $rails_conf >> $rails_target
+  fi
 done
