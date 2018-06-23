@@ -9,7 +9,7 @@ echo "========================================="
 cd /home
 rails new myrails -d mysql #Create rails project, to verify
 cd /home/myrails
-chown -R optpass.optpass log tmp
+chown -R optpass.optpass log tmp storage # storage for rails 5.2 in PROD mode (active_storage)
 cd /home/myrails/config
 ls *.yml | xargs -i cp -a {} {}.sample
 
