@@ -43,6 +43,3 @@ timedatectl set-timezone "${current_timezone}"
 #-----------------------------------------------------------------------------------------
 sed -i /ntpdate/d /etc/crontab
 echo "*/5 * * * * root ntpdate pool.ntp.org >/dev/null 2>/dev/null ; hwclock -w  >/dev/null 2>/dev/null" >> /etc/crontab
-
-#echo "*/5 * * * * root ntpdate clock.stdtime.gov.tw >/dev/null 2>/dev/null" >> /etc/crontab
-
