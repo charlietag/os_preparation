@@ -69,6 +69,16 @@ unset PROMPT_COMMAND
 PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}\t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
 
 #------------------------------------------------------
+#               User customized bash setting
+#------------------------------------------------------
+BASH_FILES="$(find $HOME/.bash_user -type f)"
+if [[ -n "${BASH_FILES}" ]]; then
+  for BASH_FILE in $BASH_FILES; do
+    source $BASH_FILE
+  done
+fi
+
+#------------------------------------------------------
 #               Bash Prompt - For Git
 #------------------------------------------------------
 # ---Symbol---
@@ -94,14 +104,4 @@ GIT_PROMPT_FETCH_TIMEOUT=5
 AUTO_FETCH_REMOTE_STATUS=1
 
 source $HOME/.bash_base/.prompt_for_git
-
-#------------------------------------------------------
-#               User customized bash setting
-#------------------------------------------------------
-BASH_FILES="$(find $HOME/.bash_user -type f)"
-if [[ -n "${BASH_FILES}" ]]; then
-  for BASH_FILE in $BASH_FILES; do
-    source $BASH_FILE
-  done
-fi
 
