@@ -1,0 +1,3 @@
+. ${DATABAG}/_gitconfig.cfg
+
+local current_user="root"
