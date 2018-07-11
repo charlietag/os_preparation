@@ -5,6 +5,8 @@ echo "CURRENT_FOLDER : ${CURRENT_FOLDER}"
 echo "FUNCTIONS      : ${FUNCTIONS}"
 echo "LIB            : ${LIB}"
 echo "TEMPLATES      : ${TEMPLATES}"
+echo "HELPERS        : ${HELPERS}"
+echo "HELPERS_VIEWS  : ${HELPERS_VIEWS}"
 echo ""
 
 #-----------Lib Use -predefined vars----------
@@ -15,8 +17,12 @@ echo ""
 
 #-----------Function Use----------
 echo "-----------function use only--------"
-echo "TMP            : ${TMP}"
-echo "CONFIG_FOLDER  : ${CONFIG_FOLDER}"
-echo "DATABAG        : ${DATABAG}"
+echo "TMP                : ${TMP}"
+echo "CONFIG_FOLDER      : ${CONFIG_FOLDER}"
+echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
+echo "DATABAG            : ${DATABAG}"
 echo ""
 
+#-----------Helper Debug Use----------
+echo "----------Helper Debug Use--------"
+helper_debug

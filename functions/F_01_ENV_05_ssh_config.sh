@@ -24,3 +24,7 @@ echo "Port ${ssh_listen_port}" >> /etc/ssh/sshd_config
 sed -i '/ListenAddress /d' /etc/ssh/sshd_config
 echo "ListenAddress ${ssh_listen_address}" >> /etc/ssh/sshd_config
 
+# Add DenyGroups
+sed -i '/DenyGroups /d' /etc/ssh/sshd_config
+echo "DenyGroups no-ssh-group" >> /etc/ssh/sshd_config
+
