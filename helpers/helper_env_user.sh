@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------------
 
 local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)"
-local files=($(ls -a $CONFIG_FOLDER/user_home | grep -E "^\.[A-Za-z0-9_]+$"))
+local files=($(ls -a $HELPER_VIEW_FOLDER/user_home | grep -E "^\.[A-Za-z0-9_]+$"))
 
 sed -i '/bash_base\//d' $current_user_home/.bashrc
 echo 'source $HOME/.bash_base/.base' >> $current_user_home/.bashrc
@@ -13,7 +13,7 @@ do
   rm -rf ${current_user_home}/$file
   cp -a $HELPER_VIEW_FOLDER/user_home/$file ${current_user_home}/$file
 done
-RENDER_CP $CONFIG_FOLDER/root/.gitconfig ${current_user_home}/.gitconfig
+RENDER_CP $HELPER_VIEW_FOLDER/user_home/.gitconfig ${current_user_home}/.gitconfig
 test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 
 #-----------------------------------------------------------------------------------------
