@@ -1,0 +1,6 @@
+#----------------------------------------
+# Yarn
+#----------------------------------------
+# Use yarn to manage npm packages
+# Ref. https://yarnpkg.com/zh-Hans/docs/install#linux-tab
+local yarn_yum_repo="https://dl.yarnpkg.com/rpm/yarn.repo"
