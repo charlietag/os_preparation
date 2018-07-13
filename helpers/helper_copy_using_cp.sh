@@ -1,6 +1,6 @@
 echo "-----------"
 echo "copy config files"
-echo "copy all files under ${CONFIG_FOLDERi}"
+echo "copy all files under ${CONFIG_FOLDER}"
 echo "including folders"
 echo "-----------"
 local current_confs=($(find ${CONFIG_FOLDER} -type f))

@@ -1,6 +1,6 @@
 echo "-----------"
 echo "Setup config files"
-echo "render all files under ${CONFIG_FOLDERi}"
+echo "render all files under ${CONFIG_FOLDER}"
 echo "including folders"
 echo "-----------"
 local current_confs=($(find ${CONFIG_FOLDER} -type f))

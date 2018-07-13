@@ -1,6 +1,6 @@
 echo "-----------"
 echo "copy config files"
-echo "copy all files under ${CONFIG_FOLDERi} using cat, this means no backup for existing files, just overwrite it!"
+echo "copy all files under ${CONFIG_FOLDER} using cat, this means no backup for existing files, just overwrite it!"
 echo "including folders"
 echo "-----------"
 local current_confs=($(find ${CONFIG_FOLDER} -type f))

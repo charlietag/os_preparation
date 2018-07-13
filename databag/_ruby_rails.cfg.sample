@@ -2,6 +2,7 @@
 
 # Specify ruby user
 local current_user="rubyuser"
+. ${HELPERS}/_add_user_if_not_exist.sh
 local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
 
 # Rails sites path
