@@ -1,7 +1,17 @@
 #Put local vars here for the specific function
 
-# Download ruby source code from the following url
-local ruby_src_url="https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.gz"
+# Specify ruby user
+local current_user="rubyuser"
+local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+
+# Rails sites path
+local rails_sites="${current_user_home}/rails_sites"
+
+# Specify rvm version
+local rvm_version="1.29.4"
+
+# Specify ruby version (installing with rvm)
+local ruby_version="2.5.1"
 
 # Specify rails version here
 # ex. 5.0 presents ~> 5.0.0

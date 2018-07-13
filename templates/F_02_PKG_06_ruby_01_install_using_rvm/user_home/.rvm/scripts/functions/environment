@@ -1,0 +1,394 @@
+#!/usr/bin/env bash
+
+__rvm_env_string()
+{
+  \typeset _string
+  _string="${GEM_HOME:-}"
+  _string="${_string##*/}"
+  printf "%b" "${_string:-system}\n"
+}
+
+__rvm_expand_ruby_string()
+{
+  \typeset string current_ruby
+
+  string="$1"
+
+  case "${string:-all}" in
+
+    all)
+      __rvm_list_strings | \command \tr ' ' "\n"
+      ;;
+
+    all-gemsets)
+      __rvm_list_gemset_strings
+      ;;
+
+    default-with-rvmrc|rvmrc)
+      "$rvm_scripts_path/tools" path-identifier "$PWD"
+      ;;
+
+    all-rubies|rubies)
+      __rvm_list_strings
+      ;;
+
+    current-ruby|gemsets)
+      current_ruby="$(__rvm_env_string)"
+      current_ruby="${current_ruby%@*}"
+
+      rvm_silence_logging=1 "$rvm_scripts_path/gemsets" list strings \
+        | __rvm_sed "s/ (default)//; s/^/$current_ruby${rvm_gemset_separator:-@}/ ; s/@default// ;"
+      ;;
+
+    current)
+      __rvm_env_string
+      ;;
+
+    aliases)
+      __rvm_awk -F= '{print $string}' < "$rvm_path/config/alias"
+      ;;
+
+    *)
+      __rvm_ruby_strings_exist $( echo "$string" | \command \tr "," "\n" | __rvm_strip )
+      ;;
+
+  esac
+}
+
+__rvm_become()
+{
+  # set rvm_rvmrc_flag=0 to not create .rvmrc in random places of code
+  \typeset string rvm_rvmrc_flag
+  string="$1"
+  rvm_rvmrc_flag=0
+
+  [[ -n "$string" ]] && {
+    rvm_ruby_string="$string"
+    rvm_gemset_name=""
+  }
+
+  __rvm_use >/dev/null || return $?
+
+  rvm_ruby_string="${rvm_ruby_string}${rvm_gemset_name:+${rvm_gemset_separator:-'@'}}${rvm_gemset_name:-}"
+
+  return 0
+}
+
+__rvm_ensure_has_environment_files()
+{
+  \typeset file_name variable value environment_id __path __gem_home
+
+  __gem_home="${rvm_ruby_gem_home}"
+  file_name="${__gem_home}/environment"
+  __path=""
+  if [[ "${__gem_home##*@}" != "global" ]]
+  then __path+="${__gem_home}/bin:"
+  fi
+  __path+="${rvm_ruby_global_gems_path}/bin:${rvm_ruby_home}/bin"
+
+
+  \command \rm -f "$file_name"
+  \command \mkdir -p "${__gem_home}/wrappers" "${rvm_environments_path}" "${rvm_wrappers_path}"
+
+  printf "%b" "export PATH=\"${__path}:\$PATH\"\n" > "$file_name"
+
+  for variable in GEM_HOME GEM_PATH MY_RUBY_HOME IRBRC MAGLEV_HOME RBXOPT RUBY_VERSION
+  do
+    eval "value=\${${variable}:-""}"
+    if [[ -n "$value" ]]
+    then printf "export %b='%b'\n" "${variable}" "${value}" >> "$file_name"
+    else printf "unset %b\n"       "${variable}"            >> "$file_name"
+    fi
+  done
+
+  environment_id="${__gem_home##*/}"
+  [[ -L "${rvm_environments_path}/${environment_id}" ]] ||
+  {
+    if [[ -f "${rvm_environments_path}/${environment_id}" ]]
+    then rm -rf "${rvm_environments_path}/${environment_id}"
+    fi
+    ln -nfs "${__gem_home}/environment" "${rvm_environments_path}/${environment_id}"
+  }
+
+  ln -nfs "${__gem_home}/wrappers" "$rvm_wrappers_path/${environment_id}"
+
+  return 0
+}
+
+# Runs a command in a given env.
+__rvm_with()
+(
+  unset rvm_rvmrc_flag
+  export rvm_create_flag=1
+  export rvm_delete_flag=0
+  export rvm_internal_use_flag=1
+  export rvm_use_flag=0
+  __rvm_use "$1" || return $?
+  shift
+  "$@" || return $?
+)
+
+__variables_definition()
+{
+  \typeset -a __variables_list __array_list
+  \typeset __method
+
+  __method="$1"
+
+  # NOTE: Removing rvm_bin_path here causes system wide installations to generate
+  # a corrupt PATH, breaking the RVM installation.
+  __variables_list=(
+    rvm_head_flag rvm_ruby_selected_flag rvm_user_install_flag rvm_path_flag rvm_cron_flag
+    rvm_static_flag rvm_default_flag rvm_loaded_flag rvm_llvm_flag rvm_skip_autoreconf_flag rvm_dynamic_extensions_flag
+    rvm_18_flag rvm_19_flag rvm_20_flag rvm_21_flag
+    rvm_force_autoconf_flag rvm_dump_environment_flag rvm_curl_flags rvm_rubygems_version
+    rvm_verbose_flag rvm_debug_flag rvm_trace_flag __array_start rvm_skip_pristine_flag
+    rvm_create_flag rvm_remove_flag rvm_movable_flag rvm_archive_flag
+    rvm_gemdir_flag rvm_reload_flag rvm_auto_reload_flag rvm_disable_binary_flag
+    rvm_ignore_gemsets_flag rvm_skip_gemsets_flag rvm_install_on_use_flag rvm_remote_flag
+    rvm_verify_downloads_flag rvm_skip_openssl_flag rvm_gems_cache_path rvm_gems_path
+    rvm_man_path rvm_ruby_gem_path rvm_ruby_log_path rvm_gems_cache_path rvm_archives_path
+    rvm_docs_path rvm_environments_path rvm_examples_path rvm_gems_path rvm_gemsets_path
+    rvm_help_path rvm_hooks_path rvm_lib_path rvm_log_path rvm_patches_path rvm_repos_path
+    rvm_rubies_path rvm_scripts_path rvm_src_path rvm_tmp_path rvm_user_path rvm_usr_path
+    rvm_wrappers_path rvm_stored_errexit rvm_ruby_strings rvm_ruby_binary
+    rvm_ruby_gem_home rvm_ruby_home rvm_ruby_interpreter rvm_ruby_irbrc rvm_ruby_major_version
+    rvm_ruby_minor_version rvm_ruby_package_name rvm_ruby_patch_level rvm_ruby_release_version
+    rvm_ruby_repo_url rvm_ruby_repo_branch rvm_ruby_revision rvm_ruby_tag rvm_ruby_sha rvm_ruby_repo_tag
+    rvm_ruby_version rvm_ruby_package_file rvm_ruby_name rvm_ruby_name rvm_ruby_args
+    rvm_ruby_user_tag rvm_ruby_patch detected_rvm_ruby_name __rvm_env_loaded next_token
+    rvm_error_message rvm_gemset_name rvm_parse_break rvm_token rvm_action rvm_export_args
+    rvm_gemset_separator rvm_expanding_aliases rvm_tar_command rvm_tar_options
+    rvm_patch_original_pwd rvm_project_rvmrc rvm_archive_extension rvm_autoinstall_bundler_flag
+    rvm_codesign_identity rvm_expected_gemset_name
+    rvm_without_gems rvm_with_gems rvm_with_default_gems
+    rvm_ignore_dotfiles_flag rvm_fuzzy_flag rvm_autolibs_flag
+    rvm_autolibs_flag_number rvm_autolibs_flag_runner rvm_quiet_curl_flag rvm_max_time_flag
+    rvm_error_clr   rvm_warn_clr   rvm_debug_clr   rvm_notify_clr   rvm_code_clr    rvm_comment_clr     rvm_reset_clr
+    rvm_error_color rvm_warn_color rvm_debug_color rvm_notify_color rvm_code_color  rvm_comment_color   rvm_reset_color
+    rvm_log_timestamp rvm_log_filesystem rvm_log_namelen rvm_show_log_lines_on_error
+  )
+
+  __array_list=(
+    rvm_patch_names rvm_ree_options rvm_autoconf_flags rvm_architectures
+  )
+
+  case "${__method}" in
+    (export) true ;;
+    (unset)  unset "${__array_list[@]}" || true ;;
+    (*)
+      rvm_error "Unknown action given to __variables_definition: ${__method}"
+      return 1
+      ;;
+  esac
+
+  ${__method} "${__variables_list[@]}" || true
+
+  # prevent errors with bash "set -a", see https://github.com/rvm/rvm/issues/2872
+  if [[ -n "${BASH_VERSION:-}" ]]
+  then export -fn __rvm_select_version_variables __rvm_ruby_string_parse_ __rvm_rm_rf_verbose __rvm_parse_args 2>/dev/null || true
+  fi
+}
+
+# Set shell options that RVM needs temporarily, these are reverted by __rvm_teardown.
+# see the top of ./scripts/initialize for settings that are needed all the time.
+# Setup must be always called after initialize, otherwise it does nothing ... except exporting.
+__rvm_setup()
+{
+  __variables_definition export
+
+  # Setup only on first load.
+  if (( __rvm_env_loaded != 1 ))
+  then return 0
+  fi
+
+  if
+    [[ -n "${BASH_VERSION:-}" ]] && ! __function_on_stack cd pushd popd
+  then
+    export rvm_shell_nounset
+    if __rvm_has_opt "nounset"
+    then rvm_bash_nounset=1
+    else rvm_bash_nounset=0
+    fi
+    set +o nounset
+
+    trap > /dev/null
+    _rvm_old_traps=$( __rvm_grep -E 'EXIT|HUP|INT|QUIT|TERM' <(trap) )
+    trap '__rvm_teardown_final ; set +x' EXIT HUP INT QUIT TERM
+  fi
+
+  if [[ -n "${ZSH_VERSION:-}" ]]
+  then
+    export rvm_zsh_clobber rvm_zsh_nomatch
+    # Set clobber for zsh users, for compatibility with bash's append operator ( >> file ) behavior
+    if setopt | __rvm_grep -s '^noclobber$' >/dev/null 2>&1
+    then rvm_zsh_clobber=0
+    else rvm_zsh_clobber=1
+    fi
+    setopt clobber
+    # Set no_nomatch so globs that don't match any files don't print out a warning
+    if setopt | __rvm_grep -s '^nonomatch$' >/dev/null 2>&1
+    then rvm_zsh_nomatch=0
+    else rvm_zsh_nomatch=1
+    fi
+    setopt no_nomatch
+  fi
+}
+
+__rvm_teardown()
+{
+  if builtin command -v __rvm_cleanup_tmp >/dev/null 2>&1
+  then __rvm_cleanup_tmp
+  fi
+
+  export __rvm_env_loaded
+  # if __rvm_env_loaded is not set - detect it via rvm_tmp_path
+  : __rvm_env_loaded:${__rvm_env_loaded:=${rvm_tmp_path:+1}}:
+  # if not loaded then fallback to 0
+  : __rvm_env_loaded:${__rvm_env_loaded:=0}:
+  # decrease load count counter
+  : __rvm_env_loaded:$(( __rvm_env_loaded-=1 )):
+
+  #skip teardown when already done or when not yet finished
+  if [[ -z "${rvm_tmp_path:-}" ]] || (( __rvm_env_loaded > 0 ))
+  then return 0
+  fi
+
+  if
+    [[ -n "${BASH_VERSION:-}" ]]
+  then
+    trap - EXIT HUP INT QUIT TERM # Clear all traps, we do not want to go into an loop.
+    if 
+      [[ -n "${_rvm_old_traps:-}" ]]
+    then
+      eval "${_rvm_old_traps}"
+    fi
+
+    (( rvm_bash_nounset == 1 )) && set -o nounset
+    unset rvm_bash_nounset
+  fi
+
+  if
+    [[ -n "${ZSH_VERSION:-""}" ]]
+  then
+    # If rvm_zsh_clobber is 0 then "setopt" contained "noclobber" before rvm performed "setopt clobber".
+    (( rvm_zsh_clobber == 0 )) && setopt noclobber
+    # If rvm_zsh_nomatch is 0 then "setopt" contained "nonomatch" before rvm performed "setopt nonomatch".
+    (( rvm_zsh_nomatch == 0 )) || setopt nomatch
+
+    unset rvm_zsh_clobber rvm_zsh_nomatch
+  fi
+
+  if
+    [[ -n "${rvm_stored_umask:-}" ]]
+  then
+    umask ${rvm_stored_umask}
+    unset rvm_stored_umask
+  fi
+
+  if builtin command -v __rvm_cleanup_download >/dev/null 2>&1
+  then __rvm_cleanup_download
+  fi
+
+  if [[ "${rvm_stored_errexit:-""}" == "1" ]]
+  then set -e
+  fi
+
+  __variables_definition unset
+
+  return 0
+}
+
+__rvm_teardown_if_broken()
+{
+  if
+    __function_on_stack __rvm_load_project_config ||
+    __function_on_stack __rvm_with
+  then
+    true # inside of loading .rvmrc / __rvm_with
+  elif
+    (( ${__rvm_env_loaded:-0} > 0 ))
+  then
+    __rvm_teardown_final
+  fi
+}
+
+__rvm_teardown_final()
+{
+  __rvm_env_loaded=1
+  unset __rvm_project_rvmrc_lock
+  __rvm_teardown
+}
+
+__rvm_do_with_env_before()
+{
+  if [[ -n "${rvm_scripts_path:-}" || -n "${rvm_path:-}" ]]
+  then
+    # Load env - setup all required variables, __rvm_teardown is called on the end
+    source "${rvm_scripts_path:-"$rvm_path/scripts"}/initialize"
+    __rvm_setup
+  fi
+}
+
+__rvm_do_with_env_after()
+{
+  __rvm_teardown
+}
+
+__rvm_do_with_env()
+{
+  \typeset result
+
+  __rvm_do_with_env_before
+
+  "$@"
+  result=$?
+
+  __rvm_do_with_env_after
+
+  return ${result:-0}
+}
+
+__rvm_conditionally_do_with_env()
+{
+  if (( __rvm_env_loaded > 0 ))
+  then
+    "$@"
+  else
+    __rvm_do_with_env "$@"
+  fi
+}
+
+__rvm_ensure_is_a_function()
+{
+  if [[ ${rvm_reload_flag:=0} == 1 ]] || ! is_a_function rvm
+  then
+    for script in functions/version functions/selector cd functions/cli cli override_gem
+    do
+      if [[ -f "$rvm_scripts_path/$script" ]]
+      then
+        source "$rvm_scripts_path/$script"
+      else
+        printf "%b" \
+"WARNING:
+        Could not source '$rvm_scripts_path/$script' as file does not exist.
+        RVM will likely not work as expected.\n"
+      fi
+    done
+  fi
+}
+
+__rvm_call_with_restored_umask()
+{
+  rvm_umask="$(umask)"
+
+  if [[ -n "${rvm_stored_umask:-}" ]];
+  then
+    umask ${rvm_stored_umask}
+  fi
+
+  "$@"
+
+  umask "${rvm_umask}"
+  unset rvm_umask
+}

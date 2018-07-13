@@ -1,0 +1,15 @@
+#Put local vars here for the specific function
+
+# Specify php user
+local current_user="phpuser"
+local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+
+# Laravel sites path
+local laravel_sites="${current_user_home}/laravel_sites"
+
+#Put local vars here for the specific function
+
+# Specify Laravel version here
+# ex. 5.3 presents 5.3.*
+# ex. 4.2 presents 4.2.*
+local laravel_version="5.6"

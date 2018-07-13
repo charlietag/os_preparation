@@ -1,6 +1,0 @@
-#Put local vars here for the specific function
-
-# Specify Laravel version here
-# ex. 5.3 presents 5.3.*
-# ex. 4.2 presents 4.2.*
-local laravel_version="5.6"

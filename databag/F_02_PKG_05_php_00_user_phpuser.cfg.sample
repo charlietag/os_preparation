@@ -1,0 +1,4 @@
+. ${DATABAG}/_gitconfig.cfg
+
+. ${DATABAG}/_php_laravel.cfg
+

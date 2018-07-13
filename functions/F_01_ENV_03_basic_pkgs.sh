@@ -19,7 +19,7 @@ yum install -y bash redhat-lsb screen git tree vim sysstat mtr net-tools wget op
 
 
 #For Rails
-# rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite
+ rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite
 
 #For Passenger
 #yum install -y curl-devel
