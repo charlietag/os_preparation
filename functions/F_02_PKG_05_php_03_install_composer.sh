@@ -29,3 +29,7 @@ php -r "unlink('composer-setup.php');"
 test -f composer && rm -f composer
 mv composer*.phar composer
 
+#-----------------------------------------------------------------------------------------
+#Make sure user_home priv is correct
+#-----------------------------------------------------------------------------------------
+chown -R ${current_user}.${current_user} ${current_user_home}
