@@ -1,4 +1,18 @@
-# Install php 7
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
+echo "==============================="
+echo "        Render repo"
+echo "==============================="
+rpm -Uvh $epel_yum_repo
+rpm -Uvh $php_yum_repo
+
+echo "==============================="
+echo "     Install php 7.1"
+echo "==============================="
+# Install php 7.1
 yum install -y \
   mod_php71w \
   php71w-bcmath \
