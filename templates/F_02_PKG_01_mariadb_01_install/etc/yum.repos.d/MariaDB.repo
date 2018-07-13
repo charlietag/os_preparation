@@ -1,0 +1,5 @@
+[mariadb]
+name     = MariaDB
+baseurl  = ${mariadb_baseurl}
+gpgkey   = ${mariadb_gpgkey}
+gpgcheck = 1

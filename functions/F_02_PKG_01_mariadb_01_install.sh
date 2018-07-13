@@ -1,3 +1,13 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
+echo "==============================="
+echo "        Render mariadb repo"
+echo "==============================="
+helper_copy_using_render
+
 yum install -y MariaDB-server MariaDB-client mariadb-devel
 
 # This is used for gem mysql2 - espacial MariaDB-shared
@@ -22,13 +32,3 @@ echo "==============================="
 echo "  Disable mariadb done"
 echo "==============================="
 
-echo "==============================="
-echo "  Setup mariadb config"
-echo "==============================="
-# =====================
-# Enable databag
-# =====================
-# RENDER_CP
-# Setup bind-address
-sed -e '/^bind-address/ s/^#*/#/' -i /etc/my.cnf.d/server.cnf
-sed -e "/^\[mysqld\]/a bind-address = ${mariadb_listen_address}" -i /etc/my.cnf.d/server.cnf
