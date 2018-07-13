@@ -8,3 +8,9 @@
 #Value in pool "www" would override default valie in /etc/php.ini
 #---------------
 helper_copy_using_render
+
+
+#---------------
+# make sure default session is writeable by php user
+#---------------
+chown -R ${current_user}.${current_user} /var/lib/php/*
