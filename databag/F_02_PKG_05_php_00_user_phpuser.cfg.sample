@@ -1,4 +1,4 @@
-. ${DATABAG}/_gitconfig.cfg
+_helper_load_databag_from_file _gitconfig.cfg
 
-. ${DATABAG}/_php_laravel.cfg
+_helper_load_databag_from_file _php_laravel.cfg
 

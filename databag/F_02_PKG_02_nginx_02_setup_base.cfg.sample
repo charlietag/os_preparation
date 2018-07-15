@@ -1,2 +1,2 @@
-. ${DATABAG}/_nginx.cfg
+_helper_load_databag_from_file _nginx.cfg
 

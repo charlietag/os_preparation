@@ -1,2 +1,2 @@
 # Source master config
-. ${DATABAG}/_ruby_rails.cfg
+_helper_load_databag_from_file _ruby_rails.cfg
