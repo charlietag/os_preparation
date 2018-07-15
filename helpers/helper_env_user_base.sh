@@ -1,4 +1,5 @@
-. ${HELPERS}/_check_variable_current_user.sh
+_helper_check_variable_current_user
+_helper_check_variable_git_name_email
 
 #-----------------------------------------------------------------------------------------
 #Self Customize ${user_home}/.all
