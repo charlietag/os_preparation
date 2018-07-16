@@ -18,6 +18,7 @@ echo ""
 
 #-----------Function Use----------
 echo "-----------function use only--------"
+echo "PLUGINS            : ${PLUGINS}"
 echo "TMP                : ${TMP}"
 echo "CONFIG_FOLDER      : ${CONFIG_FOLDER}"
 echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
@@ -28,11 +29,15 @@ echo ""
 echo "-----------helper use only--------"
 echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
 echo ""
+echo ""
+echo ""
 
+#================= Testing ===============
+echo "================= Testing ==============="
 #-----------Helper Debug Use----------
-echo "----------Helper Debug Use--------"
+echo "----------Helper Debug Use-------->>>"
 helper_debug
 
 #-----------Task Debug Use----------
-echo "----------Task Debug Use--------"
+echo "----------Task Debug Use-------->>>"
 task_debug

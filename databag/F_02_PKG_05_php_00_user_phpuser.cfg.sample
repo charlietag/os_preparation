@@ -1,4 +1,4 @@
-. ${SCRIPTS}/script_load_databag.sh _gitconfig.cfg
+. ${PLUGINS}/plugin_load_databag.sh _gitconfig.cfg
 
-. ${SCRIPTS}/script_load_databag.sh _php_laravel.cfg
+. ${PLUGINS}/plugin_load_databag.sh _php_laravel.cfg
 

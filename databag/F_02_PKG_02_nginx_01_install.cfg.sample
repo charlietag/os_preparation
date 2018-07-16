@@ -1,2 +1,2 @@
-. ${SCRIPTS}/script_load_databag.sh _nginx.cfg
+. ${PLUGINS}/plugin_load_databag.sh _nginx.cfg
 

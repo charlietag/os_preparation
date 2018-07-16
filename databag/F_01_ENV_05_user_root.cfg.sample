@@ -1,4 +1,4 @@
-. ${SCRIPTS}/script_load_databag.sh _gitconfig.cfg
+. ${PLUGINS}/plugin_load_databag.sh _gitconfig.cfg
 
 local current_user="root"
 local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
