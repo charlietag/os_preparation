@@ -26,6 +26,8 @@ RemainAfterExit=yes
 # forking
 # -----------
 # Failed all the time
+# this is should be work with PID FILE
+# I'm using script to iterate all puma server, single pid is not fitable for my purpose
 #Type=forking
 #RemainAfterExit=no
 #Restart=no
