@@ -31,5 +31,5 @@ yum install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-deve
 yum install -y openssl openssl-libs openssl-devel libticonv-devel
 
 # For sql server connection (freetds)
-#yum install -y freetds freetds-devel 
+yum install -y freetds freetds-devel 
 
