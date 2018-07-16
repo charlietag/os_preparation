@@ -15,6 +15,12 @@ fi
 su -l $current_user -c "\curl -sSL https://get.rvm.io | bash -s ${rvm_version}"
 echo ""
 
+local rvm_check="$(su -l $current_user -c "which rvm 2>/dev/null")"
+if [[ -z "${rvm_check}" ]]; then
+  echo "rvm installation failed!"
+  exit
+fi
+
 # rvm ctrl-c trap soltion workaround
 echo "------------------------------------------"
 echo "RVM trap workaround"
