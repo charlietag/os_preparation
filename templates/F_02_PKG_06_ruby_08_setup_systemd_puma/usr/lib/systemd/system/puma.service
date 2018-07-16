@@ -15,12 +15,13 @@ ExecStop=/usr/local/bin/puma-mgr stop
 ExecReload=/usr/local/bin/puma-mgr reload
 
 # Difference between oneshot, forking --> systemctl status puma
-#Type=oneshot
-#RemainAfterExit=yes
-
-Type=forking
+Type=oneshot
 RemainAfterExit=yes
-Restart=no
+
+# Failed all the time
+#Type=forking
+#RemainAfterExit=no
+#Restart=no
 
 [Install]
 WantedBy=multi-user.target
