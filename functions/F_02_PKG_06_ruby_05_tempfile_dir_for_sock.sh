@@ -6,5 +6,5 @@
 #--------------------------
 #  Setup tmpfiles.d configs
 #--------------------------
-helper_copy_using_render
+task_copy_using_render
 

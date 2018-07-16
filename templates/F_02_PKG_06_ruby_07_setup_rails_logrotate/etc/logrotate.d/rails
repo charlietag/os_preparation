@@ -1,0 +1,23 @@
+${rails_sites}/*/log/*.log {
+  daily
+  rotate 30
+  compress
+  missingok
+  notifempty
+  create 644 ${current_user} ${current_user}
+  sharedscripts
+  postrotate
+   if [ -n \"\$1\" ]; then
+      PUMA_PID_FILES=\"\$(readlink -m \"\$(dirname \"\$1\")/../tmp/pids/puma.pid\")\"
+      for PUMA_PID_FILE in \$PUMA_PID_FILES; do
+        if [ -s \"\$PUMA_PID_FILE\" ]; then
+          PUMA_PID=\$(cat \${PUMA_PID_FILE} 2>/dev/null)
+          #echo \"\$1\"
+          #echo \"kill \$PUMA_PID\"
+          kill -USR2 \$PUMA_PID
+          sleep 3
+        fi
+      done
+    fi
+  endscript
+}

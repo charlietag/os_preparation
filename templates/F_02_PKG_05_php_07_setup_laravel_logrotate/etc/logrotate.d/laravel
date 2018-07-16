@@ -1,0 +1,10 @@
+${laravel_sites}/*/storage/logs/*.log {
+  daily
+  rotate 30
+  compress
+  missingok
+  notifempty
+  create 644 ${current_user} ${current_user}
+  sharedscripts
+}
+

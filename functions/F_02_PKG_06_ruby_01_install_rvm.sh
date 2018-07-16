@@ -20,6 +20,6 @@ echo "------------------------------------------"
 echo "RVM trap workaround"
 echo "modify rvm source code"
 echo "------------------------------------------"
-helper_copy_using_cat_user_home
+task_copy_using_cat_user_home
 echo ""
 

@@ -6,7 +6,7 @@
 #--------------------------
 #  Setup nginx sample configs
 #--------------------------
-helper_copy_using_cp
+task_copy_using_cp
 
 
 #--------------------------

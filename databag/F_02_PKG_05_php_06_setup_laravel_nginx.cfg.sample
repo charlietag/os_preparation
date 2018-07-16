@@ -1,1 +1,1 @@
-_helper_load_databag_from_file _php_laravel.cfg
+. ${SCRIPTS}/script_load_databag.sh _php_laravel.cfg

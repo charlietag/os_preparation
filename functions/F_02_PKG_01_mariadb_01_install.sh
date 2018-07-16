@@ -6,7 +6,7 @@
 echo "==============================="
 echo "        Render mariadb repo"
 echo "==============================="
-helper_copy_using_render
+task_copy_using_render
 
 yum install -y MariaDB-server MariaDB-client mariadb-devel
 

@@ -4,8 +4,7 @@
 # RENDER_CP
 
 #--------------------------
-#  Setup nginx sample configs
+#  Setup configs
 #--------------------------
 task_copy_using_render
-
 

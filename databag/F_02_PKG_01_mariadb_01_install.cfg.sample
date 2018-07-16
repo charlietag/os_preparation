@@ -1,2 +1,2 @@
-_helper_load_databag_from_file _mariadb.cfg
+. ${SCRIPTS}/script_load_databag.sh _mariadb.cfg
 

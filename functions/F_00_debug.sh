@@ -5,6 +5,7 @@ echo "CURRENT_FOLDER : ${CURRENT_FOLDER}"
 echo "FUNCTIONS      : ${FUNCTIONS}"
 echo "LIB            : ${LIB}"
 echo "TEMPLATES      : ${TEMPLATES}"
+echo "TASKS          : ${TASKS}"
 echo "HELPERS        : ${HELPERS}"
 echo "HELPERS_VIEWS  : ${HELPERS_VIEWS}"
 echo ""
@@ -23,6 +24,15 @@ echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
 echo "DATABAG            : ${DATABAG}"
 echo ""
 
+#-----------Helper Use----------
+echo "-----------helper use only--------"
+echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
+echo ""
+
 #-----------Helper Debug Use----------
 echo "----------Helper Debug Use--------"
 helper_debug
+
+#-----------Task Debug Use----------
+echo "----------Task Debug Use--------"
+task_debug

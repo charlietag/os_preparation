@@ -1,2 +1,2 @@
+# Source master config
 . ${SCRIPTS}/script_load_databag.sh _php_laravel.cfg
-

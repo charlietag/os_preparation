@@ -6,6 +6,6 @@
 echo "==============================="
 echo "        Render nginx repo"
 echo "==============================="
-helper_copy_using_render
+task_copy_using_render
 
 yum install -y nginx

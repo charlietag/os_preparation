@@ -1,4 +1,4 @@
-_helper_check_variable_current_user
+_task_check_variable_current_user
 
 local config_folder_user_home="${CONFIG_FOLDER}/user_home"
 

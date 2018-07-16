@@ -8,7 +8,7 @@ if [[ -z "${if_no_ssh_group}" ]]; then
   groupadd ${no_ssh_group_name}
 fi
 
-_helper_add_user_if_not_exist
+_task_check_and_useradd
 
 # add user into group no-ssh-group
 usermod -a -G ${no_ssh_group_name} ${current_user}
@@ -19,6 +19,6 @@ usermod -a -G ${no_ssh_group_name} ${current_user}
 #------------------------
 # check if current_user exists
 #------------------------
-_helper_check_variable_current_user
+_task_check_variable_current_user
 
 

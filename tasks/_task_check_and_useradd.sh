@@ -1,7 +1,3 @@
-echo "uuuuuuuuuuuuuuuuuu"
-echo "check and useradd"
-echo "uuuuuuuuuuuuuuuuuu"
-
 #-----------------------------------------------------------------------------------------
 # Make sure variable ${current_user} is defined
 #-----------------------------------------------------------------------------------------

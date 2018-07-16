@@ -1,1 +1,1 @@
-_helper_load_databag_from_file _ruby_rails.cfg
+. ${SCRIPTS}/script_load_databag.sh _ruby_rails.cfg
