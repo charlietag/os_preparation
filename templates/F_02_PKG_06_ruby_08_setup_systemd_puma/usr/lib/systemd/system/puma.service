@@ -14,10 +14,17 @@ ExecStart=/usr/local/bin/puma-mgr start
 ExecStop=/usr/local/bin/puma-mgr stop
 ExecReload=/usr/local/bin/puma-mgr reload
 
+# -----------
+# oneshot
+# -----------
 # Difference between oneshot, forking --> systemctl status puma
+# this is just more like traditional init.d/script
 Type=oneshot
 RemainAfterExit=yes
 
+# -----------
+# forking
+# -----------
 # Failed all the time
 #Type=forking
 #RemainAfterExit=no
