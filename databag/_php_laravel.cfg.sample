@@ -3,7 +3,7 @@
 # Specify php user
 local current_user="phpuser"
 
-_task_check_and_useradd.sh
+_task_check_and_useradd
 
 local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
 
