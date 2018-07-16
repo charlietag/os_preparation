@@ -4,7 +4,10 @@ Description=Puma HTTP Server
 After=network.target
 
 [Service]
-User=RAILS_SERVICE_USERNAME
+#--- /usr/local/bin/puma-mgr will auto su - to rubyuser
+# systemd su to user will not do the .bashrc , so if this set to rubyuser, bundle will not be found!
+User=root
+
 ExecStart=/usr/local/bin/puma-mgr start
 
 # ExecStop could be comment, because systemd can kiil entire Puma Unit related PIDs quickly without specifying stop script
@@ -16,7 +19,7 @@ ExecReload=/usr/local/bin/puma-mgr reload
 #RemainAfterExit=yes
 
 Type=forking
-RemainAfterExit=no
+RemainAfterExit=yes
 Restart=no
 
 [Install]
