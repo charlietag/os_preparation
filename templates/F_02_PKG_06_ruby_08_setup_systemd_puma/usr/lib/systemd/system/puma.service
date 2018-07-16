@@ -1,0 +1,23 @@
+# Ref sample: https://www.freedesktop.org/software/systemd/man/systemd.service.html#Examples
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+User=RAILS_SERVICE_USERNAME
+ExecStart=/usr/local/bin/puma-mgr start
+
+# ExecStop could be comment, because systemd can kiil entire Puma Unit related PIDs quickly without specifying stop script
+ExecStop=/usr/local/bin/puma-mgr stop
+ExecReload=/usr/local/bin/puma-mgr reload
+
+# Difference between oneshot, forking --> systemctl status puma
+#Type=oneshot
+#RemainAfterExit=yes
+
+Type=forking
+RemainAfterExit=no
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
