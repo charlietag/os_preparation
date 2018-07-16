@@ -36,6 +36,7 @@ sleep 1
 echo -n "."
 sleep 1
 echo -n "."
+echo ""
 
 
 # Add extra config into .gitignore file
