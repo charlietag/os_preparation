@@ -18,7 +18,7 @@ yum groupinstall -y "Development Tools"
 yum install -y bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
 
 
-#For Rails
+#For Rails (also for rvm)
  rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite
 
 #For Passenger
