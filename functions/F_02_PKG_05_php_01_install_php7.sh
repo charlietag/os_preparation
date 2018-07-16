@@ -50,6 +50,10 @@ yum install -y \
   php71w-xml
 
 # Disable httpd
+echo "systemctl disable httpd......"
 systemctl disable httpd
-systemctl disable php-fpm
+echo ""
 
+echo "systemctl disable php-fpm......"
+systemctl disable php-fpm
+echo ""
