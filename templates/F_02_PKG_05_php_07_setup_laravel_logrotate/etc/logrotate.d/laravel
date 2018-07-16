@@ -1,4 +1,4 @@
-${laravel_sites}/*/storage/logs/*.log {
+${web_sites}/*/storage/logs/*.log {
   daily
   rotate 30
   compress

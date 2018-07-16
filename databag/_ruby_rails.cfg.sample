@@ -8,7 +8,7 @@ _task_check_and_useradd
 local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
 
 # Rails sites path
-local rails_sites="${current_user_home}/rails_sites"
+local web_sites="${current_user_home}/rails_sites"
 
 # Specify rvm version
 local rvm_version="1.29.4"

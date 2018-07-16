@@ -1,4 +1,4 @@
-${rails_sites}/*/log/*.log {
+${web_sites}/*/log/*.log {
   daily
   rotate 30
   compress

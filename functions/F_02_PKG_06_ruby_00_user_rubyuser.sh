@@ -8,4 +8,4 @@ helper_env_user_base
 
 task_copy_using_cat_user_home
 
-su -l $current_user -c "test -d ${rails_sites} || mkdir -p ${rails_sites}"
+su -l $current_user -c "test -d ${web_sites} || mkdir -p ${web_sites}"
