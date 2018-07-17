@@ -114,6 +114,17 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
   ```
 
 * Default project path
+  * DEFAULT user for rails/laravel developer is not ssh allowed
+    * /etc/ssh/sshd
+
+      ```bash
+      DenyGroups no-ssh-group
+      ```
+
+  * group "no-ssh-group" add to default dev user
+    * phpuser (this name can be modified)
+    * rubyuser (this name can be modified)
+
   * rails
     * default user: rubyuser (can be changed)
 
