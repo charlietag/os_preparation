@@ -15,12 +15,7 @@ su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -i cp
 
 systemctl start mariadb
 echo -n "starting mariadb"
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 
 # Create PROD(require database.yml info. so PROD will failed due to wrong username/password for mysql db server), DEV, TEST env database in mysql
 # bundle exec rails db:create:all
@@ -30,13 +25,7 @@ su -l $current_user -c "cd ${web_sites}/myrails && bundle exec rails db:create"
 
 systemctl stop mariadb
 echo -n "stopping mariadb"
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
-echo ""
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 
 
 # Add extra config into .gitignore file

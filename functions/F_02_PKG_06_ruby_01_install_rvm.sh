@@ -39,6 +39,7 @@ for ((i=1; i<=rvm_install_retry; i++)); do
   # ---------- Install RVM -----------
   su -l $current_user -c "\curl -sSL https://get.rvm.io | bash -s ${rvm_version}"
 done
+echo ""
 ############### Install RVM retry Loop #############
 
 
