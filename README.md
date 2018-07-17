@@ -29,6 +29,7 @@ This is a small light bash project.  Suit small companies which have only few se
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel**
 
 * **If you prefer passenger + nginx (passenger-install-nginx-module)**
+
   please switch to git tag named "before_passenger_to_puma"
 
   ```bash
