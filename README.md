@@ -11,20 +11,28 @@ Table of Contents
   * [Predefined variables](#predefined-variables)
 - [Note](#note)
   * [Installed Packages](#installed-packages)
-  * [Nginx related](#nginx-related)
   * [Folder privilege](#folder-privilege)
   * [Ruby gem config](#ruby-gem-config)
   * [Database configuration for production](#database-configuration-for-production)
 - [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
-You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF**.  You can just leverage my initialization project here.
+You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF , Ansible**.  You can just leverage my initialization project here.
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
   (centos 7 server environment settings)
 
 * This is useful if you have less than 5 CentOS7 servers to maintain.
+
+* This repo is TOTALLY transfer from passenger to puma for rails.
+  * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel**
+
+* If you prefer passenger + nginx (passenger-install-nginx-module), please switch to git tag named "before_passenger_to_puma"
+
+  ```bash
+  git clone --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
+  ```
 
 # Environment
   * CentOS 7
@@ -96,7 +104,7 @@ This is a small light bash project.  Suit small companies which have only few se
     ```
 
 # Easy Installation
-I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx, MariaDB, php-fpm, passenger**.  And help me to create default projects about "Rails" and "Laravel"
+I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx (official), MariaDB, php-fpm, puma (rails)**.  And help me to create default projects about "Rails" and "Laravel"
 
 * Command
 
@@ -106,10 +114,22 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
   ```
 
 * Default project path
+  * rails
+    * default user: rubyuser (can be changed)
 
   ```bash
-  /home/myrails/
-  /home/mylaravel/
+  /home/${current_user}/rails_sites/myrails/
+  --->
+  /home/rubyuser/rails_sites/myrails/
+  ```
+
+  * laravel
+    * default user: phpuser (can be changed)
+
+  ```bash
+  /home/${current_user}/laravel_sites/myrails/
+  --->
+  /home/phpuser/laravel_sites/myrails/
   ```
 
 * Config your own hosts file (/etc/hosts)
@@ -139,7 +159,7 @@ I want to choose specific part to install.
 
 # Customize your own function
 ## Folder
-  * functions/*
+  * functions/
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
     * Run command 
     
@@ -147,9 +167,10 @@ I want to choose specific part to install.
       ./start.sh -i YourOwnFuntionName
       ```
 
-  * templates/*
+  * templates/
     * Put your own templates here, **folder** named the same as **YourOwnFuntionName**
-  * databag/*
+
+  * databag/
     * Put your special config variables here, **file** named the same as **YourOwnFuntionName**
     * How to use
       * In databag/YourOwnFunctionName
@@ -175,15 +196,65 @@ I want to choose specific part to install.
         # RENDER_CP
         ```
 
+  * helpers/
+    * Write your own script here, **file** named start with **helper_YourOwnHelperName.sh**
+    * Works with helpers_views
+
+  * helpers_views/
+    * Put your own templates for ONLY **helper USE** here, **folder** named the same as **YourOwnHelperName**
+
+  * tasks/
+    * Write your own script here, **file** named start with **task_YourOwnTaskName.sh** , **_task_YourOwnTaskName.sh**
+    * Scripts here will automatically transfer to function, just like scripts under "functions/"
+    * But this is for global use for os_preparation , os_security.  So it's been moved to os_preparation_lib
+
+  * plugins/
+    * Only scripts which can be called everywhere like, ${HELPERS}/plugins_scripts.sh
+    * Use this as a script, not function
 
 ## Predefined variables
 
 ```bash
-CURRENT_SCRIPT : /<PATH>/os_preparation/start.sh
-CURRENT_FOLDER : /<PATH>/os_preparation
+(root)# ./start.sh -i F_00_debug
+==============================
+        F_00_debug
+==============================
+-----------lib use only--------
+CURRENT_SCRIPT : /root/os_preparation/start.sh
+CURRENT_FOLDER : /root/os_preparation
+FUNCTIONS      : /root/os_preparation/functions
+LIB            : /root/os_preparation/../os_preparation_lib/lib
+TEMPLATES      : /root/os_preparation/templates
+TASKS          : /root/os_preparation/../os_preparation_lib/tasks
+HELPERS        : /root/os_preparation/helpers
+HELPERS_VIEWS  : /root/os_preparation/helpers_views
 
-TMP            : /<PATH>/os_preparation/tmp
-CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
+-----------lib use only - predefined vars--------
+FIRST_ARGV     : -i
+ALL_ARGVS      : F_00_debug
+
+-----------function use only--------
+PLUGINS            : /root/os_preparation/plugins
+TMP                : /root/os_preparation/tmp
+CONFIG_FOLDER      : /root/os_preparation/templates/F_00_debug
+HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
+DATABAG            : /root/os_preparation/databag
+
+-----------helper use only--------
+HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
+
+
+
+================= Testing ===============
+----------Helper Debug Use-------->>>
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        helper_debug
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+----------Task Debug Use-------->>>
+______________________________
+        task_debug
+______________________________
 ```
 
 # Note
@@ -194,63 +265,13 @@ CONFIG_FOLDER  : /<PATH>/os_preparation/templates/<FUNCTION_NAME>
   * Laravel 5.6 (Ref. https://laravel.com/)
   * MariaDB 10.3 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
-  * Nginx (latest version - via passenger)
+  * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.5.1
   * Rails 5.2
+    * puma (systemd, puma-mgr)
 
-## Nginx related
-  * To be distinguish between "passenger-install-nginx-module", "yum install nginx (nginx yum repo)"
-  * There are some differences here.
-    * Nginx config folder
-
-      ```
-      /opt/nginx/
-      ```
-
-    * Running user
-    
-      ```
-      optnginx
-      optpass
-      ```
-
-    * Start process (**optnginx**)
-    
-      ```
-      systemctl start optnginx
-      ```
-
-    * Config folder tree
-
-      ```
-      F_05_setup_nginx/
-      ├── etc
-      │   └── logrotate.d
-      │       └── optnginx
-      ├── opt
-      │   └── nginx
-      │       └── conf
-      │           ├── conf.d
-      │           │   ├── default.conf
-      │           │   ├── laravel.conf
-      │           │   └── rails.conf
-      │           ├── default.d
-      │           ├── nginx.conf
-      │           └── passenger.conf
-      └── usr
-          └── lib
-              ├── systemd
-              │   └── system
-              │       └── optnginx.service
-              └── tmpfiles.d
-                  └── passenger.conf
-
-      12 directories, 8 files
-
-      ```
-    
 ## Folder privilege
-After this installation repo, the server will setup with "passenger-install-nginx-module" , "Nginx + PHP-FPM" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
+After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
 
 1. **folder privilege**
 
@@ -259,7 +280,7 @@ After this installation repo, the server will setup with "passenger-install-ngin
     ```bash
     rails new <rails_project> -d mysql
     cd <rails_project>
-    chown -R optpass.optpass log tmp
+    chown -R ${current_user}.${current_user} log tmp
     ```
 
   * Laravel Project
@@ -267,8 +288,8 @@ After this installation repo, the server will setup with "passenger-install-ngin
     ```bash
     composer create-project --prefer-dist laravel/laravel <laravel_project>
     cd <laravel_project>
-    chown -R apache.apache storage
-    chown -R apache.apache bootstrap/cache
+    chown -R ${current_user}.${current_user} storage
+    chown -R ${current_user}.${current_user} bootstrap/cache
     ```
 
 2. **Command**
