@@ -10,8 +10,9 @@ local rvm_install_retry=5
 
 
 ############### Install RVM retry Loop #############
-let rvm_install_retry++
-for ((i=1; i<=rvm_install_retry; i++)); do
+#let rvm_install_retry++
+#for ((i=1; i<=rvm_install_retry; i++)); do
+for ((i=1; ; i++)); do
 
   # ---------- Check RVM Installation -----------
   local rvm_check="$(su -l $current_user -c "which rvm 2>/dev/null")"
@@ -22,7 +23,8 @@ for ((i=1; i<=rvm_install_retry; i++)); do
 
   if [[ -z "${rvm_check}" ]]; then
     echo "RVM is not installed yet!"
-    [[ $i -eq $rvm_install_retry ]] && exit
+    #[[ $i -eq $rvm_install_retry ]] && exit
+    [[ $i -gt $rvm_install_retry ]] && exit
   fi
 
   echo -n "RVM installation (try: $i) "
