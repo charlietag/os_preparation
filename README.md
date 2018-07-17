@@ -28,7 +28,7 @@ This is a small light bash project.  Suit small companies which have only few se
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel**
 
-* **If you prefer passenger + nginx (passenger-install-nginx-module)**
+* If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
 
   please switch to git tag named "before_passenger_to_puma"
 
