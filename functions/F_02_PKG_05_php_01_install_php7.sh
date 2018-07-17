@@ -6,7 +6,9 @@
 echo "==============================="
 echo "        Render repo"
 echo "==============================="
-rpm -Uvh $epel_yum_repo
+#EPEL installed in basic_pkg
+#rpm -Uvh $epel_yum_repo
+
 rpm -Uvh $php_yum_repo
 
 echo "==============================="
