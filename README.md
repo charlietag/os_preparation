@@ -433,4 +433,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * phpuser
         * composer installed (for laravel)
       * rubyuser
-        * rvm installed (for rails user)
+        * rvm installed (for rails)
