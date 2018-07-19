@@ -2,9 +2,14 @@
 #------------------------------------------------------
 #               Bash Prompt Setting - Function
 #------------------------------------------------------
-PROMPT_SYM=""
-[[ $UID -eq 0 ]] && PROMPT_SYM='#'
-[[ $UID -ne 0 ]] && PROMPT_SYM='$'
+PROMPT_SYM='$'
+if [[ $UID -eq 0 ]]; then
+  PROMPT_SYM='#'
+else
+  if [[ -n "${USER_COLOR}" ]]; then
+   PROMPT_SYM="${USER_COLOR}\$${COLOR_END}"
+ fi
+fi
 
 ORIGIN_PS="${PS1%\\n# }"
 unset PROMPT_COMMAND PS1
