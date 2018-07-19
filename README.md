@@ -37,7 +37,7 @@ This is a small light bash project.  Suit small companies which have only few se
   ```
 
 # Environment
-  * CentOS 7
+  * CentOS 7 (7.0 ~ 7.5)
 
 # Warning
   * Please do this in fresh install OS
