@@ -414,3 +414,23 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Ruby on Rails 5.2
 * 2018/06/22
   * MariaDB 10.3
+* 2018/07/18
+  * Totally migrate rails ap server from passenger to puma
+    * This means nginx is installed through Nginx repo, not passenger-install-nginx-module anymore!
+    * Nginx config default config is moving from /opt/nginx/ back to default /etc/nginx/
+    * User **root** will no longer be used as a php(laravel) / ruby(rails) developer
+  * Important changed
+    * Feature
+      * Totally use socket files instead of tcp socket, for monolithic server structure
+        * php-fpm sock file (Instead of tcp 9000)
+        * puma sock file
+    * Files
+      * {rails_app}/config/puma/production.rb
+      * puma-mgr command added
+      * systemd -> puma.service -> puma-mgr
+      * logrotate for all rails / laravel projects
+    * Developer user accound
+      * phpuser
+        * composer installed (for laravel)
+      * rubyuser
+        * rvm installed (for rails user)
