@@ -21,6 +21,6 @@ task_copy_using_cp
 # https://arian.io/vim-syntax-highlighting-for-nginx/
 
 #--------------------------
-# The following setup the same for optnginx under $HOME/.vim/
+# The following setup the same for nginx under $HOME/.vim/
 #--------------------------
 # already setup in helper_env_user_base
