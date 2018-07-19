@@ -2,12 +2,16 @@
 #------------------------------------------------------
 #               Bash Prompt Setting - Function
 #------------------------------------------------------
+PROMPT_SYM=""
+[[ $UID -eq 0 ]] && PROMPT_SYM='#'
+[[ $UID -ne 0 ]] && PROMPT_SYM='$'
+
 ORIGIN_PS="${PS1%\\n# }"
 unset PROMPT_COMMAND PS1
 
 function set_bash_prompt {
   local append_here="$1"
-  bash_prompt_template="${ORIGIN_PS} ${append_here}\n# "
+  bash_prompt_template="${ORIGIN_PS} ${append_here}\n${PROMPT_SYM} "
   echo "${bash_prompt_template}"
 }
 
