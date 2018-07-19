@@ -415,7 +415,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2018/06/22
   * MariaDB 10.3
 * 2018/07/18
-  * Important changed
+  * Important changes
     * Feature
       * Totally migrate rails ap server from passenger to puma
         * This means nginx is installed through Nginx repo, not passenger-install-nginx-module anymore!
