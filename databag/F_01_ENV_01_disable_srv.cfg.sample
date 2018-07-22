@@ -1,5 +1,5 @@
 #Put local vars here for the specific function
 
 # Services to be stopped and disabled by default
-local disabled_services=(firewalld postfix NetworkManager ntp avahi-daemon.socket avahi-daemon.service kdump)
+local disabled_services=(firewalld postfix NetworkManager NetworkManager-wait-online ntp avahi-daemon.socket avahi-daemon.service kdump)
 
