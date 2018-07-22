@@ -7,6 +7,8 @@
 #hostname -F /etc/hostname
 # -------------------
 # comment 2 steps above, use hostnamectl command instead
+# After setting up hostname to none 'localhosaaat.localdomain'
+#   |__ will avoid /etc/resolv.conf contains search localdomain everytime reboot
 hostnamectl set-hostname ${host_name}
 
 # set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
