@@ -4,6 +4,16 @@
 # All content is stored as below by default
 # /var/lib/docker/
 
+# ----------------------------------
+# Avoid docker info warning
+# ----------------------------------
+local docker_sysctl_conf="/etc/sysctl.conf"
+sed -i '/bridge-nf-call-iptables/d' $docker_sysctl_conf
+sed -i '/bridge-nf-call-ip6tables/d' $docker_sysctl_conf
+
+echo "net.bridge.bridge-nf-call-iptables = 1" >> $docker_sysctl_conf
+echo "net.bridge.bridge-nf-call-ip6tables = 1" >> $docker_sysctl_conf
+sysctl -p
 
 # ----------------------------------
 # prerequisite packages
