@@ -282,6 +282,9 @@ ______________________________
   * Ruby 2.5.1
   * Rails 5.2
     * puma (systemd, puma-mgr)
+  * Docker
+    * docker-ce
+    * docker-compose
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
@@ -434,3 +437,8 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
         * composer installed (for laravel)
       * rubyuser
         * rvm installed (for rails)
+* 2018/07/27
+  * Install Docker
+    * docker-ce
+      * Disable docker daemon onboot by default (systemd-docker disabled)
+    * docker-compose
