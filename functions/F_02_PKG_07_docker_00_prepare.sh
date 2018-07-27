@@ -26,10 +26,13 @@ echo "uninstall docker-ce"
 echo "---------------"
 yum remove -y docker-ce
 
-echo "---------------"
-echo "delete /var/lib/docker"
-echo "---------------"
-\cp -a --backup=t /var/lib/docker /var/lib/docker_old && rm -rf /var/lib/docker
+local docker_data="/var/lib/docker"
+if [[ -d $docker_data ]]; then
+  echo "---------------"
+  echo "delete old ${docker_data}"
+  echo "---------------"
+  \cp -a --backup=t ${docker_data} "${docker_data}_old" && rm -rf ${docker_data}
+fi
 
 # ----------------------------------
 # Install docker-ce repo

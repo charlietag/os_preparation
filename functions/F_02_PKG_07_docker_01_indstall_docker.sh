@@ -21,10 +21,16 @@ echo "Install docker-ce"
 echo "---------------"
 yum install -y docker-ce
 
+local docker_version="/var/lib/docker_version.txt"
 echo "---------------"
-echo "docker version noted at /var/lib/docker_version.txt"
+echo "docker version noted at ${docker_version}"
 echo "---------------"
-\cp -a --backup=t /var/lib/docker_version.txt /var/lib/docker_version_old.txt && docker -v > /var/lib/docker_version.txt
+
+if [[ -s $docker_version ]]; then
+  \cp -a --backup=t $docker_version "${docker_verson}_old" && docker -v > $docker_version
+else
+  docker -v > $docker_version
+fi
 docker -v
 
 # ----------------------------------
