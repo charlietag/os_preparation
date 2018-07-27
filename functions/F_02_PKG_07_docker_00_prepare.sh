@@ -37,7 +37,7 @@ if [[ -d $docker_data ]]; then
   echo "---------------"
   echo "delete old ${docker_data}"
   echo "---------------"
-  \cp -a --backup=t ${docker_data} "${docker_data}_old" && rm -rf ${docker_data}
+  \cp -a ${docker_data} "${docker_data}_$(date +"%Y%m%d-%H%M%S")" && rm -rf ${docker_data}
 fi
 
 # ----------------------------------

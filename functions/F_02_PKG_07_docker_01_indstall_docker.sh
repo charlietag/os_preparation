@@ -27,7 +27,7 @@ echo "docker version noted at ${docker_version}"
 echo "---------------"
 
 if [[ -s $docker_version ]]; then
-  \cp -a --backup=t $docker_version "${docker_verson}_old" && docker -v > $docker_version
+  \cp -a $docker_version "${docker_verson}_$(date +"%Y%m%d-%H%M%S")" && docker -v > $docker_version
 else
   docker -v > $docker_version
 fi
