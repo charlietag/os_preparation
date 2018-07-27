@@ -1,3 +1,8 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 # ----------------------------------
 # remove old version docker
 # ----------------------------------
@@ -19,7 +24,7 @@ yum remove -y docker \
 # ----------------------------------
 yum-config-manager \
     --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+    ${docker_yum_repo}
 
 #yum-config-manager --enable docker-ce-edge
 #yum-config-manager --enable docker-ce-test
