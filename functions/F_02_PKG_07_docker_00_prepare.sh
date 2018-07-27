@@ -4,8 +4,18 @@
 # RENDER_CP
 
 # ----------------------------------
-# remove old version of docker
+# Stop docker before uninstall
 # ----------------------------------
+systemctl stop docker
+
+# ----------------------------------
+# remove old version of docker
+# remove old version of docker-ce
+# WARN: every new version of docker-ce might not surport content /var/lib/docker from old version of docker-ce
+# ----------------------------------
+echo "---------------"
+echo "uninstall docker-ce, docker-*"
+echo "---------------"
 yum remove -y docker \
               docker-client \
               docker-client-latest \
@@ -15,17 +25,13 @@ yum remove -y docker \
               docker-logrotate \
               docker-selinux \
               docker-engine-selinux \
-              docker-engine
+              docker-engine \
+              docker-ce  # remove old version of docker-ce
+
 
 # ----------------------------------
-# remove old version of docker-ce
-# WARN: every new version of docker-ce might not surport content /var/lib/docker from old version of docker-ce
+# remove docker files
 # ----------------------------------
-echo "---------------"
-echo "uninstall docker-ce"
-echo "---------------"
-yum remove -y docker-ce
-
 local docker_data="/var/lib/docker"
 if [[ -d $docker_data ]]; then
   echo "---------------"
