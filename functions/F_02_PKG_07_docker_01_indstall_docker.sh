@@ -18,6 +18,7 @@ yum install -y  yum-utils \
 # ----------------------------------
 yum install -y docker-ce
 
+\cp -a --backup=t /var/lib/docker_version.txt /var/lib/docker_version_old.txt && docker -v > /var/lib/docker_version.txt
 
 # ----------------------------------
 # By default, disable docker onboot
