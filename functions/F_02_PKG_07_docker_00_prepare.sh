@@ -33,11 +33,12 @@ yum remove -y docker \
 # remove docker files
 # ----------------------------------
 local docker_data="/var/lib/docker"
+local docker_data_old="/var/lib/$(date +"%Y%m%d-%H%M%S")_docker"
 if [[ -d $docker_data ]]; then
   echo "---------------"
   echo "delete old ${docker_data}"
   echo "---------------"
-  \cp -a ${docker_data} "$(date +"%Y%m%d-%H%M%S")_${docker_data}" && rm -rf ${docker_data}
+  \cp -a ${docker_data} "${docker_data_old}" && rm -rf ${docker_data}
 fi
 
 # ----------------------------------
