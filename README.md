@@ -23,7 +23,9 @@ This is a small light bash project.  Suit small companies which have only few se
 
   (centos 7 server environment settings)
 
-* This is useful if you have less than 5 CentOS7 servers to maintain.
+* This is useful when
+  * You have less than 5 CentOS7 servers to maintain.
+  * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel**
