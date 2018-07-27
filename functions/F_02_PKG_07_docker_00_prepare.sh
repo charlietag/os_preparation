@@ -21,14 +21,23 @@ yum remove -y docker \
 # remove old version of docker-ce
 # WARN: every new version of docker-ce might not surport content /var/lib/docker from old version of docker-ce
 # ----------------------------------
+echo "---------------"
+echo "uninstall docker-ce"
+echo "---------------"
 yum remove -y docker-ce
 
+echo "---------------"
+echo "delete /var/lib/docker"
+echo "---------------"
 \cp -a --backup=t /var/lib/docker /var/lib/docker_old && rm -rf /var/lib/docker
 
 # ----------------------------------
 # Install docker-ce repo
 # Only enable "stable"
 # ----------------------------------
+echo "---------------"
+echo "add docker-ce repo"
+echo "---------------"
 yum-config-manager \
     --add-repo \
     ${docker_yum_repo}
