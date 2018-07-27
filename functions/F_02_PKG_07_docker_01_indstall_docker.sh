@@ -33,6 +33,7 @@ else
 fi
 docker -v
 
+systemctl start docker
 # ----------------------------------
 # By default, disable docker onboot
 # ----------------------------------
