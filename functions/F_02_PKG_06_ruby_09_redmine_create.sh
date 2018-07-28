@@ -48,6 +48,10 @@ task_copy_using_cat_user_home_web_sites
 RENDER_CP $CONFIG_FOLDER/user_home/web_sites/redmine/config/database.yml $redmine_web_root/config/database.yml
 chown -R ${current_user}.${current_user} ${redmine_web_root}
 
+if [[ ! -f "${redmine_web_root}/.gitignore" ]]; then
+  echo "FAILED: redmine installation failed !"
+  exit
+fi
 # ====== Create database for redmine =======
 systemctl start mariadb
 echo -n "starting mariadb"
