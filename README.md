@@ -138,6 +138,15 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
   /home/rubyuser/rails_sites/myrails/
   ```
 
+  * Redmine
+    * default user: rubyuser (can be changed)
+
+  ```bash
+  /home/${current_user}/rails_sites/redmine/
+  --->
+  /home/rubyuser/rails_sites/redmine/
+  ```
+
   * laravel
     * default user: phpuser (can be changed)
 
@@ -151,6 +160,7 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 
   ```bash
   <192.168.x.x> myrails.centos7.localdomain
+  <192.168.x.x> redmine.centos7.localdomain
   <192.168.x.x> mylaravel.centos7.localdomain
   ```
 
@@ -158,6 +168,7 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 
   ```bash
   http://myrails.centos7.localdomain
+  http://redmine.centos7.localdomain
   http://mylaravel.centos7.localdomain
   ```
 
@@ -284,6 +295,9 @@ ______________________________
   * Ruby 2.5.1
   * Rails 5.2
     * puma (systemd, puma-mgr)
+  * Redmine 3.4.6
+    * ruby 2.4.1
+    * rails 4.2
   * Docker
     * docker-ce
     * docker-compose
@@ -444,3 +458,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * docker-ce
       * Disable docker daemon onboot by default (systemd-docker disabled)
     * docker-compose
+* 2018/07/28
+  * Install Redmine 3.4.6(ruby 2.4.1, rails 4.2)
+    * Redmine plugins: redmine_agile, redmine_lightbox2

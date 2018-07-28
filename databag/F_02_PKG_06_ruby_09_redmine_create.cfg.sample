@@ -1,0 +1,25 @@
+#==========================================
+# Do not change here
+#==========================================
+. ${PLUGINS}/plugin_load_databag.sh _ruby_rails.cfg
+
+#==========================================
+# Change info here
+#==========================================
+local redmine_ruby_version="2.4.1"
+
+local redmine_url="https://github.com/redmine/redmine/archive/3.4.6.zip"
+
+local redmine_plugins=(
+  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.4.3.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_6-light.zip"
+)
+
+local redmine_db_user="root"
+local redmine_db_pass=""
+#==========================================
+# Do not change here
+#==========================================
+local redmine_downloaded_zip="$(basename ${redmine_url})"
+local redmine_unzipped_folder="redmine-$(echo "${redmine_zip_file}"|sed 's/\.zip//g')"
+

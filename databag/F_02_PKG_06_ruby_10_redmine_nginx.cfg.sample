@@ -1,0 +1,1 @@
+. ${PLUGINS}/plugin_load_databag.sh _ruby_rails.cfg
