@@ -65,6 +65,6 @@ su -l $current_user -c "cd ${redmine_web_root} && bundle exec rake db:migrate RA
 su -l $current_user -c "cd ${redmine_web_root} && bundle exec rake redmine:plugins RAILS_ENV=production"
 
 # ====== Stop database after finishing installation =======
+systemctl stop mariadb
 echo -n "stopping mariadb"
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
-systemctl stop mariadb
