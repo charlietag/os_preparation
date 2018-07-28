@@ -1,0 +1,43 @@
+default:
+  email_delivery:
+
+  # ==== Simple SMTP server at localhost
+    email_delivery:
+      delivery_method: :smtp  # :async_smtp
+      smtp_settings:
+        address: "localhost"
+        port: 25
+  # ==== Simple SMTP server at localhost
+  
+  attachments_storage_path:
+
+  autologin_cookie_name:
+  autologin_cookie_path:
+  autologin_cookie_secure:
+
+  # Configuration of SCM executable command.
+  scm_subversion_command:
+  scm_mercurial_command:
+  scm_git_command:
+  scm_cvs_command:
+  scm_bazaar_command:
+  scm_darcs_command:
+  scm_subversion_path_regexp:
+  scm_mercurial_path_regexp:
+  scm_git_path_regexp:
+  scm_cvs_path_regexp:
+  scm_bazaar_path_regexp:
+  scm_darcs_path_regexp:
+  scm_filesystem_path_regexp:
+  scm_stderr_log_file:
+
+  database_cipher_key:
+  rmagick_font_path:
+
+# specific configuration options for production environment
+# that overrides the default ones
+production:
+
+# specific configuration options for development environment
+# that overrides the default ones
+development:

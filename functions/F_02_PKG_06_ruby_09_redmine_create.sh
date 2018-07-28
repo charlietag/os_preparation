@@ -45,6 +45,7 @@ echo "${redmine_ruby_version}" > $redmine_web_root/.ruby-version
 echo "redmine_gemset" > $redmine_web_root/.ruby-gemset
 
 task_copy_using_cat_user_home_web_sites
+RENDER_CP $CONFIG_FOLDER/user_home/web_sites/redmine/config/database.yml $redmine_web_root/config/database.yml
 chown -R ${current_user}.${current_user} ${redmine_web_root}
 
 # ====== Create database for redmine =======
