@@ -31,7 +31,7 @@ cd ${TMP}
 wget $redmine_url
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
 rm -f *.zip
-mv ${TMP}/* ${redmine_web_root}
+mv ${TMP}/redmine-* ${redmine_web_root}
 # ----- redmine core -----
 
 # ----- redmine plugins -----
@@ -42,7 +42,8 @@ done
 
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
 rm -f *.zip
-mv ${TMP}/* $redmine_web_plugin_path/
+mv ${TMP}/redmine_lightbox2-* $redmine_web_plugin_path/redmine_lightbox2
+mv ${TMP}/redmine_agile $redmine_web_plugin_path/redmine_agile
 # ----- redmine plugins -----
 
 #==================================
