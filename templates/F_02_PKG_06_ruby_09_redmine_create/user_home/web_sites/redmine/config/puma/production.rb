@@ -30,7 +30,8 @@ activate_control_app
 
 ## Thread setting
 workers 0
-threads_count = 5
+#threads_count = 5
+threads_count = 1  # not sure rails 4.2 is thread_safe
 threads threads_count, threads_count
 
 ### For cluster mode. Uncomment this if workers > 1
@@ -39,7 +40,8 @@ threads threads_count, threads_count
 #cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
 #workers_count = cpu_cores * 10
 #workers workers_count
-#threads 5, 18
+##threads 5, 18
+#threads 1, 1  # not sure rails 4.2 is thread_safe
 
 
 # (cluster mode) WARNING: Thread detected is normal , ref. https://github.com/schneems/puma_worker_killer/issues/35
