@@ -28,6 +28,10 @@ pidfile "#{app_tmp}/pids/puma.pid"
 state_path "#{app_tmp}/pids/puma.state"
 activate_control_app
 
+# ----------------------------
+# Thread safe
+# Ref. https://github.com/puma/puma/issues/531#issuecomment-48828357
+# ----------------------------
 ## Thread setting
 workers 0
 #threads_count = 5
