@@ -45,6 +45,9 @@ rm -f *.zip
 mv ${TMP}/* $redmine_web_plugin_path/
 # ----- redmine plugins -----
 
+#==================================
+# Setup config , ruby version , gemset name
+#==================================
 # Setup redmine ruby version and gemset
 echo "${redmine_ruby_version}" > $redmine_web_root/.ruby-version
 echo "redmine_gemset" > $redmine_web_root/.ruby-gemset
@@ -60,6 +63,10 @@ if [[ ! -f "${redmine_web_root}/.gitignore" ]]; then
   echo "FAILED: redmine installation failed !"
   exit
 fi
+
+#==================================
+# Database setup
+#==================================
 # ====== Create database for redmine =======
 systemctl start mariadb
 echo -n "starting mariadb"
