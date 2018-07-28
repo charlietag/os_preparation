@@ -168,7 +168,7 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 
   ```bash
   http://myrails.centos7.localdomain
-  http://redmine.centos7.localdomain
+  http://redmine.centos7.localdomain (default account: admin/admin)
   http://mylaravel.centos7.localdomain
   ```
 
