@@ -13,7 +13,7 @@ su -l $current_user -c "rvm install ${redmine_ruby_version}"
 # Setup redmine env
 #==================================
 local redmine_web_root="${web_sites}/redmine"
-if [[ -d $redmine_unzipped_folder ]]; then
+if [[ -d $redmine_web_root ]]; then
   echo "WARN: folder exists \"${redmine_web_root}\""
   exit
 fi
@@ -27,10 +27,14 @@ echo "Downloading redmine ..."
 echo "========================================="
 cd ${TMP}
 
+# ----- redmine core -----
 wget $redmine_url
-unzip -q $redmine_downloaded_zip && rm -f $redmine_downloaded_zip
-mv $redmine_unzipped_folder ${redmine_web_root}
+ls *.zip 2>/dev/null | xargs -i unzip -q {}
+rm -f *.zip
+mv ${TMP}/* ${redmine_web_root}
+# ----- redmine core -----
 
+# ----- redmine plugins -----
 for redmine_plugin in ${redmine_plugins[@]}; do
   echo "Downloading redmine_plugin -> $redmine_plugin ..."
   wget $redmine_plugin
@@ -39,13 +43,17 @@ done
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
 rm -f *.zip
 mv ${TMP}/* $redmine_web_plugin_path/
+# ----- redmine plugins -----
 
 # Setup redmine ruby version and gemset
 echo "${redmine_ruby_version}" > $redmine_web_root/.ruby-version
 echo "redmine_gemset" > $redmine_web_root/.ruby-gemset
 
 task_copy_using_cat_user_home_web_sites
-RENDER_CP $CONFIG_FOLDER/user_home/web_sites/redmine/config/database.yml $redmine_web_root/config/database.yml
+
+cat $CONFIG_FOLDER/user_home/web_sites/redmine/config/configuration.yml.sample > $redmine_web_root/config/configuration.yml
+RENDER_CP $CONFIG_FOLDER/user_home/web_sites/redmine/config/database.yml.sample $redmine_web_root/config/database.yml
+
 chown -R ${current_user}.${current_user} ${redmine_web_root}
 
 if [[ ! -f "${redmine_web_root}/.gitignore" ]]; then

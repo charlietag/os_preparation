@@ -17,9 +17,4 @@ local redmine_plugins=(
 
 local redmine_db_user="root"
 local redmine_db_pass=""
-#==========================================
-# Do not change here
-#==========================================
-local redmine_downloaded_zip="$(basename ${redmine_url})"
-local redmine_unzipped_folder="redmine-$(echo "${redmine_downloaded_zip}"|sed 's/\.zip//g')"
 
