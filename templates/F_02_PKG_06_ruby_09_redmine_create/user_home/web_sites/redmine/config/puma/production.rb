@@ -33,36 +33,54 @@ activate_control_app
 # Ref. https://github.com/puma/puma/issues/531#issuecomment-48828357
 # ----------------------------
 ## Thread setting
-workers 0
-#threads_count = 5
-threads_count = 1  # not sure rails 4.2 is thread_safe
-threads threads_count, threads_count
 
-### For cluster mode. Uncomment this if workers > 1
-## Worker setting: "single mode" - value = 0 ;  "cluster mode" - value > 0
-## For High Performance Production.
-#cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
-#workers_count = cpu_cores * 10
-#workers workers_count
-##threads 5, 18
-#threads 1, 1  # not sure rails 4.2 is thread_safe
+# #########################################
+#        ##### Single Mode #####
+# Worker setting: "single mode" -> value = 0
+# #########################################
+#workers 0
+#threads_count = 1  # not sure rails 4.2 is thread_safe
+#threads threads_count, threads_count
+# #########################################
 
 
+
+
+
+# #########################################
+#       ###### Cluster Mode #####
+# For cluster mode. Uncomment this if workers > 1
+# Worker setting: "cluster mode" -> value > 0
+# For High Performance Production.
+# #########################################
+cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
+workers_count = cpu_cores * 10
+workers workers_count
+threads 1, 1  # not sure rails 4.2 is thread_safe
+
+
+# -----------------------------------------
 # (cluster mode) WARNING: Thread detected is normal , ref. https://github.com/schneems/puma_worker_killer/issues/35
+# -----------------------------------------
 preload_app!
 
+# -----------------------------------------
 # (cluster mode) for copy on write feature
+# -----------------------------------------
 on_worker_boot do
   ActiveSupport.on_load(:active_record) do
     ActiveRecord::Base.establish_connection
   end
 end
+# #########################################
 
 
 
 
-# ----------- Puma Prod ------------
 
+# #########################################
+# #    Puma Prod  #
+# #########################################
 
 # Specifies the `environment` that Puma will run in.
 #
