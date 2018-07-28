@@ -41,7 +41,7 @@ activate_control_app
 #workers 0
 #threads_count = 1  # not sure rails 4.2 is thread_safe
 #threads threads_count, threads_count
-# #########################################
+# --------------- Single --------------
 
 
 
@@ -72,7 +72,7 @@ on_worker_boot do
     ActiveRecord::Base.establish_connection
   end
 end
-# #########################################
+# --------------- Cluster --------------
 
 
 

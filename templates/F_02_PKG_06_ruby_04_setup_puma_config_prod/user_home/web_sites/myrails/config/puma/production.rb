@@ -36,7 +36,7 @@ activate_control_app
 workers 0
 threads_count = 5
 threads threads_count, threads_count
-# #########################################
+# --------------- Single --------------
 
 
 
@@ -66,7 +66,7 @@ threads threads_count, threads_count
 #    ActiveRecord::Base.establish_connection
 #  end
 #end
-# #########################################
+# --------------- Cluster --------------
 
 
 # #########################################
