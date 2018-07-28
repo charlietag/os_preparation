@@ -28,7 +28,7 @@ echo "========================================="
 cd ${TMP}
 
 wget $redmine_url
-unzip $redmine_downloaded_zip && rm -f $redmine_downloaded_zip
+unzip -q $redmine_downloaded_zip && rm -f $redmine_downloaded_zip
 mv $redmine_unzipped_folder ${redmine_web_root}
 
 for redmine_plugin in ${redmine_plugins[@]}; do
