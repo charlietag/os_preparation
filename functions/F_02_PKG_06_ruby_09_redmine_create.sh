@@ -8,6 +8,12 @@ echo "      Install ruby ${redmine_ruby_version}"
 echo "========================================="
 su -l $current_user -c "rvm install ${redmine_ruby_version}"
 
+echo "========================================="
+echo "      gem install bundler"
+echo "========================================="
+su -l $current_user -c "gem install bundler"
+echo ""
+
 
 #==================================
 # Setup redmine env
