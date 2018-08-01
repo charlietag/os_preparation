@@ -49,3 +49,7 @@ hardstatus alwayslastline "%{= .K} %l%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0
 #----------------------set to utf8----------------------
 # Set default encoding using utf8
 defutf8 on
+
+# make the shell in every window a login shell
+# This will also fix rvm shell issue
+shell -${SHELL}
