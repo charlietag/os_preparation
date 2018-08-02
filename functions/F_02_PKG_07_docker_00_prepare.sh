@@ -41,6 +41,16 @@ if [[ -d $docker_data ]]; then
   \cp -a ${docker_data} "${docker_data_old}" && rm -rf ${docker_data}
 fi
 
+
+
+# ----------------------------------
+# prerequisite packages
+# ----------------------------------
+yum install -y  yum-utils \
+                device-mapper-persistent-data \
+                lvm2
+
+
 # ----------------------------------
 # Install docker-ce repo
 # Only enable "stable"

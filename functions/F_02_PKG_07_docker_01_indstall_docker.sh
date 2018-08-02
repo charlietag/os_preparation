@@ -15,13 +15,6 @@ echo "net.bridge.bridge-nf-call-iptables = 1" >> $docker_sysctl_conf
 echo "net.bridge.bridge-nf-call-ip6tables = 1" >> $docker_sysctl_conf
 sysctl -p
 
-# ----------------------------------
-# prerequisite packages
-# ----------------------------------
-yum install -y  yum-utils \
-                device-mapper-persistent-data \
-                lvm2
-
 
 # ----------------------------------
 # Install docker-ce
