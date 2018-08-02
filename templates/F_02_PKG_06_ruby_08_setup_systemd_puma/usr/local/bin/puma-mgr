@@ -128,7 +128,7 @@ do_all_sites () {
     echo ""
   fi
 
-  local all_puma_process="$(ps aux |grep 'puma' | grep -Ev 'grep|puma-mgr')"
+  local all_puma_process="$(ps aux |grep -E '[[:digit:]]+[[:space:]]+puma')"
   if [[ -n "${all_puma_process}" ]]; then
     echo "******** All Running Puma Process - Detail *******"
     echo -e "${all_puma_process}"
