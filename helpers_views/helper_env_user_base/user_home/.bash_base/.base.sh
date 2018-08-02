@@ -72,7 +72,7 @@ PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}\t${COLOR_END} ${COLOR_BL
 #------------------------------------------------------
 #               User customized bash setting
 #------------------------------------------------------
-BASH_FILES="$(find $HOME/.bash_user -type f)"
+BASH_FILES="$(find $HOME/.bash_user -mindepth 1 -maxdepth 1 -type f -name "*.sh")"
 if [[ -n "${BASH_FILES}" ]]; then
   for BASH_FILE in $BASH_FILES; do
     source $BASH_FILE
