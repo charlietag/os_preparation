@@ -25,7 +25,7 @@ yum install -y gcc-c++ make
 
 # Basic dev packages
 yum groupinstall -y "Development Tools"
-yum install -y bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
+yum install -y jwhois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
 
 
 #For Rails (also for rvm)
