@@ -54,7 +54,8 @@ activate_control_app
 # For High Performance Production.
 # #########################################
 cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
-workers_count = cpu_cores * 10
+#workers_count = cpu_cores * 10
+workers_count = cpu_cores
 workers workers_count
 threads 1, 1  # not sure rails 4.2 is thread_safe
 
