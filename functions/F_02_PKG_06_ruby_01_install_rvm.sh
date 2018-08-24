@@ -6,7 +6,8 @@
 echo "========================================="
 echo "      Install RVM"
 echo "========================================="
-local rvm_install_retry=5
+#local rvm_install_retry=5
+local rvm_install_retry=5000
 
 
 ############### Install RVM retry Loop #############
