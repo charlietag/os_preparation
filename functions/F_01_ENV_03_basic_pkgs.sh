@@ -1,12 +1,7 @@
-# =====================
-# Enable databag
-# =====================
-# RENDER_CP
-
 echo "==============================="
 echo "        Render repo"
 echo "==============================="
-rpm -Uvh $epel_yum_repo
+yum install -y epel-release
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
