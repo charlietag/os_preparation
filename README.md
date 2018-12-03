@@ -35,7 +35,7 @@ This is a small light bash project.  Suit small companies which have only few se
   please switch to git tag named "before_passenger_to_puma"
 
   ```bash
-  git clone --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
+  git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
   ```
 
 # Environment
