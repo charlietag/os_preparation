@@ -66,8 +66,15 @@ COLOR_DARK_CYAN='\[\e[0;36m\]'
 COLOR_MAGENTA='\[\e[1;35m\]'
 COLOR_DARK_MAGENTA='\[\e[0;35m\]'
 COLOR_END='\[\033[00m\]'
+
+# OS Version
+OS_VER="$(lsb_release -irs | cut -d'.' -f-2)"
+
+
+
 unset PROMPT_COMMAND
-PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}\t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
+
+PS1="${COLOR_GREEN}\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
 
 #------------------------------------------------------
 #               User customized bash setting
