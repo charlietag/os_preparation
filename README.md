@@ -461,3 +461,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2018/07/28
   * Install Redmine 3.4.6(ruby 2.4.1, rails 4.2)
     * Redmine plugins: redmine_agile, redmine_lightbox2
+* 2018/12/12
+  * Some changes for nginx Nginx WAF
