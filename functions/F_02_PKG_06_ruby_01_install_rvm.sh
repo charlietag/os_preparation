@@ -47,11 +47,9 @@ echo ""
 ############### Install RVM retry Loop #############
 
 
-
-# ----- rvm ctrl-c trap soltion workaround ------
+# ----- rvm setup .rvmrc ------
 echo "------------------------------------------"
-echo "RVM trap workaround"
-echo "modify rvm source code"
+echo "Setup .rvmrc"
 echo "------------------------------------------"
 task_copy_using_cat_user_home
 echo ""
