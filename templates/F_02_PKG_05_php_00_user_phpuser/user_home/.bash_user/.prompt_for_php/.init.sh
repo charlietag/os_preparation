@@ -2,6 +2,7 @@
 #------------------------------------------------------
 #               Bash Prompt Setting - Function
 #------------------------------------------------------
+# Remain '#', will be replaced by ~/.bash_base/.prompt_for_git/.init.sh
 PROMPT_SYM='#'
 
 ORIGIN_PS="${PS1%\\n# }"
