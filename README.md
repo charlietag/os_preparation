@@ -288,7 +288,7 @@ ______________________________
 ## Installed Packages
   * PHP7.1 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 5.7 (Ref. https://laravel.com/)
+  * Laravel 5.8 (Ref. https://laravel.com/)
   * MariaDB 10.3 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via Nginx Official Repo)
@@ -465,6 +465,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Update NodeJS from 8.x LTS to 10.x LTS
 * 2018/12/12
   * Some changes for nginx Nginx WAF
-* 2019/02/26
-  * Laravel 5.7
+* 2019/02/27
+  * Laravel 5.8
   * Redmine - add 3.4.9 , 4.0.2 version
