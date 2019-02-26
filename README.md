@@ -288,16 +288,16 @@ ______________________________
 ## Installed Packages
   * PHP7.1 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 5.6 (Ref. https://laravel.com/)
+  * Laravel 5.7 (Ref. https://laravel.com/)
   * MariaDB 10.3 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.5.1
   * Rails 5.2
     * puma (systemd, puma-mgr)
-  * Redmine 3.4.6
-    * ruby 2.4.1
-    * rails 4.2
+  * Redmine 4.0.2
+    * ruby 2.5.1
+    * rails 5.2
   * Docker
     * docker-ce
     * docker-compose
@@ -465,3 +465,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Update NodeJS from 8.x LTS to 10.x LTS
 * 2018/12/12
   * Some changes for nginx Nginx WAF
+* 2019/02/26
+  * Laravel 5.7
