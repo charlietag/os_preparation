@@ -1,23 +1,23 @@
 production:
   adapter: mysql2
-  database: redmine
+  database: ${redmine_db_name}
   host: localhost
   username: root
-  password: \"${redmine_db_pass}\"
+  password: ${redmine_db_pass}
   encoding: utf8
 
 development:
   adapter: mysql2
-  database: redmine_development
+  database: ${redmine_db_name}_development
   host: localhost
   username: root
-  password: \"\"
+  password: 
   encoding: utf8
 
 test:
   adapter: mysql2
-  database: redmine_test
+  database: ${redmine_db_name}_test
   host: localhost
   username: root
-  password: \"\"
+  password: 
   encoding: utf8

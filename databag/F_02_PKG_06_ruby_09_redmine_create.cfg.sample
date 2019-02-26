@@ -6,15 +6,38 @@
 #==========================================
 # Change info here
 #==========================================
-local redmine_ruby_version="2.4.1"
+local redmine_db_name="redmine"
+# --- Redmine 3.x ---
+#local redmine_ruby_version="2.4.1"
+#local redmine_version="3.4.9"
+#local redmine_bundler_version="1.17.3"
+#local redmine_plugins=(
+#  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.4.4.zip"
+#  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_8-light.zip"
+#)
 
-local redmine_url="https://github.com/redmine/redmine/archive/3.4.6.zip"
-
+# --- Redmine 4.x ---
+local redmine_ruby_version="2.5.1"
+local redmine_version="4.0.2"
+local redmine_bundler_version="2.0.1"
 local redmine_plugins=(
-  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.4.3.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_6-light.zip"
+  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.0.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_8-light.zip"
 )
+
+# --- Redmine Language ---
+#local redmine_default_lang=""  # Leave this empty. Then in manage page, redmine will ask you if you want to load default config data, in what language.
+#local redmine_default_lang="en"
+local redmine_default_lang="zh-TW"
 
 local redmine_db_user="root"
 local redmine_db_pass=""
 
+#------------------------------------------
+local redmine_gemset="gemset_redmine_${redmine_version}"
+
+
+#==========================================
+# Redmine URL
+#==========================================
+local redmine_url="https://github.com/redmine/redmine/archive/${redmine_version}.zip"

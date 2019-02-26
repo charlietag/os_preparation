@@ -467,3 +467,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Some changes for nginx Nginx WAF
 * 2019/02/26
   * Laravel 5.7
+  * Redmine - add 3.4.9 , 4.0.2 version
