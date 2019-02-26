@@ -20,11 +20,13 @@ echo "========================================="
 su -l $current_user -c "yes | gem update"
 echo ""
 
-echo "========================================="
-echo "      gem cleanup, delete old gems"
-echo "========================================="
-su -l $current_user -c "gem cleanup"
-echo ""
+# --- Comment these lines , in case cleanup legacy gems which are still in use, for the same ruby version ---
+#echo "========================================="
+#echo "      gem cleanup, delete old gems"
+#echo "========================================="
+#su -l $current_user -c "gem cleanup"
+#echo ""
+# --- Comment these lines , in case cleanup lagacy gems which are still in use, for the same ruby version ---
 
 echo "========================================="
 echo "      gem install bundler"

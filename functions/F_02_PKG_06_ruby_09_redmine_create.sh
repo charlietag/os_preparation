@@ -7,7 +7,8 @@ echo "========================================="
 echo "      Install ruby ${redmine_ruby_version}"
 echo "========================================="
 su -l $current_user -c "rvm install ${redmine_ruby_version}"
-su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update ; gem cleanup)"
+#su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update ; gem cleanup)"  # DO NOT cleanup gems, in case cleanup legacy gems which are still in use, for the same ruby version
+su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update)"
 
 echo "========================================="
 echo "      gem install bundler"
