@@ -38,5 +38,6 @@ yum install -y openssl openssl-libs openssl-devel libticonv-devel
 # For sql server connection (freetds)
 yum install -y freetds freetds-devel 
 
-# For rails 5.2, active storage (gem 'mini_magick')
-yum install -y ImageMagick ImageMagick-devel
+# ImageMagick6 - For rails 5.2+, active storage (gem 'mini_magick')
+local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -i bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
+yum localinstall -y ${image_magick_packages}
