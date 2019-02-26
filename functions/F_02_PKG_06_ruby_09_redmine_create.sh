@@ -67,6 +67,7 @@ task_copy_using_cat_user_home_web_sites
 
 cat $CONFIG_FOLDER/user_home/web_sites/redmine/config/configuration.yml.sample > $redmine_web_root/config/configuration.yml
 RENDER_CP $CONFIG_FOLDER/user_home/web_sites/redmine/config/database.yml.sample $redmine_web_root/config/database.yml
+sed -e '/puma/ s/^#*/#/' -i $redmine_web_root/Gemfile
 
 chown -R ${current_user}.${current_user} ${redmine_web_root}
 
