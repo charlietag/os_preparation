@@ -14,7 +14,7 @@ local web_sites="${current_user_home}/rails_sites"
 local rvm_version="1.29.6"
 
 # Specify ruby version (installing with rvm)
-local ruby_version="2.5.1"
+local ruby_version="2.5.3"
 
 # Specify rails version here
 # ex. 5.0 presents ~> 5.0.0

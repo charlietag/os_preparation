@@ -292,11 +292,11 @@ ______________________________
   * MariaDB 10.3 (equal to MySQL 5.7)
   * nodejs (stable version - 8)
   * Nginx (latest version - via Nginx Official Repo)
-  * Ruby 2.5.1
+  * Ruby 2.5.3
   * Rails 5.2
     * puma (systemd, puma-mgr)
   * Redmine 4.0.2
-    * ruby 2.5.1
+    * ruby 2.5.3
     * rails 5.2
   * Docker
     * docker-ce
@@ -468,3 +468,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/02/27
   * Laravel 5.8
   * Redmine - add 3.4.9 , 4.0.2 version
+* 2019/03/12
+  * Ruby 2.5.3
