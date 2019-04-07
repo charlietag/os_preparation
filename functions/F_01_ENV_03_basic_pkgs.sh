@@ -22,6 +22,8 @@ yum install -y gcc-c++ make
 yum groupinstall -y "Development Tools"
 yum install -y jwhois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
 
+# Basic debug tools - Enhanced tail / Enhanced grep
+yum install -y multitail ack
 
 #For Rails (also for rvm)
 rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sqlite

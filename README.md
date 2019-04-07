@@ -301,6 +301,15 @@ ______________________________
   * Docker
     * docker-ce
     * docker-compose
+  * Useful tools
+    * Enhanced tail
+      * multitail
+        * multitail /var/log/nginx/*.access.log
+    * Enhanced grep
+      * ack
+        * ls | ack keyword
+        * ack -i keyword *
+          * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
@@ -470,3 +479,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Redmine - add 3.4.9 , 4.0.2 version
 * 2019/03/12
   * Ruby 2.5.3
+* 2019/04/07
+  * Enhanced tail - multitail
+  * Enhanced grep - ack
