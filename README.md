@@ -482,3 +482,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/04/07
   * Enhanced tail - multitail
   * Enhanced grep - ack
+* 2019/04/26
+  * Redmine - 4.0.2 ---> 4.0.3
