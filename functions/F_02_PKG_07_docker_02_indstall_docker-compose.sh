@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 # ----------------------------------
 # Install latest version of docker-comopose

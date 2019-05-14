@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 echo "========================================="
 echo "(Laravel:${laravel_version}) composer create-project ---> mylaravel"

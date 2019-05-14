@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 #Yarn
 curl "${yarn_yum_repo}" -o /etc/yum.repos.d/yarn.repo

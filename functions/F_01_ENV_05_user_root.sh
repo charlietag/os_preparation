@@ -1,5 +1,5 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 helper_env_user_base

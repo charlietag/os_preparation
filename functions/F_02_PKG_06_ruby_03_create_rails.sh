@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 echo "========================================="
 echo "(Rails:${rails_version}) rails new myrails -d mysql"

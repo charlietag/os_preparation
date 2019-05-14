@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG:enable
 
 # Install composer
 # Ref. https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md

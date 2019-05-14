@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 #-----------------------------------------------------------------------------------------
 #Solve sshd login waiting issue (GSSAuth)

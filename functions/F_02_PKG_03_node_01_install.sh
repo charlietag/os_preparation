@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 #NodeJS
 curl --silent --location "${node_yum_repo}" | bash -

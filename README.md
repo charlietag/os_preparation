@@ -218,8 +218,8 @@ I want to choose specific part to install.
       * In **YourOwnFuntionName** , you just want to **LOAD VARIABLES ONLY** from databag, try add a comment into your function script
 
         ```bash
-        # For Load Variables Only Usage, add the following single comment line with keyword RENDER_CP
-        # RENDER_CP
+        # For Load Variables Only Usage, add the following single comment line with keyword DATABAG_CFG:enable
+        # DATABAG_CFG:enable
         ```
 
   * helpers/

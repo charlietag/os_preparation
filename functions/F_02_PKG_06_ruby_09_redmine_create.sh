@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 echo "========================================="
 echo "      Install ruby ${redmine_ruby_version}"
