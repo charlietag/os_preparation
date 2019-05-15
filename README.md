@@ -207,7 +207,7 @@ I want to choose specific part to install.
 
         ```bash
         # Method : eval "echo \"$variable\""
-        # Might have escape issue
+        # Might have escape issue, if template is complicated
         RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
         ```
 
