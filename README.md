@@ -206,8 +206,17 @@ I want to choose specific part to install.
       * In **YourOwnFuntionName** , you can call
 
         ```bash
+        # Method : eval "echo \"$variable\""
+        # Might have escape issue
         RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
         ```
+
+        ```bash
+        # Method : cat template | sed 's/\{\{var\}\}/$var/g'
+        # BETTER method for rendering template
+        RENDER_CP_SED ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+        ```
+
 
         instead of
         
