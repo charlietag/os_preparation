@@ -34,6 +34,9 @@ rpm --quiet -q sqlite-devel || yum -y install sqlite-devel   # use mysql not sql
 #For compile latest ruby
 yum install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel
 
+#For RVM 1.29.8 - Add system ruby as dependency for CentOS
+yum install -y ruby
+
 # For SSL
 yum install -y openssl openssl-libs openssl-devel libticonv-devel
 
