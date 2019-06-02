@@ -28,7 +28,7 @@ This is a small light bash project.  Suit small companies which have only few se
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
-  * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel**
+  * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
 * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
 
@@ -299,7 +299,7 @@ ______________________________
   * PHP-FPM (Ref. https://webtatic.com/packages)
   * Laravel 5.8 (Ref. https://laravel.com/)
   * MariaDB 10.3 (equal to MySQL 5.7)
-  * nodejs (stable version - 8)
+  * nodejs (stable version - 10)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.3
   * Rails 5.2
