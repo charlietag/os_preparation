@@ -499,3 +499,15 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/08/03
   * RVM - 1.29.8 ---> 1.29.9
   * Redmine - 4.0.3 ---> 4.0.4
+  * For Rails 6+ use
+    * Preview
+      * Video
+        * ffmpeg
+        * ffmpeg-devel
+      * PDF
+        * poppler
+        * poppler-devel
+        * muPDF (not installed - payment required)
+    * Generate PDF files
+      * wkhtmltopdf
+      * wkhtmltopdf-devel
