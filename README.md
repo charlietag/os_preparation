@@ -298,7 +298,7 @@ ______________________________
   * PHP7.1 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
   * Laravel 5.8 (Ref. https://laravel.com/)
-  * MariaDB 10.3 (equal to MySQL 5.7)
+  * MariaDB 10.4 (equal to MySQL 5.7)
   * nodejs (stable version - 10)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.3
@@ -497,6 +497,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * RVM - 1.29.6 ---> 1.29.8
   * Ruby - 2.5.3 ---> 2.6.3
 * 2019/08/03
+  * MariaDB 10.4
   * RVM - 1.29.8 ---> 1.29.9
   * Redmine - 4.0.3 ---> 4.0.4
   * For Rails 6+ use
