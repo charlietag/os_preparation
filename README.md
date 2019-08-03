@@ -304,7 +304,7 @@ ______________________________
   * Ruby 2.6.3
   * Rails 5.2
     * puma (systemd, puma-mgr)
-  * Redmine 4.0.2
+  * Redmine 4.0.4
     * ruby 2.6.3
     * rails 5.2
   * Docker
@@ -496,3 +496,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/06/01
   * RVM - 1.29.6 ---> 1.29.8
   * Ruby - 2.5.3 ---> 2.6.3
+* 2019/08/03
+  * RVM - 1.29.8 ---> 1.29.9
+  * Redmine - 4.0.3 ---> 4.0.4
