@@ -14,6 +14,7 @@ Table of Contents
   * [Folder privilege](#folder-privilege)
   * [Ruby gem config](#ruby-gem-config)
   * [Database configuration for production](#database-configuration-for-production)
+  * [Extra functions](#extra-functions)
 - [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
@@ -424,6 +425,53 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * [adminer.php](https://www.adminer.org/)
   * **Stronger than scaffold, and any other admin panel. For quick CRUD**
     * [Adminer-editor.php](https://www.adminer.org/en/editor/)
+
+## Extra functions
+* RENDER_CP
+  * Render template using eval
+  * Sample
+
+    ```bash
+    # Method : eval "echo \"$variable\""
+    # Might have escape issue, if template is complicated
+    RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+    ```
+
+* RENDER_CP_SED
+  * Render template using sed
+  * Sample
+
+    ```bash
+    # Method : cat template | sed 's/\{\{var\}\}/$var/g'
+    # BETTER method for rendering template
+    RENDER_CP_SED ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+    ```
+
+* SAFE_DELETE
+  * Check file names and path before rm any dangerous files, preventing from destoying whole server
+    * check for the following dangerous key words
+
+      ```bash
+      .
+      ..
+      *
+      /
+      .*
+      *.*
+      ```
+
+      ```bash
+      $((find / -maxdepth 1 ;  readlink -m /* )|sort -n |uniq)"
+      ```
+
+  * Sample
+
+    ```bash
+    # --- Should be failed ---
+    DELETE_FILE="/root/delete_me/.*"
+    # --- safe delete command usage ---
+    SAFE_DELETE "${DELETE_FILE}"
+    ```
 
 # CHANGELOG
 * 2017/03/02
