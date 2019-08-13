@@ -461,7 +461,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       ```
 
       ```bash
-      $((find / -maxdepth 1 ;  readlink -m /* )|sort -n |uniq)"
+      "$(echo "$(find / -maxdepth 1 ;  readlink -m /* )" | sort -n | uniq)"
       ```
 
   * Sample
