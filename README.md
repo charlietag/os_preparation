@@ -303,7 +303,7 @@ ______________________________
   * nodejs (stable version - 10)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.3
-  * Rails 5.2
+  * Rails 6.0
     * puma (systemd, puma-mgr)
   * Redmine 4.0.4
     * ruby 2.6.3
@@ -559,3 +559,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * Generate - PDF files
       * wkhtmltopdf
       * wkhtmltopdf-devel
+* 2019/08/20
+  * Ruby on Rails 6.0

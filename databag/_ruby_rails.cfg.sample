@@ -20,4 +20,4 @@ local ruby_version="2.6.3"
 # ex. 5.0 presents ~> 5.0.0
 # ex. 4.2 presents ~> 4.2.0
 #local rails_version="5.0"
-local rails_version="5.2"
+local rails_version="6.0"
