@@ -302,11 +302,11 @@ ______________________________
   * MariaDB 10.4 (equal to MySQL 5.7)
   * nodejs (stable version - 10)
   * Nginx (latest version - via Nginx Official Repo)
-  * Ruby 2.6.3
+  * Ruby 2.6.2
   * Rails 6.0
     * puma (systemd, puma-mgr)
   * Redmine 4.0.4
-    * ruby 2.6.3
+    * ruby 2.6.2
     * rails 5.2
   * Docker
     * docker-ce
@@ -561,3 +561,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * wkhtmltopdf-devel
 * 2019/08/20
   * Ruby on Rails 6.0
+* 2019/08/21
+  * Ruby - 2.6.3 ---> 2.6.2 (for the compatibility with Rails 6.0)
