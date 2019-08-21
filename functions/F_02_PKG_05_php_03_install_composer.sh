@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG:enable
+# DATABAG_CFG:enable
 
 # Install composer
 # Ref. https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
