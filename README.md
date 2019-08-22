@@ -546,6 +546,11 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Ruby - 2.5.3 ---> 2.6.3
 * 2019/08/03
   * MariaDB 10.4
+    * Important effect
+      * The unix_socket authentication plugin is now default
+        * Login using password is not nesseccary
+      * Insecure default empty password '' is disabled
+        * the open-for-everyone all-powerful root account is finally gone
   * RVM - 1.29.8 ---> 1.29.9
   * Redmine - 4.0.3 ---> 4.0.4
   * For Rails 6+ use
