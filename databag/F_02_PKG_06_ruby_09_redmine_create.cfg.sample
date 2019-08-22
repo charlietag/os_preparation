@@ -17,12 +17,12 @@ local redmine_db_name="redmine"
 #)
 
 # --- Redmine 4.x ---
-local redmine_ruby_version="2.6.2"
+local redmine_ruby_version="2.6.3"
 local redmine_version="4.0.4"
-local redmine_bundler_version="2.0.1"
+local redmine_bundler_version="2.0.2"
 local redmine_plugins=(
   "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.0.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_8-light.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_12-light.zip"
 )
 
 # --- Redmine Language ---
