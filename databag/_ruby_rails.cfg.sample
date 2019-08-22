@@ -21,3 +21,7 @@ local ruby_version="2.6.3"
 # ex. 4.2 presents ~> 4.2.0
 #local rails_version="5.0"
 local rails_version="6.0"
+
+# --- Ruby & Ruby on Rails compatibility reference ---
+# https://github.com/rails/rails/blob/master/.travis.yml
+# https://travis-ci.org/rails/rails/builds/517573851/config
