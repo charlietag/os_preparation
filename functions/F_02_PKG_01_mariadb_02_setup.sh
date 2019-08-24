@@ -44,6 +44,7 @@ mysqladmin -u root password ''
 #     * userA@localhost $ whoami  # userA
 #     * userA@localhost $ mysql -u userA  #This will login successfully without password required, no matter if password is set!
 #                                         (And of course userA can only view DB:test only)
+#                                         (after mysql_secure_installation, userA will no longer be able to login without pass)
  
 #       Login via unix socket --->
 #         MariaDB [(none)]> status
@@ -67,3 +68,6 @@ mysqladmin -u root password ''
 #         Conn.  characterset:    utf8
 #         UNIX socket:            /var/lib/mysql/mysql.sock
 #         Uptime:                 22 min 45 sec
+# Back to the old time , before MariaDB 10.3
+# * After execute the following command, all auth is just like the old times as MariaDB 10.3
+#   * command: mysql_secure_installation
