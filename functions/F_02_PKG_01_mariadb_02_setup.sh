@@ -43,6 +43,7 @@ mysqladmin -u root password ''
 #   * For instance.
 #     * userA@localhost $ whoami  # userA
 #     * userA@localhost $ mysql -u userA  #This will login successfully without password required, no matter if password is set!
+#                                         (And of course userA can only view DB:test only)
  
 #       Login via unix socket --->
 #         MariaDB [(none)]> status
