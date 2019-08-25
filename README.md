@@ -296,9 +296,9 @@ ______________________________
 # Note
 
 ## Installed Packages
-  * PHP7.1 (Ref. https://webtatic.com/packages)
+  * PHP7.2 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 5.8 (Ref. https://laravel.com/)
+  * Laravel 6.0 (Ref. https://laravel.com/)
   * MariaDB 10.4 (equal to MySQL 5.7)
   * nodejs (stable version - 10)
   * Nginx (latest version - via Nginx Official Repo)
@@ -568,3 +568,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * wkhtmltopdf-devel
 * 2019/08/20
   * Ruby on Rails 6.0
+* 2019/08/26
+  * php 7.2
+  * Laravel 6.0

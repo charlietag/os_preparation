@@ -13,6 +13,6 @@ local web_sites="${current_user_home}/laravel_sites"
 #Put local vars here for the specific function
 
 # Specify Laravel version here
+# ex. 6.0 presents 6.0.*  #-> 6.0 requires php7.2+
 # ex. 5.3 presents 5.3.*
-# ex. 4.2 presents 4.2.*
-local laravel_version="5.8"
+local laravel_version="6.0"

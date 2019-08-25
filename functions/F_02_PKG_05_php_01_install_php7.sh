@@ -12,44 +12,46 @@ echo "==============================="
 rpm -Uvh $php_yum_repo
 
 echo "==============================="
-echo "     Install php 7.1"
+echo "     Install php 7.2"
 echo "==============================="
 # Install php 7.1
 yum install -y \
-  mod_php71w \
-  php71w-bcmath \
-  php71w-cli \
-  php71w-common \
-  php71w-dba \
-  php71w-devel \
-  php71w-embedded \
-  php71w-enchant \
-  php71w-fpm \
-  php71w-gd \
-  php71w-imap \
-  php71w-interbase \
-  php71w-intl \
-  php71w-ldap \
-  php71w-mbstring \
-  php71w-mcrypt \
-  php71w-mysqlnd \
-  php71w-odbc \
-  php71w-opcache \
-  php71w-pdo \
-  php71w-pdo_dblib \
-  php71w-pear \
-  php71w-pecl-apcu \
-  php71w-pecl-mongodb \
-  php71w-pecl-redis \
-  php71w-pgsql \
-  php71w-phpdbg \
-  php71w-process \
-  php71w-pspell \
-  php71w-recode \
-  php71w-snmp \
-  php71w-soap \
-  php71w-tidy \
-  php71w-xml
+  mod_php72w \
+  php72w-bcmath \
+  php72w-cli \
+  php72w-common \
+  php72w-dba \
+  php72w-devel \
+  php72w-embedded \
+  php72w-enchant \
+  php72w-fpm \
+  php72w-gd \
+  php72w-imap \
+  php72w-interbase \
+  php72w-intl \
+  php72w-ldap \
+  php72w-mbstring \
+  php72w-mysqlnd \
+  php72w-odbc \
+  php72w-opcache \
+  php72w-pdo \
+  php72w-pdo_dblib \
+  php72w-pear \
+  php72w-pecl-apcu \
+  php72w-pecl-imagick \
+  php72w-pecl-mongodb \
+  php72w-pecl-redis \
+  php72w-pgsql \
+  php72w-phpdbg \
+  php72w-process \
+  php72w-pspell \
+  php72w-recode \
+  php72w-snmp \
+  php72w-soap \
+  php72w-sodium \
+  php72w-tidy \
+  php72w-xml \
+  php72w-xmlrpc
 
 # Disable httpd
 echo "systemctl disable httpd......"
