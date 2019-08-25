@@ -17,7 +17,10 @@ yum install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-deve
 #For RVM 1.29.8+ - Add system ruby as dependency for CentOS
 yum install -y ruby
 
-# ImageMagick6 - For rails 5.2+, active storage (gem 'mini_magick')
+# -- ImageMagick6 - For rails 5.2+, active storage (gem 'mini_magick') --
+# gem - Rmagick requires ImageMagick 6.7.7+
+# gem - mini_magick requires ImageMagick 6.8.8-3+
+# ImageMagick latest version - 6.9+
 local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -i bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
 yum localinstall -y ${image_magick_packages}
 

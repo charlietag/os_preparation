@@ -14,7 +14,8 @@ rpm -Uvh $php_yum_repo
 echo "==============================="
 echo "     Install php 7.2"
 echo "==============================="
-# Install php 7.1
+#yum install php72w-pecl-imagick  #---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
+# Install php 7.2
 yum install -y \
   mod_php72w \
   php72w-bcmath \
@@ -38,7 +39,6 @@ yum install -y \
   php72w-pdo_dblib \
   php72w-pear \
   php72w-pecl-apcu \
-  php72w-pecl-imagick \
   php72w-pecl-mongodb \
   php72w-pecl-redis \
   php72w-pgsql \
