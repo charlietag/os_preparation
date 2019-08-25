@@ -14,5 +14,5 @@ local web_sites="${current_user_home}/laravel_sites"
 
 # Specify Laravel version here
 # ex. 6.0 presents 6.0.*  #-> 6.0 requires php7.2+
-# ex. 5.3 presents 5.3.*
+# ex. 5.8 presents 5.8.*
 local laravel_version="6.0"
