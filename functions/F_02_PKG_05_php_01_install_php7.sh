@@ -14,7 +14,12 @@ rpm -Uvh $php_yum_repo
 echo "==============================="
 echo "     Install php 7.2"
 echo "==============================="
-#yum install php72w-pecl-imagick  #---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
+
+# --- PHP Image ---
+# php72w-pecl-imagick ---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
+# use php-gd instead for image manipulation
+#yum install php72w-pecl-imagick  
+
 # Install php 7.2
 yum install -y \
   mod_php72w \
