@@ -20,6 +20,7 @@ echo "==============================="
 # use php-gd instead for image manipulation
 #yum install php72w-pecl-imagick  
 
+# mod_php72w , is for /var/lib/php/session folder (php-fpm use), kernel module - mod_php (apache)
 # Install php 7.2
 yum install -y \
   mod_php72w \
