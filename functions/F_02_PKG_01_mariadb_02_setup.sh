@@ -40,11 +40,15 @@ mysqladmin -u root password ''
 #         +-----------+-------+----------+-----------------------+
 
 # * unix_socket enabled by default (not useful, if only one user 'root' in db)
+#   * For instance - WARN
+#     * userA@localhost $ whoami  # userA
+#     * userA@localhost $ mysql -u root # userA login mysql as 'root'(doing anything) , without password via unix socket, only if you can login to linux server
 #   * For instance.
 #     * userA@localhost $ whoami  # userA
 #     * userA@localhost $ mysql -u userA  #This will login successfully without password required, no matter if password is set!
 #                                         (And of course userA can only view DB:test only)
-#                                         (after mysql_secure_installation, userA will no longer be able to login without pass)
+#   * Solution :
+#               After mysql_secure_installation, userA will no longer be able to login without pass
  
 #       Login via unix socket --->
 #         MariaDB [(none)]> status
