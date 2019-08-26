@@ -20,9 +20,11 @@ echo "==============================="
 # use php-gd instead for image manipulation
 #yum install php72w-pecl-imagick  
 
+
+#yum install mod_php72w #---> This is for apache. Using Nginx + PHP-FPM instead.
+
 # Install php 7.2
 yum install -y \
-  mod_php72w \
   php72w-bcmath \
   php72w-cli \
   php72w-common \
