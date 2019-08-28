@@ -22,6 +22,7 @@ local redmine_version="4.0.4"
 local redmine_bundler_version="2.0.2"
 local redmine_plugins=(
   "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.0.zip"
+  "https://github.com/taqueci/redmine_wysiwyg_editor/archive/0.6.0.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_4_12-light.zip"
 )
 

@@ -38,7 +38,7 @@ cd ${TMP}
 # ----- redmine core -----
 wget $redmine_url
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
-rm -f *.zip
+SAFE_DELETE *.zip
 mv ${TMP}/redmine-* ${redmine_web_root}
 # ----- redmine core -----
 
@@ -49,10 +49,13 @@ for redmine_plugin in ${redmine_plugins[@]}; do
 done
 
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
-rm -f *.zip
+SAFE_DELETE *.zip
 if [ -n "${redmine_plugins}" ]; then
-  mv ${TMP}/redmine_lightbox2-* $redmine_web_plugin_path/redmine_lightbox2
-  mv ${TMP}/redmine_agile $redmine_web_plugin_path/redmine_agile
+  local redmine_plugins_names="$(ls ${TMP} | grep redmine | cut -d'-' -f1)"
+  for redmine_plugins_name in ${redmine_plugins_names[@]}; do
+    [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && SAFE_DELETE "${redmine_web_plugin_path}/${redmine_plugins_name}"
+    mv ${TMP}/${redmine_plugins_name}* ${redmine_web_plugin_path}/${redmine_plugins_name}
+  done
 fi
 # ----- redmine plugins -----
 
