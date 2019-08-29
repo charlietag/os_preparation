@@ -29,7 +29,6 @@ fi
 #==================================
 # Start to download redmine & plugins & themes
 #==================================
-local redmine_web_plugin_path="${redmine_web_root}/plugins"
 echo "========================================="
 echo "Downloading redmine ..."
 echo "========================================="
@@ -44,7 +43,15 @@ mv ${TMP}/redmine-* ${redmine_web_root}
 [[ -d ${redmine_web_root} ]] && echo -e "~~~ ${redmine_web_root} installed... ~~~\n\n\n"
 # ----- redmine core -----
 
+
+
 # ----- redmine plugins -----
+local redmine_web_plugin_path_tmp="${TMP}/redmine_plugins"
+test -d $redmine_web_plugin_path_tmp || mkdir -p $redmine_web_plugin_path_tmp
+cd $redmine_web_plugin_path_tmp
+
+local redmine_web_plugin_path="${redmine_web_root}/plugins"
+
 for redmine_plugin in ${redmine_plugins[@]}; do
   echo "Downloading redmine_plugin -> $redmine_plugin ..."
   wget $redmine_plugin
@@ -54,24 +61,28 @@ for redmine_plugin in ${redmine_plugins[@]}; do
   ls *.zip 2>/dev/null | xargs -i unzip -q {}
   SAFE_DELETE "*.zip"
   if [ -n "${redmine_plugins}" ]; then
-    local redmine_plugins_with_ver_names="$(ls ${TMP} | grep redmine)"
+    local redmine_plugins_with_ver_names="$(ls ${redmine_web_plugin_path_tmp})"
     for redmine_plugins_with_ver_name in ${redmine_plugins_with_ver_names[@]}; do
       local redmine_plugins_name="$(echo "${redmine_plugins_with_ver_name}" | cut -d'-' -f1)"
       [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && SAFE_DELETE "${redmine_web_plugin_path}/${redmine_plugins_name}"
-      mv ${TMP}/${redmine_plugins_with_ver_name} ${redmine_web_plugin_path}/${redmine_plugins_name}
+      mv ${redmine_web_plugin_path_tmp}/${redmine_plugins_with_ver_name} ${redmine_web_plugin_path}/${redmine_plugins_name}
       [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && echo -e "~~~ ${redmine_web_plugin_path}/${redmine_plugins_name} installed... ~~~\n\n\n"
     done
   fi
   # ~~~ unzip & install plugins ~~~
 done
+cd $TMP
+SAFE_DELETE "${redmine_web_plugin_path_tmp}"
 # ----- redmine plugins -----
 
+
+
 # ----- redmine themes -----
-local redmine_web_theme_path_tmp="${TMP}/themes"
+local redmine_web_theme_path_tmp="${TMP}/redmine_themes"
 test -d $redmine_web_theme_path_tmp || mkdir -p $redmine_web_theme_path_tmp
+cd $redmine_web_theme_path_tmp
 
 local redmine_web_theme_path="${redmine_web_root}/public/themes"
-cd $redmine_web_theme_path_tmp
 
 for redmine_theme in ${redmine_themes[@]}; do
   echo "Downloading redmine_theme -> $redmine_theme ..."
