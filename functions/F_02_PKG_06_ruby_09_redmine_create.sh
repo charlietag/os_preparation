@@ -110,8 +110,8 @@ echo ""
 
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ install --without development test"
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake generate_secret_token"
-# su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:create"  #---> rails 4 , or below
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rails db:create"   #---> rails 5 , or above
+# su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:migrate RAILS_ENV=production"
 if [[ -n "${redmine_default_lang}" ]]; then
   su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
