@@ -1,4 +1,5 @@
 #!/bin/bash
+# (for loading rvm env) ! /bin/bash -l
  
 RAILS_USER="RAILS_SERVICE_USERNAME"
 
@@ -67,7 +68,9 @@ start_rails () {
   echo "[OK] (puma) Starting $RAILS_PATH"
 
   if [[ "${RAILS_USER}" = "${CURRENT_USER}" ]]; then
-    cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb 
+    # also could load whole user bash env from the begining of the script like
+    # ! /bin/bash -l
+    bash -l -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
   else
     su -l $RAILS_USER -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
   fi
