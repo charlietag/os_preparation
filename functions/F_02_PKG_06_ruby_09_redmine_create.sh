@@ -137,7 +137,7 @@ sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 systemctl start mariadb
 
 # Avoid difference command creating db between rails 4 , and rails 5, create db via mysql command
-# And redmine doesn't seemt to support rails db:create
+# And some redmine plugins (like EasyGantt) seemt to crash command "rails rails db:create"
 if [[ -z "${redmine_db_pass}" ]]; then
   mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
 else
