@@ -21,11 +21,15 @@ local redmine_ruby_version="2.6.3"
 local redmine_version="4.0.4"
 local redmine_bundler_version="2.0.2"
 
-  #redmine_ckeditor works more visualized than redmine_wysiwyg_editor
-  #"https://github.com/taqueci/redmine_wysiwyg_editor/archive/0.6.0.zip"
-  # EasyGantFree --- caused db:create failed (but mysql command to create db is ok)... still have concern about this plugin
-  # if really need this plugin, install it after all
-  #"https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/EasyGanttFree-4.x.zip"
+# -------------------------- Redmine Plugins ----------------------------
+# -- redmine_wysiwyg_editor --
+# redmine_ckeditor works more visualized than redmine_wysiwyg_editor
+#  "https://github.com/taqueci/redmine_wysiwyg_editor/archive/0.6.0.zip"
+# EasyGantFree --- caused db:create failed (but mysql command to create db is ok)... still have concern about this plugin
+#
+# -- EasyGantt --
+# if really need this plugin, install it after all
+#  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/EasyGanttFree-4.x.zip"
 local redmine_plugins=(
   "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.0.zip"
   "https://github.com/a-ono/redmine_ckeditor/archive/1.2.2.zip"
@@ -35,10 +39,14 @@ local redmine_plugins=(
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.0.x.zip"
 )
 
+# -------------------------- Redmine Plugins ----------------------------
+
+# -------------------------- Redmine Themes ----------------------------
 local redmine_themes=(
   "https://github.com/mrliptontea/PurpleMine2/archive/v2.8.0.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/a1_theme-2_0_0.zip"
 )
+# -------------------------- Redmine Themes ----------------------------
 
 # --- Redmine Language ---
 #local redmine_default_lang=""  # Leave this empty. Then in manage page, redmine will ask you if you want to load default config data, in what language.
