@@ -132,9 +132,9 @@ fi
 # Database setup
 #==================================
 # ====== Create database for redmine =======
-systemctl start mariadb
 echo -n "starting mariadb"
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
+systemctl start mariadb
 
 # Avoid difference command creating db between rails 4 , and rails 5, create db via mysql command
 #if [[ -z "${redmine_db_pass}" ]]; then
