@@ -144,7 +144,7 @@ systemctl start mariadb
 #  mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
 #fi
 
-## using command "rails db:create" can also prevent stange plugin (like EasyGantt) ruin redmine.
+## using command "rails db:create" can also prevent stange plugin (like EasyGantt) from ruiing redmine.
 
 # ====== Start to install redmine gem =======
 echo "========================================="
