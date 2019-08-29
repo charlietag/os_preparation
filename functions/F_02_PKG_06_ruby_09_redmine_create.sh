@@ -51,10 +51,11 @@ done
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
 SAFE_DELETE *.zip
 if [ -n "${redmine_plugins}" ]; then
-  local redmine_plugins_names="$(ls ${TMP} | grep redmine | cut -d'-' -f1)"
-  for redmine_plugins_name in ${redmine_plugins_names[@]}; do
+  local redmine_plugins_with_ver_names="$(ls ${TMP} | grep redmine)"
+  for redmine_plugins_with_ver_name in ${redmine_plugins_with_ver_names[@]}; do
+    local redmine_plugins_name="$(echo "${redmine_plugins_with_ver_name}" | cut -d'-' -f1)"
     [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && SAFE_DELETE "${redmine_web_plugin_path}/${redmine_plugins_name}"
-    mv ${TMP}/${redmine_plugins_name}* ${redmine_web_plugin_path}/${redmine_plugins_name}
+    mv ${TMP}/${redmine_plugins_with_ver_name} ${redmine_web_plugin_path}/${redmine_plugins_name}
   done
 fi
 # ----- redmine plugins -----
