@@ -39,7 +39,9 @@ cd ${TMP}
 wget $redmine_url
 ls *.zip 2>/dev/null | xargs -i unzip -q {}
 SAFE_DELETE "*.zip"
+echo "Downloaded ZIP file unzipped already..."
 mv ${TMP}/redmine-* ${redmine_web_root}
+[[ -d ${redmine_web_root} ]] && echo "~~~ ${redmine_web_root} installed... ~~~"
 # ----- redmine core -----
 
 # ----- redmine plugins -----
@@ -48,7 +50,7 @@ for redmine_plugin in ${redmine_plugins[@]}; do
   wget $redmine_plugin
 
   # ~~~ unzip & install plugins ~~~
-  echo "unzip downloaded zip file..."
+  echo "Downloaded ZIP file unzipped already..."
   ls *.zip 2>/dev/null | xargs -i unzip -q {}
   SAFE_DELETE "*.zip"
   if [ -n "${redmine_plugins}" ]; then
@@ -57,7 +59,7 @@ for redmine_plugin in ${redmine_plugins[@]}; do
       local redmine_plugins_name="$(echo "${redmine_plugins_with_ver_name}" | cut -d'-' -f1)"
       [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && SAFE_DELETE "${redmine_web_plugin_path}/${redmine_plugins_name}"
       mv ${TMP}/${redmine_plugins_with_ver_name} ${redmine_web_plugin_path}/${redmine_plugins_name}
-      echo "~~~ ${redmine_web_plugin_path}/${redmine_plugins_name} installed... ~~~"
+      [[ -d ${redmine_web_plugin_path}/${redmine_plugins_name} ]] && echo "~~~ ${redmine_web_plugin_path}/${redmine_plugins_name} installed... ~~~"
     done
   fi
   # ~~~ unzip & install plugins ~~~
