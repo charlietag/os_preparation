@@ -33,6 +33,11 @@ local redmine_plugins=(
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.0.x.zip"
 )
 
+local redmine_themes=(
+  "https://github.com/mrliptontea/PurpleMine2/archive/v2.8.0.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/a1_theme-2_0_0.zip"
+)
+
 # --- Redmine Language ---
 #local redmine_default_lang=""  # Leave this empty. Then in manage page, redmine will ask you if you want to load default config data, in what language.
 #local redmine_default_lang="en"

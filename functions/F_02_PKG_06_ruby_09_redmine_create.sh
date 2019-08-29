@@ -27,7 +27,7 @@ if [[ -d $redmine_web_root ]]; then
 fi
 
 #==================================
-# Start to download redmine & plugins
+# Start to download redmine & plugins & themes
 #==================================
 local redmine_web_plugin_path="${redmine_web_root}/plugins"
 echo "========================================="
@@ -65,6 +65,37 @@ for redmine_plugin in ${redmine_plugins[@]}; do
   # ~~~ unzip & install plugins ~~~
 done
 # ----- redmine plugins -----
+
+# ----- redmine themes -----
+local redmine_web_theme_path_tmp="${TMP}/themes"
+test -d $redmine_web_theme_path_tmp || mkdir -p $redmine_web_theme_path_tmp
+
+local redmine_web_theme_path="${redmine_web_root}/public/themes"
+cd $redmine_web_theme_path_tmp
+
+for redmine_theme in ${redmine_themes[@]}; do
+  echo "Downloading redmine_theme -> $redmine_theme ..."
+  wget $redmine_theme
+
+  # ~~~ unzip & install themes ~~~
+  echo "Downloaded ZIP file unzipped already..."
+  ls *.zip 2>/dev/null | xargs -i unzip -q {}
+  SAFE_DELETE "*.zip"
+  if [ -n "${redmine_themes}" ]; then
+    local redmine_themes_with_ver_names="$(ls ${redmine_web_theme_path_tmp})"
+    for redmine_themes_with_ver_name in ${redmine_themes_with_ver_names[@]}; do
+      local redmine_themes_name="$(echo "${redmine_themes_with_ver_name}" | cut -d'-' -f1)"
+      [[ -d ${redmine_web_theme_path}/${redmine_themes_name} ]] && SAFE_DELETE "${redmine_web_theme_path}/${redmine_themes_name}"
+      mv ${redmine_web_theme_path_tmp}/${redmine_themes_with_ver_name} ${redmine_web_theme_path}/${redmine_themes_name}
+      [[ -d ${redmine_web_theme_path}/${redmine_themes_name} ]] && echo -e "~~~ ${redmine_web_theme_path}/${redmine_themes_name} installed... ~~~\n\n\n"
+    done
+  fi
+  # ~~~ unzip & install themes ~~~
+done
+cd $TMP
+SAFE_DELETE "${redmine_web_theme_path_tmp}"
+# ----- redmine themes -----
+
 
 #==================================
 # Setup config , ruby version , gemset name
