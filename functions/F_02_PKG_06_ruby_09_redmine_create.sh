@@ -138,11 +138,12 @@ systemctl start mariadb
 
 # Avoid difference command creating db between rails 4 , and rails 5, create db via mysql command
 # Also some redmine plugins (like EasyGantt) seemt to crash command "rails rails db:create"
-#if [[ -z "${redmine_db_pass}" ]]; then
-#  mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
-#else
-#  mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
-#fi
+# create db using mysql command is just for convenience ...
+if [[ -z "${redmine_db_pass}" ]]; then
+  mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+else
+  mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+fi
 
 ## using command "rails db:create" can also prevent stange plugin (like EasyGantt) from ruiing redmine.
 
@@ -156,7 +157,7 @@ echo ""
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ install --without development test"
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake generate_secret_token"
 # su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
+#su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:migrate RAILS_ENV=production"
 if [[ -n "${redmine_default_lang}" ]]; then
   su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
