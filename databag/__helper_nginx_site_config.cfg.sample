@@ -1,0 +1,11 @@
+# ***************************************************
+# * web root setting (DO NOT MODIFY HERE)           *
+# ***************************************************
+# User home dir
+local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+
+# Sites path
+local web_sites="${current_user_home}/${site_type}_sites"
+local web_root="${web_sites}/${site_app_name}/public"
+
+
