@@ -1,1 +1,17 @@
 . ${PLUGINS}/plugin_load_databag.sh _php_laravel.cfg
+
+# ***************************************************
+# * change your domain name here                    *
+# ***************************************************
+local server_name="mylaravel.centos7.localdomain"  # ---> ex: myrails.centos7.localdomain
+local site_app_name="mylaravel"                    # ---> ex: myrails
+
+# [ rails | laravel | disable]
+local site_type="laravel"
+
+
+# ***************************************************
+# * web root setting (DO NOT MODIFY HERE)           *
+# ***************************************************
+. ${PLUGINS}/plugin_load_databag.sh __helper_nginx_site_config.cfg
+

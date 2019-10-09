@@ -5,11 +5,6 @@ local current_user="rubyuser"
 
 _task_check_and_useradd
 
-local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
-
-# Rails sites path
-local web_sites="${current_user_home}/rails_sites"
-
 # Specify rvm version
 local rvm_version="1.29.9"
 
@@ -25,3 +20,6 @@ local rails_version="6.0"
 # --- Ruby & Ruby on Rails compatibility reference ---
 # https://github.com/rails/rails/blob/master/.travis.yml
 # https://travis-ci.org/rails/rails/builds/517573851/config
+# ----------------------------------------------------
+
+

@@ -6,6 +6,5 @@
 #--------------------------
 #  Setup nginx sample configs
 #--------------------------
-task_copy_using_render
-
+helper_nginx_site_config
 

@@ -1,1 +1,17 @@
 . ${PLUGINS}/plugin_load_databag.sh _ruby_rails.cfg
+
+# ***************************************************
+# * change your domain name here                    *
+# ***************************************************
+local server_name="redmine.centos7.localdomain"  # ---> ex: myrails.centos7.localdomain
+local site_app_name="redmine"                    # ---> ex: myrails
+
+# [ rails | laravel | disable]
+local site_type="rails"
+
+
+# ***************************************************
+# * web root setting (DO NOT MODIFY HERE)           *
+# ***************************************************
+. ${PLUGINS}/plugin_load_databag.sh __helper_nginx_site_config.cfg
+
