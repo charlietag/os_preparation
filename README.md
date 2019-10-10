@@ -93,7 +93,7 @@ This is a small light bash project.  Suit small companies which have only few se
     echo ---------------------------; \
     echo {}; \
     echo ---------------------------; \
-    cat {} | grep -v '#' |sed '/^\s*$/d'; \
+    cat {} | grep -vE '^\s*#' |sed '/^\s*$/d'; \
     echo "
     ```
 
