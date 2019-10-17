@@ -1,6 +1,7 @@
 # ------------------------------------
 # Make sure apply action is currect.
 [[ -z "${site_type}" ]] && eval "${SKIP_SCRIPT}"
+[[ "${site_type}" = "disable" ]] && eval "${SKIP_SCRIPT}"
 # ------------------------------------
 
 
