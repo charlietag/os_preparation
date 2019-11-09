@@ -63,6 +63,10 @@ nnoremap <C-u> :Obsess<CR>
 " Just use this one as Obsession toggling
 nnoremap <C-i> :Obsess!<CR>
 
+"------------Plugin: vim-rails (not enabled by default) ------------
+" Avoid gf find error
+" map gf    :R<CR>
+
 "------------Plugin: tabular------------
 map t= :Tabularize /=<CR>
 map t, :Tabularize /,<CR>
