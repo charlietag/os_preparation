@@ -38,6 +38,9 @@ shelltitle '$ |bash'
 
 defscrollback 50000
 
+# allow vim content after :q
+#altscreen off   # default : off
+
 #----------------------Support 256 color, t_Co=256----------------------
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
