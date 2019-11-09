@@ -31,7 +31,8 @@ let g:colors_name="lucid"
  hi Normal           guifg=#dddddd           guibg=grey15
 "hi Normal           ctermfg=254             ctermbg=235
 " hi Normal           ctermfg=253             ctermbg=black
- hi Normal           ctermfg=253             ctermbg=black
+" change to none to work with tmux pane active style (window-active-style)
+ hi Normal           ctermfg=253             ctermbg=none
 
 
 " Comment Group
@@ -169,7 +170,9 @@ hi Underline    ctermfg=147         ctermbg=None        cterm=Italic
 " ------------
 " left blank, hidden
 hi Ignore           guifg=bg
-hi Ignore           ctermfg=bg
+" change to none to work with tmux pane active style (window-active-style)
+"hi Ignore           ctermfg=bg
+hi Ignore           ctermfg=none
 
 
 " Error Group
@@ -206,10 +209,14 @@ hi SpellLocal                               ctermbg=14              cterm=underc
 " ------
 " character under the cursor
 "hi Cursor           guifg=bg                guibg=#8ac6f2
+" change to none to work with tmux pane active style (window-active-style)
 "hi Cursor           ctermfg=bg              ctermbg=117
+"hi Cursor           ctermfg=none
 " like cursor, but used when in IME mode
 "hi CursorIM         guifg=bg                guibg=#96cdcd
+" change to none to work with tmux pane active style (window-active-style)
 "hi CursorIM         ctermfg=bg              ctermbg=116
+"hi CursorIM         ctermfg=none
 " cursor column
 " hi CursorColumn                             guibg=#3d3d4d
 " hi CursorColumn     cterm=NONE              ctermbg=236
