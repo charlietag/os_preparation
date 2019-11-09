@@ -31,6 +31,14 @@ git clone https://github.com/Raimondi/delimitMate.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/vim-airline/vim-airline.git
 #git clone https://github.com/vim-airline/vim-airline-themes.git
+git clone https://github.com/tpope/vim-sensible.git
+
+# quickly move to position
+git clone https://github.com/easymotion/vim-easymotion.git
+
+# save vim session - avoid server crash
+git clone https://github.com/tpope/vim-obsession.git
+vim -u NONE -c "helptags vim-obsession/doc" -c q              # generate doc - vim-obsession help tag
 
 #Show git branch name
 git clone https://github.com/tpope/vim-fugitive.git
