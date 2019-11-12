@@ -12,12 +12,19 @@ alias grep='grep --color=auto'
 alias ll='ls -alh'
 alias l='ls -lh'
 #alias v='vim +"colorscheme lucid"'
-alias v='vim'
+#alias v='vim'
+alias v='[[ -f "Session.vim" ]] && vim -S || vim'
 alias vv='vim -u /dev/null'
 alias o='cd ..'
 alias oo='cd ../..'
 alias ooo='cd ../../..'
 alias b='cd -'
+
+# tmux aliases
+alias t='tmux -2'
+alias tt='tmux -2 new -s'
+alias ta='tmux -2 a'
+alias ts='tmux ls'
 
 # Git aliases
 alias gl='git log --graph --stat --decorate --all'
@@ -72,11 +79,24 @@ USER_COLOR="${COLOR_GREEN}"
 # OS Version
 OS_VER="$(lsb_release -irs | cut -d'.' -f-2)"
 
+# vim Session.vim , *.swp
+vim_session() {
+  local vim_session="$(ls |grep  "Session.vim")"
+  local vim_swp="$(ls -a | grep -E "^.[^[:space:]]+.swp$")"
+  local vim_msg=""
 
+  local vim_yellow="\e[1;33m"
+  local vim_magenta="\e[1;35m"
+  local vim_color_end="\033[00m"
+
+  [[ -n "${vim_session}" ]] && vim_msg="${vim_yellow} (VIM:Session.vim)${vim_color_end}"
+  [[ -n "${vim_swp}" ]] && vim_msg="${vim_msg}${vim_magenta} (VIM:swp)${vim_color_end}"
+  [[ -n "${vim_msg}" ]] && echo -e "${vim_msg}"
+}
 
 # PS1
 unset PROMPT_COMMAND
-PS1_TAIL="\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END} ${COLOR_BLUE}\w${COLOR_END}\n# "
+PS1_TAIL="\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END}\$(vim_session) ${COLOR_BLUE}\w${COLOR_END}\n# "
 PS1="${USER_COLOR}${PS1_TAIL}"
 
 #------------------------------------------------------
