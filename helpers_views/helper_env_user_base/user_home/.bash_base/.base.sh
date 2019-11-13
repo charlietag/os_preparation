@@ -89,14 +89,24 @@ vim_session() {
   local vim_magenta="\e[1;35m"
   local vim_color_end="\033[00m"
 
-  [[ -n "${vim_session}" ]] && vim_msg="${vim_yellow} (VIM:Session.vim)${vim_color_end}"
+  [[ -n "${vim_session}" ]] && vim_msg="${vim_yellow}(VIM:Session.vim)${vim_color_end}"
   [[ -n "${vim_swp}" ]] && vim_msg="${vim_msg}${vim_magenta} (VIM:swp)${vim_color_end}"
-  [[ -n "${vim_msg}" ]] && echo -e "${vim_msg}"
+  [[ -n "${vim_msg}" ]] && echo -e "${vim_msg} "
+}
+
+# Logged On (pty , tty) who - show who is logged on (tty/pts) (terminal / ssh)
+logged_on_session() {
+  local logged_on_session="$(who | wc -l)"
+  local logged_red="\e[1;31m"
+  local logged_color_end="\033[00m"
+  local logged_on_msg="${logged_red}(LoggedOn: ${logged_on_session})${logged_color_end}"
+
+  [[ "${logged_on_session}" -ne 1 ]] && echo -e " ${logged_on_msg}"
 }
 
 # PS1
 unset PROMPT_COMMAND
-PS1_TAIL="\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END}\$(vim_session) ${COLOR_BLUE}\w${COLOR_END}\n# "
+PS1_TAIL="\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END}\$(logged_on_session) \$(vim_session)${COLOR_BLUE}\w${COLOR_END}\n# "
 PS1="${USER_COLOR}${PS1_TAIL}"
 
 #------------------------------------------------------
