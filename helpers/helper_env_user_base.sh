@@ -45,6 +45,16 @@ git clone https://github.com/tpope/vim-fugitive.git
 #git clone https://github.com/airblade/vim-gitgutter.git
 
 #-----------------------------------------------------------------------------------------
+#Setup Tmux Plugin
+#-----------------------------------------------------------------------------------------
+mkdir -p ${current_user_home}/.tmux/plugins
+cd ${current_user_home}/.tmux/plugins
+
+#cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | xargs -n 1 -P 10 -i bash -c "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
+cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | xargs -i bash -c "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
+
+
+#-----------------------------------------------------------------------------------------
 #Make sure user_home priv is correct
 #-----------------------------------------------------------------------------------------
 chown -R ${current_user}.${current_user} ${current_user_home}
