@@ -76,6 +76,11 @@ map t<SPACE>  :Tabularize /\S\+<CR>
 map tt  :Tabularize /\t<CR>
 
 
+"------------Plugin: easymotion/vim-easymotion ------------
+" Quick move to the begining of words
+nmap  <Leader>w <Plug>(easymotion-bd-w)
+
+
 "*********************************
 "       Charlie Customize
 "*********************************
