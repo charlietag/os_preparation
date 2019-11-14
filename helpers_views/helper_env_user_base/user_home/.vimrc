@@ -79,6 +79,8 @@ map tt  :Tabularize /\t<CR>
 "------------Plugin: easymotion/vim-easymotion ------------
 " Quick move to the begining of words
 nmap  <Leader>w <Plug>(easymotion-bd-w)
+" So slow add this one, althrough it's useful while vimdiff (cross window)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 
 "*********************************
