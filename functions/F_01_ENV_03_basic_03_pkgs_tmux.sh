@@ -25,10 +25,10 @@ yum install -y gawk
 cd $TMP
 git clone --depth 1 --branch "${tmux_tag_ver}" https://github.com/tmux/tmux.git
 cd tmux
+
 sh autogen.sh
 ./configure && make
 make install
-
 
 cd $TMP
 SAFE_DELETE "tmux"
