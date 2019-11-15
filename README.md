@@ -571,3 +571,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/08/26
   * php 7.2
   * Laravel 6.0
+* 2019/11/15
+  * Add tmux installation & configuration setup
