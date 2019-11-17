@@ -22,6 +22,7 @@ test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 #-----------------------------------------------------------------------------------------
 #Setup Vim Setting
 #-----------------------------------------------------------------------------------------
+[[ -d ${current_user_home}/.vim/bundle ]] && SAFE_DELETE "${current_user_home}/.vim/bundle"
 mkdir -p ${current_user_home}/.vim/autoload ${current_user_home}/.vim/bundle && \
 curl -LSso ${current_user_home}/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
@@ -47,7 +48,9 @@ git clone https://github.com/tpope/vim-fugitive.git
 #-----------------------------------------------------------------------------------------
 #Setup Tmux Plugin
 #-----------------------------------------------------------------------------------------
+[[ -d ${current_user_home}/.tmux/plugins ]] && SAFE_DELETE "${current_user_home}/.tmux/plugins"
 mkdir -p ${current_user_home}/.tmux/plugins
+
 cd ${current_user_home}/.tmux/plugins
 
 #cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | xargs -n 1 -P 10 -i bash -c "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
