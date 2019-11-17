@@ -22,9 +22,9 @@ alias b='cd -'
 
 # tmux aliases
 alias t='tmux -2'
-alias tt='tmux -2 new -s'
+alias tn_s='tmux -2 new -s'
 alias ta='tmux -2 a'
-alias ts='tmux ls'
+alias tl='tmux ls'
 
 # Git aliases
 alias gl='git log --graph --stat --decorate --all'
