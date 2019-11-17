@@ -2,7 +2,8 @@
 # * web root setting (DO NOT MODIFY HERE)           *
 # ***************************************************
 # User home dir
-local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+# Defined at user-config
+#local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
 
 # Sites path
 local web_sites="${current_user_home}/${site_type}_sites"
