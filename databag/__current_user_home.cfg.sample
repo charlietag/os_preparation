@@ -1,0 +1,6 @@
+# ***************************************************
+# * User home dir (DO NOT MODIFY HERE)           *
+# ***************************************************
+# User home dir
+local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+

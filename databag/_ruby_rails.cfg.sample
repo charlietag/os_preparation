@@ -26,5 +26,5 @@ local rails_version="6.0"
 # DO NOT MODIFY HERE
 # ----------------------------------------------------
 # User home dir
-local current_user_home="$(getent passwd "$current_user" | cut -d':' -f6)" 
+. ${PLUGINS}/plugin_load_databag.sh __current_user_home.cfg
 
