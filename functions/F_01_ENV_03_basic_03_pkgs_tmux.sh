@@ -19,6 +19,8 @@ yum install -y autoconf automake pkgconfig
 # For tmux plugin copycat (for better UTF-8 character support)
 yum install -y gawk
 
+# Add this to avoid unknown dependencies
+yum install -y tmux 
 #-----------------------------------------------------------------------------------------
 # Compile and install tmux
 #-----------------------------------------------------------------------------------------
