@@ -300,7 +300,7 @@ ______________________________
   * PHP-FPM (Ref. https://webtatic.com/packages)
   * Laravel 6.0 (Ref. https://laravel.com/)
   * MariaDB 10.4 (equal to MySQL 5.7)
-  * nodejs (stable version - 10)
+  * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.3
   * Rails 6.0
@@ -573,3 +573,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Laravel 6.0
 * 2019/11/15
   * Add tmux installation & configuration setup
+* 2019/11/27
+  * Update NodeJS from 10.x LTS to 12.x LTS

@@ -3,4 +3,4 @@
 #----------------------------------------
 # Node version of YUM
 # Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
-local node_yum_repo="https://rpm.nodesource.com/setup_10.x"
+local node_yum_repo="https://rpm.nodesource.com/setup_12.x"
