@@ -305,7 +305,7 @@ ______________________________
   * Ruby 2.6.3
   * Rails 6.0
     * puma (systemd, puma-mgr)
-  * Redmine 4.0.4
+  * Redmine 4.0.5
     * ruby 2.6.3
     * rails 5.2
   * Docker
@@ -575,3 +575,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Add tmux installation & configuration setup
 * 2019/11/27
   * Update NodeJS from 10.x LTS to 12.x LTS
+  * Redmine - 4.0.4 ---> 4.0.5
