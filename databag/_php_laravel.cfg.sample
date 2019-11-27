@@ -16,3 +16,7 @@ local laravel_version="6.0"
 # ----------------------------------------------------
 # User home dir
 . ${PLUGINS}/plugin_load_databag.sh __current_user_home.cfg
+
+# web_sites dir
+local site_type="laravel"
+. ${PLUGINS}/plugin_load_databag.sh __helper_nginx_site_config.cfg
