@@ -7,7 +7,8 @@ local server_name="redmine.centos7.localdomain"  # ---> ex: myrails.centos7.loca
 local site_app_name="redmine"                    # ---> ex: myrails
 
 # [ rails | laravel | disable]
-local site_type="rails"
+# This is defined in _ruby_rails.cfg
+#local site_type="disable"
 
 
 # ***************************************************

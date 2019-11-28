@@ -1,4 +1,3 @@
-# Source master config
 . ${PLUGINS}/plugin_load_databag.sh _ruby_rails.cfg
 
 # ***************************************************
@@ -8,7 +7,8 @@ local server_name="myrails.centos7.localdomain"  # ---> ex: myrails.centos7.loca
 local site_app_name="myrails"                    # ---> ex: myrails
 
 # [ rails | laravel | disable]
-local site_type="rails"
+# This is defined in _ruby_rails.cfg
+#local site_type="disable"
 
 
 # ***************************************************
