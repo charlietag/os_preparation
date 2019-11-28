@@ -8,6 +8,12 @@
 #   ...
 
 # -------------------------------------------------------------------------------------------------------------------------
+# Avoid request.remote_ip always being 127.0.0.1 in production.log
+#   default rails will record remote_ip as 127.0.0.1 , if client is from private lan (192.168.x.x)
+# -------------------------------------------------------------------------------------------------------------------------
+# config.action_dispatch.trusted_proxies = [IPAddr.new('127.0.0.1')]
+
+# -------------------------------------------------------------------------------------------------------------------------
 # Add timestamp (in system default timezone)
 # Fail2ban requires timestamp to calulate the findtime, etc.
 # Default redmine log authenication error in UTC
