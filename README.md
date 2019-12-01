@@ -90,10 +90,14 @@ This is a small light bash project.  Suit small companies which have only few se
 
     echo ; \
     ls *.cfg | xargs -i bash -c " \
+    echo -e '\e[0;33m'; \
     echo ---------------------------; \
     echo {}; \
     echo ---------------------------; \
+    echo -n -e '\033[00m' ; \
+    echo -n -e '\e[0;32m'; \
     cat {} | grep -vE '^\s*#' |sed '/^\s*$/d'; \
+    echo -e '\033[00m' ; \
     echo "
     ```
 
