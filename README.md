@@ -83,7 +83,7 @@ This is a small light bash project.  Suit small companies which have only few se
     ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
-  * Verify config files.
+  * Verify config files (with syntax color).
 
     ```bash
     cd databag
@@ -101,7 +101,7 @@ This is a small light bash project.  Suit small companies which have only few se
     echo "
     ```
 
-  * Verify **ONLY modified** config files.
+  * Verify **ONLY modified** config files (with syntax color).
 
     ```bash
     cd databag
