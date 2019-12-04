@@ -1,2 +1,2 @@
-alias rr='su - rubyuser'
-alias pp='su - phpuser'
+alias {{alias_su_rubyuser}}='su - rubyuser'
+alias {{alias_su_phpuser}}='su - phpuser'
