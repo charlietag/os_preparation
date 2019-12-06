@@ -120,7 +120,7 @@ This is a small light bash project.  Suit small companies which have only few se
     ```
 
   * Mostly used configuration :
-    * dev use (server in cloud / server in local) && production use (server in cloud / server in local)
+    * **DEV** use (server in **Local** / server in **Cloud**) && **Production** use (server in **Local** / server in **Cloud**)
 
       ```bash
       databag/
