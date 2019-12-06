@@ -119,24 +119,14 @@ This is a small light bash project.  Suit small companies which have only few se
     echo "
     ```
 
-  * Config files copied as follow
-
-    ```bash
-    databag/
-    ├── F_00_environment.cfg
-    ├── F_01_install_mariadb.cfg
-    ├── F_05_setup_nginx.cfg
-    └── F_09_toggle_service.cfg
-    ...
-    ```
-
   * Mostly used configuration :
     * dev use (server in cloud / server in local)/ production use (server in cloud / server in local):
 
       ```bash
-      F_01_ENV_02_os.cfg
-      F_01_ENV_04_ssh_config.cfg
-      _gitconfig.cfg
+      databag/
+      ├── F_01_ENV_02_os.cfg
+      ├── F_01_ENV_04_ssh_config.cfg
+      └── _gitconfig.cfg
       ```
 
   * PHP 7.0 for old project
