@@ -83,6 +83,23 @@ This is a small light bash project.  Suit small companies which have only few se
     ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
+  * Mostly used configuration :
+    * **DEV** use (server in **Local** / server in **Cloud**) && **Production** use (server in **Local** / server in **Cloud**)
+
+      ```bash
+      databag/
+      ├── F_01_ENV_02_os.cfg
+      ├── F_01_ENV_04_ssh_config.cfg
+      └── _gitconfig.cfg
+      ```
+
+  * PHP 7.0 for old project
+    * Modify yum packages in script `functions/F_02_PKG_05_php_01_install_php7.sh`
+
+      ```bash
+      yum install -y php70w php70w-opcache php70w-fpm php70w-opcache php70w-mbstring php70w-mcrypt php70w-mysql php70w-pdo php70w-pdo_dblib php70w-gd php70w-common php70w-xml
+      ```
+
   * Verify config files (with syntax color).
 
     ```bash
@@ -118,23 +135,6 @@ This is a small light bash project.  Suit small companies which have only few se
     echo -e '\033[00m' ; \
     echo "
     ```
-
-  * Mostly used configuration :
-    * **DEV** use (server in **Local** / server in **Cloud**) && **Production** use (server in **Local** / server in **Cloud**)
-
-      ```bash
-      databag/
-      ├── F_01_ENV_02_os.cfg
-      ├── F_01_ENV_04_ssh_config.cfg
-      └── _gitconfig.cfg
-      ```
-
-  * PHP 7.0 for old project
-    * Modify yum packages in script `functions/F_02_PKG_05_php_01_install_php7.sh`
-
-      ```bash
-      yum install -y php70w php70w-opcache php70w-fpm php70w-opcache php70w-mbstring php70w-mcrypt php70w-mysql php70w-pdo php70w-pdo_dblib php70w-gd php70w-common php70w-xml
-      ```
 
 # Easy Installation
 I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx (official), MariaDB, php-fpm, puma (rails)**.  And help me to create default projects about "Rails" and "Laravel"
