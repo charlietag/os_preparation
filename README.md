@@ -614,3 +614,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/11/27
   * Update NodeJS from 10.x LTS to 12.x LTS
   * Redmine - 4.0.4 ---> 4.0.5
+* 2019/12/06
+  * tag: v0.1.0
