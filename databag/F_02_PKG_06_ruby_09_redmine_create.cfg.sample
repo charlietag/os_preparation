@@ -30,6 +30,7 @@ local redmine_bundler_version="2.0.2"
 # -- EasyGantt --
 # if really need this plugin, install it after all
 #  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/EasyGanttFree-4.x.zip"
+#
 # -- redmine_ckeditor --
 # Security issue (can upload without permission)
 #  "https://github.com/a-ono/redmine_ckeditor/archive/1.2.2.zip"
