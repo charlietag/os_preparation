@@ -42,7 +42,6 @@ local redmine_plugins=(
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_5_0-light.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_checklists-3_1_16-light.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.0.x.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/EasyGanttFree-4.x.zip"
 )
 
 # -------------------------- Redmine Plugins ----------------------------
