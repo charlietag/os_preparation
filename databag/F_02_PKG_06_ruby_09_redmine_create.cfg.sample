@@ -39,6 +39,7 @@ local redmine_bundler_version="2.0.2"
 #  "https://github.com/haru/redmine_code_review/archive/1.0.0.zip"
 local redmine_plugins=(
   "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.1.zip"
+  "https://github.com/akiko-pusu/redmine_issue_templates/archive/0.3.7.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_5_0-light.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_checklists-3_1_16-light.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.0.x.zip"
