@@ -615,3 +615,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/12/08
   * tag: v0.1.3
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.2...v0.1.3
+* 2019/12/09
+  * tag: v0.1.4
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.3...v0.1.4
