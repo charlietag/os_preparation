@@ -50,6 +50,7 @@ local redmine_plugins=(
 local redmine_themes=(
   "https://github.com/mrliptontea/PurpleMine2/archive/v2.8.0.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/a1_theme-2_0_0.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/circle_theme-2_1_3.zip"
 )
 # -------------------------- Redmine Themes ----------------------------
 
