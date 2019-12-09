@@ -37,6 +37,7 @@ local redmine_bundler_version="2.0.2"
 
 # -- Disable default --
 #  "https://github.com/haru/redmine_code_review/archive/1.0.0.zip"
+#  "https://github.com/tkusukawa/redmine_work_time/archive/0.4.0.zip"
 local redmine_plugins=(
   "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.1.zip"
   "https://github.com/akiko-pusu/redmine_issue_templates/archive/0.3.7.zip"
