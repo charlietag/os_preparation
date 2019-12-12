@@ -624,3 +624,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/12/10
   * tag: v0.1.6
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.5...v0.1.6
+* 2019/12/13
+  * redmine_plugin : redmine_agile 1.5.0 -> 1.5.1
+  * tag: v0.1.7
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.6...v0.1.7
