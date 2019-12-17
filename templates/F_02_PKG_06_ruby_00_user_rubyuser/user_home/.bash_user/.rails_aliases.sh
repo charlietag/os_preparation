@@ -62,4 +62,11 @@ alias br='
   echo ""
   '
 
+alias bs='
+  echo "==================================="; \
+  echo "     Start Rails in Dev Mode"; \
+  echo "==================================="; \
+  bundle exec rails server -b 0.0.0.0 ; \
+  echo ""
+  '
 
