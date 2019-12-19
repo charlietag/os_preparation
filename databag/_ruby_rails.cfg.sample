@@ -9,7 +9,7 @@ _task_check_and_useradd
 local rvm_version="1.29.9"
 
 # Specify ruby version (installing with rvm)
-local ruby_version="2.6.3"
+local ruby_version="2.6.0"
 
 # Specify rails version here
 # ex. 5.0 presents ~> 5.0.0
