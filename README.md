@@ -633,3 +633,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Redmine
     * Ruby - 2.6.3 ---> 2.5.1
     * Bundler - 2.0.2 ---> 2.1.1
+  * tag: v0.1.8
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.7...v0.1.8
