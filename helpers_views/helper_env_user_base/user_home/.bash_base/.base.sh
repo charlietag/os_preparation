@@ -21,8 +21,8 @@ alias ooo='cd ../../..'
 alias b='cd -'
 
 # tmux aliases
-alias t='tmux -2'
-alias tt='tmux -2 new -s $(basename ${PWD})'
+alias t='tmux -2 new -s $(basename ${PWD})'
+alias tt='tmux -2'
 alias tn_s='tmux -2 new -s'
 alias ta='tmux -2 a'
 alias tl='tmux ls'
