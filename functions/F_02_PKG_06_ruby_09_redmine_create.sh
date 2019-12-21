@@ -149,9 +149,9 @@ fi
 
 # ====== Start to install redmine gem =======
 echo "========================================="
-echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4)"
+echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4) / Bundler 2.x for Redmine4.x (Rails 5)"
 echo "========================================="
-su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v \"~> ${redmine_bundler_version}).0\""
+su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v \"~> ${redmine_bundler_version}).0\")"
 echo ""
 
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ install --without development test"
