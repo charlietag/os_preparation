@@ -151,18 +151,19 @@ fi
 echo "========================================="
 echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4) / Bundler 2.x for Redmine4.x (Rails 5)"
 echo "========================================="
-su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v \"~> ${redmine_bundler_version}).0\")"
+su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v '~> ${redmine_bundler_version}.0')"
 echo ""
 
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ install --without development test"
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake generate_secret_token"
-# su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
-#su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake db:migrate RAILS_ENV=production"
+local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_root} && bundle -v | awk '{print \$3}'")"
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ install --without development test"
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
+# su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
+#su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake db:migrate RAILS_ENV=production"
 if [[ -n "${redmine_default_lang}" ]]; then
-  su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
+  su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
 fi
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ exec rake redmine:plugins RAILS_ENV=production"
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:plugins RAILS_ENV=production"
 
 # ====== Stop database after finishing installation =======
 systemctl stop mariadb
