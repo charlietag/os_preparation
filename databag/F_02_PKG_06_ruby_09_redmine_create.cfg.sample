@@ -18,7 +18,7 @@ local redmine_db_name="redmine"
 
 # --- Redmine 4.x ---
 local redmine_ruby_version="2.5.1"
-local redmine_version="4.0.5"
+local redmine_version="4.1.0"
 local redmine_bundler_version="2.1.1"
 
 # -------------------------- Redmine Plugins ----------------------------
