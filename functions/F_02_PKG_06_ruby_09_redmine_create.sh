@@ -151,7 +151,7 @@ fi
 echo "========================================="
 echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4)"
 echo "========================================="
-su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v ${redmine_bundler_version})"
+su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v \"~> ${redmine_bundler_version}).0\""
 echo ""
 
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${redmine_bundler_version}_ install --without development test"

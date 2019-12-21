@@ -637,3 +637,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.7...v0.1.8
 * 2019/12/22
   * Redmine - 4.0.5 ---> 4.0.6
+  * Bundler - 2.1.1 ---> 2.1.x
