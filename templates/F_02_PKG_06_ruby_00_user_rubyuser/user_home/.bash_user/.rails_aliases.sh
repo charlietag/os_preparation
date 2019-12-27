@@ -70,3 +70,19 @@ alias bs='
   echo ""
   '
 
+alias bgstatus='
+  echo "==================================="; \
+  echo "     Spring Status"; \
+  echo "==================================="; \
+  bundle exec spring status ; \
+  echo ""
+  '
+
+alias bgstop='
+  echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
+  '
+
