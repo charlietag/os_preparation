@@ -70,7 +70,7 @@ alias bs='
   echo ""
   '
 
-alias bgstatus='
+alias bg-status='
   echo "==================================="; \
   echo "     Spring Status"; \
   echo "==================================="; \
@@ -78,7 +78,7 @@ alias bgstatus='
   echo ""
   '
 
-alias bgstop='
+alias bg-stop='
   echo "==================================="; \
   echo "     Spring Stop"; \
   echo "==================================="; \
