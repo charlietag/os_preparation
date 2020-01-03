@@ -26,24 +26,38 @@ test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 mkdir -p ${current_user_home}/.vim/autoload ${current_user_home}/.vim/bundle && \
 curl -LSso ${current_user_home}/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
+
 cd ${current_user_home}/.vim/bundle
-git clone https://github.com/godlygeek/tabular.git
-git clone https://github.com/Raimondi/delimitMate.git
-git clone https://github.com/scrooloose/nerdtree.git
-git clone https://github.com/vim-airline/vim-airline.git
-#git clone https://github.com/vim-airline/vim-airline-themes.git
-git clone https://github.com/tpope/vim-sensible.git
 
-# quickly move to position
-git clone https://github.com/easymotion/vim-easymotion.git
+# ---- Start Fetching vim plugins from github ----
 
-# save vim session - avoid server crash
-git clone https://github.com/tpope/vim-obsession.git
+  #vim-airline/vim-airline-themes
+local git_fetch_concurrency=10
+local vim_git_repos=(
+  "godlygeek/tabular"
+  "Raimondi/delimitMate"
+  "scrooloose/nerdtree"
+  "vim-airline/vim-airline"
+  "tpope/vim-sensible"
+  "easymotion/vim-easymotion"
+  "tpope/vim-obsession"
+  "tpope/vim-fugitive"
+)
+
+echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
+  xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+  "echo ----- Downloading Vim Plugin : {} -----; git clone https://github.com/{}.git; echo "
+
+# quickly move to position ---> easymotion/vim-easymotion
+
+
+# save vim session - avoid server crash ---> tpope/vim-obsession
 vim -u NONE -c "helptags vim-obsession/doc" -c q              # generate doc - vim-obsession help tag
 
-#Show git branch name
-git clone https://github.com/tpope/vim-fugitive.git
-#git clone https://github.com/airblade/vim-gitgutter.git
+#Show git branch name ---> tpope/vim-fugitive
+
+#airblade/vim-gitgutter    #---> Useless
+# ---- Start Fetching vim plugins from github END----
 
 #-----------------------------------------------------------------------------------------
 #Setup Tmux Plugin
@@ -53,8 +67,12 @@ mkdir -p ${current_user_home}/.tmux/plugins
 
 cd ${current_user_home}/.tmux/plugins
 
-#cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | xargs -n 1 -P 10 -i bash -c "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
-cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | xargs -i bash -c "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
+# ---- Start Fetching tmux plugins from github ----
+local git_fetch_concurrency=10
+cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | \
+  xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+  "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
+# ---- Start Fetching tmux plugins from github END----
 
 
 #-----------------------------------------------------------------------------------------
