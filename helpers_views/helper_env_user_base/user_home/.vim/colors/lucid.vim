@@ -369,3 +369,9 @@ hi Visual           ctermfg=NONE            ctermbg=60
 " visual mode selection when vim is 'not owning the selection' (x11 only)
 hi VisualNOS        guifg=fg                                        gui=underline
 hi VisualNOS        ctermfg=fg                                      cterm=underline
+
+"------------Plugin: gitgutter------------
+highlight GitGutterAdd     guifg=#009900 guibg=none ctermfg=2 ctermbg=none cterm=bold
+highlight GitGutterChange  guifg=#bbbb00 guibg=none ctermfg=3 ctermbg=none cterm=bold
+highlight GitGutterDelete  guifg=#ff2222 guibg=none ctermfg=1 ctermbg=none cterm=bold
+"------------Plugin: gitgutter------------

@@ -9,10 +9,16 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-l> :tabn<CR>
 map <C-k> :tabp<CR>
 
-"------------Plugin: gitgutter (Useless)------------
-"set updatetime=250
-"let g:gitgutter_override_sign_column_highlight = 0
-"let g:gitgutter_signs = 0
+"------------Plugin: gitgutter------------
+set updatetime=100
+let g:gitgutter_map_keys = 0
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+
+" load highlight in lucid.vim
+" autocmd VimEnter * :ighlight GitGutterAdd     guifg=#009900 guibg=none ctermfg=2 ctermbg=none cterm=bold
+" autocmd VimEnter * :ighlight GitGutterChange  guifg=#bbbb00 guibg=none ctermfg=3 ctermbg=none cterm=bold
+" autocmd VimEnter * :ighlight GitGutterDelete  guifg=#ff2222 guibg=none ctermfg=1 ctermbg=none cterm=bold
 
 "------------Plugin: vim-airline------------
 set laststatus=2
@@ -124,3 +130,4 @@ endif
 
 " Prevent Vim Clearing Screen on Exit
 "set t_ti= t_te=
+
