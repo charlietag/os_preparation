@@ -641,6 +641,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2020/01/10
   * Add vim plugin : gitgutter
   * Parallel downloading vim / redmine plugins
+  * Improve yum installation by reducing the frequency of using command "yum install"
 * 2020/01/10
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0
