@@ -3,8 +3,7 @@ echo "==============================="
 echo "  Installing basic dev packages..."
 echo "==============================="
 
-#yum install -y epel-release
-pkgs_list="${pkgs_list} epel-release"
+yum install -y epel-release
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
