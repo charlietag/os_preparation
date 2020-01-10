@@ -638,3 +638,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2019/12/22
   * Redmine : 4.0.5 -> 4.0.6
   * Redmine : Bundler - 2.1.1 ---> 2.1.x
+* 2020/01/10
+  * Add vim plugin : gitgutter
+  * Parallel downloading vim / redmine plugins
+* 2020/01/10
+  * tag: v0.2.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0

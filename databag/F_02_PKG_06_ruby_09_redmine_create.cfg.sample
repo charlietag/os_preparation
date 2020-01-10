@@ -75,4 +75,5 @@ local redmine_gemset="gemset_redmine_${redmine_version}"
 #==========================================
 # Redmine URL
 #==========================================
-local redmine_url="https://github.com/redmine/redmine/archive/${redmine_version}.zip"
+#Using git clone instead, for easier to upgrade redmine verion by command 'git pull'
+#local redmine_url="https://github.com/redmine/redmine/archive/${redmine_version}.zip"

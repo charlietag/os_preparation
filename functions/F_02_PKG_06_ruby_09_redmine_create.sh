@@ -35,11 +35,9 @@ echo "========================================="
 cd ${TMP}
 
 # ----- redmine core -----
-wget $redmine_url
-ls *.zip 2>/dev/null | xargs -i unzip -q {}
-SAFE_DELETE "*.zip"
-echo "Downloaded ZIP file unzipped already..."
-mv ${TMP}/redmine-* ${redmine_web_root}
+git clone https://github.com/redmine/redmine.git
+cd redmine && git checkout ${redmine_version} -b "redmine_${redmine_version}"
+mv ${TMP}/redmine ${redmine_web_root}
 [[ -d ${redmine_web_root} ]] && echo -e "~~~ ${redmine_web_root} installed... ~~~\n\n\n"
 # ----- redmine core -----
 
