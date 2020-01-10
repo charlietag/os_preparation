@@ -15,6 +15,12 @@ let g:gitgutter_map_keys = 0
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 
+" Default enable gitgutter
+"let g:gitgutter_enabled = 0
+"nnoremap [g :GitGutterEnable<CR>
+"nnoremap ]g :GitGutterDisable<CR>
+nnoremap [[ :GitGutterToggle<CR>
+
 " load highlight in lucid.vim
 " autocmd VimEnter * :ighlight GitGutterAdd     guifg=#009900 guibg=none ctermfg=2 ctermbg=none cterm=bold
 " autocmd VimEnter * :ighlight GitGutterChange  guifg=#bbbb00 guibg=none ctermfg=3 ctermbg=none cterm=bold
