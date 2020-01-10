@@ -32,6 +32,8 @@ cd ${current_user_home}/.vim/bundle
 # ---- Start Fetching vim plugins from github ----
 
   #vim-airline/vim-airline-themes
+# quickly move to position ---> easymotion/vim-easymotion
+# Show git branch name     ---> tpope/vim-fugitive
 local git_fetch_concurrency=10
 local vim_git_repos=(
   "godlygeek/tabular"
@@ -42,21 +44,19 @@ local vim_git_repos=(
   "easymotion/vim-easymotion"
   "tpope/vim-obsession"
   "tpope/vim-fugitive"
+  "airblade/vim-gitgutter"
 )
 
 echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
   xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
   "echo ----- Downloading Vim Plugin : {} -----; git clone https://github.com/{}.git; echo "
 
-# quickly move to position ---> easymotion/vim-easymotion
 
 
 # save vim session - avoid server crash ---> tpope/vim-obsession
 vim -u NONE -c "helptags vim-obsession/doc" -c q              # generate doc - vim-obsession help tag
 
-#Show git branch name ---> tpope/vim-fugitive
 
-#airblade/vim-gitgutter    #---> Useless
 # ---- Start Fetching vim plugins from github END----
 
 #-----------------------------------------------------------------------------------------
