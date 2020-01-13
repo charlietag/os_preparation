@@ -599,7 +599,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Stop puma server
     * `puma-mgr stop`
   * Backup current redmine
-  * Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh`
+  * Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh` ([F_02_PKG_06_ruby_09_redmine_create_diff.png](https://raw.githubusercontent.com/charlietag/github_share_folder/master/sample_images/F_02_PKG_06_ruby_09_redmine_create_diff.png))
 
     ```bash
     if [[ -z "${redmine_db_pass}" ]]; then
