@@ -15,6 +15,7 @@ Table of Contents
   * [Ruby gem config](#ruby-gem-config)
   * [Database configuration for production](#database-configuration-for-production)
   * [Extra functions](#extra-functions)
+  * [Upgrading Redmine](#upgrading-redmine)
 - [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
@@ -503,6 +504,90 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     SAFE_DELETE "${DELETE_FILE}"
     ```
 
+## Upgrading Redmine
+* Reference
+  * https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade
+
+* Backup current redmine
+  * Database
+    * mysqldump -u root -p --lock-all-tables --skip-tz-utc redmine > redmine_`date +"%Y%m%d"`_skip-tz-utc.sql
+  * Application & files
+    * cp -a redmine redmine_bak
+
+* Customized files
+  * plugins
+    * /home/rubyuser/redmine/plugins/redmine_*
+  * themes
+    * /home/rubyuser/redmine/public/themes/{a1,circle,PurpleMine2
+  * session token/home/rubyuser/rails_sites/redmine/config/initializers/secret_token
+    * /home/rubyuser/rails_sites/redmine/config/initializers/secret_token.rb
+  * uploaded files
+    * /home/rubyuser/rails_sites/redmine/files/
+
+
+
+* Upgrading from a git checkout
+  * Stop puma server
+    * `puma-mgr stop`
+  * Go to the Redmine root directory and run the following command:
+
+    ```bash
+    cd redmine
+    git stash
+    git checkout master
+    git pull
+    git co 4.0.7 -b redmine_4.0.7
+    git stash pop
+    git status |grep 'both modified:' |awk '{print $4}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
+    ```
+
+  * Fix conflicts
+
+
+  * Perform the upgrade
+
+    ```bash
+    gem update --system
+    gem install bundler
+
+    # gemset name using redmine version
+    echo "gemset_redmine_4.1.0" > .ruby-gemset
+
+    # switch to the new gemset
+    cd
+    cd -
+
+    # Install the required gems by running the following command
+    bundle update
+
+    # Update the database
+    bundle exec rake db:migrate RAILS_ENV=production
+    bundle exec rake redmine:plugins RAILS_ENV=production
+
+    # Clean up
+    bundle exec rake tmp:cache:clear RAILS_ENV=production
+    ```
+
+  * Start puma server
+    * `puma-mgr start`
+  * Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
+
+* get git stash details
+  * Ref. https://git-scm.com/docs/git-stash
+  * Get stash list
+
+    ```bash
+    $ git stash list
+    stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
+    stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
+    ```
+
+  * Display all stash contents
+
+    ```bash
+    git stash list | cut -d':' -f1 | xargs -i bash -c "echo; echo ----------------------------------------------- {} -----------------------------------------------; git stash show -p {}; echo"
+    ```
+
 # CHANGELOG
 * 2017/03/02
   * Add Nginx req limit to avoid DDOS.
@@ -645,3 +730,5 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2020/01/10
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0
+* 2020/01/13
+  * Add document for upgrading redmine
