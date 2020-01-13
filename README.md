@@ -510,9 +510,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 * Backup current redmine
   * Database
-    * mysqldump -u {db_user} -p --lock-all-tables --skip-tz-utc redmine > redmine_`date +"%Y%m%d"`_skip-tz-utc.sql
+    * `mysqldump -u {db_user} -p --lock-all-tables --skip-tz-utc redmine > redmine_`date +"%Y%m%d"`_skip-tz-utc.sql`
   * Application & files
-    * cp -a redmine redmine_bak
+    * `cp -a redmine redmine_bak`
 
 * Customized files
   * plugins
