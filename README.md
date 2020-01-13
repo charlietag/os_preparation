@@ -572,18 +572,18 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * `puma-mgr start`
   * Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
 
-* get git stash details
+* (Git) stash details
   * Ref. https://git-scm.com/docs/git-stash
-  * Get stash list
+  * (Git) stash list
+
+    ```bash
+    $ git stash list
+    stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
+    stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
+    ```
+
     * redmine_4.0.6 / redmine_4.0.7, these mean branch name
     * if you want to restore data, you'd better checkout the the related branch
-
-      ```bash
-      $ git stash list
-      stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
-      stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
-      ```
-
   * Display all stash contents
 
     ```bash
