@@ -585,7 +585,11 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Display all stash contents
 
     ```bash
-    git stash list | cut -d':' -f1 | xargs -i bash -c "echo; echo ----------------------------------------------- {} -----------------------------------------------; git stash show -p {}; echo"
+    git stash list | cut -d':' -f1 | xargs -i bash -c "\
+      echo; \
+      echo ----------------------------------------------- {} -----------------------------------------------;\
+      git stash show -p {}; echo\
+    "
     ```
 
 # CHANGELOG
