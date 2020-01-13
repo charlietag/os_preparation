@@ -547,15 +547,16 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * Perform the upgrade
 
     ```bash
-    gem update --system
-    gem install bundler
-
     # gemset name using redmine version
     echo "gemset_redmine_4.1.0" > .ruby-gemset
 
     # switch to the new gemset
     cd
     cd -
+
+    # Update gem / bundler for this gemset
+    gem update --system
+    gem install bundler
 
     # Install the required gems by running the following command
     bundle update
