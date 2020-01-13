@@ -595,6 +595,40 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     "
     ```
 
+* Upgrading from a fresh installation
+  * Stop puma server
+    * `puma-mgr stop`
+  * Backup current redmine
+  * Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh`
+
+    ```bash
+    if [[ -z "${redmine_db_pass}" ]]; then
+      mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+    else
+      mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+    fi
+    ```
+
+    ```bash
+    su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
+    ```
+
+    ```bash
+    if [[ -n "${redmine_default_lang}" ]]; then
+      su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
+    fi
+    ```
+
+  * Perform the fresh installation
+    * `./start -i F_02_PKG_06_ruby_09_redmine_create`
+
+  * Restore files from backup
+    * `redmine/config/initializers/secret_token.rb`
+    * `redmine/files/`
+
+  * Start puma server
+    * `puma-mgr start`
+
 # CHANGELOG
 * 2017/03/02
   * Add Nginx req limit to avoid DDOS.
