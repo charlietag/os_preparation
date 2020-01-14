@@ -526,7 +526,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 
 
-* Upgrading from a git checkout
+* (Method 1) Upgrading from a git checkout
   * Stop puma server
     * `puma-mgr stop`
   * Go to the Redmine root directory and run the following command:
@@ -595,7 +595,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     "
     ```
 
-* Upgrading from a fresh installation
+* (Method 2) Upgrading from a fresh installation
   * Stop puma server
     * `puma-mgr stop`
   * Backup current redmine
