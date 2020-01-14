@@ -505,129 +505,129 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     ```
 
 ## Upgrading Redmine
-* Reference
-  * https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade
+### Reference
+* https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade
 
+### Backup current redmine
+* Database
+  * `mysqldump -u {db_user} -p --lock-all-tables --skip-tz-utc redmine > redmine_`date +"%Y%m%d"`_skip-tz-utc.sql`
+* Application & files
+  * `cp -a redmine redmine_bak`
+
+### Customized files
+* plugins
+  * `/home/rubyuser/redmine/plugins/redmine_*`
+* themes
+  * `/home/rubyuser/redmine/public/themes/{a1,circle,PurpleMine2}`
+* session token
+  * `/home/rubyuser/rails_sites/redmine/config/initializers/secret_token.rb`
+* uploaded files
+  * `/home/rubyuser/rails_sites/redmine/files/`
+
+
+
+### (Method 1) Upgrading from a git checkout
+* Stop puma server
+  * `puma-mgr stop`
+* Go to the Redmine root directory and run the following command:
+
+  ```bash
+  cd redmine
+  git stash
+  git checkout master
+  git pull
+  git co 4.0.7 -b redmine_4.0.7
+  git stash pop
+  git status |grep 'both modified:' |awk '{print $4}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
+  ```
+
+* Fix conflicts
+
+
+* Perform the upgrade
+
+  ```bash
+  # gemset name using redmine version
+  echo "gemset_redmine_4.1.0" > .ruby-gemset
+
+  # switch to the new gemset
+  cd
+  cd -
+
+  # Update gem / bundler for this gemset
+  gem update --system
+  gem install bundler
+
+  # Install the required gems by running the following command
+  bundle update
+
+  # Update the database
+  bundle exec rake db:migrate RAILS_ENV=production
+  bundle exec rake redmine:plugins RAILS_ENV=production
+
+  # Clean up
+  bundle exec rake tmp:cache:clear RAILS_ENV=production
+  ```
+
+* Start puma server
+  * `puma-mgr start`
+* Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
+
+### (Git) Stash details
+* Ref. https://git-scm.com/docs/git-stash
+* (Git) stash list
+
+  ```bash
+  $ git stash list
+  stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
+  stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
+  ```
+
+  * redmine_4.0.6 / redmine_4.0.7, these mean branch name
+  * if you want to restore data, you'd better checkout the the related branch
+* Display all stash contents
+
+  ```bash
+  git stash list | cut -d':' -f1 | xargs -i bash -c "\
+    echo; \
+    echo ----------------------------------------------- {} -----------------------------------------------;\
+    git stash show -p {}; echo\
+  "
+  ```
+
+### (Method 2) Upgrading from a fresh installation
+* Stop puma server
+  * `puma-mgr stop`
 * Backup current redmine
-  * Database
-    * `mysqldump -u {db_user} -p --lock-all-tables --skip-tz-utc redmine > redmine_`date +"%Y%m%d"`_skip-tz-utc.sql`
-  * Application & files
-    * `cp -a redmine redmine_bak`
+* Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh` ([F_02_PKG_06_ruby_09_redmine_create_diff.png](https://raw.githubusercontent.com/charlietag/github_share_folder/master/sample_images/F_02_PKG_06_ruby_09_redmine_create_diff.png))
 
-* Customized files
-  * plugins
-    * `/home/rubyuser/redmine/plugins/redmine_*`
-  * themes
-    * `/home/rubyuser/redmine/public/themes/{a1,circle,PurpleMine2`
-  * session token
-    * `/home/rubyuser/rails_sites/redmine/config/initializers/secret_token.rb`
-  * uploaded files
-    * `/home/rubyuser/rails_sites/redmine/files/`
+  ```bash
+  if [[ -z "${redmine_db_pass}" ]]; then
+    mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+  else
+    mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
+  fi
+  ```
 
+  ```bash
+  su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
+  ```
 
+  ```bash
+  if [[ -n "${redmine_default_lang}" ]]; then
+    su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
+  fi
+  ```
 
-* (Method 1) Upgrading from a git checkout
-  * Stop puma server
-    * `puma-mgr stop`
-  * Go to the Redmine root directory and run the following command:
+* Perform the fresh installation
+  * `./start -i F_02_PKG_06_ruby_09_redmine_create`
 
-    ```bash
-    cd redmine
-    git stash
-    git checkout master
-    git pull
-    git co 4.0.7 -b redmine_4.0.7
-    git stash pop
-    git status |grep 'both modified:' |awk '{print $4}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
-    ```
+* Restore files from backup
+  * `redmine/config/initializers/secret_token.rb`
+  * `redmine/files/`
 
-  * Fix conflicts
-
-
-  * Perform the upgrade
-
-    ```bash
-    # gemset name using redmine version
-    echo "gemset_redmine_4.1.0" > .ruby-gemset
-
-    # switch to the new gemset
-    cd
-    cd -
-
-    # Update gem / bundler for this gemset
-    gem update --system
-    gem install bundler
-
-    # Install the required gems by running the following command
-    bundle update
-
-    # Update the database
-    bundle exec rake db:migrate RAILS_ENV=production
-    bundle exec rake redmine:plugins RAILS_ENV=production
-
-    # Clean up
-    bundle exec rake tmp:cache:clear RAILS_ENV=production
-    ```
-
-  * Start puma server
-    * `puma-mgr start`
-  * Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
-
-* (Git) stash details
-  * Ref. https://git-scm.com/docs/git-stash
-  * (Git) stash list
-
-    ```bash
-    $ git stash list
-    stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
-    stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
-    ```
-
-    * redmine_4.0.6 / redmine_4.0.7, these mean branch name
-    * if you want to restore data, you'd better checkout the the related branch
-  * Display all stash contents
-
-    ```bash
-    git stash list | cut -d':' -f1 | xargs -i bash -c "\
-      echo; \
-      echo ----------------------------------------------- {} -----------------------------------------------;\
-      git stash show -p {}; echo\
-    "
-    ```
-
-* (Method 2) Upgrading from a fresh installation
-  * Stop puma server
-    * `puma-mgr stop`
-  * Backup current redmine
-  * Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh` ([F_02_PKG_06_ruby_09_redmine_create_diff.png](https://raw.githubusercontent.com/charlietag/github_share_folder/master/sample_images/F_02_PKG_06_ruby_09_redmine_create_diff.png))
-
-    ```bash
-    if [[ -z "${redmine_db_pass}" ]]; then
-      mysql -u root -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
-    else
-      mysql -u root -p${redmine_db_pass} -e "CREATE DATABASE ${redmine_db_name} CHARACTER SET utf8;"
-    fi
-    ```
-
-    ```bash
-    su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
-    ```
-
-    ```bash
-    if [[ -n "${redmine_default_lang}" ]]; then
-      su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:load_default_data RAILS_ENV=production REDMINE_LANG=${redmine_default_lang}"
-    fi
-    ```
-
-  * Perform the fresh installation
-    * `./start -i F_02_PKG_06_ruby_09_redmine_create`
-
-  * Restore files from backup
-    * `redmine/config/initializers/secret_token.rb`
-    * `redmine/files/`
-
-  * Start puma server
-    * `puma-mgr start`
+* Start puma server
+  * `puma-mgr start`
 
 # CHANGELOG
 * 2017/03/02
