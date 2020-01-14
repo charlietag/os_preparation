@@ -15,12 +15,12 @@ Table of Contents
   * [Ruby gem config](#ruby-gem-config)
   * [Database configuration for production](#database-configuration-for-production)
   * [Extra functions](#extra-functions)
+  * [(Git) Stash details](#git-stash-details)
   * [Upgrading Redmine](#upgrading-redmine)
     + [Reference](#reference)
     + [Backup current redmine](#backup-current-redmine)
     + [Customized files](#customized-files)
     + [(Method 1) Upgrading from a git checkout](#method-1-upgrading-from-a-git-checkout)
-    + [(Git) Stash details](#git-stash-details)
     + [(Method 2) Upgrading from a fresh installation](#method-2-upgrading-from-a-fresh-installation)
 - [CHANGELOG](#changelog)
 
@@ -510,6 +510,28 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     SAFE_DELETE "${DELETE_FILE}"
     ```
 
+## (Git) Stash details
+* Ref. https://git-scm.com/docs/git-stash
+* (Git) stash list
+
+  ```bash
+  $ git stash list
+  stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
+  stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
+  ```
+
+  * redmine_4.0.6 / redmine_4.0.7, these mean branch name
+  * if you want to restore data, you'd better checkout the the related branch
+* Display all stash contents
+
+  ```bash
+  git stash list | cut -d':' -f1 | xargs -i bash -c "\
+    echo; \
+    echo ----------------------------------------------- {} -----------------------------------------------;\
+    git stash show -p {}; echo\
+  "
+  ```
+
 ## Upgrading Redmine
 ### Reference
 * https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade
@@ -578,28 +600,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * Start puma server
   * `puma-mgr start`
 * Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
-
-### (Git) Stash details
-* Ref. https://git-scm.com/docs/git-stash
-* (Git) stash list
-
-  ```bash
-  $ git stash list
-  stash@{0}: WIP on redmine_4.0.7: a853fc0 Fix sort projects table by custom field (#32769).
-  stash@{1}: WIP on redmine_4.0.6: 22ebc68 tagged version 4.0.6
-  ```
-
-  * redmine_4.0.6 / redmine_4.0.7, these mean branch name
-  * if you want to restore data, you'd better checkout the the related branch
-* Display all stash contents
-
-  ```bash
-  git stash list | cut -d':' -f1 | xargs -i bash -c "\
-    echo; \
-    echo ----------------------------------------------- {} -----------------------------------------------;\
-    git stash show -p {}; echo\
-  "
-  ```
 
 ### (Method 2) Upgrading from a fresh installation
 * Stop puma server
