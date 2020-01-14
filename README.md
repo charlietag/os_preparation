@@ -16,6 +16,12 @@ Table of Contents
   * [Database configuration for production](#database-configuration-for-production)
   * [Extra functions](#extra-functions)
   * [Upgrading Redmine](#upgrading-redmine)
+    + [Reference](#reference)
+    + [Backup current redmine](#backup-current-redmine)
+    + [Customized files](#customized-files)
+    + [(Method 1) Upgrading from a git checkout](#-method-1--upgrading-from-a-git-checkout)
+    + [(Git) Stash details](#-git--stash-details)
+    + [(Method 2) Upgrading from a fresh installation](#-method-2--upgrading-from-a-fresh-installation)
 - [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
