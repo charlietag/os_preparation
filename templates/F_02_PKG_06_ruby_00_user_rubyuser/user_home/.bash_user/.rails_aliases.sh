@@ -3,6 +3,11 @@ alias bl='bundle exec rails'
 
 alias bv='
   echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
+  echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
   bundle exec rails tmp:clear ; \
@@ -21,6 +26,11 @@ alias bv='
 
 alias bn='
   echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
+  echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
   bundle exec rails tmp:clear ; \
@@ -33,6 +43,11 @@ alias bn='
   '
 
 alias br='
+  echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
   echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
@@ -63,6 +78,11 @@ alias br='
   '
 
 alias bs='
+  echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
   echo "==================================="; \
   echo "     Start Rails in Dev Mode"; \
   echo "==================================="; \

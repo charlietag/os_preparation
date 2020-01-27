@@ -70,9 +70,36 @@ start_rails () {
   if [[ "${RAILS_USER}" = "${CURRENT_USER}" ]]; then
     # also could load whole user bash env from the begining of the script like
     # ! /bin/bash -l
+
+    # --- Stop Spring ---
+    if [[ -f ${RAILS_PATH}/bin/spring ]]; then
+      echo "==================================="
+      echo "     Spring Stop"
+      echo "==================================="
+      bash -l -c "cd $RAILS_PATH && bundle exec spring stop"
+      echo ""
+    fi
+    # -------------------
+
+    # --- Start puma ---
     bash -l -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
+    # -------------------
+
   else
+
+    # --- Stop Spring ---
+    if [[ -f ${RAILS_PATH}/bin/spring ]]; then
+      echo "==================================="
+      echo "     Spring Stop"
+      echo "==================================="
+      su -l $RAILS_USER -c "cd $RAILS_PATH && bundle exec spring stop"
+      echo ""
+    fi
+    # -------------------
+
+    # --- Start puma ---
     su -l $RAILS_USER -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
+    # -------------------
   fi
 }
 
