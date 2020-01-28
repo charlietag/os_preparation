@@ -779,3 +779,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0
 * 2020/01/13
   * Add document for upgrading redmine
+* 2020/01/27
+  * tag: v0.2.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.0...v0.2.1
+    * Stop spring before running rails server
