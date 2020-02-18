@@ -340,7 +340,7 @@ ______________________________
   * Ruby 2.6.0
   * Rails 6.0
     * puma (systemd, puma-mgr)
-  * Redmine 4.0.6
+  * Redmine 4.1.0
     * ruby 2.5.1
     * rails 5.2
   * Docker
