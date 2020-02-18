@@ -599,7 +599,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 * Start puma server
   * `puma-mgr start`
-* Finally go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
+* Go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
+* Finally, clear browser's cached data (To avoid strange CSS error)
+  * Chrome -> History -> Clear History -> Choose ONLY "Cached images and files"
 
 ### (Method 2) Upgrading from a fresh installation
 * Stop puma server
@@ -634,6 +636,10 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 * Start puma server
   * `puma-mgr start`
+
+* Go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
+* Finally, clear browser's cached data (To avoid strange CSS error)
+  * Chrome -> History -> Clear History -> Choose ONLY "Cached images and files"
 
 # CHANGELOG
 * 2017/03/02
