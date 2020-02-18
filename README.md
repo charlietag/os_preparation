@@ -544,9 +544,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 ### Customized files
 * plugins
-  * `/home/rubyuser/redmine/plugins/redmine_*`
+  * `/home/rubyuser/rails_sites/redmine/plugins/redmine_*`
 * themes
-  * `/home/rubyuser/redmine/public/themes/{a1,circle,PurpleMine2}`
+  * `/home/rubyuser/rails_sites/redmine/public/themes/{a1,circle,PurpleMine2}`
 * session token
   * `/home/rubyuser/rails_sites/redmine/config/initializers/secret_token.rb`
 * uploaded files
