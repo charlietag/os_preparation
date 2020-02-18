@@ -12,14 +12,14 @@ map <C-k> :tabp<CR>
 "------------Plugin: gitgutter------------
 set updatetime=100
 let g:gitgutter_map_keys = 0
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
 
 " Default enable gitgutter
 "let g:gitgutter_enabled = 0
 "nnoremap [g :GitGutterEnable<CR>
 "nnoremap ]g :GitGutterDisable<CR>
-nnoremap [[ :GitGutterToggle<CR>
+nnoremap [t :GitGutterToggle<CR>
 
 " load highlight in lucid.vim
 " autocmd VimEnter * :ighlight GitGutterAdd     guifg=#009900 guibg=none ctermfg=2 ctermbg=none cterm=bold
