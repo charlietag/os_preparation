@@ -783,3 +783,22 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v0.2.1
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.0...v0.2.1
     * Stop spring before running rails server
+* 2020/02/18
+  * Redmine
+    * 4.0 -> 4.1
+  * Redmine plugins
+    * redmine_issue_templates
+      * 0.3.7 -> 1.0.0
+    * redmine_agile
+      * 1.5.1 -> 1.5.2
+    * redmine_checklists
+      * 3.1.16 -> 3.1.17
+    * redmine_issues_tree
+      * 4.0.x -> 4.1.x
+  * Redmine themes
+    * PurpleMine2
+      * v2.8.0 -> v2.9.0
+    * a1_theme
+      * 2.0.0 -> 3.0.0
+    * circle_theme
+      * 2.1.3 -> 2.1.5
