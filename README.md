@@ -333,7 +333,7 @@ ______________________________
 ## Installed Packages
   * PHP7.2 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 6.0 (Ref. https://laravel.com/)
+  * Laravel 7.1 (Ref. https://laravel.com/)
   * MariaDB 10.4 (equal to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
@@ -810,3 +810,8 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
           * 2.0.0 -> 3.0.0
         * circle_theme
           * 2.1.3 -> 2.1.5
+* 2020/03/17
+  * tag: v0.2.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.2...v0.2.3
+      * Laravel
+        * 6.0 -> 7.1
