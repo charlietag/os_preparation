@@ -106,6 +106,7 @@ colorscheme lucid
 "------------VIM Setting------------
 filetype plugin indent on
 syntax on
+set number
 set nocompatible
 set t_Co=256
 set expandtab

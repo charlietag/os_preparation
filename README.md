@@ -333,7 +333,7 @@ ______________________________
 ## Installed Packages
   * PHP7.2 (Ref. https://webtatic.com/packages)
   * PHP-FPM (Ref. https://webtatic.com/packages)
-  * Laravel 7.1 (Ref. https://laravel.com/)
+  * Laravel 7.x (Ref. https://laravel.com/)
   * MariaDB 10.4 (equal to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
@@ -815,3 +815,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.2...v0.2.3
       * Laravel
         * 6.0 -> 7.1
+* 2020/04/04
+  * tag: v0.2.4
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.3...v0.2.4
+      * Laravel
+        * 7.1 -> 7.x
+      * vim - set number by default
