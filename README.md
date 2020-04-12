@@ -29,10 +29,10 @@ You want initialize your linux server by your own script.  But you **DO NOT** wa
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
-  (centos 7 server environment settings)
+  (centos 8 server environment settings)
 
 * This is useful when
-  * You have less than 5 CentOS7 servers to maintain.
+  * You have less than 5 CentOS-8 servers to maintain.
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
@@ -47,7 +47,7 @@ This is a small light bash project.  Suit small companies which have only few se
   ```
 
 # Environment
-  * CentOS 7 (7.x)
+  * CentOS 8 (8.x)
 
 # Warning
   * Please do this in fresh install OS
@@ -78,8 +78,8 @@ This is a small light bash project.  Suit small companies which have only few se
   * Before installation
 
     ```bash
-    yum clean all
-    yum install -y git
+    dnf clean all
+    dnf install -y git
     git clone https://github.com/charlietag/os_preparation.git
     ```
 
@@ -98,13 +98,6 @@ This is a small light bash project.  Suit small companies which have only few se
       ├── F_01_ENV_02_os.cfg
       ├── F_01_ENV_04_ssh_config.cfg
       └── _gitconfig.cfg
-      ```
-
-  * PHP 7.0 for old project
-    * Modify yum packages in script `functions/F_02_PKG_05_php_01_install_php7.sh`
-
-      ```bash
-      yum install -y php70w php70w-opcache php70w-fpm php70w-opcache php70w-mbstring php70w-mcrypt php70w-mysql php70w-pdo php70w-pdo_dblib php70w-gd php70w-common php70w-xml
       ```
 
   * Verify config files (with syntax color).
@@ -195,17 +188,17 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 * Config your own hosts file (/etc/hosts)
 
   ```bash
-  <192.168.x.x> myrails.centos7.localdomain
-  <192.168.x.x> redmine.centos7.localdomain
-  <192.168.x.x> mylaravel.centos7.localdomain
+  <192.168.x.x> myrails.centos8.localdomain
+  <192.168.x.x> redmine.centos8.localdomain
+  <192.168.x.x> mylaravel.centos8.localdomain
   ```
 
 * Browse URL
 
   ```bash
-  http://myrails.centos7.localdomain
-  http://redmine.centos7.localdomain (default account: admin/admin)
-  http://mylaravel.centos7.localdomain
+  http://myrails.centos8.localdomain
+  http://redmine.centos8.localdomain (default account: admin/admin)
+  http://mylaravel.centos8.localdomain
   ```
 
 # Advanced Installation
@@ -779,7 +772,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2020/01/10
   * Add vim plugin : gitgutter
   * Parallel downloading vim / redmine plugins
-  * Improve yum installation by reducing the frequency of using command "yum install"
+  * Improve dnf installation by reducing the frequency of using command "dnf install"
 * 2020/01/10
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0

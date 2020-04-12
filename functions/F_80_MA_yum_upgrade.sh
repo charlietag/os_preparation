@@ -1,1 +1,1 @@
-yum upgrade -y
+dnf upgrade -y

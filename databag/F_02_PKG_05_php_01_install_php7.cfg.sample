@@ -2,5 +2,4 @@
 # PHP
 #----------------------------------------
 # PHP version of webtatic YUM
-local epel_yum_repo="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-local php_yum_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+local php_dnf_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"

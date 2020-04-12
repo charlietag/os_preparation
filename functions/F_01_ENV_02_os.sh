@@ -42,7 +42,7 @@ sed -i s/'SELINUX=enforcing'/'SELINUX=disabled'/ /etc/selinux/config
 timedatectl set-timezone "${current_timezone}"
 
 #-----------------------------------------------------------------------------------------
-#Setup ntpdate
+#Setup chrony
 #-----------------------------------------------------------------------------------------
-sed -i /ntpdate/d /etc/crontab
-echo "*/5 * * * * root ntpdate pool.ntp.org >/dev/null 2>/dev/null ; hwclock -w  >/dev/null 2>/dev/null" >> /etc/crontab
+sed -i /chronyd/d /etc/crontab
+echo '*/5 * * * * root chronyd -q "pool pool.ntp.org iburst" >/dev/null 2>/dev/null ; hwclock -w  >/dev/null 2>/dev/null' >> /etc/crontab
