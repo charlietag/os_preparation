@@ -6,6 +6,9 @@ echo "==============================="
 dnf config-manager --set-enabled PowerTools
 dnf install -y epel-release
 
+# Make sure dnf cached file is updated
+dnf clean all
+
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
 #-----------------------------------------------------------------------------------------
