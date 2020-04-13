@@ -3,7 +3,7 @@ echo "==============================="
 echo "  Installing basic dev packages..."
 echo "==============================="
 
-## No need package "yum-utils" for these commands
+## No need package "yum-utils" for these commands #===> instead, using "dnf-plugins-core" , installed by default minimal installation
 #  dnf config-manager --set-enabled PowerTools
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
