@@ -44,5 +44,10 @@ pkgs_list="${pkgs_list} freetds freetds-devel"
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
 dnf install -y ${pkgs_list}
-ntpdate pool.ntp.org
+
+chronyd -q 'pool pool.ntp.org iburst'
+
+systemctl stop chronyd
+systemctl disable chronyd
+
 hwclock -w
