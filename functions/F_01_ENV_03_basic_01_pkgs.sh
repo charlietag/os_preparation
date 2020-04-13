@@ -33,8 +33,8 @@ pkgs_list="${pkgs_list} gcc-c++ make"
 
 # Basic dev packages
 dnf groupinstall -y "Development Tools"
-#dnf install -y jwhois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
-pkgs_list="${pkgs_list} jwhois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils"
+#dnf install -y whois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils
+pkgs_list="${pkgs_list} whois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils"
 
 # Basic debug tools - Enhanced tail / Enhanced grep
 #dnf install -y multitail ack
