@@ -11,6 +11,9 @@ echo "==============================="
 dnf config-manager --set-enabled PowerTools
 dnf install -y epel-release
 
+# --- epel-modular seems so slow, sometimes even failed to connect ---
+#dnf config-manager --set-disabled epel-modular
+
 # Make sure dnf cached file is updated
 dnf clean all
 
