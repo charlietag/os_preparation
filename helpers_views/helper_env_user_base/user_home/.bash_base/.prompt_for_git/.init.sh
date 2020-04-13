@@ -158,7 +158,7 @@ function git_branch {
   local git_branch="$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/")"
 
   # File changed, untracked
-  if [[ $(git status 2>/dev/null | tail -n1) != "nothing to commit, working directory clean" ]]
+  if [[ -z "$(git status 2>/dev/null | tail -n1 | grep -E "nothing to commit, working[[:print:]]*clean" )" ]]
   then
     echo -e "${COLOR_RED}${git_branch}${COLOR_END} "
   else
