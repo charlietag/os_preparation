@@ -42,7 +42,7 @@ pkgs_list="${pkgs_list} multitail ack"
 
 # For SSL
 #dnf install -y openssl openssl-libs openssl-devel libticonv-devel
-pkgs_list="${pkgs_list} openssl openssl-libs openssl-devel libticonv-devel"
+pkgs_list="${pkgs_list} openssl openssl-libs openssl-devel"
 
 # For sql server connection (freetds)
 #dnf install -y freetds freetds-devel 
