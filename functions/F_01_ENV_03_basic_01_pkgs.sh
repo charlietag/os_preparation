@@ -9,6 +9,10 @@ echo "==============================="
 
 
 dnf config-manager --set-enabled PowerTools
+
+# To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
+dnf install -y yum-utils
+
 dnf install -y epel-release
 
 # --- epel-modular seems so slow, sometimes even failed to connect ---
@@ -17,6 +21,9 @@ dnf install -y epel-release
 
 # Make sure dnf cached file is updated
 dnf clean all
+
+# Fetch dnf repo again
+dnf repolist
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
