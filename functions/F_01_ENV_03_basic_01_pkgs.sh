@@ -12,9 +12,7 @@ dnf config-manager --set-enabled PowerTools
 
 # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
 #  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
-dnf install -y yum-utils
-
-dnf install -y epel-release
+dnf install -y yum-utils epel-release
 
 # --- epel-modular seems so slow, sometimes even failed to connect ---
 # But this is for dnf module install xxxx... cannot be disabled #===> comment out
@@ -23,8 +21,33 @@ dnf install -y epel-release
 # Make sure dnf cached file is updated
 dnf clean all
 
-# Fetch dnf repo again
-dnf repolist
+############### Fetch dnf repo retry Loop (For epel-modular) #############
+#let dnf_repo_install_retry++
+#for ((i=1; i<=dnf_repo_install_retry; i++)); do
+echo "Updating DNF Repo list....."
+
+for ((i=1; ; i++)); do
+
+  # ---------- Check DNF Repo Installation -----------
+  local dnf_repo_check="$(dnf repolist >/dev/null 2>/dev/null && echo "Success")"
+  if [[ -n "${dnf_repo_check}" ]]; then
+    echo "DNF Repo is updated successfully!"
+    break
+  fi
+
+  if [[ -z "${dnf_repo_check}" ]]; then
+    echo "DNF Repo is not updated yet!"
+    #[[ $i -eq $dnf_repo_install_retry ]] && exit
+    [[ $i -gt $dnf_repo_install_retry ]] && exit
+  fi
+
+  echo -n "DNF Repo updating (try: $i) "
+  #sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
+  sleep 1; echo -n "."; echo ""
+done
+
+echo ""
+############### Fetch dnf repo retry Loop (For epel-modular) #############
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
