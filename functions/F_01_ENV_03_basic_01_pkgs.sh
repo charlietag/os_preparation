@@ -22,6 +22,8 @@ dnf install -y yum-utils epel-release
 dnf clean all
 
 ############### Fetch dnf repo retry Loop (For epel-modular) #############
+local dnf_repo_install_retry=5000
+
 #let dnf_repo_install_retry++
 #for ((i=1; i<=dnf_repo_install_retry; i++)); do
 echo "Updating DNF Repo list....."
@@ -37,7 +39,6 @@ for ((i=1; ; i++)); do
 
   if [[ -z "${dnf_repo_check}" ]]; then
     echo "DNF Repo is not updated yet!"
-    #[[ $i -eq $dnf_repo_install_retry ]] && exit
     [[ $i -gt $dnf_repo_install_retry ]] && exit
   fi
 
