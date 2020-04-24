@@ -8,6 +8,7 @@ echo "==============================="
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
 
+# avoid dnf update repo after "dnf config-manager --set-enabled PowerTools'
 [[ -z "$(dnf repolist PowerTools 2>/dev/null)" ]] && dnf config-manager --set-enabled PowerTools
 
 # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
