@@ -8,11 +8,11 @@ echo "==============================="
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
 
-dnf config-manager --set-enabled PowerTools
+[[ -z "$(dnf repolist PowerTools 2>/dev/null)" ]] && dnf config-manager --set-enabled PowerTools
 
 # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
 #  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
-dnf install -y yum-utils epel-release
+rpm --quiet -q epel-release || dnf install -y yum-utils epel-release
 
 # --- epel-modular seems so slow, sometimes even failed to connect ---
 # But this is for dnf module install xxxx... cannot be disabled #===> comment out
