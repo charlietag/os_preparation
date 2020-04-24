@@ -18,37 +18,11 @@ dnf install -y yum-utils epel-release
 # But this is for dnf module install xxxx... cannot be disabled #===> comment out
 #dnf config-manager --set-disabled epel-modular
 
-# Make sure dnf cached file is updated
-dnf clean all
+# --- Make sure dnf cached file is updated ---
+# The following command means : "dnf clean all ; dnf repolist", and will retry 5000 times if fails
 
-############### Fetch dnf repo retry Loop (For epel-modular) #############
-local dnf_repo_install_retry=5000
-
-#let dnf_repo_install_retry++
-#for ((i=1; i<=dnf_repo_install_retry; i++)); do
-echo "Updating DNF Repo list....."
-
-for ((i=1; ; i++)); do
-
-  # ---------- Check DNF Repo Installation -----------
-  local dnf_repo_check="$(dnf repolist >/dev/null 2>/dev/null && echo "Success")"
-  if [[ -n "${dnf_repo_check}" ]]; then
-    echo "DNF Repo is updated successfully!"
-    break
-  fi
-
-  if [[ -z "${dnf_repo_check}" ]]; then
-    echo "DNF Repo is not updated yet!"
-    [[ $i -gt $dnf_repo_install_retry ]] && exit
-  fi
-
-  echo -n "DNF Repo updating (try: $i) "
-  #sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
-  sleep 1; echo -n "."; echo ""
-done
-
-echo ""
-############### Fetch dnf repo retry Loop (For epel-modular) #############
+# UPDATE retry 5000 by default
+L_UPDATE_REPO 5000
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
