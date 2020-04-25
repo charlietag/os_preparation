@@ -7,13 +7,14 @@ echo "==============================="
 #  dnf config-manager --set-enabled PowerTools
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
+local verify_pkgs="$(rpm --quiet -q epel-release || echo "FAILED")"
 
 # avoid dnf update repo after "dnf config-manager --set-enabled PowerTools'
-[[ -z "$(dnf repolist PowerTools 2>/dev/null)" ]] && dnf config-manager --set-enabled PowerTools
+[[ "${verify_pkgs}" = "FAILED" ]] && dnf config-manager --set-enabled PowerTools
 
 # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
 #  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
-rpm --quiet -q epel-release || dnf install -y yum-utils epel-release
+[[ "${verify_pkgs}" = "FAILED" ]] && dnf install -y yum-utils epel-release
 
 # --- epel-modular seems so slow, sometimes even failed to connect ---
 # But this is for dnf module install xxxx... cannot be disabled #===> comment out
@@ -23,7 +24,7 @@ rpm --quiet -q epel-release || dnf install -y yum-utils epel-release
 # The following command means : "dnf clean all ; dnf repolist", and will retry 5000 times if fails
 
 # UPDATE retry 5000 by default
-L_UPDATE_REPO 5000
+[[ "${verify_pkgs}" = "FAILED" ]] && L_UPDATE_REPO 5000
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
