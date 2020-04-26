@@ -12,7 +12,9 @@ local verify_pkgs="$(rpm --quiet -q epel-release || echo "FAILED")"
 
 # avoid dnf update repo after "dnf config-manager --set-enabled PowerTools'
 [[ "${verify_pkgs}" = "FAILED" ]] && dnf install -y dnf-plugins-core
+
 [[ "${verify_pkgs}" = "FAILED" ]] && dnf config-manager --set-enabled PowerTools
+[[ "${verify_pkgs}" = "FAILED" ]] && L_UPDATE_REPO 5000
 
 # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
 #  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
