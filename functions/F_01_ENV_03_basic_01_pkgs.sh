@@ -8,6 +8,7 @@ echo "==============================="
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
 local verify_pkgs="$(rpm --quiet -q epel-release || echo "FAILED")"
+#local verify_repo="$(dnf repolist PowerTools 2>/dev/null)"
 
 # avoid dnf update repo after "dnf config-manager --set-enabled PowerTools'
 [[ "${verify_pkgs}" = "FAILED" ]] && dnf config-manager --set-enabled PowerTools
