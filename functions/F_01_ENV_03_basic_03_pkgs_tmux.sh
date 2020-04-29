@@ -17,7 +17,7 @@ pkgs_list="${pkgs_list} libevent libevent-devel ncurses ncurses-libs ncurses-bas
 
 # For Tmux compile from git clone
 #dnf install -y autoconf automake pkgconfig
-pkgs_list="${pkgs_list} autoconf automake pkgconfig"
+pkgs_list="${pkgs_list} autoconf automake pkgconf-pkg-config"
 
 # For tmux plugin copycat (for better UTF-8 character support)
 #dnf install -y gawk
