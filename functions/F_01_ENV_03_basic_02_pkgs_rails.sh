@@ -19,6 +19,12 @@ pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-deve
 
 # --- For RVM 1.29.8+ - Add system ruby as dependency for CentOS ---
 #dnf install -y ruby
+dnf module reset ruby -y
+dnf module enable ruby:2.6 -y
+
+# equals to dnf install ruby
+#dnf module install ruby:2.6/common -y
+
 pkgs_list="${pkgs_list} ruby"
 
 # ----- Rails 6+ Preview use -----
