@@ -23,7 +23,7 @@ pkgs_list="${pkgs_list} ruby"
 
 # ----- Rails 6+ Preview use -----
 # FFmpeg for video
-rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm
+rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
 #dnf install -y ffmpeg ffmpeg-devel
 pkgs_list="${pkgs_list} ffmpeg ffmpeg-devel"
 
@@ -31,9 +31,13 @@ pkgs_list="${pkgs_list} ffmpeg ffmpeg-devel"
 #dnf install -y poppler poppler-devel
 pkgs_list="${pkgs_list} poppler poppler-devel"
 
-#  Generate PDF files tools - for gem: wicked_pdf (wrapper for wkhtmltopdf)
-#dnf install -y wkhtmltopdf wkhtmltopdf-devel
-pkgs_list="${pkgs_list} wkhtmltopdf wkhtmltopdf-devel"
+# Generate PDF files tools - for gem: wicked_pdf (wrapper for wkhtmltopdf)
+#Not found in CentOS 8.1 / EPEL 8
+# Instead, using gem "wkhtmltopdf_binary_gem"
+#pkgs_list="${pkgs_list} wkhtmltopdf wkhtmltopdf-devel"
+
+# ImageMagick latest version - 6.9+
+pkgs_list="${pkgs_list} ImageMagick ImageMagick-libs ImageMagick-devel"
 
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
@@ -41,9 +45,11 @@ pkgs_list="${pkgs_list} wkhtmltopdf wkhtmltopdf-devel"
 dnf install -y ${pkgs_list}
 
 # -- ImageMagick6 - For rails 5.2+, active storage (gem 'mini_magick') --
+# CentOS 7: ImageMagick 6.7.x
+# CentOS 8: ImageMagick 6.9.x
 # gem - Rmagick requires ImageMagick 6.7.7+
 # gem - mini_magick requires ImageMagick 6.8.8-3+
 # ImageMagick latest version - 6.9+
-local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -i bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
-dnf localinstall -y ${image_magick_packages}
+#local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -i bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
+#dnf localinstall -y ${image_magick_packages}
 
