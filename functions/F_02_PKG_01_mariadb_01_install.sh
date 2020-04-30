@@ -28,14 +28,32 @@ echo "        Disable mariadb"
 echo "==============================="
 # avoid using SysV, use systemd instead
 # Run this several times stupidly to avoid SysV-mysql on suddenly
+echo -e "\n--- chkconfig mysql on ---\n"
 chkconfig mysql on
+
+echo -e "\n--- chkconfig mysql on ---\n"
 chkconfig mysql off
+
+echo -e "\n--- chkconfig mysql on ---\n"
 systemctl enable mariadb
+
+echo -e "\n--- chkconfig mysql on ---\n"
 systemctl disable mariadb
 
+
+
+
+
+echo -e "\n--- chkconfig mysql on ---\n"
 chkconfig mysql on
+
+echo -e "\n--- chkconfig mysql on ---\n"
 chkconfig mysql off
+
+echo -e "\n--- chkconfig mysql on ---\n"
 systemctl enable mariadb
+
+echo -e "\n--- chkconfig mysql on ---\n"
 systemctl disable mariadb
 
 echo "==============================="
