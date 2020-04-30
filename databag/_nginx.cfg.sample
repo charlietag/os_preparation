@@ -1,6 +1,3 @@
-# Nginx repo base_url
-local nginx_baseurl='http://nginx.org/packages/centos/7/$basearch/'
-
 # ################################
 # For limit_req_zone.conf
 # ################################
