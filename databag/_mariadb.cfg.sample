@@ -11,7 +11,7 @@ local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 #local mariadb_baseurl="http://yum.mariadb.org/10.3/centos7-amd64"
 
 # 10.4
-local mariadb_baseurl="http://yum.mariadb.org/10.4/centos7-amd64"
+local mariadb_baseurl="http://yum.mariadb.org/10.4/centos8-amd64"
 
 # Bind-address
 local mariadb_listen_address="127.0.0.1"

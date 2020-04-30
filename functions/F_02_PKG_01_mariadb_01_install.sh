@@ -7,14 +7,16 @@ local pkgs_list=""
 echo "==============================="
 echo "        Render mariadb repo"
 echo "==============================="
-task_copy_using_render
+if [[ -z "$(dnf repolist mariadb 2>/dev/null)" ]] ; then
+  task_copy_using_render
+  L_UPDATE_REPO 5000
+fi
 
 #dnf install -y MariaDB-server MariaDB-client mariadb-devel
-pkgs_list="${pkgs_list} MariaDB-server MariaDB-client mariadb-devel"
+pkgs_list="${pkgs_list} MariaDB-server MariaDB-client MariaDB-devel"
 
 # This is used for gem mysql2 - espacial MariaDB-shared
-#dnf install -y MariaDB-common MariaDB-compat MariaDB-shared
-pkgs_list="${pkgs_list} MariaDB-common MariaDB-compat MariaDB-shared"
+pkgs_list="${pkgs_list} MariaDB-common MariaDB-shared"
 
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
