@@ -51,6 +51,15 @@ This is a small light bash project.  Suit small companies which have only few se
 
 # Warning
   * Please do this in fresh install OS
+  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration all the time, instead, using dnf-automatic / yum-cron to makecache
+    * [Optional] Make cache before doing **DNF / YUM** installation
+      * `dnf makecache` / `yum makecache`
+    * Disabled
+      * dnf repo cache expiration
+        * `dnf config-manager --setopt metadata_expire=-1 --save`
+    * Enabled ([os_security](https://github.com/charlietag/os_security))
+      * dnf-automatic
+        * `dnf makecache`
   * What does this not cover, DO the following manually
     * Login user
       * Change password of root
