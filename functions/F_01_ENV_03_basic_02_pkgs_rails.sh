@@ -18,9 +18,10 @@ pkgs_list="${pkgs_list} sqlite-devel"
 pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel"
 
 # --- For RVM 1.29.8+ - Add system ruby as dependency for CentOS ---
-local verify_pkgs="$(rpm --quiet -q ruby || echo "FAILED")"
-[[ "${verify_repo}" = "FAILED" ]] && dnf module reset ruby -y
-[[ "${verify_repo}" = "FAILED" ]] && dnf module enable ruby:2.6 -y
+if ! $(dnf module list ruby:2.6 --enabled >/dev/null 2>/dev/null) ; then
+  dnf module reset ruby -y
+  dnf module enable ruby:2.6 -y
+fi
 
 # equals to dnf install ruby
 #dnf module install ruby:2.6/common -y
@@ -29,7 +30,10 @@ pkgs_list="${pkgs_list} ruby"
 
 # ----- Rails 6+ Preview use -----
 # FFmpeg for video
-rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+if ! $(rpm --quiet -q rpmfusion-free-release) ; then
+  rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+  L_UPDATE_REPO 5000
+fi
 #dnf install -y ffmpeg ffmpeg-devel
 pkgs_list="${pkgs_list} ffmpeg ffmpeg-devel"
 
