@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:disable
+# DATABAG_CFG:enable
 
 echo "==============================="
 echo "        Render repo"
@@ -17,11 +17,11 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 echo "==============================="
 echo "     Install php 7"
 echo "==============================="
-if ! $(dnf module list php:remi-7.4 --enabled >/dev/null 2>/dev/null) ; then
+if ! $(dnf module list php:${php_remi_stream} --enabled >/dev/null 2>/dev/null) ; then
   dnf module reset php -y
-  dnf module enable php:remi-7.4/devel -y
+  dnf module enable php:${php_remi_stream}/devel -y
 fi
-dnf module install php:remi-7.4/devel -y
+dnf module install php:${php_remi_stream}/devel -y
 
 # --- PHP Image ---
 # php72w-pecl-imagick ---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
