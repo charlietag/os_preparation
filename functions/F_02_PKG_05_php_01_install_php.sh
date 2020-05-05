@@ -15,7 +15,7 @@ echo "==============================="
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 echo "==============================="
-echo "     Install php 7"
+echo "     Install php:${php_remi_stream}"
 echo "==============================="
 if ! $(dnf module list php:${php_remi_stream} --enabled >/dev/null 2>/dev/null) ; then
   dnf module reset php -y
