@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:enable
+# DATABAG_CFG:disable
 
 echo "==============================="
 echo "        Render repo"
@@ -9,11 +9,19 @@ echo "==============================="
 #EPEL installed in basic_pkg
 #rpm -Uvh $epel_dnf_repo
 
-rpm -Uvh $php_dnf_repo
+#rpm -Uvh $php_dnf_repo
+
+# Using remi instead
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 echo "==============================="
-echo "     Install php 7.2"
+echo "     Install php 7"
 echo "==============================="
+if ! $(dnf module list php:remi-7.4 --enabled >/dev/null 2>/dev/null) ; then
+  dnf module reset php -y
+  dnf module enable php:remi-7.4/devel -y
+fi
+dnf module install php:remi-7.4/devel -y
 
 # --- PHP Image ---
 # php72w-pecl-imagick ---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
@@ -23,41 +31,38 @@ echo "==============================="
 # mod_php72w , is for /var/lib/php/session folder (php-fpm use), kernel module - mod_php (apache)
 # Install php 7.2
 dnf install -y \
-  mod_php72w \
-  php72w-bcmath \
-  php72w-cli \
-  php72w-common \
-  php72w-dba \
-  php72w-devel \
-  php72w-embedded \
-  php72w-enchant \
-  php72w-fpm \
-  php72w-gd \
-  php72w-imap \
-  php72w-interbase \
-  php72w-intl \
-  php72w-ldap \
-  php72w-mbstring \
-  php72w-mysqlnd \
-  php72w-odbc \
-  php72w-opcache \
-  php72w-pdo \
-  php72w-pdo_dblib \
-  php72w-pear \
-  php72w-pecl-apcu \
-  php72w-pecl-mongodb \
-  php72w-pecl-redis \
-  php72w-pgsql \
-  php72w-phpdbg \
-  php72w-process \
-  php72w-pspell \
-  php72w-recode \
-  php72w-snmp \
-  php72w-soap \
-  php72w-sodium \
-  php72w-tidy \
-  php72w-xml \
-  php72w-xmlrpc
+  php \
+  php-bcmath \
+  php-cli \
+  php-common \
+  php-dba \
+  php-devel \
+  php-embedded \
+  php-enchant \
+  php-fpm \
+  php-gd \
+  php-imap \
+  php-intl \
+  php-ldap \
+  php-mbstring \
+  php-mysqlnd \
+  php-odbc \
+  php-opcache \
+  php-pdo \
+  php-pdo_dblib \
+  php-pear \
+  php-pecl-apcu \
+  php-pecl-mongodb \
+  php-pecl-redis \
+  php-pgsql \
+  php-process \
+  php-pspell \
+  php-snmp \
+  php-soap \
+  php-sodium \
+  php-tidy \
+  php-xml \
+  php-xmlrpc
 
 # Disable httpd
 echo "systemctl disable httpd......"

@@ -1,5 +1,0 @@
-#----------------------------------------
-# PHP
-#----------------------------------------
-# PHP version of webtatic YUM
-local php_dnf_repo="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
