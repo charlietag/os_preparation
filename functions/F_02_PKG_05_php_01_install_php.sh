@@ -12,7 +12,10 @@ echo "==============================="
 #rpm -Uvh $php_dnf_repo
 
 # Using remi instead
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+if ! $(rpm --quiet -q remi-release) ; then
+  dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  #L_UPDATE_REPO 5000
+fi
 
 echo "==============================="
 echo "     Install php:${php_remi_stream}"
