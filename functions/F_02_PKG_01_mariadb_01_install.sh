@@ -9,7 +9,7 @@ echo "        Render mariadb repo"
 echo "==============================="
 if [[ -z "$(dnf repolist mariadb 2>/dev/null)" ]] ; then
   task_copy_using_render
-  L_UPDATE_REPO 5000
+  #L_UPDATE_REPO 5000
 fi
 
 #dnf install -y MariaDB-server MariaDB-client mariadb-devel

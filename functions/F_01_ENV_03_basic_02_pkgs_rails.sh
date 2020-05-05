@@ -32,7 +32,7 @@ pkgs_list="${pkgs_list} ruby"
 # FFmpeg for video
 if ! $(rpm --quiet -q rpmfusion-free-release) ; then
   rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-  L_UPDATE_REPO 5000
+  #L_UPDATE_REPO 5000
 fi
 #dnf install -y ffmpeg ffmpeg-devel
 pkgs_list="${pkgs_list} ffmpeg ffmpeg-devel"

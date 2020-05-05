@@ -7,30 +7,43 @@ echo "==============================="
 #  dnf config-manager --set-enabled PowerTools
 #  dnf repoquery -l vsftpd  #===> equals to `rpm -ql vsftpd`
 
-# check required pkg
-local verify_pkgs="$(rpm --quiet -q epel-release || echo "FAILED")"
+# ----------------------------------------------------------------------------------------
+# Install most required packages first
+# ----------------------------------------------------------------------------------------
+dnf install -y dnf-plugins-core yum-utils
+
+# ----------------------------------------------------------------------------------------
+# Enable repo PowerTools
+# ----------------------------------------------------------------------------------------
+# check repo
 local verify_repo="$(dnf repolist PowerTools 2>/dev/null)"
       verify_repo="$([[ -n "${verify_repo}" ]] || echo "FAILED")"
 
-# avoid dnf update repo after "dnf config-manager --set-enabled PowerTools'
-[[ "${verify_repo}" = "FAILED" ]] && dnf install -y dnf-plugins-core
+if [[ "${verify_repo}" = "FAILED" ]]; then
+  dnf config-manager --set-enabled PowerTools
+  #L_UPDATE_REPO 5000
+fi
 
-[[ "${verify_repo}" = "FAILED" ]] && dnf config-manager --set-enabled PowerTools
-[[ "${verify_repo}" = "FAILED" ]] && L_UPDATE_REPO 5000
+# ----------------------------------------------------------------------------------------
+# Install epel-release
+# ----------------------------------------------------------------------------------------
+# check package
+local verify_pkgs="$(rpm --quiet -q epel-release || echo "FAILED")"
+if [[ "${verify_pkgs}" = "FAILED" ]]; then
+  # To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
+  #  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
+  dnf install -y epel-release
 
-# To make sure epel-modular is OK (var is ok , ?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir , /etc/dnf/vars)
-#  ref. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_yum_variables
-[[ "${verify_pkgs}" = "FAILED" ]] && dnf install -y yum-utils epel-release
+  # --- epel-modular seems so slow, sometimes even failed to connect ---
+  # But this is for dnf module install xxxx... cannot be disabled #===> comment out
+  #dnf config-manager --set-disabled epel-modular
 
-# --- epel-modular seems so slow, sometimes even failed to connect ---
-# But this is for dnf module install xxxx... cannot be disabled #===> comment out
-#dnf config-manager --set-disabled epel-modular
+  # --- Make sure dnf cached file is updated ---
+  # The following command means : "dnf clean all ; dnf repolist", and will retry 5000 times if fails
 
-# --- Make sure dnf cached file is updated ---
-# The following command means : "dnf clean all ; dnf repolist", and will retry 5000 times if fails
-
-# UPDATE retry 5000 by default
-[[ "${verify_pkgs}" = "FAILED" ]] && L_UPDATE_REPO 5000
+  # UPDATE retry 5000 by default
+  L_UPDATE_REPO 5000
+fi
 
 #-----------------------------------------------------------------------------------------
 # NTP update date time and hwclock to prevent mariadb cause systemd warning
