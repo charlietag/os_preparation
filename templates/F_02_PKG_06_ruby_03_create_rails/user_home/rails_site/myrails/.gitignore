@@ -2,7 +2,7 @@
 
 # ---------- Extra ---------
 # No need ignore yml files
-# Using `bundle exec rails credentials:edit` instead
+# Instead, using `bundle exec rails credentials:editDu`
 #/config/*.yml
 *.swp
 # ---------- Extra ---------
