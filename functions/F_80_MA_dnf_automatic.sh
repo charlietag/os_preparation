@@ -2,3 +2,5 @@
 rpm --quiet -q dnf-automatic || dnf -y install dnf-automatic 
 
 sed -Ei "s/^email_from = [[:print:]]+/email_from = root@$(hostname)/g" /etc/dnf/automatic.conf 
+
+systemctl enable --now dnf-automatic.timer
