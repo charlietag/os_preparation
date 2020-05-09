@@ -2,5 +2,9 @@
 
 # Services to be stopped and disabled by default
 # Package: avahi  # Like smb protocol to detect devices nearby
-local disabled_services=(chronyd firewalld postfix NetworkManager NetworkManager-wait-online kdump avahi-daemon.socket avahi-daemon.service)
+#local disabled_services=(chronyd firewalld postfix NetworkManager NetworkManager-wait-online kdump avahi-daemon.socket avahi-daemon.service)
+# Enable NetworkManager , to replace network-scirpt (service network status)
+# 1. nmcli / nmcli connection
+# 2. nmtui <--- like deprecated command 'netconfig'
+local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service)
 
