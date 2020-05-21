@@ -568,7 +568,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   git pull
   git co 4.0.7 -b redmine_4.0.7
   git stash pop
-  git status |grep 'both modified:' |awk '{print $4}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
+  git status |grep 'both modified:' |awk '{print $3}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
   ```
 
 * Fix conflicts
