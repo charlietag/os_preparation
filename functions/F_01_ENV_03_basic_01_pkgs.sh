@@ -59,7 +59,7 @@ pkgs_list="${pkgs_list} gcc-c++ make"
 
 # Basic dev packages
 dnf groupinstall -y "Development Tools"
-pkgs_list="${pkgs_list} whois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget openssl-devel bind-utils"
+pkgs_list="${pkgs_list} whois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget bind-utils"
 
 # Basic debug tools - Enhanced tail / Enhanced grep
 pkgs_list="${pkgs_list} multitail ack"
@@ -72,6 +72,9 @@ pkgs_list="${pkgs_list} freetds freetds-devel"
 
 # For GeoIP purpose
 pkgs_list="${pkgs_list} GeoIP GeoIP-devel"
+
+# For Nginx HTTP rewrite module
+pkgs_list="${pkgs_list} pcre pcre-devel"
 
 
 
