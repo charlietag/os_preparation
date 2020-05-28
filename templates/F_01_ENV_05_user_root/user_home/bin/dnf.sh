@@ -38,7 +38,8 @@ main() {
   if [[ $repo_check_days_ago -gt $repo_expired_days ]]; then
 		echo "---------------------------------------"
     echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
-    echo "CMD: dnf clean all ; dnf makecache"
+    echo "CMD:"
+    echo "  dnf clean all ; dnf makecache"
 		echo "---------------------------------------"
 		echo ""
     dnf_makecache
@@ -55,7 +56,8 @@ main() {
     echo ""
 		echo "---------------------------------------"
     echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
-    echo "CMD: dnf clean all ; dnf makecache"
+    echo "CMD:"
+    echo "  dnf clean all ; dnf makecache"
 		echo "---------------------------------------"
 		echo ""
     dnf_makecache
@@ -68,7 +70,8 @@ main() {
 
   local dnf_argv="$@"
   echo "---------------------------------------"
-  echo "CMD: dnf ${dnf_argv[@]} (Last time check repo: ${repo_check_days_ago} days ago)"
+  echo "CMD: (Last time check repo: ${repo_check_days_ago} days ago)"
+  echo "  dnf ${dnf_argv[@]}"
   echo "---------------------------------------"
 	echo ""
   dnf ${dnf_argv[@]}
