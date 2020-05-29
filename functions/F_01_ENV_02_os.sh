@@ -51,7 +51,7 @@ do
   # Avoid config NetworkManager is not activated immediately
   # NetworkManager is like puma app server, you launch software NetworkManager , does not mean you trigger ifcfg reloaded
   local if_device="$(grep DEVICE ${eth_card} | cut -d'=' -f2)"
-  ifdown $eth_card ; ifup $eth_card
+  ifdown $if_device ; ifup $if_device
 done
 
 
