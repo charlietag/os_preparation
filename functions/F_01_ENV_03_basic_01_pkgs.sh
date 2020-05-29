@@ -62,6 +62,8 @@ pkgs_list="${pkgs_list} gcc-c++ make"
 
 # Basic dev packages
 dnf groupinstall -y "Development Tools"
+
+# whois will not be found in CentOS 8.1 or EPEL, because it is moved into CentOS 8.2, waiting for 8.2 then
 pkgs_list="${pkgs_list} whois bash redhat-lsb screen git tree vim sysstat mtr net-tools wget bind-utils"
 
 # Basic debug tools - Enhanced tail / Enhanced grep
