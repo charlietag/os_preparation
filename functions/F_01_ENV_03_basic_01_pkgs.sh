@@ -54,6 +54,9 @@ pkgs_list="${pkgs_list} chrony"
 #-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
+# For lsb_release
+pkgs_list="${pkgs_list} redhat-lsb"
+
 # For NodeJS
 pkgs_list="${pkgs_list} gcc-c++ make"
 
