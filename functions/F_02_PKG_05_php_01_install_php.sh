@@ -13,7 +13,7 @@ echo "==============================="
 
 # Using remi instead
 if ! $(rpm --quiet -q remi-release) ; then
-  dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
   #L_UPDATE_REPO 5000
 fi
 
