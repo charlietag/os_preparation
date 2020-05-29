@@ -34,14 +34,16 @@ do
   if [[ $disable_ipv6 -eq 1 ]] ; then
     sed -i /IPV6/d $eth_card
     echo "
-    IPV6_DISABLED=yes
-    IPV6INIT=no
-    IPV6_DEFROUTE=no
-    IPV6_FAILURE_FATAL=no
-    IPV6_ADDR_GEN_MODE=stable-privacy
-    IPV6_AUTOCONF=no
-    IPV6_PEERDNS=no
-    IPV6_PEERROUTES=no
+      #####IPV6#####
+      IPV6_DISABLED=yes
+      IPV6INIT=no
+      IPV6_DEFROUTE=no
+      IPV6_FAILURE_FATAL=no
+      IPV6_ADDR_GEN_MODE=stable-privacy
+      IPV6_AUTOCONF=no
+      IPV6_PEERDNS=no
+      IPV6_PEERROUTES=no
+      #####IPV6#####
     " | sed -r -e '/^\s*$/d' -e 's/\s+//g' >> $eth_card
   fi
 
