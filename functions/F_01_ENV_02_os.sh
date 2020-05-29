@@ -57,7 +57,7 @@ done
 
 
 # Activate config
-sysctl -p /etc/sysctl.d/z_custom_sysctl.conf
+sysctl -p /etc/sysctl.d/99-custom-sysctl.conf
 systemctl restart NetworkManager
 
 #-----------------------------------------------------------------------------------------
