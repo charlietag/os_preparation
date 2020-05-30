@@ -83,6 +83,9 @@ This is a small light bash project.  Suit small companies which have only few se
       echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
       ```
 
+  * Before [os_security](https://github.com/charlietag/os_security)
+    * Make sure do a **REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
+
 # Configuration
   * Before installation
 
