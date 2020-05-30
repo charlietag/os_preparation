@@ -31,6 +31,7 @@ dnf_makecache() {
 ############### Fetch dnf repo retry Loop (For epel-modular) #############
 
 main() {
+  echo "Checking dnf metadata cache... (might take awhile)"
   local repo_expired_days=2
   local repo_check_days_ago="$(dnf repolist 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
 
