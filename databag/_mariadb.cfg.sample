@@ -8,7 +8,7 @@ local mariadb_gpgkey="https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 # MariaDB YUM base url
 # MariaDB 10.3 is compatible with Rails (gem: mysql2) , Laravel 5.5+
 # 10.3
-#local mariadb_baseurl="http://yum.mariadb.org/10.3/centos7-amd64"
+#local mariadb_baseurl="http://yum.mariadb.org/10.3/centos8-amd64"
 
 # 10.4
 local mariadb_baseurl="http://yum.mariadb.org/10.4/centos8-amd64"
