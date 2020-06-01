@@ -91,7 +91,7 @@ dnf install -y ${pkgs_list}
 
 # Bad for os file manipulate
 # ex. ls folder/*file* -> tab -> nothing happened (should display something if *file* exists)
-dnf remove -y bash-completion
+rpm --quiet -q bash-completion && dnf remove -y bash-completion
 
 chronyd -q 'pool pool.ntp.org iburst'
 
