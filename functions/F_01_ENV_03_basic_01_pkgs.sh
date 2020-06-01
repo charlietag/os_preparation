@@ -55,7 +55,7 @@ pkgs_list="${pkgs_list} chrony"
 #Package Install
 #-----------------------------------------------------------------------------------------
 # For lsb_release
-pkgs_list="${pkgs_list} redhat-lsb"
+pkgs_list="${pkgs_list}"
 
 # For NodeJS
 pkgs_list="${pkgs_list} gcc-c++ make"
@@ -87,6 +87,10 @@ pkgs_list="${pkgs_list} pcre pcre-devel"
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
 dnf install -y ${pkgs_list}
+
+# Bad for os file manipulate
+# ex. ls folder/*file* -> tab -> nothing happened (should display something if *file* exists)
+dnf remove -y bash-completion
 
 chronyd -q 'pool pool.ntp.org iburst'
 
