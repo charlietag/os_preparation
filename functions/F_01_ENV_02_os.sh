@@ -47,8 +47,11 @@ do
       #####IPV6#####
     " | sed -r -e '/^\s*$/d' -e 's/\s+//g' >> $eth_card
   fi
+done
+systemctl start NetworkManager
 
-
+for eth_card in $eth_cards
+do
   # Avoid config NetworkManager is not activated immediately
   # NetworkManager is like puma app server, you launch software NetworkManager , does not mean you trigger ifcfg reloaded
   local if_device="$(grep DEVICE ${eth_card} | cut -d'=' -f2 | sed 's/"//g')"
