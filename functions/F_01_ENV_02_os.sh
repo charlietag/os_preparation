@@ -17,6 +17,7 @@
 hostnamectl set-hostname ${host_name}
 
 # render os config (NetworkManager, sysctl.d)
+systemctl stop NetworkManager
 task_copy_using_render_sed
 
 # set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
