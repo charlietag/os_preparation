@@ -21,14 +21,14 @@ get_rails_path () {
   if [[ ! -f ${NGINX_FILE} ]]; then
     echo "[WARN] (nginx) ${NGINX_FILE} not found"
     echo ""
-    continue
+  else
+    RAILS_PATH="$(cat $NGINX_FILE | grep 'root ' | grep -v '#' | awk '{print $2}' | sed 's/ //g' | sed 's/;//g' | grep 'public' | sed 's/\/public//g' | sort | uniq | head -n 1)"
+    if [[ ! -d $RAILS_PATH ]]; then
+      echo "[WARN] (rails_path) ${RAILS_PATH} not found"
+      echo ""
+    fi
   fi
-  RAILS_PATH="$(cat $NGINX_FILE | grep 'root ' | grep -v '#' | awk '{print $2}' | sed 's/ //g' | sed 's/;//g' | grep 'public' | sed 's/\/public//g' | sort | uniq | head -n 1)"
-  if [[ ! -d $RAILS_PATH ]]; then
-    echo "[WARN] (rails_path) ${RAILS_PATH} not found"
-    echo ""
-    continue
-  fi
+
   if [[ "${RAILS_USER}" = "${CURRENT_USER}" ]]; then
     test -d $RAILS_PATH/tmp/pids || mkdir -p $RAILS_PATH/tmp/pids
     test -d $RAILS_PATH/tmp/sockets || mkdir -p $RAILS_PATH/tmp/sockets
@@ -59,7 +59,6 @@ status_rails () {
   if [[ $RC -eq 0 ]]; then
     echo "[OK] (puma) ${RAILS_PATH} Already running (pid ${RAILS_PID})"
     echo ""
-    continue
   fi
 }
 
