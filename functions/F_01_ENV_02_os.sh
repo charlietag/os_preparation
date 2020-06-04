@@ -12,12 +12,32 @@
 #hostname -F /etc/hostname
 # -------------------
 # comment 2 steps above, use hostnamectl command instead
-# After setting up hostname to none 'localhosaaat.localdomain'
+# After setting up hostname to none 'localhost.localdomain'
 #   |__ will avoid /etc/resolv.conf contains search localdomain everytime reboot
 hostnamectl set-hostname ${host_name}
 
+
+#-----------------------------------------------------------------------------------------
+# NetworkManager (NM)
+#-----------------------------------------------------------------------------------------
+#* NM is like puma in-memory config , you change config file, you `nmcli c reload` to load it into in-memory config, but you want to reactivate this config, 
+#  * you need to `nmcli n off; nmcli n on`
+#  * or `nmcli c down ethxxx; nmcli c up ethxxx`
+#
+#* NM is like X-server, you stop it , does not mean your action will be trigger, restart NM , just like you stop NM-GUI, it will not trigger stop eth, or restart eth
+#* nmcli
+#  * setup network config file
+#  * reload network config file in to NM service (sometimes this will trigger networking restart)
+#* nmtui
+#  * setup network config file
+#  * will NOT reload network config file in to NM service
+#* nmcli n off; nmcli n on
+#  * Stop and start NM networking management
+#* nmcli c down enp0s3 ; nmcli c up enp0s3
+#  * Stop and start connection config enp0s3
+
+
 # render os config (NetworkManager, sysctl.d)
-systemctl stop NetworkManager
 task_copy_using_render_sed
 
 # set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
@@ -48,21 +68,17 @@ do
     " | sed -r -e '/^\s*$/d' -e 's/\s+//g' >> $eth_card
   fi
 done
-systemctl start NetworkManager
-
-for eth_card in $eth_cards
-do
-  # Avoid config NetworkManager is not activated immediately
-  # NetworkManager is like puma app server, you launch software NetworkManager , does not mean you trigger ifcfg reloaded
-  local if_device="$(grep DEVICE ${eth_card} | cut -d'=' -f2 | sed 's/"//g')"
-  ifdown $if_device ; ifup $if_device
-done
-
 
 
 # Activate config
 sysctl -p /etc/sysctl.d/99-custom-sysctl.conf
-systemctl restart NetworkManager
+
+# NM should not be stopped or started, using nmcli to manipulate NM instead
+nmcli c reload
+#if [[ $? -eq 0 ]]; then
+#  nmcli n off; nmcli n on
+#fi
+#systemctl restart NetworkManager
 
 #-----------------------------------------------------------------------------------------
 #SELINUX OFF
