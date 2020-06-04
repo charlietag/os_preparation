@@ -38,7 +38,7 @@ hostnamectl set-hostname ${host_name}
 
 # --- Using nmcli , instead of any other network tools or commands ---
 
-# render os config (NetworkManager, sysctl.d)
+# render os config (NetworkManager-disable dns config overwrite, sysctl.d-disable ipv6)
 task_copy_using_render_sed
 
 # set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
