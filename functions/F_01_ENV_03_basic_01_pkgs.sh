@@ -90,9 +90,9 @@ dnf install -y ${pkgs_list}
 # ex. ls folder/*file* -> tab -> nothing happened (should display something if *file* exists)
 rpm --quiet -q bash-completion && dnf remove -y bash-completion
 
-chronyd -q 'pool pool.ntp.org iburst'
-
+# make sure chronyd stop first , before syncing time using chronyd command!
 systemctl stop chronyd
 systemctl disable chronyd
+chronyd -q 'pool pool.ntp.org iburst'
 
 hwclock -w
