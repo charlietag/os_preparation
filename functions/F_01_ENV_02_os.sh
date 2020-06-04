@@ -36,6 +36,7 @@ hostnamectl set-hostname ${host_name}
 #* nmcli c down enp0s3 ; nmcli c up enp0s3
 #  * Stop and start connection config enp0s3
 
+# --- Using nmcli , instead of any other network tools or commands ---
 
 # render os config (NetworkManager, sysctl.d)
 task_copy_using_render_sed
