@@ -86,10 +86,6 @@ pkgs_list="${pkgs_list} pcre pcre-devel"
 #-----------------------------------------------------------------------------------------
 dnf install -y ${pkgs_list}
 
-# Bad for os file manipulate
-# ex. ls folder/*file* -> tab -> nothing happened (should display something if *file* exists)
-rpm --quiet -q bash-completion && dnf remove -y bash-completion
-
 # make sure chronyd stop first , before syncing time using chronyd command!
 systemctl stop chronyd
 systemctl disable chronyd
