@@ -22,7 +22,9 @@ echo "     Install php:${php_remi_stream}"
 echo "==============================="
 if ! $(dnf module list php:${php_remi_stream} --enabled >/dev/null 2>/dev/null) ; then
   dnf module reset php -y
-  dnf module enable php:${php_remi_stream}/devel -y
+  #dnf module enable php:${php_remi_stream}/devel -y
+  #   -> Ignoring unnecessary profile: devel
+  dnf module enable php:${php_remi_stream} -y
 fi
 dnf module install php:${php_remi_stream}/devel -y
 
