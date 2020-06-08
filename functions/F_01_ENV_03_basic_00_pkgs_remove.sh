@@ -5,7 +5,7 @@
 
 # -------- Remove unused packages --------
 local pkg_exists
-for remove_pkg_name in ${pkgs[@]}; do
+for remove_pkg_name in ${remove_pkg_names[@]}; do
   pkg_exists=""
   pkg_exists="$(rpm -qa | grep "${remove_pkg_name}")"
 
