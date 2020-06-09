@@ -107,7 +107,7 @@ This is a small light bash project.  Suit small companies which have only few se
 
       ```bash
       databag/
-      ├── F_01_ENV_02_os.cfg
+      ├── F_01_ENV_02_os_01_env.cfg
       ├── F_01_ENV_04_ssh_config.cfg
       └── _gitconfig.cfg
       ```
