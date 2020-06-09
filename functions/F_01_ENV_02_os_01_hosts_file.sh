@@ -19,7 +19,7 @@ local host_contents_new=""
 # IPv4
 # ----------------------------------------
 # Process
-local ipv4_contents="$(echo "${host_contents}"|grep -vE '#\b' |grep -E '(([0-9]{1,3})\.){3}([0-9]{1,3}){1}')"
+local ipv4_contents="$(echo "${host_contents}"|grep -vE '^\s*#' | sed -re 's/#[[:print:]]*//g' |grep -E '(([0-9]{1,3})\.){3}([0-9]{1,3}){1}')"
 local ipv4_filter_out_hostname="$(echo "${ipv4_contents}" |grep -vE "(([0-9]{1,3})\.){3}([0-9]{1,3}){1}[[:space:]]+( ${host_name}$)" | sed "s/ ${host_name}//g")"
 local only_ip_ipv4s="$(echo "${ipv4_filter_out_hostname}" | awk '{print $1}' | sed 's/\s*//g' | sort -n | uniq )"
 
@@ -34,7 +34,7 @@ done
 # IPv6
 # ----------------------------------------
 # Process
-local ipv6_contents="$(echo "${host_contents}"|grep -vE '#\b' |grep -E '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}')"
+local ipv6_contents="$(echo "${host_contents}"|grep -vE '^\s*#' | sed -re 's/#[[:print:]]*//g' |grep -E '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}')"
 local ipv6_filter_out_hostname="$(echo "${ipv6_contents}" |grep -vE "([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}[[:space:]]+( ${host_name}$)" | sed "s/ ${host_name}//g")"
 local only_ip_ipv6s="$(echo "${ipv6_filter_out_hostname}" | awk '{print $1}' | sed 's/\s*//g' | sort -n | uniq )"
 
