@@ -6,13 +6,13 @@
 local server_name="mylaravel.centos8.localdomain"  # ---> ex: myrails.centos8.localdomain
 local site_app_name="mylaravel"                    # ---> ex: myrails
 
-# [ rails | laravel | disable]
-# This is defined in _php_laravel.cfg
-#local site_type="disable"
 
 
 # ***************************************************
 # * web root setting (DO NOT MODIFY HERE)           *
 # ***************************************************
 . ${PLUGINS}/plugin_load_databag.sh __helper_nginx_site_config.cfg
+# [ rails | laravel | disable]
+# This is defined in _php_laravel.cfg
+#local site_type="disable"
 
