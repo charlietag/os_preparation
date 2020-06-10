@@ -4,10 +4,10 @@
 # DATABAG_CFG:enable
 
 #NodeJS
-curl --silent --location "${node_yum_repo}" | bash -
+curl --silent --location "${node_dnf_repo}" | bash -
 
 #-----------------------------------------------------------------------------------------
 #Package Install
 #-----------------------------------------------------------------------------------------
 # NodeJS
-yum install -y nodejs
+dnf install -y nodejs

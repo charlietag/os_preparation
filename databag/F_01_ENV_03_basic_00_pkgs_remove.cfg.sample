@@ -1,0 +1,13 @@
+# Remove pkg: "bash-completion"
+# Bad for os file manipulate
+# ex. ls folder/*file* -> tab -> nothing happened (should display something if *file* exists)
+
+# Remove pkg: "cockpit*"
+# Not very useful for advanced management
+#  Install -> dnf install cockpit
+#  Remove  -> dnf remove cockpit*
+
+local remove_pkg_names=(
+  "bash-completion"
+  "cockpit*"
+)

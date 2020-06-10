@@ -29,28 +29,48 @@ You want initialize your linux server by your own script.  But you **DO NOT** wa
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
-  (centos 7 server environment settings)
+  (centos 8 server environment settings)
 
 * This is useful when
-  * You have less than 5 CentOS7 servers to maintain.
+  * You have less than 5 CentOS-8 servers to maintain.
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
-* If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
-
-  please switch to git tag named "before_passenger_to_puma"
-
-  ```bash
-  git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
-  ```
-
 # Environment
-  * CentOS 7 (7.x)
+  * CentOS 8 (8.x)
+    * os_preparation
+      * release : `v1.x.x`
+
+  * CentOS 7 (7.x) **(deprecated)**
+    * os_preparation
+      * release : `v0.x.x`
+
+  * CentOS 7 (7.x) - passenger + nginx version **(deprecated)**
+    * os_preparation
+      * release : `before_passenger_to_puma`
+      * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
+      
+        please switch to git tag named "before_passenger_to_puma"
+      
+        ```bash
+        git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
+        ```
+
 
 # Warning
   * Please do this in fresh install OS
+  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration permanently, instead, using dnf-automatic / yum-cron to makecache
+    * [Optional] Make cache before doing **DNF / YUM** installation
+      * /root/bin/dnf.sh (alias dnf) will help you with this
+      * `dnf makecache` / `yum makecache`
+    * Disabled
+      * dnf repo cache expiration
+        * `dnf config-manager --setopt metadata_expire=-1 --save`
+    * Enabled ([os_security](https://github.com/charlietag/os_security))
+      * dnf-automatic
+        * `dnf makecache`
   * What does this not cover, DO the following manually
     * Login user
       * Change password of root
@@ -74,12 +94,15 @@ This is a small light bash project.  Suit small companies which have only few se
       echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
       ```
 
+  * Before [os_security](https://github.com/charlietag/os_security)
+    * Make sure do a **REBOOT** before implementing [os_security](https://github.com/charlietag/os_security), after done with first time [os_preparation](https://github.com/charlietag/os_preparation)
+
 # Configuration
   * Before installation
 
     ```bash
-    yum clean all
-    yum install -y git
+    dnf clean all
+    dnf install -y git
     git clone https://github.com/charlietag/os_preparation.git
     ```
 
@@ -95,16 +118,9 @@ This is a small light bash project.  Suit small companies which have only few se
 
       ```bash
       databag/
-      ├── F_01_ENV_02_os.cfg
+      ├── F_01_ENV_02_os_01_env.cfg
       ├── F_01_ENV_04_ssh_config.cfg
       └── _gitconfig.cfg
-      ```
-
-  * PHP 7.0 for old project
-    * Modify yum packages in script `functions/F_02_PKG_05_php_01_install_php7.sh`
-
-      ```bash
-      yum install -y php70w php70w-opcache php70w-fpm php70w-opcache php70w-mbstring php70w-mcrypt php70w-mysql php70w-pdo php70w-pdo_dblib php70w-gd php70w-common php70w-xml
       ```
 
   * Verify config files (with syntax color).
@@ -195,17 +211,17 @@ I'm a lazy person.  I want to install **ALL** and give me default configurations
 * Config your own hosts file (/etc/hosts)
 
   ```bash
-  <192.168.x.x> myrails.centos7.localdomain
-  <192.168.x.x> redmine.centos7.localdomain
-  <192.168.x.x> mylaravel.centos7.localdomain
+  <192.168.x.x> myrails.centos8.localdomain
+  <192.168.x.x> redmine.centos8.localdomain
+  <192.168.x.x> mylaravel.centos8.localdomain
   ```
 
 * Browse URL
 
   ```bash
-  http://myrails.centos7.localdomain
-  http://redmine.centos7.localdomain (default account: admin/admin)
-  http://mylaravel.centos7.localdomain
+  http://myrails.centos8.localdomain
+  http://redmine.centos8.localdomain (default account: admin/admin)
+  http://mylaravel.centos8.localdomain
   ```
 
 # Advanced Installation
@@ -287,9 +303,30 @@ I want to choose specific part to install.
 
 ```bash
 (root)# ./start.sh -i F_00_debug
-==============================
+#############################################
+         Preparing required lib
+#############################################
+Updating required lib to lastest version...
+Already up to date.
+
+#############################################
+            Running start.sh
+#############################################
+
+---------------------------------------------------------------------------
+Setting dnf metadata_expire to -1 !!
+
+Better DO this , before installing packages:
+  dnf makecache
+
+Revert to default:
+  sed -i '/metadata_expire/d' /etc/dnf/dnf.conf
+---------------------------------------------------------------------------
+
+
+==========================================================================================
         F_00_debug
-==============================
+==========================================================================================
 -----------lib use only--------
 CURRENT_SCRIPT : /root/os_preparation/start.sh
 CURRENT_FOLDER : /root/os_preparation
@@ -308,44 +345,51 @@ ALL_ARGVS      : F_00_debug
 PLUGINS            : /root/os_preparation/plugins
 TMP                : /root/os_preparation/tmp
 CONFIG_FOLDER      : /root/os_preparation/templates/F_00_debug
-HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
 DATABAG            : /root/os_preparation/databag
+DATABAG_FILE       : /root/os_preparation/databag/F_00_debug.cfg
 
------------helper use only--------
-HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
+-----------function extended use only--------
+IF_IS_SOURCED_SCRIPT  : True: use 'return 0' to skip script
+IF_IS_FUNCTION        : True: use 'return 0' to skip script
+IF_IS_SOURCED_OR_FUNCTION  : True: use 'return 0' to skip script
 
-
+${BASH_SOURCE[0]}    : /root/os_preparation/functions/F_00_debug.sh
+${0}                 : ./start.sh
+${FUNCNAME}          : source
+Skip script sample    : [[ -n "$(eval "${IF_IS_SOURCED_OR_FUNCTION}")" ]] && return 0 || exit 0
+Skip script sample short : eval "${SKIP_SCRIPT}"
 
 ================= Testing ===============
 ----------Helper Debug Use-------->>>
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+-------------------------------------------------------------------
         helper_debug
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+-------------------------------------------------------------------
+HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
+
 
 ----------Task Debug Use-------->>>
-______________________________
+
+-----------------------------------------------
         task_debug
-______________________________
+-----------------------------------------------
 ```
 
 # Note
 
 ## Installed Packages
-  * PHP7.2 (Ref. https://webtatic.com/packages)
-  * PHP-FPM (Ref. https://webtatic.com/packages)
+  * PHP7.4 (Ref. https://rpms.remirepo.net/wizard/)
+  * PHP-FPM (Ref. https://rpms.remirepo.net/wizard/)
   * Laravel 7.x (Ref. https://laravel.com/)
-  * MariaDB 10.4 (equal to MySQL 5.7)
+  * MariaDB 10.4 (equals to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.0
   * Rails 6.0
     * puma (systemd, puma-mgr)
-  * Redmine 4.1.0
+  * Redmine 4.1.1
     * ruby 2.5.1
     * rails 5.2
-  * Docker
-    * docker-ce
-    * docker-compose
   * Useful tools
     * Enhanced tail
       * multitail
@@ -357,7 +401,7 @@ ______________________________
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
 
 ## Folder privilege
-After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
+After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
 
 1. **folder privilege**
 
@@ -465,23 +509,67 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 ## Extra functions
 * RENDER_CP
-  * Render template using eval
-  * Sample
+  * Render template using eval (Might have escape issue, if template is complicated)
 
     ```bash
     # Method : eval "echo \"$variable\""
-    # Might have escape issue, if template is complicated
+    ```
+
+  * Sample
+    * databag
+
+    ```bash
+    local var="Hello World"
+    ```
+
+    * template (${$CONFIG_FOLDER}/yourowntemplate_file)
+
+    ```bash
+    This is $var
+    ```
+
+    * function
+
+    ```bash
     RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
     ```
 
+    * result (/SomeWhere/somewhere)
+
+    ```bash
+    This is Hello World
+    ```
+
 * RENDER_CP_SED
-  * Render template using sed
-  * Sample
+  * Render template using sed (BETTER method for rendering template)
 
     ```bash
     # Method : cat template | sed 's/\{\{var\}\}/$var/g'
-    # BETTER method for rendering template
+    ```
+
+  * Sample
+    * databag
+
+    ```bash
+    local var="Hello World"
+    ```
+
+    * template (${$CONFIG_FOLDER}/yourowntemplate_file)
+
+    ```bash
+    This is {{var}}
+    ```
+
+    * function
+
+    ```bash
     RENDER_CP_SED ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+    ```
+
+    * result (/SomeWhere/somewhere)
+
+    ```bash
+    This is Hello World
     ```
 
 * SAFE_DELETE
@@ -566,7 +654,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   git pull
   git co 4.0.7 -b redmine_4.0.7
   git stash pop
-  git status |grep 'both modified:' |awk '{print $4}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
+  git status |grep 'both modified:' |awk '{print $3}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
   ```
 
 * Fix conflicts
@@ -821,3 +909,57 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * Laravel
         * 7.1 -> 7.x
       * vim - set number by default
+* 2020/06/10
+  * tag: v1.0.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.4...v1.0.0
+      * CentOS 8 - changes for CentOS 8
+        * Rename all centos7 related to centos8 in all config files (Readme / hostname /...)
+        * Reorganize /etc/hosts and add current hostname into /etc/hosts after os_preparation
+          
+          ```bash
+          127.0.0.1 original content
+          ::1       original content
+          127.0.0.1 $(hostname)
+          ::1       $(hostname)
+          ```
+      
+        * Command "yum" -> "dnf"
+        * For DNF performance - alias dnf -> /root/bin/dnf.sh (update cache within 2 days)
+        * DNF automatic update enabled(dnf-automatic)
+        * NTP packages
+          * ntpdate -> chronyd (chronyd -q 'pool pool.ntp.org iburst')
+        * Enable service - NetworkManager
+          * nmcli / nmtui
+        * Remove packages by default after os_preparation
+          * bash-completion
+          * cockpit
+        * Will not be installed by default (docker-ce / docker-compose)
+        * DNF enabled repo
+          * remi
+          * nodesource
+          * nginx-stable
+          * mariadb
+          * rpmfusion-free-updates
+          * yarn
+          * PowerTools
+          * epel
+          * epel-modular
+            * So unstable, this repo is why I rewrite dnf with alias /root/bin/dnf.sh
+        * DNF module enabled by default
+          * perl-DBI (required by MariaDB)
+          * perl     (required by perl-DBI)
+            * If this is not enabled manually, dnf will show dependency warning message
+          * php:remi-7.4
+          * ruby:2.6
+            * Just for the convience for rvm required packages
+        * Packages installed
+          * PHP 7.4 [REMI](https://rpms.remirepo.net/wizard/)
+          * RVM 1.29.9 -> 1.29.10
+          * Redmine 4.1.0 -> 4.1.1
+            * Redmine plugins
+              * redmine_issue_templates 1.0.0 -> 1.0.2
+              * redmine_agile 1.5.2 -> 1.5.3
+            * Redmine themes
+              * PurpleMine2 2.9.0 -> 2.10.2
+          * pcre / pcre-devel
+            * For Nginx HTTP rewrite module while compiling nginx related tools (ModSecurity / headers-more-nginx-module)

@@ -55,7 +55,7 @@ CONFIG_FOLDER  : /root/os_preparation/templates/F_00_echo_path
   * VSFTPD
 
     ```bash
-    yum install -y vsftpd
+    dnf install -y vsftpd
     sed -i s/^root/'#root'/g /etc/vsftpd/ftpusers
     sed -i s/^root/'#root'/g /etc/vsftpd/user_list
     ```
