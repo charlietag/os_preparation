@@ -41,22 +41,22 @@ This is a small light bash project.  Suit small companies which have only few se
 # Environment
   * CentOS 8 (8.x)
     * os_preparation
-      * release : v1.x.x
+      * release : `v1.x.x`
 
-  * CentOS 7 (7.x)
+  * **(deprecated)**CentOS 7 (7.x)
     * os_preparation
-      * release : v0.x.x - **deprecatedb**
+      * release : `v0.x.x`
 
-  * CentOS 7 (7.x) - passenger+nginx version
-    * os_preparation  - **deprecatedb**
-      * release : before_passenger_to_puma - **deprecatedb**
-        * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
-        
-          please switch to git tag named "before_passenger_to_puma"
-        
-          ```bash
-          git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
-          ```
+  * **(deprecated)**CentOS 7 (7.x) - passenger + nginx version
+    * os_preparation
+      * release : `before_passenger_to_puma`
+      * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
+      
+        please switch to git tag named "before_passenger_to_puma"
+      
+        ```bash
+        git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
+        ```
 
 
 # Warning
