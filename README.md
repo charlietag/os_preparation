@@ -43,11 +43,11 @@ This is a small light bash project.  Suit small companies which have only few se
     * os_preparation
       * release : `v1.x.x`
 
-  * **(deprecated)**CentOS 7 (7.x)
+  * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
       * release : `v0.x.x`
 
-  * **(deprecated)**CentOS 7 (7.x) - passenger + nginx version
+  * CentOS 7 (7.x) - passenger + nginx version **(deprecated)**
     * os_preparation
       * release : `before_passenger_to_puma`
       * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
