@@ -784,7 +784,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * 2020/01/10
   * Add vim plugin : gitgutter
   * Parallel downloading vim / redmine plugins
-  * Improve dnf installation by reducing the frequency of using command "dnf install"
+  * Improve yum installation by reducing the frequency of using command "yum install"
 * 2020/01/10
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v0.1.8...v0.2.0
@@ -826,3 +826,57 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * Laravel
         * 7.1 -> 7.x
       * vim - set number by default
+* 2020/06/10
+  * tag: v1.0.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v0.2.4...v1.0.0
+      * CentOS 8 - changes for CentOS 8
+        * Rename all centos7 related to centos8 in all config files (Readme / hostname /...)
+        * Reorganize /etc/hosts and add current hostname into /etc/hosts after os_preparation
+          
+          ```bash
+          127.0.0.1 original content
+          ::1       original content
+          127.0.0.1 $(hostname)
+          ::1       $(hostname)
+          ```
+      
+        * Command "yum" -> "dnf"
+        * For DNF performance - alias dnf -> /root/bin/dnf.sh (update cache within 2 days)
+        * DNF automatic update enabled(dnf-automatic)
+        * NTP packages
+          * ntpdate -> chronyd (chronyd -q 'pool pool.ntp.org iburst')
+        * Enable service - NetworkManager
+          * nmcli / nmtui
+        * Remove packages by default after os_preparation
+          * bash-completion
+          * cockpit
+        * Will not be installed by default (docker-ce / docker-compose)
+        * DNF enabled repo
+          * remi
+          * nodesource
+          * nginx-stable
+          * mariadb
+          * rpmfusion-free-updates
+          * yarn
+          * PowerTools
+          * epel
+          * epel-modular
+            * So unstable, this repo is why I rewrite dnf with alias /root/bin/dnf.sh
+        * DNF module enabled by default
+          * perl-DBI (required by MariaDB)
+          * perl     (required by perl-DBI)
+            * If this is not enabled manually, dnf will show dependency warning message
+          * php:remi-7.4
+          * ruby:2.6
+            * Just for the convience for rvm required packages
+        * Packages installed
+          * PHP 7.4 [REMI](https://rpms.remirepo.net/wizard/)
+          * RVM 1.29.9 -> 1.29.10
+          * Redmine 4.1.0 -> 4.1.1
+            * Redmine plugins
+              * redmine_issue_templates 1.0.0 -> 1.0.2
+              * redmine_agile 1.5.2 -> 1.5.3
+            * Redmine themes
+              * PurpleMine2 2.9.0 -> 2.10.2
+          * pcre / pcre-devel
+            * For Nginx HTTP rewrite module while compiling nginx related tools (ModSecurity / headers-more-nginx-module)
