@@ -38,21 +38,32 @@ This is a small light bash project.  Suit small companies which have only few se
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
-* If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
-
-  please switch to git tag named "before_passenger_to_puma"
-
-  ```bash
-  git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
-  ```
-
 # Environment
   * CentOS 8 (8.x)
+    * os_preparation
+      * release : v1.x.x
+
+  * CentOS 7 (7.x)
+    * os_preparation
+      * release : v0.x.x - **deprecatedb**
+
+  * CentOS 7 (7.x) - passenger+nginx version
+    * os_preparation  - **deprecatedb**
+      * release : before_passenger_to_puma - **deprecatedb**
+        * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
+        
+          please switch to git tag named "before_passenger_to_puma"
+        
+          ```bash
+          git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
+          ```
+
 
 # Warning
   * Please do this in fresh install OS
-  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration all the time, instead, using dnf-automatic / yum-cron to makecache
+  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration permanently, instead, using dnf-automatic / yum-cron to makecache
     * [Optional] Make cache before doing **DNF / YUM** installation
+      * /root/bin/dnf.sh (alias dnf) will help you with this
       * `dnf makecache` / `yum makecache`
     * Disabled
       * dnf repo cache expiration
@@ -292,9 +303,30 @@ I want to choose specific part to install.
 
 ```bash
 (root)# ./start.sh -i F_00_debug
-==============================
+#############################################
+         Preparing required lib
+#############################################
+Updating required lib to lastest version...
+Already up to date.
+
+#############################################
+            Running start.sh
+#############################################
+
+---------------------------------------------------------------------------
+Setting dnf metadata_expire to -1 !!
+
+Better DO this , before installing packages:
+  dnf makecache
+
+Revert to default:
+  sed -i '/metadata_expire/d' /etc/dnf/dnf.conf
+---------------------------------------------------------------------------
+
+
+==========================================================================================
         F_00_debug
-==============================
+==========================================================================================
 -----------lib use only--------
 CURRENT_SCRIPT : /root/os_preparation/start.sh
 CURRENT_FOLDER : /root/os_preparation
@@ -313,44 +345,51 @@ ALL_ARGVS      : F_00_debug
 PLUGINS            : /root/os_preparation/plugins
 TMP                : /root/os_preparation/tmp
 CONFIG_FOLDER      : /root/os_preparation/templates/F_00_debug
-HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
 DATABAG            : /root/os_preparation/databag
+DATABAG_FILE       : /root/os_preparation/databag/F_00_debug.cfg
 
------------helper use only--------
-HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_env_user_base
+-----------function extended use only--------
+IF_IS_SOURCED_SCRIPT  : True: use 'return 0' to skip script
+IF_IS_FUNCTION        : True: use 'return 0' to skip script
+IF_IS_SOURCED_OR_FUNCTION  : True: use 'return 0' to skip script
 
-
+${BASH_SOURCE[0]}    : /root/os_preparation/functions/F_00_debug.sh
+${0}                 : ./start.sh
+${FUNCNAME}          : source
+Skip script sample    : [[ -n "$(eval "${IF_IS_SOURCED_OR_FUNCTION}")" ]] && return 0 || exit 0
+Skip script sample short : eval "${SKIP_SCRIPT}"
 
 ================= Testing ===============
 ----------Helper Debug Use-------->>>
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+-------------------------------------------------------------------
         helper_debug
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+-------------------------------------------------------------------
+HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
+
 
 ----------Task Debug Use-------->>>
-______________________________
+
+-----------------------------------------------
         task_debug
-______________________________
+-----------------------------------------------
 ```
 
 # Note
 
 ## Installed Packages
-  * PHP7.2 (Ref. https://webtatic.com/packages)
-  * PHP-FPM (Ref. https://webtatic.com/packages)
+  * PHP7.4 (Ref. https://rpms.remirepo.net/wizard/)
+  * PHP-FPM (Ref. https://rpms.remirepo.net/wizard/)
   * Laravel 7.x (Ref. https://laravel.com/)
-  * MariaDB 10.4 (equal to MySQL 5.7)
+  * MariaDB 10.4 (equals to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.6.0
   * Rails 6.0
     * puma (systemd, puma-mgr)
-  * Redmine 4.1.0
+  * Redmine 4.1.1
     * ruby 2.5.1
     * rails 5.2
-  * Docker
-    * docker-ce
-    * docker-compose
   * Useful tools
     * Enhanced tail
       * multitail
@@ -362,7 +401,7 @@ ______________________________
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
 
 ## Folder privilege
-After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your RoR, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
+After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
 
 1. **folder privilege**
 
@@ -470,23 +509,67 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 ## Extra functions
 * RENDER_CP
-  * Render template using eval
-  * Sample
+  * Render template using eval (Might have escape issue, if template is complicated)
 
     ```bash
     # Method : eval "echo \"$variable\""
-    # Might have escape issue, if template is complicated
+    ```
+
+  * Sample
+    * databag
+
+    ```bash
+    local var="Hello World"
+    ```
+
+    * template (${$CONFIG_FOLDER}/yourowntemplate_file)
+
+    ```bash
+    This is $var
+    ```
+
+    * function
+
+    ```bash
     RENDER_CP ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
     ```
 
+    * result (/SomeWhere/somewhere)
+
+    ```bash
+    This is Hello World
+    ```
+
 * RENDER_CP_SED
-  * Render template using sed
-  * Sample
+  * Render template using sed (BETTER method for rendering template)
 
     ```bash
     # Method : cat template | sed 's/\{\{var\}\}/$var/g'
-    # BETTER method for rendering template
+    ```
+
+  * Sample
+    * databag
+
+    ```bash
+    local var="Hello World"
+    ```
+
+    * template (${$CONFIG_FOLDER}/yourowntemplate_file)
+
+    ```bash
+    This is {{var}}
+    ```
+
+    * function
+
+    ```bash
     RENDER_CP_SED ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
+    ```
+
+    * result (/SomeWhere/somewhere)
+
+    ```bash
+    This is Hello World
     ```
 
 * SAFE_DELETE
