@@ -28,13 +28,9 @@ if ! $(dnf module list php:${php_remi_stream} --enabled >/dev/null 2>/dev/null) 
 fi
 dnf module install php:${php_remi_stream}/devel -y
 
-# --- PHP Image ---
-# php72w-pecl-imagick ---> requires ImageMagick 6.7.8 (installed via centos repo 'base','update', latest version 6.9+ is not supported)
-# use php-gd instead for image manipulation
-#dnf install php72w-pecl-imagick  
-
-# mod_php72w , is for /var/lib/php/session folder (php-fpm use), kernel module - mod_php (apache)
-# Install php 7.2
+# --- PHP ---
+# /var/lib/php/session folder (php-fpm use)- (apache - mod_php)
+# Install php
 dnf install -y \
   php \
   php-bcmath \
