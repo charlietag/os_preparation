@@ -79,7 +79,7 @@ This is a small light bash project.  Suit small companies which have only few se
       * PermitRootLogin no
       * PasswordAuthentication yes
     * RAM
-      * mkswap if Ram is insufficient to start MariaDB
+      * mkswap if RAM is insufficient to start MariaDB
 
       ```bash
       mkdir /swap
