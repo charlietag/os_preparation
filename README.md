@@ -81,18 +81,18 @@ This is a small light bash project.  Suit small companies which have only few se
     * RAM
       * mkswap if RAM is insufficient to start MariaDB
 
-      ```bash
-      mkdir /swap
-      dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
-      mkswap /swap/swapfile
-      chmod 0600 /swap/swapfile
-      /sbin/swapon /swap/swapfile
-      ```
+        ```bash
+        mkdir /swap
+        dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
+        mkswap /swap/swapfile
+        chmod 0600 /swap/swapfile
+        /sbin/swapon /swap/swapfile
+        ```
 
-      ```bash
-      chmod 755 /etc/rc.d/rc.local
-      echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
-      ```
+        ```bash
+        chmod 755 /etc/rc.d/rc.local
+        echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
+        ```
 
   * Before [os_security](https://github.com/charlietag/os_security)
     * Make sure do a **REBOOT** before implementing [os_security](https://github.com/charlietag/os_security), after done with first time [os_preparation](https://github.com/charlietag/os_preparation)
