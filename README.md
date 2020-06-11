@@ -41,7 +41,7 @@ This is a small light bash project.  Suit small companies which have only few se
 # Environment
   * CentOS 8 (8.x)
     * os_preparation
-      * release : `v1.x.x`
+      * release : `master` `v1.x.x`
 
   * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
