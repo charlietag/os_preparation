@@ -486,6 +486,20 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       netstat -palunt |grep -i est | awk '{print $7}'| cut -d'/' -f1 |xargs -i bash -c "ps aux |grep sshd |grep {}|grep -v grep" | head -n -1 | awk '{print $2}' |xargs -i kill {}
       ```
 
+    * If you want to restart network for new config, instead of using `systemctl restart network`, which is deprecated in **CentOS 8**
+      * Reload network config (mostly, this would work
+
+        ```bash
+        nmcli c reload
+        ```
+
+      * Stop networking and start networking in NetworkManager (NM)
+
+        ```bash
+        nmcli n off; nmcli n on
+        ```
+
+
 ## Ruby gem config
 * gem install without making document
   * Deprecated
