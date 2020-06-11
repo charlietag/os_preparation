@@ -487,13 +487,13 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       ```
 
     * If you want to restart network for new config, instead of using `systemctl restart network`, which is deprecated in **CentOS 8**
-      * Reload network config (mostly, this would work
+      * Reload network config (mostly, this would work)
 
         ```bash
         nmcli c reload
         ```
 
-      * Stop networking and start networking in NetworkManager (NM)
+      * Stop networking and start networking in **NetworkManager (NM)**
 
         ```bash
         nmcli n off; nmcli n on
