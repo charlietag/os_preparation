@@ -479,6 +479,13 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     composer create-project --prefer-dist laravel/laravel <laravel_project>
     ```
 
+  * Useful script snippet
+    * If you are always get disconnected, and you want to ***kill last failed connection of SSH***
+    
+      ```bash
+      netstat -palunt |grep -i est | awk '{print $7}'| cut -d'/' -f1 |xargs -i bash -c "ps aux |grep sshd |grep {}|grep -v grep" | head -n -1 | awk '{print $2}' |xargs -i kill {}
+      ```
+
 ## Ruby gem config
 * gem install without making document
   * Deprecated
