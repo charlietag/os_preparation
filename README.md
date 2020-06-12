@@ -70,6 +70,8 @@ This is a small light bash project.  Suit small companies which have only few se
     * Enabled
       * dnf-automatic
         * For `dnf makecache` by daily
+  * Before [os_security](https://github.com/charlietag/os_security)
+    * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security), 
 
 # Warning
   * Please do this in fresh install OS
@@ -96,8 +98,6 @@ This is a small light bash project.  Suit small companies which have only few se
         echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
         ```
 
-  * Before [os_security](https://github.com/charlietag/os_security)
-    * Make sure do a **REBOOT** before implementing [os_security](https://github.com/charlietag/os_security), after done with first time [os_preparation](https://github.com/charlietag/os_preparation)
 
 # Configuration
   * Before installation
