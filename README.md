@@ -2,6 +2,7 @@ Table of Contents
 =================
 - [CentOS Linux Server OS Preparation](#centos-linux-server-os-preparation)
 - [Environment](#environment)
+- [Notice](#notice)
 - [Warning](#warning)
 - [Configuration](#configuration)
 - [Easy Installation](#easy-installation)
@@ -58,9 +59,7 @@ This is a small light bash project.  Suit small companies which have only few se
         git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
         ```
 
-
-# Warning
-  * Please do this in fresh install OS
+# Notice
   * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration permanently, instead, using dnf-automatic / yum-cron to makecache
     * [Optional] Make cache before doing **DNF / YUM** installation
       * /root/bin/dnf.sh (alias dnf) will help you with this
@@ -68,9 +67,12 @@ This is a small light bash project.  Suit small companies which have only few se
     * Disabled
       * dnf repo cache expiration
         * `dnf config-manager --setopt metadata_expire=-1 --save`
-    * Enabled ([os_security](https://github.com/charlietag/os_security))
+    * Enabled
       * dnf-automatic
-        * `dnf makecache`
+        * For `dnf makecache` by daily
+
+# Warning
+  * Please do this in fresh install OS
   * What does this not cover, DO the following manually
     * Login user
       * Change password of root
