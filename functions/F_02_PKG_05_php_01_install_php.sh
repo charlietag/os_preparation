@@ -73,3 +73,18 @@ echo ""
 echo "systemctl disable php-fpm......"
 systemctl disable php-fpm
 echo ""
+
+# --------------------------------------------------------------------------
+# Make sure php-fpm is not started by nginx
+# --------------------------------------------------------------------------
+#sed -e 's/^#*/#/' -i /usr/lib/systemd/system/nginx.service.d/php-fpm.conf
+task_copy_using_cat
+chmod 755 /opt/php_fpm_scripts/*.sh
+# *********************************
+# Adding scripts into crontab
+# *********************************
+local cron_php_fpm_script="/opt/php_fpm_scripts/php-fpm_decouple_nginx.sh"
+echo "Adding php-fpm check script into crontab..."
+sed -re "/${cron_php_fpm_script//\//\\/}/d" -i /etc/crontab
+echo "1 6 * * * root ${cron_php_fpm_script}" >> /etc/crontab
+$cron_php_fpm_script
