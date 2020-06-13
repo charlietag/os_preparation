@@ -986,3 +986,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
               * PurpleMine2 2.9.0 -> 2.10.2
           * pcre / pcre-devel
             * For Nginx HTTP rewrite module while compiling nginx related tools (ModSecurity / headers-more-nginx-module)
+* 2020/06/14
+  * tag: v1.0.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.0...v1.0.1
+      * Fix tmux version to 3.1b
+      * Change default config in .tmux.conf
+      * Make sure php-fpm is not wanted by Nginx , while starting Nginx server (`/usr/lib/systemd/system/nginx.service.d/php-fpm.conf`)
