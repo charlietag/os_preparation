@@ -996,3 +996,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.0.2
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.1...v1.0.2
       * Disable / Stop service "cups" by defalt
+  * tag: v1.0.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.2...v1.0.3
+      * Service "CUPS" is not installed by default (~~Disable / Stop service "cups" by defalt~~)
