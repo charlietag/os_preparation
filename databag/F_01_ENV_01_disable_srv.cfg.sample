@@ -7,6 +7,6 @@
 # 1. nmcli / nmcli connection
 # 2. nmtui <--- like deprecated command 'netconfig'
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
-# (service "cups" is not installed by default...)
+# (service "cups" is not installed by default...) - it's added after os_preparation, so I choose to do nothing after "CUPS".
 local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service)
 
