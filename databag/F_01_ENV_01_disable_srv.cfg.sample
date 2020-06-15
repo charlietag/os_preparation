@@ -7,5 +7,5 @@
 # 1. nmcli / nmcli connection
 # 2. nmtui <--- like deprecated command 'netconfig'
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
-local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service)
+local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service cups)
 
