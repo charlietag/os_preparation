@@ -992,3 +992,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * Fix tmux version to 3.1b
       * Change default config in .tmux.conf
       * Make sure php-fpm is not wanted by Nginx , while starting Nginx server (`/usr/lib/systemd/system/nginx.service.d/php-fpm.conf`)
+* 2020/06/15
+  * tag: v1.0.2
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.1...v1.0.2
+      * Disable / Stop service "cups" by defalt
