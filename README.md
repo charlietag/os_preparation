@@ -1000,3 +1000,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.2...v1.0.3
       * Service "CUPS" is not installed by default (~~Disable / Stop service "cups" by defalt~~).
       * It's added after os_preparation (should be for generating PDF).
+* 2020/06/16
+  * tag: v1.0.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.2...v1.0.3
+      * Add bandwith into tmux themes
