@@ -386,7 +386,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * MariaDB 10.4 (equals to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
-  * Ruby 2.6.0
+  * Ruby 2.7.0
   * Rails 6.0
     * puma (systemd, puma-mgr)
   * Redmine 4.1.1
