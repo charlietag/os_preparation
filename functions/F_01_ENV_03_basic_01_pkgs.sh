@@ -16,7 +16,7 @@ dnf install -y dnf-plugins-core yum-utils
 # Enable repo PowerTools
 # ----------------------------------------------------------------------------------------
 # check repo
-local verify_repo="$(dnf repolist PowerTools 2>/dev/null)"
+local verify_repo="$(dnf repolist PowerTools 2>/dev/null  | grep 'PowerTools' | grep 'enabled' )"
       verify_repo="$([[ -n "${verify_repo}" ]] || echo "FAILED")"
 
 if [[ "${verify_repo}" = "FAILED" ]]; then
