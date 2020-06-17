@@ -1010,4 +1010,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * ruby default version 2.6.0 -> 2.7.0
   * tag: v1.0.6
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.5...v1.0.6
-      * fix dnf issue after dnf is upgraded
+      * fix dnf issue after dnf is upgraded (CentOS 8.2)
