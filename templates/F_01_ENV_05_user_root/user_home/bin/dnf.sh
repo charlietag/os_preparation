@@ -9,10 +9,11 @@ dnf_makecache() {
       # ---------- Try to update repo metadata cache -----------
       #local dnf_repo_check="$(dnf makecache >/dev/null 2>/dev/null && echo "Success")"
       dnf makecache
-      echo ""
-      echo ""
-      echo ""
       local dnf_repo_check="$([[ $? -eq 0 ]] && echo "Success")"
+      echo ""
+      echo ""
+      echo ""
+
       if [[ -n "${dnf_repo_check}" ]]; then
         echo "dnf metadata is updated successfully...!"
         break
@@ -33,41 +34,57 @@ dnf_makecache() {
 main() {
   echo "Checking dnf metadata cache... (might take awhile)"
   local repo_expired_days=2
-  local repo_check_days_ago="$(dnf repolist 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+  local repo_cache_file_count="$(find /var/cache/dnf -name repomd.xml | wc -l)"
+  local repo_cache_enabled_count="$(dnf repolist | grep -EA 200 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name' | grep -vE 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name|repolist:[[:space:]]+[[:print:]]*' | wc -l)"
+  local repo_check_days_ago
 
-
-  if [[ $repo_check_days_ago -gt $repo_expired_days ]]; then
+  if [[ $repo_cache_file_count -ne $repo_cache_enabled_count ]]; then
 		echo "---------------------------------------"
-    echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
+    echo "DNF CACHE DATA DOES NOT EXIST... !"
     echo "CMD:"
     echo "  dnf clean all ; dnf makecache"
 		echo "---------------------------------------"
 		echo ""
     dnf_makecache
-    repo_check_days_ago="$(dnf repolist 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
 		echo ""
 		echo ""
 		echo ""
-  fi
+  else
 
-  if [[ $repo_check_days_ago -lt 0 ]]; then
-    echo ""
-    echo "Current date time < metadata cache time..."
-    echo "Please make sure your date time is currect...!"
-    echo ""
-		echo "---------------------------------------"
-    echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
-    echo "CMD:"
-    echo "  dnf clean all ; dnf makecache"
-		echo "---------------------------------------"
-		echo ""
-    dnf_makecache
-    repo_check_days_ago="$(dnf repolist 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-		echo ""
-		echo ""
-		echo ""
-  fi
+    repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+    if [[ $repo_check_days_ago -gt $repo_expired_days ]]; then
+      echo "---------------------------------------"
+      echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
+      echo "CMD:"
+      echo "  dnf clean all ; dnf makecache"
+      echo "---------------------------------------"
+      echo ""
+      dnf_makecache
+      repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      echo ""
+      echo ""
+      echo ""
+    fi
 
+    if [[ $repo_check_days_ago -lt 0 ]]; then
+      echo ""
+      echo "Current date time < metadata cache time..."
+      echo "Please make sure your date time is currect...!"
+      echo ""
+      echo "---------------------------------------"
+      echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
+      echo "CMD:"
+      echo "  dnf clean all ; dnf makecache"
+      echo "---------------------------------------"
+      echo ""
+      dnf_makecache
+      repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      echo ""
+      echo ""
+      echo ""
+    fi
+
+  fi
 
   local dnf_argv="$@"
   echo "---------------------------------------"

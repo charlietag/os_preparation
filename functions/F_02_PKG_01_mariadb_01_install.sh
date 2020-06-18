@@ -7,7 +7,7 @@ local pkgs_list=""
 echo "==============================="
 echo "        Render mariadb repo"
 echo "==============================="
-if [[ -z "$(dnf repolist mariadb 2>/dev/null)" ]] ; then
+if [[ -z "$(dnf repolist --enabled 2>&1  | grep 'mariadb')" ]] ; then
   task_copy_using_render
   #L_UPDATE_REPO 5000
 fi
