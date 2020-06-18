@@ -60,13 +60,13 @@ This is a small light bash project.  Suit small companies which have only few se
         ```
 
 # Notice
-  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. This will disable repo cache expiration permanently, instead, using dnf-automatic / yum-cron to makecache
+  * Due to CentOS 8 - EPEL-modular repo always failed everytime updating metadata cache. ~~This will disable repo cache expiration permanently~~, instead, using dnf-automatic / yum-cron to makecache
     * [Optional] Make cache before doing **DNF / YUM** installation
       * /root/bin/dnf.sh (alias dnf) will help you with this
       * `dnf makecache` / `yum makecache`
-    * Disabled
-      * dnf repo cache expiration
-        * `dnf config-manager --setopt metadata_expire=-1 --save`
+    * ~~Disabled~~
+      * ~~dnf repo cache expiration~~
+        * ~~`dnf config-manager --setopt metadata_expire=-1 --save`~~
     * Enabled
       * dnf-automatic
         * For `dnf makecache` by daily
