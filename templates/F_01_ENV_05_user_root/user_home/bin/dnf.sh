@@ -32,15 +32,16 @@ dnf_makecache() {
 ############### Fetch dnf repo retry Loop (For epel-modular) #############
 
 main() {
-  echo "Checking dnf metadata cache... (might take awhile)"
+  #echo "Checking dnf metadata cache... (might take awhile)"
   local repo_expired_days=2
   local repo_cache_file_count="$(find /var/cache/dnf -name repomd.xml | wc -l)"
-  local repo_cache_enabled_count="$(dnf repolist | grep -EA 200 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name' | grep -vE 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name|repolist:[[:space:]]+[[:print:]]*' | wc -l)"
+  #local repo_cache_enabled_count="$(dnf repolist | grep -EA 200 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name' | grep -vE 'repo[[:space:]]+id[[:space:]]+repo[[:space:]]+name|repolist:[[:space:]]+[[:print:]]*' | wc -l)"
+  local repo_cache_enabled_count="$(echo "$(cat /etc/yum.repos.d/* |grep -E '^\s*\[[[:print:]]*\]' | sed 's/[][]//g' | wc -l)-$(cat /etc/yum.repos.d/* | grep 'enabled=0' | wc -l)" | bc)"
   local repo_check_days_ago
 
   if [[ $repo_cache_file_count -ne $repo_cache_enabled_count ]]; then
 		echo "---------------------------------------"
-    echo "DNF CACHE DATA DOES NOT EXIST... !"
+    echo "DNF CACHE DATA IS NOT CLEAN... !"
     echo "CMD:"
     echo "  dnf clean all ; dnf makecache"
 		echo "---------------------------------------"
@@ -51,7 +52,8 @@ main() {
 		echo ""
   else
 
-    repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+    #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+    repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
     if [[ $repo_check_days_ago -gt $repo_expired_days ]]; then
       echo "---------------------------------------"
       echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
@@ -60,7 +62,8 @@ main() {
       echo "---------------------------------------"
       echo ""
       dnf_makecache
-      repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+			repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""
@@ -78,7 +81,8 @@ main() {
       echo "---------------------------------------"
       echo ""
       dnf_makecache
-      repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+			repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""
