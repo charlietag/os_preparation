@@ -1015,3 +1015,6 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.0.7
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.6...v1.0.7
       * Changes for CentOS 8.2
+  * tag: v1.0.8
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.7...v1.0.8
+      * perf tune dnf.sh
