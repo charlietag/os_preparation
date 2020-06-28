@@ -1,3 +1,20 @@
+alias bess='
+  echo "==================================="; \
+  echo "     Spring Status"; \
+  echo "==================================="; \
+  bundle exec spring status ; \
+  echo ""
+  '
+
+alias besp='
+  echo "==================================="; \
+  echo "     Spring Stop"; \
+  echo "==================================="; \
+  bundle exec spring stop ; \
+  echo ""
+  '
+
+
 alias be='bundle exec'
 alias bl='bundle exec rails'
 
@@ -89,20 +106,3 @@ alias bs='
   bundle exec rails server -b 0.0.0.0 ; \
   echo ""
   '
-
-alias bgss='
-  echo "==================================="; \
-  echo "     Spring Status"; \
-  echo "==================================="; \
-  bundle exec spring status ; \
-  echo ""
-  '
-
-alias bgpp='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
-  '
-
