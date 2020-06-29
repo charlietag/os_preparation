@@ -1018,3 +1018,8 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.0.8
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.7...v1.0.8
       * perf tune dnf.sh
+* 2020/06/30
+  * tag: v1.0.9
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.8...v1.0.9
+      * .tmux.conf for tmux-theme dark mode
+      * some changes of aliases for rubyuser
