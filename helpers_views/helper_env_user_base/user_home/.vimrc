@@ -125,6 +125,9 @@ nnoremap <F10> :set invpaste paste?<CR>
 set pastetoggle=<F10>
 set showmode
 
+"Quick tab to spaces
+nnoremap TT :retab<CR>
+
 " enable true color
 "if has("termguicolors")
 "    " fix bug for vim
