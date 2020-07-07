@@ -128,6 +128,39 @@ set showmode
 "Quick tab to spaces
 nnoremap TT :retab<CR>
 
+
+" -----------------------------------------
+"       Do some commands before save everytime in VIM
+"           1. retab : tab -> spaces
+"           2. removing all trailing whitespace
+" -----------------------------------------
+"function BeforeSaveCommands()
+" :retab
+" :%s/\s\+$//e
+" :w
+"endfunction
+"autocmd BufWritePre,BufEnter * :call BeforeSaveCommands()
+
+"BufReadPost - will not show symbol(+), to remind you to save, so I add :w to auto-save after Commands
+"autocmd BufWritePre,BufReadPost * :retab | :%s/\s\+$//e | :w
+
+"BufEnter (recommend) - will show symbol(+), to remind you to save (add :w for lazy me, but this will change file timestamp everytime I just open file)
+"autocmd BufWritePre,BufEnter * :retab | :%s/\s\+$//e | :w
+
+" -----------------------------------------
+"/g - will cause error
+"autocmd BufWritePre,BufEnter * :retab | :%s/\s\+$//g | :w
+
+"/e - will escape special characters
+"autocmd BufWritePre,BufEnter * :retab | :%s/\s\+$//e | :w
+autocmd BufWritePre,BufEnter * :retab | :%s/\s\+$//e
+
+
+
+
+" -----------------------------------------
+"       For Old Version of VIM
+" -----------------------------------------
 " enable true color
 "if has("termguicolors")
 "    " fix bug for vim
