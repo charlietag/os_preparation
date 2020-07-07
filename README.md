@@ -52,9 +52,9 @@ This is a small light bash project.  Suit small companies which have only few se
     * os_preparation
       * release : `before_passenger_to_puma`
       * If you prefer **passenger** + nginx (**passenger-install-nginx-module**)
-      
+
         please switch to git tag named "before_passenger_to_puma"
-      
+
         ```bash
         git clone --depth 1 --branch before_passenger_to_puma https://github.com/charlietag/os_preparation.git
         ```
@@ -71,7 +71,7 @@ This is a small light bash project.  Suit small companies which have only few se
       * dnf-automatic
         * For `dnf makecache` by daily
   * Before [os_security](https://github.com/charlietag/os_security)
-    * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security), 
+    * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
 
 # Warning
   * Please do this in fresh install OS
@@ -241,8 +241,8 @@ I want to choose specific part to install.
 ## Folder
   * functions/
     * Write your own script here, **file** named start with **F_[0-9][0-9]_YourOwnFuntionName.sh**
-    * Run command 
-    
+    * Run command
+
       ```bash
       ./start.sh -i YourOwnFuntionName
       ```
@@ -273,7 +273,7 @@ I want to choose specific part to install.
 
 
         instead of
-        
+
         ```bash
         cp ${$CONFIG_FOLDER}/yourowntemplate_file /SomeWhere/somewhere
         ```
@@ -408,7 +408,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 1. **folder privilege**
 
   * Rails Project
-    
+
     ```bash
     rails new <rails_project> -d mysql
     cd <rails_project>
@@ -416,7 +416,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     ```
 
   * Laravel Project
-    
+
     ```bash
     composer create-project --prefer-dist laravel/laravel <laravel_project>
     cd <laravel_project>
@@ -483,7 +483,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
   * Useful script snippet
     * If you are always get disconnected, and you want to ***kill last failed connection of SSH***
-    
+
       ```bash
       netstat -palunt |grep -i est | awk '{print $7}'| cut -d'/' -f1 |xargs -i bash -c "ps aux |grep sshd |grep {}|grep -v grep" | head -n -1 | awk '{print $2}' |xargs -i kill {}
       ```
@@ -938,14 +938,14 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * CentOS 8 - changes for CentOS 8
         * Rename all centos7 related to centos8 in all config files (Readme / hostname /...)
         * Reorganize /etc/hosts and add current hostname into /etc/hosts after os_preparation
-          
+
           ```bash
           127.0.0.1 original content
           ::1       original content
           127.0.0.1 $(hostname)
           ::1       $(hostname)
           ```
-      
+
         * Command "yum" -> "dnf"
         * For DNF performance - alias dnf -> /root/bin/dnf.sh (update cache within 2 days)
         * DNF automatic update enabled(dnf-automatic)
@@ -1023,3 +1023,10 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.8...v1.0.9
       * .tmux.conf for tmux-theme dark mode
       * some changes of aliases for rubyuser
+* 2020/07/08
+  * tag: v1.0.10
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.9...v1.0.10
+      * .tmux.conf
+      * .vimrc
+        * auto retab - tab to spaces
+        * auto remove trailing spaces
