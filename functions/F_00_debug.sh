@@ -33,7 +33,7 @@ echo "IF_IS_SOURCED_OR_FUNCTION  : $(eval "${IF_IS_SOURCED_OR_FUNCTION}")"
 echo ""
 echo "\${BASH_SOURCE[0]}    : ${BASH_SOURCE[0]}"
 echo "\${0}                 : ${0}"
-echo "\${FUNCNAME}          : ${FUNCNAME}"
+echo "\${FUNCNAME[@]}          : ${FUNCNAME[@]}"
 echo 'Skip script sample    : [[ -n "$(eval "${IF_IS_SOURCED_OR_FUNCTION}")" ]] && return 0 || exit 0'
 echo 'Skip script sample short : eval "${SKIP_SCRIPT}"'
 echo ""
