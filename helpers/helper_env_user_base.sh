@@ -47,7 +47,7 @@ local vim_git_repos=(
   "airblade/vim-gitgutter"
   "mattn/emmet-vim"
   "tomtom/tcomment_vim"
-  "vim/surround"
+  "tpope/vim-surround"
 )
 
 echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
