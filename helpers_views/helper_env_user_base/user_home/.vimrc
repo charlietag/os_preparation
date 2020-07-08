@@ -99,10 +99,10 @@ nmap  <Leader>w <Plug>(easymotion-bd-w)
 " Ref. https://github.com/kaochenlong/cch/tree/master/plugin
 " enable Emmet only in HTML and CSS files
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,eruby EmmetInstall
+autocmd FileType html,css,scss,eruby,php EmmetInstall
 
 " map <Tab> to trigger Emmet (insert mode)
-autocmd Filetype html,css,scss,eruby imap <silent> <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd Filetype html,css,scss,eruby,php imap <silent> <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 "------------Plugin: tomtom/tcomment_vim ------------
 " Select mode : add / remove comment

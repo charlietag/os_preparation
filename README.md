@@ -1054,3 +1054,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.1.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.11...v1.1.0
       * Fix typo
+  * tag: v1.1.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.0...v1.1.1
+      * mattn/emmet-vim
+        * Add FileType php
