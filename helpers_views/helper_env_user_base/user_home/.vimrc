@@ -109,13 +109,9 @@ autocmd Filetype html,css,scss,eruby,php imap <silent> <buffer> <expr> <tab> emm
 " <Ctrl> + / + /
 
 "------------Plugin: vim/surround ------------
-" Ref. https://github.com/tpope/vim-surround
-
 "------------Plugin: tpope/vim-endwise ------------
-" Ref. https://github.com/tpope/vim-endwise
-" Useful writing ruby code
-
-
+"------------Plugin: Raimondi/delimitMate ------------
+"------------Plugin: tpope/vim-sensible ------------
 
 
 "*********************************
