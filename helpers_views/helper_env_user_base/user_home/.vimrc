@@ -94,6 +94,21 @@ nmap  <Leader>w <Plug>(easymotion-bd-w)
 " So slow add this one, althrough it's useful while vimdiff (cross window)
 " nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+"------------Plugin: mattn/emmet-vim ------------
+" Ref. https://github.com/kaochenlong/cch/tree/master/plugin
+" enable Emmet only in HTML and CSS files
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,scss,eruby EmmetInstall
+
+" map <Tab> to trigger Emmet (insert mode)
+autocmd Filetype html,css,scss,eruby imap <silent> <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+"------------Plugin: tomtom/tcomment_vim ------------
+" Select mode : add / remove comment
+" <Ctrl> + / + /
+
+"------------Plugin: vim/surround ------------
+" Ref. https://github.com/tpope/vim-surround
 
 "*********************************
 "       Charlie Customize

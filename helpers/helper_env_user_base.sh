@@ -45,6 +45,9 @@ local vim_git_repos=(
   "tpope/vim-obsession"
   "tpope/vim-fugitive"
   "airblade/vim-gitgutter"
+  "mattn/emmet-vim"
+  "tomtom/tcomment_vim"
+  "vim/surround"
 )
 
 echo "${vim_git_repos[@]}" | tr ' ' '\n' | \

@@ -1030,3 +1030,11 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * .vimrc
         * auto retab - tab to spaces
         * auto remove trailing spaces
+  * tag: v1.0.11
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.10...v1.0.11
+      * .vimrc
+        * Use <tab> for emmet-vim when FileType is html,css,scss,eruby(erb)
+      * vim plugins
+        * mattn/emmet-vim
+        * tomtom/tcomment_vim
+        * vim/surround
