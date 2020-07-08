@@ -48,6 +48,7 @@ local vim_git_repos=(
   "mattn/emmet-vim"
   "tomtom/tcomment_vim"
   "tpope/vim-surround"
+  "tpope/vim-endwise"
 )
 
 echo "${vim_git_repos[@]}" | tr ' ' '\n' | \

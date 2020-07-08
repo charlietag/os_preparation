@@ -414,6 +414,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
     * mattn/emmet-vim
     * tomtom/tcomment_vim
     * tpope/vim-surround
+    * tpope/vim-endwise
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
@@ -1058,3 +1059,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.0...v1.1.1
       * mattn/emmet-vim
         * Add FileType php
+  * tag: v1.1.2
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.1...v1.1.2
+      * vim plugin
+        * tpope/vim-endwise
