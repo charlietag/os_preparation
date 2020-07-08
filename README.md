@@ -415,7 +415,10 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
     * tomtom/tcomment_vim
     * tpope/vim-surround
     * tpope/vim-endwise
+    * vim-ruby/vim-ruby
+    * ap/vim-css-color
     * charlietag/nginx.vim (clone from nginx/contrib, for highlight nginx config)
+    * charlietag/lucid_tag.vim (default colorscheme)
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
@@ -1066,4 +1069,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
         * tpope/vim-endwise
   * tag: v1.1.3
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.2...v1.1.3
-      * Move vim config(nginx syntax) out , apply nginx syntax as VIM plugin
+      * Move vim config(nginx syntax) out , apply nginx syntax / colorscheme as VIM plugin
+      * Plugins
+        * vim-ruby/vim-ruby
+        * ap/vim-css-color

@@ -49,7 +49,10 @@ local vim_git_repos=(
   "tomtom/tcomment_vim"
   "tpope/vim-surround"
   "tpope/vim-endwise"
+  "vim-ruby/vim-ruby"
+  "ap/vim-css-color"
   "charlietag/nginx.vim"
+  "charlietag/lucid_tag.vim"
 )
 
 echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
@@ -59,7 +62,7 @@ echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
 
 
 # save vim session - avoid server crash ---> tpope/vim-obsession
-vim -u NONE -c "helptags vim-obsession/doc" -c q              # generate doc - vim-obsession help tag
+# vim -u NONE -c "helptags vim-obsession/doc" -c q              # generate doc - vim-obsession help tag
 
 
 # ---- Start Fetching vim plugins from github END----

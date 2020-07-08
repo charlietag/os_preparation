@@ -108,18 +108,13 @@ autocmd Filetype html,css,scss,eruby,php imap <silent> <buffer> <expr> <tab> emm
 " Select mode : add / remove comment
 " <Ctrl> + / + /
 
-"------------Plugin: vim/surround ------------
-"------------Plugin: tpope/vim-endwise ------------
-"------------Plugin: Raimondi/delimitMate ------------
-"------------Plugin: tpope/vim-sensible ------------
-
 
 "*********************************
 "       Charlie Customize
 "*********************************
 
 "------------VIM Colorscheme------------
-colorscheme lucid
+colorscheme lucid_tag
 "colorscheme slate
 
 "------------VIM Setting------------
