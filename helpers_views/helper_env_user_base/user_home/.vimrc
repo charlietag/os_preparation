@@ -108,6 +108,9 @@ autocmd Filetype html,css,scss,eruby,php imap <silent> <buffer> <expr> <tab> emm
 " Select mode : add / remove comment
 " <Ctrl> + / + /
 
+"------------Plugin: vim-ruby/vim-ruby ------------
+" select within method (v->i->m) or class (v->i->M)
+
 
 "*********************************
 "       Charlie Customize
