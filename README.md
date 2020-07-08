@@ -1037,4 +1037,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * vim plugins
         * mattn/emmet-vim
         * tomtom/tcomment_vim
-        * vim/surround
+        * tpope/vim-surround
+  * tag: v1.1.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.0.11...v1.1.0
+      * Fix typo
