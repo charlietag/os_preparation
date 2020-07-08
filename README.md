@@ -401,6 +401,19 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
         * ls | ack keyword
         * ack -i keyword *
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
+  * Useful VIM Plugins
+    * godlygeek/tabular
+    * Raimondi/delimitMate
+    * scrooloose/nerdtree
+    * vim-airline/vim-airline
+    * tpope/vim-sensible
+    * easymotion/vim-easymotion
+    * tpope/vim-obsession
+    * tpope/vim-fugitive
+    * airblade/vim-gitgutter
+    * mattn/emmet-vim
+    * tomtom/tcomment_vim
+    * tpope/vim-surround
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
