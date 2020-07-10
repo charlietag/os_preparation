@@ -402,23 +402,9 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
         * ack -i keyword *
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
   * Useful VIM Plugins
-    * godlygeek/tabular
-    * Raimondi/delimitMate
-    * scrooloose/nerdtree
-    * vim-airline/vim-airline
-    * tpope/vim-sensible
-    * easymotion/vim-easymotion
-    * tpope/vim-obsession
-    * tpope/vim-fugitive
-    * airblade/vim-gitgutter
-    * mattn/emmet-vim
-    * tomtom/tcomment_vim
-    * tpope/vim-surround
-    * tpope/vim-endwise
-    * vim-ruby/vim-ruby
-    * ap/vim-css-color
-    * charlietag/nginx.vim (clone from nginx/contrib, for highlight nginx config)
-    * charlietag/lucid_tag.vim (default colorscheme)
+    * ref https://github.com/charlietag/vim_settings
+  * Useful TMUX Plugins
+    * ref. https://github.com/charlietag/tmux_settings
 
 ## Folder privilege
 After this installation repo, the server will setup with "Nginx + Puma (socket)" , "Nginx + PHP-FPM (socket)" , so your Rails, Laravel, can run on the same server.  The following is something you have to keep an eye on it.
@@ -1073,3 +1059,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * Plugins
         * vim-ruby/vim-ruby
         * ap/vim-css-color
+* 2020/07/10
+  * tag: v1.1.4
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.3...v1.1.4
+      * Move vim tmux settings out to another git repo
