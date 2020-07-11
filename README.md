@@ -401,9 +401,9 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
         * ls | ack keyword
         * ack -i keyword *
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
-  * Useful VIM Plugins
+  * VIM Plugins
     * ref https://github.com/charlietag/vim_settings
-  * Useful TMUX Plugins
+  * TMUX Plugins
     * ref. https://github.com/charlietag/tmux_settings
 
 ## Folder privilege
