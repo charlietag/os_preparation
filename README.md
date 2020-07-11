@@ -1063,3 +1063,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.1.4
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.3...v1.1.4
       * Move vim tmux settings out to another git repo
+* 2020/07/11
+  * tag: v1.1.5
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.4...v1.1.5
+      * Add more descriptions during installation
