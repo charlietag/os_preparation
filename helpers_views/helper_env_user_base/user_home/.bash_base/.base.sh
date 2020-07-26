@@ -111,6 +111,22 @@ PS1_TAIL="\u@\h${COLOR_END} ${COLOR_DARK_CYAN}(${OS_VER}) \t${COLOR_END}\$(logge
 PS1="${USER_COLOR}${PS1_TAIL}"
 
 #------------------------------------------------------
+#               Bash options setup
+#------------------------------------------------------
+# shopt (man shopt)
+#                     , display current status of all current options
+#      -p             , display current available options (opposite of current status, ie. current: no_empty_cmd_completion is enabled, this will show you how to disable it)
+#      -s optname     , enable some options
+#      -s             , display enabled options
+#      -u optname     , disable some options
+#      -u             , display disabled options
+
+# Avoid ESC key (4 times) triggers command completion
+# Enable bash options
+shopt -s no_empty_cmd_completion
+
+
+#------------------------------------------------------
 #               User customized bash setting
 #------------------------------------------------------
 BASH_FILES="$(find $HOME/.bash_user -mindepth 1 -maxdepth 1 -type f -name "*.sh")"

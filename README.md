@@ -1067,3 +1067,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.1.5
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.4...v1.1.5
       * Add more descriptions during installation
+* 2020/07/26
+  * tag: v1.1.6
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.5...v1.1.6
+      * Avoid ESC key (4 times) triggers command completion
+        * Enable bash option
+        * `shopt -s no_empty_cmd_completion`
