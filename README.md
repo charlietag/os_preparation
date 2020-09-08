@@ -382,7 +382,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
 ## Installed Packages
   * PHP7.4 (Ref. https://rpms.remirepo.net/wizard/)
   * PHP-FPM (Ref. https://rpms.remirepo.net/wizard/)
-  * Laravel 7.x (Ref. https://laravel.com/)
+  * Laravel 8.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (equals to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
@@ -1082,3 +1082,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.6...v1.1.7
       * refine doc - remove deprecated messages
       * MariaDB 10.5
+* 2020/09/09
+  * tag: v1.1.8
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.7...v1.1.8
+      * Laravel 8.x
