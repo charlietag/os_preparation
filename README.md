@@ -315,15 +315,15 @@ Already up to date.
             Running start.sh
 #############################################
 
----------------------------------------------------------------------------
-Setting dnf metadata_expire to -1 !!
-
-Better DO this , before installing packages:
-  dnf makecache
-
-Revert to default:
-  sed -i '/metadata_expire/d' /etc/dnf/dnf.conf
----------------------------------------------------------------------------
+---------------------------------------------------
+NTP(chrony) ---> pool.ntp.org
+---------------------------------------------------
+RUN: chronyd -q 'pool pool.ntp.org iburst'
+2020-09-08T01:47:33Z chronyd version 3.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +SECHASH +IPV6 +DEBUG)
+2020-09-08T01:47:38Z System clock wrong by -0.002320 seconds (step)
+2020-09-08T01:47:38Z chronyd exiting
+RUN: hwclock -w
+---------------------------------------------------
 
 
 ==========================================================================================
@@ -357,7 +357,7 @@ IF_IS_SOURCED_OR_FUNCTION  : True: use 'return 0' to skip script
 
 ${BASH_SOURCE[0]}    : /root/os_preparation/functions/F_00_debug.sh
 ${0}                 : ./start.sh
-${FUNCNAME}          : source
+${FUNCNAME[@]}          : source F_00_debug L_RUN L_RUN_SPECIFIED_FUNC source source main
 Skip script sample    : [[ -n "$(eval "${IF_IS_SOURCED_OR_FUNCTION}")" ]] && return 0 || exit 0
 Skip script sample short : eval "${SKIP_SCRIPT}"
 
