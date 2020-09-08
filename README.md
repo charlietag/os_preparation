@@ -1086,3 +1086,10 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.1.8
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.7...v1.1.8
       * Laravel 8.x
+      * Redmine
+        * Plugins
+          * redmine_issue_templates 1.0.2 -> 1.1.0
+          * redmine_agile 1.5.3 -> 1.5.4
+          * redmine_checklists 3.1.17 -> 3.1.18
+        * Themes
+          * PurpleMine2 2.10.2 -> 2.12.1
