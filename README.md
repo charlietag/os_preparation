@@ -524,8 +524,10 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
   ```bash
   mysql_secure_installation
-  (Just keep **hitting <ENTER>**, to **USE ALL DEFAULT SETTING**)
   ```
+
+  (Just keep **hitting <ENTER>**, to **USE ALL DEFAULT SETTING**)
+
 * After **mysql_secure_installation**
   * MariaDB 10.5 auth method will just like MariaDB 10.3
 
