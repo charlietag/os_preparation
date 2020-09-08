@@ -383,7 +383,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * PHP7.4 (Ref. https://rpms.remirepo.net/wizard/)
   * PHP-FPM (Ref. https://rpms.remirepo.net/wizard/)
   * Laravel 7.x (Ref. https://laravel.com/)
-  * MariaDB 10.4 (equals to MySQL 5.7)
+  * MariaDB 10.5 (equals to MySQL 5.7)
   * nodejs (stable version - 12)
   * Nginx (latest version - via Nginx Official Repo)
   * Ruby 2.7.0
@@ -524,9 +524,10 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
   ```bash
   mysql_secure_installation
+  (Just keep **hitting <ENTER>**, to **USE ALL DEFAULT SETTING**)
   ```
 * After **mysql_secure_installation**
-  * MariaDB 10.4 auth method will just like MariaDB 10.3
+  * MariaDB 10.5 auth method will just like MariaDB 10.3
 
 * Database tools - Adminer
   * Easy to manage database
@@ -1077,3 +1078,4 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * tag: v1.1.7
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.6...v1.1.7
       * refine doc - remove deprecated messages
+      * MariaDB 10.5
