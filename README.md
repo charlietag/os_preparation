@@ -520,13 +520,13 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 ## Database configuration for production
 * Remove test database and setup root password
-(After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
 
-  ```bash
-  mysql_secure_installation
-  ```
+  (After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
 
-  (Just keep **hitting <ENTER>**, to **USE ALL DEFAULT SETTING**)
+  * `$ mysql_secure_installation`
+
+    (Just keep **hitting** `<ENTER>`, to `USE ALL DEFAULT SETTING`)
+
 
 * After **mysql_secure_installation**
   * MariaDB 10.5 auth method will just like MariaDB 10.3
