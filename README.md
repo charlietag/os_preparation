@@ -1073,3 +1073,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
       * Avoid ESC key (4 times) triggers command completion
         * Enable bash option
         * `shopt -s no_empty_cmd_completion`
+* 2020/09/08
+  * tag: v1.1.7
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.6...v1.1.7
+      * refine doc - remove deprecated messages
