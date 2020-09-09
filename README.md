@@ -653,16 +653,20 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   ```
 
 ## (Git) Push and Pull
-* **Push git *commits* **to remote
-  * `git push`
-* **Push git *tags* **to remote
-  * `git push --tags`
-* **Fetch git *commits* **to local
-  * `git fetch`
-* **Fetch git *tags* **to local
-  * `git fetch --tags`
-* **Fetch git *commits* **to local and then **merge to Working Directory**
-  * `git pull``
+* Push git `commits` to remote
+  `git push`
+
+* Push git `tags` to remote
+  `git push --tags`
+
+* Fetch git `commits` to local
+  `git fetch`
+
+* Fetch git `tags` to local
+  `git fetch --tags`
+
+* Fetch git `commits` to local and then **merge to Working** Directory
+  `git pull``
 
 ## Upgrading Redmine
 ### Reference
