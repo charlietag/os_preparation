@@ -24,6 +24,9 @@ Table of Contents
     + [Customized files](#customized-files)
     + [(Method 1) Upgrading from a git checkout](#method-1-upgrading-from-a-git-checkout)
     + [(Method 2) Upgrading from a fresh installation](#method-2-upgrading-from-a-fresh-installation)
+  * [Upgrading MariaDB](#upgrading-mariadb)
+    + [Reference](#reference)
+    + [How to Upgrade](#how-to-upgrade)
 - [CHANGELOG](#changelog)
 
 # CentOS Linux Server OS Preparation
@@ -793,6 +796,79 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 * Go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
 * Finally, clear browser's cached data (To avoid strange CSS error)
   * Chrome -> History -> Clear History -> Choose ONLY "Cached images and files"
+
+## Upgrading MariaDB
+
+For some cases, we need to upgrade MariaDB without data lost.  Here is my note about this.
+
+### Reference
+* https://mariadb.com/kb/en/upgrading-from-mariadb-104-to-mariadb-105/#how-to-upgrade
+
+### How to Upgrade
+
+* Backup current database
+
+  ```bash
+  # mysqldump -u root -p --lock-all-tables --skip-tz-utc -A > all_`date +"%Y%m%d"`_skip-tz-utc.sql
+  ```
+
+* Stop MariaDB
+
+  ```bash
+  # systemctl stop mariadb
+  ```
+
+* Uninstall the old version of MariaDB
+
+  ```bash
+  dnf remove -y MariaDB-common MariaDB-client MariaDB-shared MariaDB-server MariaDB-devel
+  ```
+
+* Modify the repository configuration to newer version
+* Install the new version of MariaDB
+
+  ```bash
+  dnf install -y MariaDB-common MariaDB-client MariaDB-shared MariaDB-server MariaDB-devel
+  ```
+
+* Make any desired changes to configuration options in option files, such as my.cnf. This includes removing any options that are no longer supported.
+
+  ```bash
+  # cat /etc/my.cnf.d/server.cnf | grep -B1 '127.0.0'
+  [mysqld]
+  bind-address = 127.0.0.1
+  ```
+
+* Start MariaDB
+
+  ```bash
+  # systemctl start mariadb
+  ```
+
+* Run `mysql_upgrade`
+  * mysql_upgrade does two things:
+    * Ensures that the system tables in the#[mysql](https://mariadb.com/kb/en/the-mysql-database-tables/) database are fully compatible with the new version.
+    * Does a very quick check of all tables and marks them as compatible with the new version of MariaDB .
+  * `mysql_upgrade -u root -p`
+    * After this command, there would be a file generated for letting you know this database has already been upgraded. (owner of the file is root)
+
+      ```bash
+      $ ls /var/lib/mysql | grep upgrade
+      -rw-r--r--  1 root  root    15 Sep  9 14:24 mysql_upgrade_info
+      ```
+
+      ```bash
+      $ cat mysql_upgrade_info
+      10.5.5-MariaDB
+      ```
+
+* Restart MariaDB - Done
+  * It would be better to restart MariaDB, if it's allowed.
+
+    ```bash
+    # systemctl restart mariadb
+    ```
+
 
 # CHANGELOG
 * 2017/03/02
