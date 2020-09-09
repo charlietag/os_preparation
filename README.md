@@ -713,6 +713,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   ```
 
   > sometimes `git pull` will not **fetch tags**, instead, we need to **fetch tags** by `git fetch --tags`
+
   > especially when **tags name** or **tags <-> commit** , has been **changed**
 
   ```bash
