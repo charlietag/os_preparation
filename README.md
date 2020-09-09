@@ -30,7 +30,7 @@ You want initialize your linux server by your own script.  But you **DO NOT** wa
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
-  (centos 8 server environment settings)
+> **centos 8 server environment settings**
 
 * This is useful when
   * You have less than 5 CentOS-8 servers to maintain.
@@ -521,13 +521,13 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 ## Database configuration for production
 * Remove test database and setup root password
 
-  (After doing this, still need some tweak, try to manage database with https://www.adminer.org/ )
+  > After doing this, still need some tweak, try to manage database with https://www.adminer.org/
 
   ```bash
   $ mysql_secure_installation
   ```
 
-  (Just keep **hitting** `<ENTER>`, to `USE ALL DEFAULT SETTING`)
+  > Just keep **hitting** `<ENTER>`, to `USE ALL DEFAULT SETTING`
 
 * After **mysql_secure_installation**
   * MariaDB 10.5 auth method will just like MariaDB 10.3
@@ -681,8 +681,18 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   ```bash
   cd redmine
   git stash
+  ```
+
+  ```bash
   git checkout master
+  git fetch
+  git fetch --tags
   git pull
+  ```
+
+  > sometimes `git pull` will not **fetch tags**, instead, we need to **fetch tags** by `git fetch --tags`
+
+  ```bash
   git co 4.0.7 -b redmine_4.0.7
   git stash pop
   git status |grep 'both modified:' |awk '{print $3}' |xargs -i bash -c "echo --- git reset HEAD {} ---; git reset HEAD {}"
