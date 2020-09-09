@@ -17,6 +17,7 @@ Table of Contents
   * [Database configuration for production](#database-configuration-for-production)
   * [Extra functions](#extra-functions)
   * [(Git) Stash details](#git-stash-details)
+  * [(Git) Push and Pull](#git-push-and-pull)
   * [Upgrading Redmine](#upgrading-redmine)
     + [Reference](#reference)
     + [Backup current redmine](#backup-current-redmine)
