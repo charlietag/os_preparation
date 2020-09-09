@@ -25,7 +25,7 @@ Table of Contents
     + [(Method 1) Upgrading from a git checkout](#method-1-upgrading-from-a-git-checkout)
     + [(Method 2) Upgrading from a fresh installation](#method-2-upgrading-from-a-fresh-installation)
   * [Upgrading MariaDB](#upgrading-mariadb)
-    + [Reference](#reference)
+    + [Reference (mariadb.com)](#reference-mariadbcom)
     + [How to Upgrade](#how-to-upgrade)
 - [CHANGELOG](#changelog)
 
@@ -801,7 +801,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 For some cases, we need to upgrade MariaDB without data lost.  Here is my note about this.
 
-### Reference
+### Reference (mariadb.com)
 * https://mariadb.com/kb/en/upgrading-from-mariadb-104-to-mariadb-105/#how-to-upgrade
 
 ### How to Upgrade
