@@ -669,9 +669,9 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
   `git fetch --tags`
 
-* Fetch git `commits` to local and then **merge to Working** Directory
+* `Fetch` git `commits` to local *and then* `MERGE` to Working Directory
 
-  `git pull``
+  `git pull`
 
 ## Upgrading Redmine
 ### Reference
