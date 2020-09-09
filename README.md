@@ -1203,3 +1203,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           * redmine_checklists 3.1.17 -> 3.1.18
         * Themes
           * PurpleMine2 2.10.2 -> 2.12.1
+  * tag: v1.1.9
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.8...v1.1.9
+      * Add notes for **Upgrading MariaDB**
