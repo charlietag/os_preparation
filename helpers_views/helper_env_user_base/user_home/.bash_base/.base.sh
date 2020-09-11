@@ -44,7 +44,7 @@ alias gpush='
   echo "==================================="; \
   echo "(git fetch) && (git fetch --tags) && (git pull) && (git push) && (git push --tags)"; \
   echo "==================================="; \
-  git git fetch && git fetch --tags && pull && git push && git push --tags ; \
+  git fetch && git fetch --tags && git pull && git push && git push --tags ; \
   echo "" ; \
   echo "==================================="; \
   echo "     git status"; \
