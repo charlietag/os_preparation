@@ -1206,3 +1206,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v1.1.9
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.8...v1.1.9
       * Add notes for **Upgrading MariaDB**
+* 2020/09/09
+  * tag: v1.1.10
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.9...v1.1.10
+      * Make some changes for alias command
