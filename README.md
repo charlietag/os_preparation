@@ -1210,3 +1210,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v1.1.10
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.9...v1.1.10
       * Make some changes for alias command
+* 2020/09/04
+  * tag: v1.1.11
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.10...v1.1.11
+      * Fix ***unpredictable issues (ie. rvm env)*** while ***use rvm under tmux***
