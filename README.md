@@ -1214,3 +1214,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v1.1.11
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.10...v1.1.11
       * Fix ***unpredictable issues (ie. rvm env)*** while ***use rvm under tmux***
+      * Add alias command 'gpull', for `git fetch && git fetch --tags && git pull`

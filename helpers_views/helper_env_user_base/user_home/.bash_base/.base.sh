@@ -35,6 +35,29 @@ alias gl-current='git log --graph --stat --decorate'
 alias gls-current='git log --graph --stat --decorate --oneline'
 alias glg-current='git log --graph --decorate --oneline'
 
+alias gpull='
+  echo "==================================="; \
+  echo "     git status"; \
+  echo "==================================="; \
+  git status ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "(git fetch) && (git fetch --tags) && (git pull)"; \
+  echo "==================================="; \
+  echo ">>> git fetch ..." && \
+  git fetch && \
+  echo ">>> git fetch --tags ..." && \
+  git fetch --tags && \
+  echo ">>> git pull ..." && \
+  git pull ; \
+  echo "" ; \
+  echo "==================================="; \
+  echo "     git status"; \
+  echo "==================================="; \
+  git status ; \
+  echo ""
+  '
+
 alias gpush='
   echo "==================================="; \
   echo "     git status"; \
