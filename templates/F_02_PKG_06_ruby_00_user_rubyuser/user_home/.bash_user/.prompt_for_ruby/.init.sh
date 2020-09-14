@@ -18,7 +18,12 @@ function set_ruby {
   local ruby_dark_cyan="\e[36m"
   local ruby_color_end="\033[00m"
   local rails_ver=""
-  local rvm_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
+  local rvm_prompt=""
+
+  if [[ -s "$HOME/.rvm/bin/rvm-prompt" ]]; then
+    rvm_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
+  fi
+
   local prompt_for_ruby="${rvm_prompt}"
 
   [[ -f "Gemfile.lock" ]] && rails_ver="$(cat Gemfile.lock |sed 's/ //g' |grep -E '^rails\([[:digit:]]+' | sed 's/(/ /g' | tr -d ')')"

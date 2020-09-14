@@ -1,1 +1,2 @@
 rvm_autoupdate_flag=0
+rvm_auto_reload_flag=1
