@@ -169,6 +169,9 @@ su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem in
 echo ""
 
 local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_root} && bundle -v | awk '{print \$3}'" | sed 's/RVM reloaded!//g' | grep -Eo '[[:digit:]\.]+')"
+echo "---------------------------------------------------------------------------"
+echo "Prepare Redmine (${redmine_version}), using Bundler (${this_redmine_bundler_version})"
+echo "---------------------------------------------------------------------------"
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ install --without development test"
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
 # su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
@@ -179,6 +182,7 @@ if [[ -n "${redmine_default_lang}" ]]; then
 fi
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:plugins RAILS_ENV=production"
 
+echo "---------------------------------------------------------------------------"
 # ====== Stop database after finishing installation =======
 systemctl stop mariadb
 echo -n "stopping mariadb"
