@@ -1222,3 +1222,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v1.1.13
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.12...v1.1.13
       * Fix - rvm path error, when no .rvmrc, .ruby-version, .ruby-gemset found
+  * tag: v1.1.14
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.13...v1.1.14
+      * Fix - failed installing redmine (os_preparation)
