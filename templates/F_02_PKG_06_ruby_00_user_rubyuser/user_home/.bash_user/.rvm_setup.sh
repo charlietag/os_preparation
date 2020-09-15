@@ -50,7 +50,8 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   # After setting this var: $(__rvm_env_string) command will fetch currect ruby version &
 
   # --- defined from the beginning ---
-  #export rvm_previous_environment="default"
+  # Define again... Because it's been replaced
+  export rvm_previous_environment="default"
   # ----------------------------------
 
   # Tmux will use "current" (.ruby-version & .ruby-gemset), not "default" (rvm use xxx --default)
