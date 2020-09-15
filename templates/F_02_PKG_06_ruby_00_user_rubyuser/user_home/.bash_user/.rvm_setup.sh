@@ -1,7 +1,12 @@
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  # --- defined from the beginning ---
+  # To Fix - rvm path error, when no .rvmrc, .ruby-version, .ruby-gemset found
+
+
   # Fix TMUX session env,
   # After setting this var: $(__rvm_env_string) command will fetch currect ruby version &
   export rvm_previous_environment="default"
+  # ----------------------------------
 
 
 
