@@ -1,4 +1,11 @@
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  # Fix TMUX session env,
+  # After setting this var: $(__rvm_env_string) command will fetch currect ruby version &
+  export rvm_previous_environment="default"
+
+
+
+
   # ----------------------------------------------------------------------------------------------------------------------
   # Add for tmux compatibility
   # ----------------------------------------------------------------------------------------------------------------------
@@ -36,7 +43,7 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   # #######################################################################################################
   # Fix TMUX session env,
   # After setting this var: $(__rvm_env_string) command will fetch currect ruby version &
-  export rvm_previous_environment="default"
+  #export rvm_previous_environment="default"
 
   # Tmux will use "current" (.ruby-version & .ruby-gemset), not "default" (rvm use xxx --default)
   #export rvm_previous_environment="$(__rvm_env_string)"
