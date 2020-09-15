@@ -16,7 +16,8 @@ local rvm_install_retry=5000
 for ((i=1; ; i++)); do
 
   # ---------- Check RVM Installation -----------
-  local rvm_check="$(su -l $current_user -c "which rvm 2>/dev/null"  | sed 's/RVM reloaded!//g'  | grep "rvm")"
+  #local rvm_check="$(su -l $current_user -c "which rvm 2>/dev/null"  | sed 's/RVM reloaded!//g'  | grep "rvm")"
+  local rvm_check="$(su -l $current_user -c "command -v rvm" | sed 's/RVM reloaded!//g' | grep "rvm")"
   if [[ -n "${rvm_check}" ]]; then
     echo "RVM is installed successfully!"
     break
