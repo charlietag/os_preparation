@@ -1225,3 +1225,19 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v1.1.14
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.13...v1.1.14
       * Fix - failed installing redmine (os_preparation)
+* 2020/09/23
+  * tag: v1.1.15
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.14...v1.1.15
+      * Add 256-color code into PS1 (terminal)
+        * Ref. https://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
+
+          ```bash
+          #!/bin/bash
+          color=16;
+          while [ $color -lt 245 ]; do
+            echo -e "$color: \\033[01;38;5;${color}mhello\\033[48;5;${color}mworld\\033[0m"
+            ((color++));
+          done
+          ```
+
+      * Change default color of PS1 for rubyuser

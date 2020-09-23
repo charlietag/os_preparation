@@ -92,7 +92,7 @@ umask 022
 #------------------------------------------------------
 #               Bash Prompt Config
 #------------------------------------------------------
-# Color
+# 16-Color
 COLOR_RED='\[\e[1;31m\]'
 COLOR_DARK_RED='\[\e[0;31m\]'
 COLOR_GREEN='\[\e[1;32m\]'
@@ -107,6 +107,13 @@ COLOR_MAGENTA='\[\e[1;35m\]'
 COLOR_DARK_MAGENTA='\[\e[0;35m\]'
 COLOR_END='\[\033[00m\]'
 
+# 256-Color
+COLOR_PINK='\[\e[38;5;173m\]'
+COLOR_PINK_BOLD='\[\e[1;38;5;173m\]'
+COLOR_PURPLE_BOLD='\[\e[1;38;5;204m\]'
+COLOR_ORANGE_BOLD='\[\e[1;38;5;214m\]'
+
+# Specify color
 USER_COLOR="${COLOR_GREEN}"
 
 # OS Version
