@@ -110,7 +110,8 @@ COLOR_END='\[\033[00m\]'
 # 256-Color
 COLOR_PINK='\[\e[38;5;173m\]'
 COLOR_PINK_BOLD='\[\e[1;38;5;173m\]'
-COLOR_PURPLE_BOLD='\[\e[1;38;5;204m\]'
+COLOR_PURPLE_BOLD='\[\e[1;38;5;177m\]'
+COLOR_DARK_PURPLE_BOLD='\[\e[1;38;5;204m\]'
 COLOR_ORANGE_BOLD='\[\e[1;38;5;214m\]'
 
 # Specify color
