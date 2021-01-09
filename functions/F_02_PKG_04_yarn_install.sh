@@ -4,7 +4,7 @@
 # DATABAG_CFG:disable
 
 # Make sure NodeJs is installed
-if ! $(command -v npm); then
+if ! $(command -v npm > /dev/null); then
   echo "NodeJS is not installed correctly !!!"
   echo ""
   exit
