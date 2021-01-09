@@ -68,6 +68,15 @@ for module_version in ${dnf_enabled_modules_versions[@]}; do
     # ----------------
     dnf module reset ${module} -y
     dnf module enable ${module_version} -y
+    echo ""
+    echo ""
+    echo ">>>>>>>>>>>>>>>>"
+    echo "Enabled module:"
+    echo ">>>>>>>>>>>>>>>>"
+    dnf module list ${module} --enabled | grep -B 1 ${module}
+    echo "--------------------------------------------------"
+    echo ""
+    echo ""
   fi
 
 done
