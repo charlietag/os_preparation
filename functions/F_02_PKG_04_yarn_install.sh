@@ -1,10 +1,23 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:enable
+# DATABAG_CFG:disable
 
-#Yarn
-curl "${yarn_dnf_repo}" -o /etc/yum.repos.d/yarn.repo
+# Make sure NodeJs is installed
+if ! $(command -v npm); then
+  echo "NodeJS is not installed correctly !!!"
+  echo ""
+  exit
+fi
 
+#----------------------------------------
+# Yarn 1.22.x , classic , yum/dnf repo
+#----------------------------------------
+# curl "${yarn_dnf_repo}" -o /etc/yum.repos.d/yarn.repo
+# dnf install -y yarn
+
+#----------------------------------------
+# Yarn 2.x
+#----------------------------------------
 #For Rails 5.1+ , which is supporting yarn
-dnf install -y yarn
+npm install -g yarn

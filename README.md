@@ -44,9 +44,13 @@ This is a small light bash project.  Suit small companies which have only few se
   * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
 # Environment
+  * CentOS Stream release 8
+    * os_preparation
+      * release : `master` `v2.x.x`
+
   * CentOS 8 (8.x)
     * os_preparation
-      * release : `master` `v1.x.x`
+      * release : `v1.x.x`
 
   * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
@@ -384,14 +388,14 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
 # Note
 
 ## Installed Packages
-  * PHP7.4 (Ref. https://rpms.remirepo.net/wizard/)
-  * PHP-FPM (Ref. https://rpms.remirepo.net/wizard/)
+  * PHP7.4 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
+  * PHP-FPM (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * Laravel 8.x (Ref. https://laravel.com/)
-  * MariaDB 10.5 (equals to MySQL 5.7)
-  * nodejs (stable version - 12)
-  * Nginx (latest version - via Nginx Official Repo)
-  * Ruby 2.7.0
-  * Rails 6.0
+  * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
+  * nodejs (AppStream) (stable version - 14)
+  * Nginx (AppStream) ~~(latest version - via Nginx Official Repo)~~
+  * Ruby 3.0.0
+  * Rails 6.1
     * puma (systemd, puma-mgr)
   * Redmine 4.1.1
     * ruby 2.5.1
@@ -1241,3 +1245,18 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           ```
 
       * Change default color of PS1 for rubyuser
+* 2021/01/xx
+  * tag: v2.0.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.15...v2.0.0
+      * Migrate to CentOS Stream release 8
+        * No need to use 3rd dnf repo below anymore, built-in AppStream contains all the latest version of packages
+          * MariaDB (yum.mariadb.org)
+          * NodeJS (nodejs.org)
+          * Nginx (nginx.org)
+          * PHP (remi)
+      * Tmux 3.1b -> 3.1c
+      * NodeJs 12 -> 14
+      * rvm 1.29.10 -> 1.29.11
+      * Ruby 2.7 -> 3.0
+      * Rails 6.0 -> 6.1
+

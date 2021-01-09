@@ -1,5 +1,24 @@
 #----------------------------------------
 # PHP
 #----------------------------------------
+# ###########################################################
+# Using 3rd repo (Deprecated)
+# ###########################################################
 # PHP version of remi repo
-local php_remi_stream="remi-7.4"
+# local php_remi_stream="remi-7.4"
+
+
+
+# ###########################################################
+# @AppStream
+# For using dnf module (obey variable name rules)
+# ###########################################################
+# variable defining rules:
+#                            local pkgname_dnf_module_version="{stream}"
+# try look up version(stream) this way:
+#                                         dnf module list pkgname #
+# ----------------------------------------------------------
+
+# Enabled dnf module version of php by default
+local php_dnf_module_version="7.4"
+
