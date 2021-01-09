@@ -2,7 +2,9 @@
 # DO NOT MODIFY HERE
 # ----------------------------------------------------
 
-# Use CentOS AppStream
+# Use CentOS AppStream:
+#   Set to disable, to avoid reset dnf module multiple times
+#
 # [ enable | disable ]
 # default: enable
 local use_centos_app_stream="enable"
