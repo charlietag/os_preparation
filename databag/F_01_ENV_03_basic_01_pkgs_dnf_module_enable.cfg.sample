@@ -4,6 +4,7 @@
 
 # Use CentOS AppStream:
 #   Set to disable, to avoid reset dnf module multiple times
+#   Set to enable, for the first time run "F_01_ENV_03_basic_01_pkgs_dnf_module_enable"
 #
 # [ enable | disable ]
 # default: enable
