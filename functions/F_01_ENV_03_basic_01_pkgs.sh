@@ -16,11 +16,12 @@ dnf install -y dnf-plugins-core yum-utils
 # Enable repo PowerTools
 # ----------------------------------------------------------------------------------------
 # check repo
-local verify_repo="$(dnf repolist --enabled 2>&1  | grep 'PowerTools')"
+local powertools_repo_name="$(dnf repolist --all | grep -oiE "power[[:space:]]*tools" | head -n 1)"
+local verify_repo="$(dnf repolist --enabled 2>&1  | grep "${powertools_repo_name}")"
       verify_repo="$([[ -z "${verify_repo}" ]] && echo "FAILED")"
 
 if [[ "${verify_repo}" = "FAILED" ]]; then
-  dnf config-manager --set-enabled PowerTools
+  dnf config-manager --set-enabled ${powertools_repo_name}
   #L_UPDATE_REPO 5000
 fi
 

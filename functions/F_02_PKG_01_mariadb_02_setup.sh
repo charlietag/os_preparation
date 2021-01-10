@@ -7,8 +7,9 @@
 echo "==============================="
 echo "  Setup mariadb config"
 echo "==============================="
-sed -e '/^bind-address/ s/^#*/#/' -i /etc/my.cnf.d/server.cnf
-sed -e "/^\[mysqld\]/a bind-address = ${mariadb_listen_address}" -i /etc/my.cnf.d/server.cnf
+local mariadb_server_config="$(ls /etc/my.cnf.d/ |grep -oiE "[[:print:]]*server[[:print:]]*.cnf" | head -n 1)"
+sed -e '/^bind-address/ s/^#*/#/' -i /etc/my.cnf.d/${mariadb_server_config}
+sed -e "/^\[mysqld\]/a bind-address = ${mariadb_listen_address}" -i /etc/my.cnf.d/${mariadb_server_config}
 
 systemctl restart mariadb
 
@@ -49,12 +50,12 @@ mysqladmin -u root password ''
 #                                         (And of course userA can only view DB:test only)
 #   * Solution :
 #               After mysql_secure_installation, userA will no longer be able to login without pass
- 
+
 #       Login via unix socket --->
 #         MariaDB [(none)]> status
 #         --------------
 #         mysql  Ver 15.1 Distrib 10.4.7-MariaDB, for Linux (x86_64) using readline 5.1
-         
+
 #         Connection id:          8
 #         Current database:
 #         Current user:           root@localhost
