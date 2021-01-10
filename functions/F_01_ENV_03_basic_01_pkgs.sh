@@ -22,7 +22,7 @@ local verify_repo="$(dnf repolist --enabled 2>&1  | grep "${powertools_repo_name
 
 if [[ "${verify_repo}" = "FAILED" ]]; then
   dnf config-manager --set-enabled ${powertools_repo_name}
-  #L_UPDATE_REPO 5000
+  L_UPDATE_REPO 5000
 fi
 
 echo "Repo ${powertools_repo_name} enabled!"
