@@ -393,7 +393,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * Laravel 8.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 14)
-  * Nginx (AppStream) ~~(latest version - via Nginx Official Repo)~~
+  * Nginx (AppStream) 1.18 ~~(latest version - via Nginx Official Repo)~~
   * Ruby 3.0.0
   * Rails 6.1
     * puma (systemd, puma-mgr)
