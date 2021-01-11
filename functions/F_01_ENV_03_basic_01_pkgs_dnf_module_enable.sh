@@ -90,8 +90,9 @@ done
 
 if [[ -z "${module_arr//}" ]]; then
   echo "--------------------------------------------------"
-  echo "All module repo enabled: ${dnf_enabled_modules_versions}"
+  echo "All modules have been enabled ORIGINALLY:"
   echo "--------------------------------------------------"
+  echo "${dnf_enabled_modules_versions}"
   echo ""
   echo ""
   eval "${SKIP_SCRIPT}"
