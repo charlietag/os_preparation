@@ -88,7 +88,7 @@ for module_version in ${dnf_enabled_modules_versions[@]}; do
 
 done
 
-if [[ -z "${module_arr//}" ]]; then
+if [[ -z "${module_arr}" ]]; then
   echo "--------------------------------------------------"
   echo "All modules have been enabled ORIGINALLY:"
   echo "--------------------------------------------------"
