@@ -102,7 +102,7 @@ fi
 echo ""
 echo ""
 echo ">>>>>>>>>>>>>>>>"
-echo "Enabled module: (${module_version_arr})"
+echo "Enabled module: (${module_version_arr} )"
 echo ">>>>>>>>>>>>>>>>"
 dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}
 
