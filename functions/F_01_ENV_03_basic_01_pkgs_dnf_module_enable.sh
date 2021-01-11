@@ -48,7 +48,7 @@ fi
 local module_arr
 local module_version_arr
 
-local enabled_modules="$(dnf module list $(echo "${dnf_enabled_modules_versions}" | sed ':a;N;$!ba;s/\n/ /g') --enabled 2>&1 | grep -E "$(echo "${dnf_enabled_modules_versions}" | cut -d':' -f1 | sed ':a;N;$!ba;s/\n/|/g')" | akw '{print $1}')"
+local enabled_modules="$(dnf module list $(echo "${dnf_enabled_modules_versions}" | sed ':a;N;$!ba;s/\n/ /g') --enabled 2>&1 | grep -E "$(echo "${dnf_enabled_modules_versions}" | cut -d':' -f1 | sed ':a;N;$!ba;s/\n/|/g')" | awk '{print $1}')"
 
 for module_version in ${dnf_enabled_modules_versions[@]}; do
 
