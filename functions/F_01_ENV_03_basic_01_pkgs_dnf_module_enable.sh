@@ -88,6 +88,14 @@ for module_version in ${dnf_enabled_modules_versions[@]}; do
 
 done
 
+if [[ -z "${module_arr//}" ]]; then
+  echo "--------------------------------------------------"
+  echo "All module repo enabled: ${dnf_enabled_modules_versions}"
+  echo "--------------------------------------------------"
+  echo ""
+  echo ""
+  eval "${SKIP_SCRIPT}"
+fi
 # dnf module reset ${module_arr} -y
 # dnf module enable ${module_version_arr} -y
 echo ""
@@ -95,7 +103,7 @@ echo ""
 echo ">>>>>>>>>>>>>>>>"
 echo "Enabled module: (${module_version_arr})"
 echo ">>>>>>>>>>>>>>>>"
-dnf module list ${module_version_arr} --enabled | grep -B 1 ${module// /|}
+dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}
 
 # inline replacement, Substring Replacement
 # Ref. https://tldp.org/LDP/abs/html/string-manipulation.html
