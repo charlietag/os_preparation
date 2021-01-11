@@ -41,9 +41,12 @@ fi
 # -> nginx, 1.18, common, nginx webserver
 
 # (name)
-local module
+# local module
 # (stream)
-local version
+# local version
+
+local module_arr
+local module_version_arr
 
 for module_version in ${dnf_enabled_modules_versions[@]}; do
 
@@ -54,32 +57,54 @@ for module_version in ${dnf_enabled_modules_versions[@]}; do
     echo "@AppStream"
     echo "Enabling module : ${module_version}"
     echo "==================================================="
+    module_arr="${module_arr} $(echo ${module_version} | cut -d':' -f1)"
+    module_version_arr="${module_version_arr} ${module_version}"
 
     # ----------------
     # used variable defined
     # ----------------
     # ex: nginx
-    module="$(echo ${module_version} | cut -d':' -f1)"
+    # module="$(echo ${module_version} | cut -d':' -f1)"
     # ex: 1.18
-    version="$(echo ${module_version} | cut -d':' -f2)"
+    # version="$(echo ${module_version} | cut -d':' -f2)"
     # ex: nginx:1.18
     # ${module_version}
     # echo "${module_version}"
     # ----------------
-    dnf module reset ${module} -y
-    dnf module enable ${module_version} -y
-    echo ""
-    echo ""
-    echo ">>>>>>>>>>>>>>>>"
-    echo "Enabled module:"
-    echo ">>>>>>>>>>>>>>>>"
-    dnf module list ${module} --enabled | grep -B 1 ${module}
-    echo "--------------------------------------------------"
-    echo ""
-    echo ""
+    # dnf module reset ${module} -y
+    # dnf module enable ${module_version} -y
+    # echo ""
+    # echo ""
+    # echo ">>>>>>>>>>>>>>>>"
+    # echo "Enabled module:"
+    # echo ">>>>>>>>>>>>>>>>"
+    # dnf module list ${module} --enabled | grep -B 1 ${module}
+    # echo "--------------------------------------------------"
+    # echo ""
+    # echo ""
+
+    # -----------> do module reset / enable one time only
   fi
 
 done
+
+# dnf module reset ${module_arr} -y
+# dnf module enable ${module_version_arr} -y
+echo ""
+echo ""
+echo ">>>>>>>>>>>>>>>>"
+echo "Enabled module: (${module_version_arr})"
+echo ">>>>>>>>>>>>>>>>"
+dnf module list ${module_version_arr} --enabled | grep -B 1 ${module// /|}
+
+# inline replacement, Substring Replacement
+# Ref. https://tldp.org/LDP/abs/html/string-manipulation.html
+echo "--------------------------------------------------"
+echo ""
+echo ""
+
+# -----------> do module reset / enable one time only End <---------------
+
 
 # --- For RVM 1.29.8+ - Add system ruby as dependency for CentOS ---
 # if ! $(dnf module list ruby:2.6 --enabled >/dev/null 2>/dev/null) ; then
