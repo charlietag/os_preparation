@@ -46,9 +46,9 @@ fi
 # local version
 
 echo "==================================================="
-echo "Defined repos:"
-echo "${dnf_enabled_modules_versions}"
+echo "Enable the following module:version if not setup yet"
 echo "==================================================="
+echo "${dnf_enabled_modules_versions}"
 
 local module_arr
 local module_version_arr
