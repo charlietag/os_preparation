@@ -102,8 +102,14 @@ fi
 echo ""
 echo ""
 echo ">>>>>>>>>>>>>>>>"
-echo "Enabled module: (${module_version_arr} )"
+echo "Show enabled modules: (${module_version_arr} )"
+echo "dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}"
 echo ">>>>>>>>>>>>>>>>"
+
+# module_arr: remove the first spce
+module_arr="${module_arr# }"
+
+# module_arr: replace all spaces with |
 dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}
 
 # inline replacement, Substring Replacement
