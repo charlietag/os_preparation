@@ -48,10 +48,14 @@ fi
 local module_arr
 local module_version_arr
 
+local enabled_modules="$(dnf module list $(echo "${dnf_enabled_modules_versions}" | sed ':a;N;$!ba;s/\n/ /g') --enabled 2>&1 | grep -E "$(echo "${dnf_enabled_modules_versions}" | cut -d':' -f1 | sed ':a;N;$!ba;s/\n/|/g')" | akw '{print $1}')"
+
 for module_version in ${dnf_enabled_modules_versions[@]}; do
 
   # Actually, if nginx 1.14 is installed, then dnf will not allow you to install other version nginx, or  do a nginx module reset
-  if ! $(dnf module list ${module_version} --enabled >/dev/null 2>/dev/null) ; then
+  # if ! $(dnf module list ${module_version} --enabled >/dev/null 2>/dev/null) ; then
+  module="$(echo ${module_version} | cut -d':' -f1)"
+  if [[ -z "$(echo "${enabled_modules}" | grep "${module}")" ]] ; then
 
     echo "==================================================="
     echo "@AppStream"
@@ -112,7 +116,13 @@ echo ">>>>>>>>>>>>>>>>"
 echo "Show enabled modules: (${module_version_arr} )"
 echo "dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 -E \"${module_arr}\""
 echo ">>>>>>>>>>>>>>>>"
-dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 -E "${module_arr}"
+
+local check_module_status="$(dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 -E "${module_arr}")"
+if [[ -z "${check_module_status}" ]]; then
+  echo "No modules enabled !..."
+else
+  echo "${check_module_status}"
+fi
 
 # inline replacement, Substring Replacement
 # Ref. https://tldp.org/LDP/abs/html/string-manipulation.html
