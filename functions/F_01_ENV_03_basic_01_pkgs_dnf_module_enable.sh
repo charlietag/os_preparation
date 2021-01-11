@@ -45,6 +45,11 @@ fi
 # (stream)
 # local version
 
+echo "==================================================="
+echo "Defined repos:"
+echo "${dnf_enabled_modules_versions}"
+echo "==================================================="
+
 local module_arr
 local module_version_arr
 
@@ -101,8 +106,8 @@ if [[ -z "${module_arr}" ]]; then
   echo ""
   eval "${SKIP_SCRIPT}"
 fi
-# dnf module reset ${module_arr} -y
-# dnf module enable ${module_version_arr} -y
+dnf module reset ${module_arr} -y
+dnf module enable ${module_version_arr} -y
 
 
 # module_arr: remove the first spce
