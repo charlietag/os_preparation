@@ -99,18 +99,20 @@ if [[ -z "${module_arr}" ]]; then
 fi
 # dnf module reset ${module_arr} -y
 # dnf module enable ${module_version_arr} -y
+
+
+# module_arr: remove the first spce
+module_arr="${module_arr# }"
+# module_arr: replace all spaces with |
+module_arr="${module_arr// /|}"
+
 echo ""
 echo ""
 echo ">>>>>>>>>>>>>>>>"
 echo "Show enabled modules: (${module_version_arr} )"
-echo "dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}"
+echo "dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr}"
 echo ">>>>>>>>>>>>>>>>"
-
-# module_arr: remove the first spce
-module_arr="${module_arr# }"
-
-# module_arr: replace all spaces with |
-dnf module list ${module_version_arr} --enabled | grep -B 1 ${module_arr// /|}
+dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 ${module_arr}
 
 # inline replacement, Substring Replacement
 # Ref. https://tldp.org/LDP/abs/html/string-manipulation.html
