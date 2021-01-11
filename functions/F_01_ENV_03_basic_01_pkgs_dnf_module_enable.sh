@@ -110,7 +110,7 @@ echo ""
 echo ""
 echo ">>>>>>>>>>>>>>>>"
 echo "Show enabled modules: (${module_version_arr} )"
-echo "dnf module list ${module_version_arr} --enabled | grep -B 1 -E ${module_arr}"
+echo "dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 -E ${module_arr}"
 echo ">>>>>>>>>>>>>>>>"
 dnf module list ${module_version_arr} --enabled 2>&1 | grep -B 1 -E ${module_arr}
 
