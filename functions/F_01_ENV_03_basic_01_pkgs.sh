@@ -91,6 +91,16 @@ pkgs_list="${pkgs_list} pcre pcre-devel"
 #-----------------------------------------------------------------------------------------
 dnf install -y ${pkgs_list}
 
+# make sure cups.service is disabled
+echo "===================================================="
+echo "Disable \"cups\" (installed / enabled after installing \"redhat-lsb\")"
+echo "===================================================="
+echo "-----------------------------"
+echo "Stopping service cups ......"
+echo "-----------------------------"
+systemctl stop cups
+systemctl disable cups
+
 # make sure chronyd stop first , before syncing time using chronyd command!
 systemctl stop chronyd
 systemctl disable chronyd

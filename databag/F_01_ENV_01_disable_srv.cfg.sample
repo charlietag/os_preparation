@@ -8,6 +8,6 @@
 # 2. nmtui <--- like deprecated command 'netconfig'
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
 
-# (Service: "cups" - is not installed by default...) - it's added after os_preparation (should be for generating PDF), removed from here.
+# (Service: "cups" - is not installed by default...) - it's added after installing redhat-lsb, removed from here.
 local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service)
 
