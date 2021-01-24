@@ -32,12 +32,12 @@ Description:
       RailsConsole > File.basename(Rails.root.to_s)
 
 Examples:
-    [ Start | Stop | Reload | Enable | Disable ] chosen puma service:
+    [ Start | Stop | Reload | Enable | Disable | Restart ] chosen puma service:
 
         ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -i <puma_service_name>
         ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -i <puma_service_name_1>,<puma_service_name_2>,...
 
-    [ Start | Stop | Reload | Enable | Disable ] ALL puma services:
+    [ Start | Stop | Reload | Enable | Disable | Restart ] ALL puma services:
 
         ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -a
 
