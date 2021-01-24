@@ -16,3 +16,6 @@ task_copy_using_render_sed
 
 # Make puma-systemd-mgr executable
 chmod 755 /usr/local/bin/puma-systemd-mgr
+
+# Make sure puma service systemd unit template is usable (Not rendered by sed)
+cat ${CONFIG_FOLDER}/usr/local/bin/puma-systemd-mgr_template/puma.service > /usr/local/bin/puma-systemd-mgr_template/puma.service
