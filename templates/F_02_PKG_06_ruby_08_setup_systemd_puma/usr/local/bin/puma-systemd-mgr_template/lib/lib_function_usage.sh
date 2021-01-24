@@ -68,3 +68,11 @@ show_list_and_exit () {
   echo ""
   exit
 }
+
+show_gen_help_no_exit () {
+  echo ""
+  echo "Try to generate puma service unit files:"
+  echo "    ${THIS_SCRIPT_NAME} -g"
+  echo ""
+  # exit
+}

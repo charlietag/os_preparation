@@ -2,8 +2,8 @@
 # Variables
 #------------------------------------
 # --- Basic env var ---
-# RAILS_USER="{{current_user}}"
-RAILS_USER="rubyuser"
+RAILS_USER="{{current_user}}"
+# RAILS_USER="rubyuser"
 CURRENT_USER="$(whoami)"
 
 # --- Other ---

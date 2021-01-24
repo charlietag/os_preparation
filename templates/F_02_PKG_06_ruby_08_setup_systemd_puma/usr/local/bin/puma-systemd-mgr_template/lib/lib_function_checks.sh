@@ -25,6 +25,31 @@ check_nginx_conf_exists () {
   fi
 }
 
+check_puma_service_unit_exists () {
+  local puma_unit_file
+  local puma_unit_file_not_found=0
+  local puma_unit_err_msg=""
+
+  for puma_service_name in ${PUMA_SERVICE_NAMES[@]}; do
+    puma_unit_file="/usr/lib/systemd/system/puma_${puma_service_name}.service"
+    if [[ ! -s ${puma_unit_file} ]]; then
+      puma_unit_file_not_found=1
+      puma_unit_err_msg="${puma_unit_err_msg}\n(WARN) not found: ${puma_unit_file}"
+    fi
+  done
+
+  if [[ ${puma_unit_file_not_found} -eq 1 ]]; then
+    echo "------------------------------------------"
+    echo "Puma service units not found:"
+    echo "------------------------------------------"
+    echo -e "${puma_unit_err_msg}"
+    show_gen_help_no_exit
+    echo "------------------------------------------"
+    echo ""
+  fi
+
+}
+
 check_required_dependencies () {
   # ------------------------------------
   # function var

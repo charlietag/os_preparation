@@ -7,6 +7,7 @@
 
 check_rvm_installation
 check_nginx_conf_exists
+check_puma_service_unit_exists
 check_required_dependencies
 # ------------------------------------
 # Main
