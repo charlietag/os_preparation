@@ -1,6 +1,16 @@
 check_is_root () {
   if [[ "${CURRENT_USER}" != "root" ]]; then
     echo "Must run as \"root\""
+    echo ""
+    exit
+  fi
+}
+
+check_rvm_installation () {
+  local rvm_bin="/home/${RAILS_USER}/.rvm/bin/rvm"
+  if [[ ! -s "${rvm_bin}" ]]; then
+    echo "\"rvm\" is not installed yet for user \"${RAILS_USER}\" !"
+    echo ""
     exit
   fi
 }
@@ -49,7 +59,7 @@ check_required_dependencies () {
 
     if [[ -z "${required_gem_found}" ]]; then
       err_msg_found=1
-      err_msg_tmp="${err_msg_tmp}\ngem ${required_gem} not installed:             ${rails_path_gemfile}\n"
+      err_msg_tmp="${err_msg_tmp}\ngem \"${required_gem}\" not installed:             ${rails_path_gemfile}\n"
     fi
 
     # ------------------------------------

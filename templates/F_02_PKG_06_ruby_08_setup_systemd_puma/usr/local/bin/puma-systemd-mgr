@@ -5,6 +5,7 @@
 # ------------------------------------
 . "$(readlink -m $0)_template/lib/load.sh"
 
+check_rvm_installation
 check_nginx_conf_exists
 check_required_dependencies
 # ------------------------------------
@@ -47,20 +48,15 @@ do
       ;;
     a)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},a"
-      # ALL_PUMA_CHOSEN=1
       ;;
     l)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},l"
-      # list_puma_services
       ;;
     g)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},g"
-      # generate_systemd_config
       ;;
     h)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},h"
-      # usage
-      # exit
       ;;
   esac
 done
