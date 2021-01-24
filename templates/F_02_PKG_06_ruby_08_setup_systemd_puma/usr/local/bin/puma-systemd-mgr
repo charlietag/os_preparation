@@ -20,11 +20,11 @@ check_required_dependencies
 #while getopts ':tpredi:ahlg' argv
 CHOSEN_OPTIONS=""
 
-while getopts 'tpredi:algh' argv
+while getopts 'spredti:algh' argv
 do
   case $argv in
-    t)
-      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},t"
+    s)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},s"
       ;;
     p)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},p"
@@ -37,6 +37,9 @@ do
       ;;
     d)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},d"
+      ;;
+    t)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},t"
       ;;
     i)
       CHOSEN_OPTIONS="${CHOSEN_OPTIONS},i"
@@ -62,8 +65,21 @@ do
   esac
 done
 
-check_option "${CHOSEN_OPTIONS}" "${CHOSEN_PUMA_NAMES}"
-# run_option   "${CHOSEN_OPTIONS}" "${CHOSEN_PUMA_NAMES}"
+
+# ----------------------------------------------------------------------------------------------------------
+ALLOWED_OPTIONS="h|l|g"
+ALLOWED_ACTIONS="s|p|r|e|d|t"
+ALLOWED_SERVICES="i|a"
+
+THIS_OPTION="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_OPTIONS}")"
+THIS_ACTION="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_ACTIONS}")"
+THIS_SERVICE="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_SERVICES}")"
+
+CHOSEN_PUMA_NAMES_ARR="$(echo "${CHOSEN_PUMA_NAMES}" | sed 's/,/\n/g' | sed '/^\s*$/d' | sort -n | uniq )"
+
+# ----------------------------------------------------------------------------------------------------------
+check_option
+run_option
 
 # ----------------------------------------------------------------------------------------------------------
 # no options were passed with getopts

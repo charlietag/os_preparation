@@ -1,25 +1,14 @@
-# start_puma () {
-#   local chosen_puma_names="$(echo "${1}" | sed 's/,/\n/g')"
-#   check_puma_service_exists "${chosen_puma_names}"
-# }
+run_action () {
+  check_is_root
+  local run_this_action="${1}"
+  local run_this_puma_names="${2}"
 
-# start_rails () {
-#   check_if_is_root
-#   for puma_service in ${PUMA_SERVICES}; do
-#     systemctl start puma_service
-#   done
-# }
-#
-# stop_rails () {
-#   check_if_is_root
-#   for puma_service in ${PUMA_SERVICES}; do
-#     systemctl stop puma_service
-#   done
-# }
-#
-# reload_rails () {
-#   check_if_is_root
-#   for puma_service in ${PUMA_SERVICES}; do
-#     systemctl reload puma_service
-#   done
-# }
+  echo ""
+  echo "Doing:"
+
+  for puma_name in ${run_this_puma_names[@]}; do
+    echo "      systemctl ${run_this_action} puma_${puma_name}"
+    systemctl ${run_this_action} puma_${puma_name}
+  done
+
+}

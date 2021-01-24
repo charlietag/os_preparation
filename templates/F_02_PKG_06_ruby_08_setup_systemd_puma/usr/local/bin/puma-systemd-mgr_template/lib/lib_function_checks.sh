@@ -79,61 +79,40 @@ check_required_dependencies () {
 }
 
 check_option () {
-  local chosen_options="${1}"
-  local chosen_puma_names="${2}"
-
   local debug_option_msg="\n-------- debug: entered argv --------\n"
-
-  local chosen_puma_names_arr="$(echo "${chosen_puma_names}" | sed 's/,/\n/g' | sed '/^\s*$/d' | sort -n | uniq )"
 
   # -------------------------------------------------------------------------------
   # check other options
   # -------------------------------------------------------------------------------
-  local allowed_options="h|l|g"
-
-  local this_option="$(echo "${chosen_options}" | grep -Eo "${allowed_options}")"
-  local this_option_count="$(echo -e "${this_option}" | sed '/^\s*$/d' | wc -l)"
+  local this_option_count="$(echo -e "${THIS_OPTION}" | sed '/^\s*$/d' | wc -l)"
 
   # --- Debug Use ---
-  # echo "this_option: ${this_option_count}"
-  # echo -e "${this_option}"
   debug_option_msg="${debug_option_msg}option: ${this_option_count}\n"
-  debug_option_msg="${debug_option_msg}${this_option}\n\n"
+  debug_option_msg="${debug_option_msg}${THIS_OPTION}\n\n"
 
 
   # -------------------------------------------------------------------------------
   # check actions
   # -------------------------------------------------------------------------------
-  local allowed_actions="t|p|r|e|d"
-
-  local this_action="$(echo "${chosen_options}" | grep -Eo "${allowed_actions}")"
-  local this_action_count="$(echo -e "${this_action}" | sed '/^\s*$/d' | wc -l)"
+  local this_action_count="$(echo -e "${THIS_ACTION}" | sed '/^\s*$/d' | wc -l)"
 
   # --- Debug Use ---
-  # echo "this_action: ${this_action_count}"
-  # echo -e "${this_action}"
   debug_option_msg="${debug_option_msg}action: ${this_action_count}\n"
-  debug_option_msg="${debug_option_msg}${this_action}\n\n"
+  debug_option_msg="${debug_option_msg}${THIS_ACTION}\n\n"
 
 
   # -------------------------------------------------------------------------------
   # check services
   # -------------------------------------------------------------------------------
-  local allowed_services="i|a"
-
-  local this_service="$(echo "${chosen_options}" | grep -Eo "${allowed_services}")"
-  local this_service_count="$(echo -e "${this_service}" | sed '/^\s*$/d' | wc -l)"
+  local this_service_count="$(echo -e "${THIS_SERVICE}" | sed '/^\s*$/d' | wc -l)"
 
   # --- Debug Use ---
-  # echo "this_service: ${this_service_count}"
-  # echo -e "${this_service}"
-
   debug_option_msg="${debug_option_msg}service: ${this_service_count}\n"
-  debug_option_msg="${debug_option_msg}${this_service}\n"
+  debug_option_msg="${debug_option_msg}${THIS_SERVICE}\n"
 
   # --- Debug Use ---
-  if [[ -n "${chosen_puma_names_arr}" ]]; then
-    debug_option_msg="${debug_option_msg}=>\n${chosen_puma_names_arr}\n"
+  if [[ -n "${CHOSEN_PUMA_NAMES_ARR}" ]]; then
+    debug_option_msg="${debug_option_msg}=>\n${CHOSEN_PUMA_NAMES_ARR}\n"
   fi
   debug_option_msg="${debug_option_msg}-------- debug end --------\n"
 
@@ -161,7 +140,7 @@ check_option () {
     fi
   fi
 
-  # -t -p -r -e -d
+  # -s -p -r -e -d -t
   if [[ ${this_action_count} -gt 1 ]]; then
     echo -e "${debug_option_msg}"
     show_help_and_exit
@@ -190,14 +169,14 @@ check_option () {
       show_help_and_exit
     fi
 
-    # Check puma names (OPTARG -> $chosen_puma_names_arr)
+    # Check puma names (OPTARG -> $CHOSEN_PUMA_NAMES_ARR)
     # while using getopts, if colon is used, such as 'i:',
     # then -i xxx => xxx must be specified,
     # otherwise:
     #            -i       => this will not be activated
     #            $OPTARG  => this will be empty
-    if [[ "${this_service}" = "i" ]]; then
-      check_puma_service_exists "${chosen_puma_names_arr}"
+    if [[ "${THIS_SERVICE}" = "i" ]]; then
+      check_puma_service_exists
     fi
   fi
 
@@ -206,11 +185,10 @@ check_option () {
 }
 
 check_puma_service_exists () {
-  local chosen_puma_names_arr="${1}"
   local puma_name_not_found=0
   local check_puma_name
 
-  for puma_name in ${chosen_puma_names_arr[@]}; do
+  for puma_name in ${CHOSEN_PUMA_NAMES_ARR[@]}; do
     check_puma_name="$(echo -e "${PUMA_SERVICE_NAMES}" | grep "^${puma_name}$")"
     if [[ -z "${check_puma_name}" ]]; then
       puma_name_not_found=1

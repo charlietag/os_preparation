@@ -6,13 +6,14 @@ Usage:
      ${THIS_SCRIPT_NAME} <Options>
 
 Actions: works with Services [ -i | -a ]
-    -t            # "start"   puma systemd service
+    -s            # "start"   puma systemd service
     -p            # "stop"    puma systemd service
     -r            # "reload"  puma systemd service
     -e            # "enable"  puma systemd service
     -d            # "disable" puma systemd service
+    -t            # "restart" puma systemd service
 
-Services: Define puma name, works with Actions [ -t | -p | -r | -e | -d ]
+Services: Define puma name, works with Actions [ -s | -p | -r | -e | -d ]
     -i            # "choose"  puma service name
     -a            # "all"     puma services are chosen
 
@@ -33,12 +34,12 @@ Description:
 Examples:
     [ Start | Stop | Reload | Enable | Disable ] chosen puma service:
 
-        ${THIS_SCRIPT_NAME} [ -t | -p | -r | -e | -d ] -i <puma_service_name>
-        ${THIS_SCRIPT_NAME} [ -t | -p | -r | -e | -d ] -i <puma_service_name_1>,<puma_service_name_2>,...
+        ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -i <puma_service_name>
+        ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -i <puma_service_name_1>,<puma_service_name_2>,...
 
     [ Start | Stop | Reload | Enable | Disable ] ALL puma services:
 
-        ${THIS_SCRIPT_NAME} [ -t | -p | -r | -e | -d ] -a
+        ${THIS_SCRIPT_NAME} [ -s | -p | -r | -e | -d | -t ] -a
 
     List ALL puma services:
 

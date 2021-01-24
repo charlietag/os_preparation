@@ -4,6 +4,7 @@
 list_puma_services_available () {
   echo "-------------------------------------------------------"
   echo "Available puma service NAMES (based on Nginx configs):"
+  echo "${NGINX_RAILS_PATH}"
   echo "-------------------------------------------------------"
   echo -e "${PUMA_SERVICE_NAMES}" | sed -re 's/^/    /g'
   # for puma_service_name in ${PUMA_SERVICE_NAMES[@]}; do

@@ -52,10 +52,103 @@ generate_systemd_config () {
   list_puma_services
 }
 
+# ----------------------
+# This is run, after check_option
+# So no need to consider many special cases here. It's been checked at check_option
+# ----------------------
 run_option () {
-  local chosen_options="${1}"
-  local chosen_puma_names="${2}"
+  local this_chosen_puma_names
 
-  local chosen_puma_names_arr="$(echo "${chosen_puma_names}" | sed 's/,/\n/g' | sed '/^\s*$/d' | sort -n | uniq )"
+  # -------------------------------------
+  # -h -l -g
+  # there should be only one argv given
+  # -------------------------------------
+
+  # if [[ "${THIS_OPTION}" = "h" ]]; then
+  #   usage
+  #   exit
+  # fi
+  #
+  # if [[ "${THIS_OPTION}" = "l" ]]; then
+  #   list_puma_services
+  #   exit
+  # fi
+  #
+  # if [[ "${THIS_OPTION}" = "g" ]]; then
+  #   generate_systemd_config
+  #   exit
+  # fi
+
+  case "${THIS_OPTION}" in
+    h)
+      usage
+      exit
+      ;;
+
+    l)
+      list_puma_services
+      exit
+      ;;
+
+    g)
+      generate_systemd_config
+      exit
+      ;;
+
+  esac
+
+  # -------------------------------------
+  # -i -a
+  # should be works with actions, already checked by check_option
+  # -------------------------------------
+  case "${THIS_SERVICE}" in
+    a)
+      this_chosen_puma_names="${PUMA_SERVICE_NAMES}"
+      ;;
+
+    i)
+      this_chosen_puma_names="${CHOSEN_PUMA_NAMES_ARR}"
+      ;;
+
+  esac
+
+
+  # -------------------------------------
+  # -s -p -r -e -d -t
+  # should be works with services, already checked by check_option
+  # -------------------------------------
+  # THIS_ACTION
+  case "${THIS_ACTION}" in
+    s)
+      run_action "start" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+    p)
+      run_action "stop" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+    r)
+      run_action "reload" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+    e)
+      run_action "enable" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+    d)
+      run_action "disable" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+    t)
+      run_action "restart" "${this_chosen_puma_names}"
+      exit
+      ;;
+
+  esac
 
 }
