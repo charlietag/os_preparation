@@ -1,206 +1,76 @@
 #!/bin/bash
-# (for loading rvm env) ! /bin/bash -l
 
-RAILS_USER="{{current_user}}"
+# ------------------------------------
+# Source script lib
+# ------------------------------------
+. "$(readlink -m $0)_template/lib/load.sh"
 
-CURRENT_USER="$(whoami)"
+check_nginx_conf_exists
+check_required_dependencies
+# ------------------------------------
+# Main
+# ------------------------------------
+#
+# Ref. https://tldp.org/LDP/abs/html/internal.html#GETOPTSX
+# colon ':' from beginning, such as ':t' , means silent mode
+# (NO warning message: illegal option --)
+# colon ':' at the end, such as 'i:' , means comes with value (OPTARG)
 
-NGINX_RAILS_PATH="/etc/nginx/rails_sites"
+# Silent mode
+#while getopts ':tpredi:ahlg' argv
+CHOSEN_OPTIONS=""
 
-RAILS_ENV="production"
+while getopts 'tpredi:algh' argv
+do
+  case $argv in
+    t)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},t"
+      ;;
+    p)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},p"
+      ;;
+    r)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},r"
+      ;;
+    e)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},e"
+      ;;
+    d)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},d"
+      ;;
+    i)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},i"
+      CHOSEN_PUMA_NAMES="${OPTARG}"
+      ;;
+    a)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},a"
+      # ALL_PUMA_CHOSEN=1
+      ;;
+    l)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},l"
+      # list_puma_services
+      ;;
+    g)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},g"
+      # generate_systemd_config
+      ;;
+    h)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},h"
+      # usage
+      # exit
+      ;;
+  esac
+done
 
-#----Define global var---
-RAILS_PATH=""
-NGINX_FILE=""
-RAILS_PID=""
-RAILS_PID_FILE=""
-#----Define global var---
+check_option "${CHOSEN_OPTIONS}" "${CHOSEN_PUMA_NAMES}"
+# run_option   "${CHOSEN_OPTIONS}" "${CHOSEN_PUMA_NAMES}"
 
-#---- Functions ---
-get_rails_path () {
-  if [[ ! -f ${NGINX_FILE} ]]; then
-    echo "[WARN] (nginx) ${NGINX_FILE} not found"
-    echo ""
-  else
-    RAILS_PATH="$(cat $NGINX_FILE | grep 'root ' | grep -v '#' | awk '{print $2}' | sed 's/ //g' | sed 's/;//g' | grep 'public' | sed 's/\/public//g' | sort | uniq | head -n 1)"
-    if [[ ! -d $RAILS_PATH ]]; then
-      echo "[WARN] (rails_path) ${RAILS_PATH} not found"
-      echo ""
-    fi
-  fi
-
-  if [[ "${RAILS_USER}" = "${CURRENT_USER}" ]]; then
-    test -d $RAILS_PATH/tmp/pids || mkdir -p $RAILS_PATH/tmp/pids
-    test -d $RAILS_PATH/tmp/sockets || mkdir -p $RAILS_PATH/tmp/sockets
-  else
-    su -l $RAILS_USER -c "test -d $RAILS_PATH/tmp/pids || mkdir -p $RAILS_PATH/tmp/pids"
-    su -l $RAILS_USER -c "test -d $RAILS_PATH/tmp/sockets || mkdir -p $RAILS_PATH/tmp/sockets"
-  fi
-}
-
-get_rails_pid () {
-  RAILS_PID_FILE="$RAILS_PATH/tmp/pids/puma.pid"
-  if [[ -f "${RAILS_PID_FILE}" ]]; then
-    RAILS_PID="$(cat $RAILS_PID_FILE)"
-  fi
-}
-
-sig() {
-  if [[ -n "$RAILS_PID" ]]; then
-    kill -$1 $RAILS_PID 2>/dev/null
-  else
-    return 1
-  fi
-}
-
-status_rails () {
-  sig 0
-  RC=$?
-  if [[ $RC -eq 0 ]]; then
-    echo "[OK] (puma) ${RAILS_PATH} Already running (pid ${RAILS_PID})"
-    echo ""
-  fi
-}
-
-start_rails () {
-  status_rails
-  echo "[OK] (puma) Starting $RAILS_PATH"
-
-  if [[ "${RAILS_USER}" = "${CURRENT_USER}" ]]; then
-    # also could load whole user bash env from the begining of the script like
-    # ! /bin/bash -l
-
-    # --- Stop Spring ---
-    if [[ -f ${RAILS_PATH}/bin/spring ]]; then
-      echo "==================================="
-      echo "     Spring Stop"
-      echo "==================================="
-      bash -l -c "cd $RAILS_PATH && bundle exec spring stop"
-      echo ""
-    fi
-    # -------------------
-
-    # --- Start puma ---
-    bash -l -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
-    # -------------------
-
-  else
-
-    # --- Stop Spring ---
-    if [[ -f ${RAILS_PATH}/bin/spring ]]; then
-      echo "==================================="
-      echo "     Spring Stop"
-      echo "==================================="
-      su -l $RAILS_USER -c "cd $RAILS_PATH && bundle exec spring stop"
-      echo ""
-    fi
-    # -------------------
-
-    # --- Start puma ---
-    su -l $RAILS_USER -c "cd $RAILS_PATH && bundle exec puma -d -e $RAILS_ENV -C $RAILS_PATH/config/puma/production.rb"
-    # -------------------
-  fi
-}
-
-stop_rails () {
-  sig TERM
-  RC=$?
-  if [[ $RC -eq 0 ]]; then
-    echo "[OK] (puma) Stopping $RAILS_PATH"
-  fi
-  if [[ -f $RAILS_PID_FILE ]]; then
-    rm -f $RAILS_PID_FILE
-  fi
-}
-
-reload_rails () {
-  sig USR2
-  RC=$?
-  if [[ $RC -eq 0 ]]; then
-    echo "[OK] (puma) $RAILS_PATH reloaded OK"
-  else
-    echo "[WARN] (puma) Couldn't reload $rails_path, starting instead"
-    start_rails
-  fi
-}
-
-restart_rails () {
-  stop_rails
-  sleep 2
-  start_rails
-}
-
-do_all_sites () {
-  local action_name=$1
-  local nginx_files="$(ls -1 $NGINX_RAILS_PATH/*.conf)"
-  echo ""
-  echo ""
-  echo "########### Action: \"${action_name}\" ############"
-  for nginx_file in $nginx_files; do
-    echo "----------------------------------------------------------------------"
-    echo "                       $(basename $nginx_file)"
-    echo "----------------------------------------------------------------------"
-    NGINX_FILE="$nginx_file"
-    get_rails_path
-    get_rails_pid
-    $action_name
-    echo ""
-    sleep 2
-  done
-  echo ""
-
-  local all_puma_process="$(ps aux |grep 'puma.sock' | grep -v 'grep')"
-  if [[ -n "${all_puma_process}" ]]; then
-    echo "******** All Running Puma Process *******"
-    echo -e "${all_puma_process}"
-    echo ""
-    echo ""
-  fi
-
-  local all_puma_process="$(ps aux |grep -E '[[:digit:]]+[[:space:]]+puma')"
-  if [[ -n "${all_puma_process}" ]]; then
-    echo "******** All Running Puma Process - Detail *******"
-    echo -e "${all_puma_process}"
-    echo ""
-    echo ""
-  fi
-
-}
-
-
-
-
-
-case $1 in
-  start)
-    do_all_sites "start_rails"
-    exit 0
-    ;;
-
-  stop)
-    do_all_sites "stop_rails"
-    exit 0
-    ;;
-
-  restart)
-    do_all_sites "restart_rails"
-    exit 0
-    ;;
-
-  reload)
-    do_all_sites "reload_rails"
-    exit 0
-    ;;
-
-  status)
-    do_all_sites "status_rails"
-    exit 0
-    ;;
-
-  *)
-    echo >&2 "Usage $0 <start|stop|restart|reload|status>"
-    exit 1
-    ;;
-esac
-
-
+# ----------------------------------------------------------------------------------------------------------
+# no options were passed with getopts
+# ----------------------------------------------------------------------------------------------------------
+# Ref. https://unix.stackexchange.com/questions/50563/how-can-i-detect-that-no-options-were-passed-with-getopts
+# echo ${OPTIND}
+if [[ ${OPTIND} -eq 1 ]]; then
+  echo "No options were passed !"
+  show_help_and_exit
+fi
