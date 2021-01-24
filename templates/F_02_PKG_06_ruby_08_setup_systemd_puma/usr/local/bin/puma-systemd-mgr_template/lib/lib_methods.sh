@@ -48,8 +48,8 @@ generate_systemd_config () {
   echo ""
   systemctl daemon-reload
 
-  # list_puma_services_zombie
-  list_puma_services
+  list_puma_services_zombie
+  # list_puma_services
 }
 
 # ----------------------
