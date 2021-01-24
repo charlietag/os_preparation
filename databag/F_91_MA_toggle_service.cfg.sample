@@ -1,4 +1,4 @@
 
-local toggle="enable" # enable | disable
-local toggle_services=(mariadb php-fpm nginx puma)
+local toggle="disable" # enable | disable
+local toggle_services=(mariadb php-fpm nginx)
 

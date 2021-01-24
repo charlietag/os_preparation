@@ -1,0 +1,47 @@
+# Ref. https://github.com/puma/puma/blob/master/docs/systemd.md#service-configuration
+[Unit]
+Description=Puma HTTP Server - {{puma_service_name}}
+After=network.target
+
+[Service]
+# Puma supports systemd's `Type=notify` and watchdog service
+# monitoring, if the [sd_notify](https://github.com/agis/ruby-sdnotify) gem is installed,
+# as of Puma 5.1 or later.
+# On earlier versions of Puma or JRuby, change this to `Type=simple` and remove
+# the `WatchdogSec` line.
+Type=notify
+
+# If your Puma process locks up, systemd's watchdog will restart it within seconds.
+# Rails - Puma (sd_notify) will notify systemd every WatchdogSec/2 seconds
+WatchdogSec=300
+
+# Preferably configure a non-privileged user
+User={{RAILS_USER}}
+
+# The path to the your application code root directory.
+WorkingDirectory={{rails_path}}
+
+# SystemD will not run puma even if it is in your path. You must specify an absolute path to puma.
+# get full path : https://rvm.io/deployment/cron#direct-calling-rvm-generated-wrappers
+#   cd WorkingDirectory ; rvm wrapper show puma
+ExecStart={{rvm_wrapper_puma}}  -C {{rails_path}}/config/puma/production.rb -e production
+
+# Ref. https://github.com/puma/puma/blob/master/docs/restart.md#how-to
+# Hot restart : USR2 , (Phased restart - USR1 , Works in cluster mode only )
+ExecReload=/bin/kill -USR2 $MAINPID
+
+# (Other signals reference)
+# Ref. https://github.com/puma/puma/blob/master/docs/signals.md#puma-signals
+# Ref. https://en.wikipedia.org/wiki/Signal_(IPC)
+
+# Ref. https://www.freedesktop.org/software/systemd/man/systemd.service.html#Restart=
+# Default: no
+#   set to always (recommend)
+Restart=always
+
+# Ref. https://www.freedesktop.org/software/systemd/man/systemd.kill.html#KillMode=
+# Default: control-group
+#KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
