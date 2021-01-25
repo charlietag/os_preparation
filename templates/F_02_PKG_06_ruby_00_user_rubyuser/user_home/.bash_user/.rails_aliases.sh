@@ -1,17 +1,41 @@
+# ----------------------------------------------------------------------------
+# Linux grouping commands
+# ----------------------------------------------------------------------------
+# * Ref.
+#   * https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html
+#   * https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html
+# ```
+#   1 #!/bin/bash
+#   2 # (difference)
+#   3 # subshell
+#   4 (NAME="Charlie") && echo "${NAME}"
+#   5 # output: [EMPTY]
+#   6
+#   7 # current shell
+#   8 { NAME="Charlie"; } && echo "${NAME}"
+#   9 # output: Charlie
+# ```
+
 alias bess='
-  echo "==================================="; \
-  echo "     Spring Status"; \
-  echo "==================================="; \
-  bundle exec spring status ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Status"; \
+      echo "==================================="; \
+      bundle exec spring status ; \
+      echo ""; \
+    }
   '
 
 alias besp='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }
   '
 
 
@@ -19,11 +43,14 @@ alias be='bundle exec'
 alias bl='bundle exec rails'
 
 alias bv='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }; \
   echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
@@ -42,11 +69,14 @@ alias bv='
   '
 
 alias bn='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }; \
   echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
@@ -60,11 +90,14 @@ alias bn='
   '
 
 alias br='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }; \
   echo "==================================="; \
   echo "     rails tmp:clear"; \
   echo "==================================="; \
@@ -95,11 +128,14 @@ alias br='
   '
 
 alias bs='
-  echo "==================================="; \
-  echo "     Spring Stop"; \
-  echo "==================================="; \
-  bundle exec spring stop ; \
-  echo ""
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }; \
   echo "==================================="; \
   echo "     Start Rails in Dev Mode"; \
   echo "==================================="; \
