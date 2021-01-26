@@ -7,11 +7,11 @@
 # ```
 #   1 #!/bin/bash
 #   2 # (difference)
-#   3 # subshell
+#   3 # will create subshell
 #   4 (NAME="Charlie") && echo "${NAME}"
 #   5 # output: [EMPTY]
 #   6
-#   7 # current shell
+#   7 # using current shell. ';' and space ' ' are required. such as: { command; }
 #   8 { NAME="Charlie"; } && echo "${NAME}"
 #   9 # output: Charlie
 # ```
