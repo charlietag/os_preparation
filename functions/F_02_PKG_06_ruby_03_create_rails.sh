@@ -45,3 +45,15 @@ echo "========================================="
 echo "      Add default ignore into myrails"
 echo "========================================="
 cat ${CONFIG_FOLDER}/user_home/rails_site/myrails/.gitignore >> ${web_sites}/myrails/.gitignore
+echo ""
+
+echo "========================================="
+echo "      Add gem \"sd_notify\" into myrails"
+echo "========================================="
+sed -i '/sd_notify/d' ${web_sites}/myrails/Gemfile
+
+echo "" >> ${web_sites}/myrails/Gemfile
+echo "# sd_notify - puma5 integrated with Systemd(type=notify)" >> ${web_sites}/myrails/Gemfile
+echo "gem 'sd_notify', group: 'production'" >> ${web_sites}/myrails/Gemfile
+
+su -l $current_user -c "cd ${web_sites}/myrails && bundle install"

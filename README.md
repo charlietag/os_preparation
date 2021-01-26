@@ -34,10 +34,10 @@ You want initialize your linux server by your own script.  But you **DO NOT** wa
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
-> **centos 8 server environment settings**
+> **centos stream release 8 server environment settings**
 
 * This is useful when
-  * You have less than 5 CentOS-8 servers to maintain.
+  * You have less than 5 CentOS-Stream-8 servers to maintain.
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
