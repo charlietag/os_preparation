@@ -172,7 +172,33 @@ local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_r
 echo "---------------------------------------------------------------------------"
 echo "Prepare Redmine (${redmine_version}), using Bundler (${this_redmine_bundler_version})"
 echo "---------------------------------------------------------------------------"
-su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ install --without development test"
+# -----------------------------------------------------------------
+# Bundle config
+# -----------------------------------------------------------------
+#Bundler version >= 2.2.6
+#[DEPRECATED] The `--without` flag is deprecated.
+#Instead please use `bundle config set --local without 'development test'`and stop using this flag
+#
+#    `bundle config set --local without 'development test'`
+#
+#    $ cat {rails_project}/.bundle/config
+#      ---
+#      BUNDLE_WITHOUT: "development:test"
+#
+# -----------------------------------------------------------------
+# su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ install --without development test"
+
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ config set --local without 'development test'"
+su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ install"
+
+# Check if bundle config command is executed successfully
+if [[ ! -s ${redmine_web_root}/.bundle/config ]]; then
+  echo "Not found: ${redmine_web_root}/.bundle/config"
+  echo "FAILED: bundle config set --local without 'development test'"
+  exit
+fi
+
+
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake generate_secret_token"
 # su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake db:create RAILS_ENV=production"  #---> rails 4 , or below
 #su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rails db:create RAILS_ENV=production"   #---> rails 5 , or above
