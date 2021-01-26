@@ -1264,3 +1264,13 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * Puma management command, systemd integrated
           * ~~`puma-mgr`~~ -> `puma-systemd-mgr`
 
+  * tag: v2.0.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.0...v2.0.1
+      * Redmine bundler
+
+        ```bash
+        bundle install --without development test
+        ===>
+        bundle config set --local without 'development test'
+        bundle install
+        ```
