@@ -41,7 +41,7 @@ This is a small light bash project.  Suit small companies which have only few se
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
-  * **NGINX(official) + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
+  * **NGINX + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
 # Environment
   * CentOS Stream release 8
@@ -170,7 +170,7 @@ This is a small light bash project.  Suit small companies which have only few se
     ```
 
 # Easy Installation
-I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx (official), MariaDB, php-fpm, puma (rails)**.  And help me to create default projects about "Rails" and "Laravel"
+I'm a lazy person.  I want to install **ALL** and give me default configurations running **Nginx , MariaDB, php-fpm, puma 5 (rails)**.  And help me to create default projects about "Rails" and "Laravel"
 
 * Command
 
@@ -396,7 +396,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * Nginx (AppStream) 1.18 ~~(latest version - via Nginx Official Repo)~~
   * Ruby 3.0.0
   * Rails 6.1
-    * puma (systemd, puma-mgr)
+    * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
   * Redmine 4.1.1
     * ruby 2.5.1
     * rails 5.2
@@ -704,7 +704,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
 ### (Method 1) Upgrading from a git checkout
 * Stop puma server
-  * `puma-mgr stop`
+  * `puma-systemd-mgr -p -i redmine`
 * Go to the Redmine root directory and run the following command:
 
   ```bash
@@ -758,14 +758,14 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   ```
 
 * Start puma server
-  * `puma-mgr start`
+  * `puma-systemd-mgr -s -i redmine`
 * Go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
 * Finally, clear browser's cached data (To avoid strange CSS error)
   * Chrome -> History -> Clear History -> Choose ONLY "Cached images and files"
 
 ### (Method 2) Upgrading from a fresh installation
 * Stop puma server
-  * `puma-mgr stop`
+  * `puma-systemd-mgr -p -i redmine`
 * Backup current redmine
 * Remove the following lines from script `functions/F_02_PKG_06_ruby_09_redmine_create.sh` ([F_02_PKG_06_ruby_09_redmine_create_diff.png](https://raw.githubusercontent.com/charlietag/github_share_folder/master/sample_images/F_02_PKG_06_ruby_09_redmine_create_diff.png))
 
@@ -795,7 +795,7 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
   * `redmine/files/`
 
 * Start puma server
-  * `puma-mgr start`
+  * `puma-systemd-mgr -s -i redmine`
 
 * Go to "Admin -> Roles & permissions" to check/set permissions for the new features, if any.
 * Finally, clear browser's cached data (To avoid strange CSS error)
@@ -1245,7 +1245,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           ```
 
       * Change default color of PS1 for rubyuser
-* 2021/01/xx
+* 2021/01/26
   * tag: v2.0.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v1.1.15...v2.0.0
       * Migrate to CentOS Stream release 8
@@ -1259,4 +1259,8 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * rvm 1.29.10 -> 1.29.11
       * Ruby 2.7 -> 3.0
       * Rails 6.0 -> 6.1
+        * Puma 4.x -> Puma 5.x
+          * Systemd(type=notify) integated
+        * Puma management command, systemd integrated
+          * ~~`puma-mgr`~~ -> `puma-systemd-mgr`
 
