@@ -3,13 +3,20 @@
 # =====================
 # DATABAG_CFG:enable
 
+# --- Remove spring to avoid err caused by spring cache ---
+# * https://github.com/rails/spring#removal
+#   * `bin/spring binstub --remove --all`
+#   *  Remove spring from your Gemfile
+#     *  `bundle install`
+# --------------------------------------------------------
+
 echo "========================================="
-echo "(Rails:${rails_version}) rails new myrails -d mysql"
+echo "(Rails:${rails_version}) rails new myrails -d mysql --skip-spring"
 echo "========================================="
 
 su -l $current_user -c "test -d ${web_sites} || mkdir -p ${web_sites}"
 
-su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql" #Create rails project, to verify
+su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql --skip-spring" #Create rails project, to verify
 
 su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -i cp -a {} {}.sample"
 
