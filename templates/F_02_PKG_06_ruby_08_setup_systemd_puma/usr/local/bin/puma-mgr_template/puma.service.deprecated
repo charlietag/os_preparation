@@ -1,0 +1,36 @@
+# # Ref sample: https://www.freedesktop.org/software/systemd/man/systemd.service.html#Examples
+# [Unit]
+# Description=Puma HTTP Server
+# After=network.target
+#
+# [Service]
+# #--- /usr/local/bin/puma-mgr will auto su - to rubyuser
+# # systemd su to user will not do the .bashrc , so if this set to rubyuser, bundle will not be found!
+# User=root
+#
+# ExecStart=/usr/local/bin/puma-mgr start
+#
+# # ExecStop could be comment, because systemd can kiil entire Puma Unit related PIDs quickly without specifying stop script
+# ExecStop=/usr/local/bin/puma-mgr stop
+# ExecReload=/usr/local/bin/puma-mgr reload
+#
+# # -----------
+# # oneshot
+# # -----------
+# # Difference between oneshot, forking --> systemctl status puma
+# # this is just more like traditional init.d/script
+# Type=oneshot
+# RemainAfterExit=yes
+#
+# # -----------
+# # forking
+# # -----------
+# # Failed all the time
+# # this is should be work with PID FILE
+# # I'm using script to iterate all puma server, single pid is not fitable for my purpose
+# #Type=forking
+# #RemainAfterExit=no
+# #Restart=no
+#
+# [Install]
+# WantedBy=multi-user.target

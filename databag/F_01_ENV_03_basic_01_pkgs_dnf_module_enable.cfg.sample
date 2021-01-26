@@ -1,0 +1,15 @@
+# ----------------------------------------------------
+# DO NOT MODIFY HERE
+# ----------------------------------------------------
+
+# Use CentOS AppStream:
+#   Set to disable, to avoid reset dnf module multiple times
+#   Set to enable, for the first time run "F_01_ENV_03_basic_01_pkgs_dnf_module_enable"
+#
+# [ enable | disable ]
+# default: enable
+local use_centos_app_stream="enable"
+
+# Scan all enabled dnf modules under databag/*.cfg
+local databag_files="$(ls ${DATABAG}/*.sample | grep -v "${DATABAG_FILE}")"
+local dnf_enabled_modules_versions="$(cat ${databag_files}|grep -vE "^[[:space:]]*#" |grep dnf_module_version | awk -F "_dnf_module_version=|\"|'" '{print $1":"$3}' | sed -re 's/^[[:space:]]*local[[:space:]]*//g')"

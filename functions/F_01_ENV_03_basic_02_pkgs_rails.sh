@@ -18,13 +18,10 @@ pkgs_list="${pkgs_list} sqlite-devel"
 pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel"
 
 # --- For RVM 1.29.8+ - Add system ruby as dependency for CentOS ---
-if ! $(dnf module list ruby:2.6 --enabled >/dev/null 2>/dev/null) ; then
-  dnf module reset ruby -y
-  dnf module enable ruby:2.6 -y
-fi
 
 # equals to dnf install ruby
-#dnf module install ruby:2.6/common -y
+#dnf module install ruby:2.7/common -y
+# The following packages contain all pkgs in module install ruby:{version}/common
 
 pkgs_list="${pkgs_list} ruby"
 

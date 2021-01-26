@@ -16,13 +16,18 @@ dnf install -y dnf-plugins-core yum-utils
 # Enable repo PowerTools
 # ----------------------------------------------------------------------------------------
 # check repo
-local verify_repo="$(dnf repolist --enabled 2>&1  | grep 'PowerTools')"
+local powertools_repo_name="$(dnf repolist --all | grep -oiE "power[[:space:]]*tools" | head -n 1)"
+local verify_repo="$(dnf repolist --enabled 2>&1  | grep "${powertools_repo_name}")"
       verify_repo="$([[ -z "${verify_repo}" ]] && echo "FAILED")"
 
 if [[ "${verify_repo}" = "FAILED" ]]; then
-  dnf config-manager --set-enabled PowerTools
-  #L_UPDATE_REPO 5000
+  dnf config-manager --set-enabled ${powertools_repo_name}
+  L_UPDATE_REPO 5000
 fi
+
+echo "Repo ${powertools_repo_name} enabled!"
+dnf repolist --enabled ${powertools_repo_name}
+echo "--------------------------------------------------------------------------"
 
 # ----------------------------------------------------------------------------------------
 # Install epel-release
@@ -62,7 +67,7 @@ dnf groupinstall -y "Development Tools"
 
 # whois will not be found in CentOS 8.1 or EPEL, because it is moved into CentOS 8.2, waiting for 8.2 then -> CentOS 8.2 is released...
 pkgs_list="${pkgs_list} whois"
-pkgs_list="${pkgs_list} bash redhat-lsb screen git tree vim sysstat mtr net-tools wget bind-utils"
+pkgs_list="${pkgs_list} bash redhat-lsb screen git tree vim sysstat mtr lsof net-tools wget bind-utils"
 
 # Basic debug tools - Enhanced tail / Enhanced grep
 pkgs_list="${pkgs_list} multitail ack"
@@ -85,6 +90,16 @@ pkgs_list="${pkgs_list} pcre pcre-devel"
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
 dnf install -y ${pkgs_list}
+
+# make sure cups.service is disabled
+echo "===================================================="
+echo "Disable \"cups\" (installed / enabled after installing \"redhat-lsb\")"
+echo "===================================================="
+echo "-----------------------------"
+echo "Stopping service cups ......"
+echo "-----------------------------"
+systemctl stop cups
+systemctl disable cups
 
 # make sure chronyd stop first , before syncing time using chronyd command!
 systemctl stop chronyd

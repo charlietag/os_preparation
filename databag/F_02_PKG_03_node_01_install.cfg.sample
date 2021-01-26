@@ -1,6 +1,23 @@
-#----------------------------------------
+# ###########################################################
+# Using 3rd repo (Deprecated)
+# ###########################################################
 # NodeJS
-#----------------------------------------
 # Node version of YUM
 # Ref. https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
-local node_dnf_repo="https://rpm.nodesource.com/setup_12.x"
+# local node_dnf_repo="https://rpm.nodesource.com/setup_12.x"
+
+
+
+# ###########################################################
+# @AppStream
+# For using dnf module (obey variable name rules)
+# ###########################################################
+# variable defining rules:
+#                            local pkgname_dnf_module_version="{stream}"
+# try look up version(stream) this way:
+#                                         dnf module list pkgname #
+# ----------------------------------------------------------
+
+local nodejs_dnf_module_version="14"
+
+

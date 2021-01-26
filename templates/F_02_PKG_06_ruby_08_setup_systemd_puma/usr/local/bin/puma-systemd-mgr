@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# ------------------------------------
+# Source script lib
+# ------------------------------------
+. "$(readlink -m $0)_template/lib/load.sh"
+
+check_rvm_installation
+check_nginx_conf_exists
+check_puma_service_unit_exists
+check_required_dependencies
+# ------------------------------------
+# Main
+# ------------------------------------
+#
+# Ref. https://tldp.org/LDP/abs/html/internal.html#GETOPTSX
+# colon ':' from beginning, such as ':t' , means silent mode
+# (NO warning message: illegal option --)
+# colon ':' at the end, such as 'i:' , means comes with value (OPTARG)
+
+# Silent mode
+#while getopts ':tpredi:ahlg' argv
+CHOSEN_OPTIONS=""
+
+while getopts 'spredti:algh' argv
+do
+  case $argv in
+    s)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},s"
+      ;;
+    p)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},p"
+      ;;
+    r)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},r"
+      ;;
+    e)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},e"
+      ;;
+    d)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},d"
+      ;;
+    t)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},t"
+      ;;
+    i)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},i"
+      CHOSEN_PUMA_NAMES="${OPTARG}"
+      ;;
+    a)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},a"
+      ;;
+    l)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},l"
+      ;;
+    g)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},g"
+      ;;
+    h)
+      CHOSEN_OPTIONS="${CHOSEN_OPTIONS},h"
+      ;;
+  esac
+done
+
+
+# ----------------------------------------------------------------------------------------------------------
+ALLOWED_OPTIONS="h|l|g"
+ALLOWED_ACTIONS="s|p|r|e|d|t"
+ALLOWED_SERVICES="i|a"
+
+THIS_OPTION="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_OPTIONS}")"
+THIS_ACTION="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_ACTIONS}")"
+THIS_SERVICE="$(echo "${CHOSEN_OPTIONS}" | grep -Eo "${ALLOWED_SERVICES}")"
+
+CHOSEN_PUMA_NAMES_ARR="$(echo "${CHOSEN_PUMA_NAMES}" | sed 's/,/\n/g' | sed '/^\s*$/d' | sort -n | uniq )"
+
+# ----------------------------------------------------------------------------------------------------------
+check_option
+run_option
+
+# ----------------------------------------------------------------------------------------------------------
+# no options were passed with getopts
+# ----------------------------------------------------------------------------------------------------------
+# Ref. https://unix.stackexchange.com/questions/50563/how-can-i-detect-that-no-options-were-passed-with-getopts
+# echo ${OPTIND}
+if [[ ${OPTIND} -eq 1 ]]; then
+  echo "No options were passed !"
+  show_help_and_exit
+fi

@@ -30,4 +30,6 @@
     rs = rebase --skip
     ra = rebase --abort
 [push]
-	default = simple
+  default = simple
+[pull]
+  rebase = false

@@ -4,7 +4,7 @@
 local current_timezone="Asia/Taipei"
 
 # Network
-local host_name="centos8.localdomain"
+local host_name="centos8stream.localdomain"
 local disable_ipv6=1
 local nameserver1="8.8.8.8"
 local nameserver2="8.8.4.4"

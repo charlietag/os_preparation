@@ -1,0 +1,17 @@
+#[Unit]
+#Description=Puma HTTP Server
+#After=network.target
+#
+#[Service]
+## (Not recommended) Use for type=simple
+#Type=simple
+#User=root
+## Do Not specify WorkingDirectory using this method
+## WorkingDirectory=/home/rubyuser/rails_sites/myrails
+#ExecStart=su -l rubyuser -c "cd /home/rubyuser/rails_sites/myrails/ && bundle exec puma -C /home/rubyuser/rails_sites/myrails/config/puma/production.rb -e production"
+## Do Not specify ExecReload , Because $MAINPID is not the same as Puma service
+##ExecReload=/bin/kill -USR2 $MAINPID
+#Restart=always
+#
+#[Install]
+#WantedBy=multi-user.target

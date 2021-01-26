@@ -1,1 +1,3 @@
+# source DATABAG_CFG for function "task_copy_using_cat_user_home_web_sites"
+# used variable: ${current_user}
 . ${PLUGINS}/plugin_load_databag.sh _ruby_rails.cfg

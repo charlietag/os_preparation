@@ -1,6 +1,6 @@
-# ################################
+# ###########################################################
 # For limit_req_zone.conf
-# ################################
+# ###########################################################
 
 # setup nginx concurrent user limit:
 #   n+1 request per second (n+1 r/s)
@@ -10,4 +10,20 @@ local nginx_concurrency="1000"
 
 # setup responsed http code , after nginx concurrent user limit is reached
 local nginx_concurrency_reached_http_code="503"
+
+
+
+
+# ###########################################################
+# @AppStream
+# For using dnf module (obey variable name rules)
+# ###########################################################
+# variable defining rules:
+#                            local pkgname_dnf_module_version="{stream}"
+# try look up version(stream) this way:
+#                                         dnf module list pkgname #
+# ----------------------------------------------------------
+
+local nginx_dnf_module_version="1.18"
+
 
