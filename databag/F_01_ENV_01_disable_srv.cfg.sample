@@ -9,5 +9,9 @@
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
 
 # (Service: "cups" - is not installed by default...) - it's added after installing redhat-lsb, removed from here.
-local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.socket avahi-daemon.service)
+# (Service: "avahi-daemon.socket avahi-daemon.service" - are not installed by default...)
+#   - it's added after
+#                       dnf groupinstall -y "Development Tools"
+
+local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.service avahi-daemon.socket cups)
 

@@ -1274,3 +1274,8 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         bundle config set --local without 'development test'
         bundle install
         ```
+
+* 2021/01/27
+  * tag: v2.0.2
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.1...v2.0.2
+      * Add function **F_91_MA_disable_service** to make sure that unused services are disabled

@@ -1,0 +1,3 @@
+# Do "F_01_ENV_01_disable_srv.sh" again, to make sure to disable no use services
+. ${PLUGINS}/plugin_load_databag.sh F_01_ENV_01_disable_srv.cfg
+
