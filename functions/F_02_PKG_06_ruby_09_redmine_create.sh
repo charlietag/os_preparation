@@ -168,7 +168,7 @@ echo "========================================="
 su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v '~> ${redmine_bundler_version}.0')"
 echo ""
 
-local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_root} && bundle -v | awk '{print \$3}'" | sed 's/RVM reloaded!//g' | grep -Eo '[[:digit:]\.]+')"
+local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_root} && gem list | grep '^bundler '" | grep -Eo "${redmine_bundler_version}.[[:digit:]\.]+" | sort -n | tail -n 1)"
 echo "---------------------------------------------------------------------------"
 echo "Prepare Redmine (${redmine_version}), using Bundler (${this_redmine_bundler_version})"
 echo "---------------------------------------------------------------------------"
