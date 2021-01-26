@@ -162,7 +162,7 @@ fi
 ## using command "rails db:create" can also prevent stange plugin (like EasyGantt) from ruiing redmine.
 
 # ====== Start to install redmine gem =======
-# every steps here, need to change directory to ${redmine_web_root}, because this folder is under rvm gemset
+# every step here, needs to change directory to ${redmine_web_root}, because this folder is under rvm gemset
 echo "========================================="
 echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4) / Bundler 2.x for Redmine4.x (Rails 5)"
 echo "========================================="
