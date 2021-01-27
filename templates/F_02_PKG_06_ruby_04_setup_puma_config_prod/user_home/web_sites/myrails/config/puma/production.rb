@@ -30,19 +30,29 @@ stdout_redirect "#{app_log}/puma.stdout.log", "#{app_log}/puma.stderr.log", true
 bind  "unix:///run/rails_sites/#{app_name}_puma.sock"
 
 ### Pid file path
-pidfile "#{app_tmp}/pids/puma.pid"
-state_path "#{app_tmp}/pids/puma.state"
+pids_dir = "#{app_tmp}/pids"
+Dir.mkdir(pids_dir) unless Dir.exist?(pids_dir)
+
+pidfile "#{pids_dir}/puma.pid"
+state_path "#{pids_dir}/puma.state"
 # activate_control_app
 
+# ----------------------------
+# Thread safe
+# Ref. https://github.com/puma/puma/issues/531#issuecomment-48828357
+# ----------------------------
 ## Thread setting
+
 # #########################################
-#       ##### Single Mode #####
+#        ##### Single Mode #####
 # Worker setting: "single mode" -> value = 0
 # #########################################
 workers 0
+#threads_count = 1  # not sure rails 4.2 is thread_safe
 threads_count = 5
 threads threads_count, threads_count
 # --------------- Single --------------
+
 
 
 
@@ -54,9 +64,13 @@ threads threads_count, threads_count
 # For High Performance Production.
 # #########################################
 #cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
-#workers_count = cpu_cores * 10
+
+##workers_count = cpu_cores * 10
+##threads 5, 18
+
+#workers_count = cpu_cores
 #workers workers_count
-#threads 5, 18
+#threads 1, 1  # not sure rails 4.2 is thread_safe
 
 
 # -----------------------------------------
@@ -78,7 +92,6 @@ threads threads_count, threads_count
 # #########################################
 # #    Puma Prod  #
 # #########################################
-
 
 # Specifies the `environment` that Puma will run in.
 #

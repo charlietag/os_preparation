@@ -1,3 +1,6 @@
+# Ref. https://github.com/puma/puma/blob/master/lib/puma/dsl.rb
+# Ref. https://puma.io/puma/Puma/DSL.html
+
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
@@ -19,14 +22,20 @@ puts "--------------------------------------"
 ### Logging
 stdout_redirect "#{app_log}/puma.stdout.log", "#{app_log}/puma.stderr.log", true
 
+### TCP Port
+# bind  "tcp://127.0.0.1:9292"
+
 ### Socket file path
 #bind  "unix://#{app_tmp}/sockets/puma.sock"
 bind  "unix:///run/rails_sites/#{app_name}_puma.sock"
 
 ### Pid file path
-pidfile "#{app_tmp}/pids/puma.pid"
-state_path "#{app_tmp}/pids/puma.state"
-activate_control_app
+pids_dir = "#{app_tmp}/pids"
+Dir.mkdir(pids_dir) unless Dir.exist?(pids_dir)
+
+pidfile "#{pids_dir}/puma.pid"
+state_path "#{pids_dir}/puma.state"
+# activate_control_app
 
 # ----------------------------
 # Thread safe
@@ -39,7 +48,8 @@ activate_control_app
 # Worker setting: "single mode" -> value = 0
 # #########################################
 #workers 0
-#threads_count = 1  # not sure rails 4.2 is thread_safe
+##threads_count = 1  # not sure rails 4.2 is thread_safe
+#threads_count = 5
 #threads threads_count, threads_count
 # --------------- Single --------------
 
@@ -54,7 +64,10 @@ activate_control_app
 # For High Performance Production.
 # #########################################
 cpu_cores = %x{grep -c processor /proc/cpuinfo}.to_i
+
 #workers_count = cpu_cores * 10
+#threads 5, 18
+
 workers_count = cpu_cores
 workers workers_count
 threads 1, 1  # not sure rails 4.2 is thread_safe
@@ -74,9 +87,6 @@ on_worker_boot do
   end
 end
 # --------------- Cluster --------------
-
-
-
 
 
 # #########################################

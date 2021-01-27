@@ -1279,3 +1279,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.2
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.1...v2.0.2
       * Add function **F_91_MA_disable_service** to make sure that unused services are disabled
+  * tag: v2.0.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.2...v2.0.3
+      * puma-production config file - mkdir if **pids** folder does not exist
