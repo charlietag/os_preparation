@@ -1282,3 +1282,11 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.3
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.2...v2.0.3
       * puma-production config file - mkdir if **pids** folder does not exist
+* 2021/01/31
+  * tag: v2.0.4
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.3...v2.0.4
+      * add command alias for listing TCP listening ports , Unix sockets
+        * llnn
+          * `netstat -palunt | grep -i listen ; lsof | grep '\.sock '`
+        * ssnn
+          * `ss -palunt | grep -i listen ; lsof | grep '\.sock '`

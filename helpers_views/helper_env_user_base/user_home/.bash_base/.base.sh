@@ -20,6 +20,10 @@ alias oo='cd ../..'
 alias ooo='cd ../../..'
 alias b='cd -'
 
+# List TCP listening port and UNIX sockets
+alias llnn='echo "TCP listening:"; netstat -palunt | grep -i listen ; echo ""; echo "UNIX sockets:" ; lsof | grep "\.sock "; echo ""'
+alias ssnn='echo "TCP listening:"; ss -palunt | grep -i listen ; echo ""; echo "UNIX sockets:" ; lsof | grep "\.sock "; echo ""'
+
 # tmux aliases
 alias t='tmux -2 new -s $(basename ${PWD})'
 alias tt='tmux -2'
