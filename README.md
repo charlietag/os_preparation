@@ -1294,3 +1294,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.5
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.4...v2.0.5
       * Fix module version definition issue
+      * Rename function name to make sure the installation order
