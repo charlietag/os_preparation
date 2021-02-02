@@ -49,7 +49,12 @@ echo "------------------------------------------------------"
 dnf groupinstall -y "Minimal Install"
 
 # Just in case, CentOS Stream remove these pkgs from Minimal Install in the future
+# This is now included in group "Server" and "Minimal Install"
+# But not installed in Vultr image
 dnf install -y plymouth rsyslog
+systemctl restart rsyslog
+systemctl enable rsyslog
+
 
 # Same as:
 # dnf install -y @"Minimal Install"

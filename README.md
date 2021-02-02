@@ -1302,3 +1302,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * `dnf groupinstall -y "Server"`
       * Fix dnf.sh arguments passing issue
         * such as : `dnf groupinstall "Server" "Minimal Install"`
+  * tag: v2.0.7
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.6...v2.0.7
+      * Make sure rsyslog is enabled and started
