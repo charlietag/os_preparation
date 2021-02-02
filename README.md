@@ -1300,3 +1300,5 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * Make sure Installed Environment Groups are the same on each installation (rsyslog is removed from env groups "Server")
         * `dnf groupinstall -y "Minimal Install"`
         * `dnf groupinstall -y "Server"`
+      * Fix dnf.sh arguments passing issue
+        * such as : `dnf groupinstall "Server" "Minimal Install"`

@@ -1,6 +1,6 @@
 ############### Fetch dnf repo retry Loop (For epel-modular) #############
 dnf_makecache() {
-		dnf clean all
+    dnf clean all
 
     local dnf_repo_install_retry=5000
 
@@ -40,16 +40,16 @@ main() {
   local repo_check_days_ago
 
   if [[ $repo_cache_file_count -ne $repo_cache_enabled_count ]]; then
-		echo "---------------------------------------"
+    echo "---------------------------------------"
     echo "DNF CACHE DATA IS NOT CLEAN... !"
     echo "CMD:"
     echo "  dnf clean all ; dnf makecache"
-		echo "---------------------------------------"
-		echo ""
+    echo "---------------------------------------"
+    echo ""
     dnf_makecache
-		echo ""
-		echo ""
-		echo ""
+    echo ""
+    echo ""
+    echo ""
   else
 
     #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
@@ -63,7 +63,7 @@ main() {
       echo ""
       dnf_makecache
       #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-			repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""
@@ -82,7 +82,7 @@ main() {
       echo ""
       dnf_makecache
       #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-			repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""
@@ -90,16 +90,38 @@ main() {
 
   fi
 
-  local dnf_argv="$@"
+  # ---------------------------------------
+  # passing complex argv
+  # ---------------------------------------
+  # Ref. https://stackoverflow.com/questions/1668649/how-to-keep-quotes-in-bash-arguments
+  #
+  # --- wrong ---
+  # cannot assign to another var
+  # local dnf_argv="$@"
+  # local dnf_argv="${@}"
+  # dnf "$@"
+  # dnf $@
+  # dnf $[@]
+
+  # --- correct ---
+  # dnf "${@}"
+  # dnf.sh group install "Minimal Install" "Server"
+  # ===>
+  #   ++ dnf group install 'Minimal Install' Server
+
+  # ---------------------------------------
+
   echo "---------------------------------------"
   [[ -n "${repo_check_days_ago}" ]] && echo "CMD: (Last time check repo: ${repo_check_days_ago} days ago)"
-  echo "  dnf ${dnf_argv[@]}"
+  # echo "  dnf ${@}"
   echo "---------------------------------------"
-	echo ""
-  dnf ${dnf_argv[@]}
-	echo ""
-	echo ""
-	echo ""
+  echo ""
+  set -x
+  dnf "${@}"
+  set +x
+  echo ""
+  echo ""
+  echo ""
 }
 
-main $@
+main "${@}"
