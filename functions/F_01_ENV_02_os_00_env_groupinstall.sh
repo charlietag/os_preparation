@@ -13,6 +13,17 @@
 # result should be 'off'
 shopt expand_aliases
 
+# ------------------------------------------------------------
+# How to find which group package belongs to
+# ------------------------------------------------------------
+# dnf groupinfo '*' | sed -n '/Group:/h;/'"rsyslog"'/{x;p;x;p}'
+#     Group: Core
+#        rsyslog
+#
+# dnf groupinfo '*' | sed -n '/Group:/h;/'"Core"'/{x;p;x;p}'
+#     Environment Group: Minimal Install
+#        Core
+
 
 # ------------------------------------------------------------
 # Main script
