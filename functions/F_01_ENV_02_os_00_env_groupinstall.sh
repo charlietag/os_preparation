@@ -16,6 +16,8 @@ shopt expand_aliases
 # ------------------------------------------------------------
 # How to find which group package belongs to
 # ------------------------------------------------------------
+# Ref. https://unix.stackexchange.com/questions/236935/dnf-how-to-find-which-group-package-belongs-to
+#
 # dnf groupinfo '*' | sed -n '/Group:/h;/'"rsyslog"'/{x;p;x;p}'
 #     Group: Core
 #        rsyslog
