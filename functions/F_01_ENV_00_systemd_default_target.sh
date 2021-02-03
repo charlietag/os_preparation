@@ -7,25 +7,25 @@
 # multi-user.target
 # ● └─graphical.target
 #
-# systemctl list-dependencies graphical.target
-# systemctl list-dependencies graphical.target  --reverse
-# graphical.target
+# # systemctl list-dependencies graphical.target
+# # systemctl list-dependencies graphical.target  --reverse
+#     graphical.target
 #
 # # --- Create a systemd target ---
 # # Ref. https://unix.stackexchange.com/questions/301987/how-to-create-a-systemd-target
-# find /usr/lib/systemd/system |grep multi
-# /usr/lib/systemd/system/multi-user.target.wants
-# /usr/lib/systemd/system/multi-user.target.wants/dbus.service
-# /usr/lib/systemd/system/multi-user.target.wants/getty.target
-# /usr/lib/systemd/system/multi-user.target.wants/systemd-ask-password-wall.path
-# /usr/lib/systemd/system/multi-user.target.wants/systemd-logind.service
-# /usr/lib/systemd/system/multi-user.target.wants/systemd-update-utmp-runlevel.service
-# /usr/lib/systemd/system/multi-user.target.wants/systemd-user-sessions.service
-# /usr/lib/systemd/system/multi-user.target.wants/plymouth-quit-wait.service
-# /usr/lib/systemd/system/multi-user.target.wants/plymouth-quit.service
-# /usr/lib/systemd/system/multi-user.target
-# /usr/lib/systemd/system/multipathd.service
-# /usr/lib/systemd/system/multipathd.socket
+# # find /usr/lib/systemd/system |grep multi
+#     /usr/lib/systemd/system/multi-user.target.wants
+#     /usr/lib/systemd/system/multi-user.target.wants/dbus.service
+#     /usr/lib/systemd/system/multi-user.target.wants/getty.target
+#     /usr/lib/systemd/system/multi-user.target.wants/systemd-ask-password-wall.path
+#     /usr/lib/systemd/system/multi-user.target.wants/systemd-logind.service
+#     /usr/lib/systemd/system/multi-user.target.wants/systemd-update-utmp-runlevel.service
+#     /usr/lib/systemd/system/multi-user.target.wants/systemd-user-sessions.service
+#     /usr/lib/systemd/system/multi-user.target.wants/plymouth-quit-wait.service
+#     /usr/lib/systemd/system/multi-user.target.wants/plymouth-quit.service
+#     /usr/lib/systemd/system/multi-user.target
+#     /usr/lib/systemd/system/multipathd.service
+#     /usr/lib/systemd/system/multipathd.socket
 
 
 
