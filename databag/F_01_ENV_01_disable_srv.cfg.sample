@@ -13,5 +13,6 @@
 #   - it's added after
 #                       dnf groupinstall -y "Development Tools"
 
-local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.service avahi-daemon.socket cups)
+# Server with GUI : rpcbind.service rpcbind.socket irqbalance gssproxy dnsmasq
+local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.service avahi-daemon.socket cups rpcbind.service rpcbind.socket irqbalance gssproxy dnsmasq)
 
