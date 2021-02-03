@@ -95,7 +95,7 @@ This is a small light bash project.  Suit small companies which have only few se
 
         ```bash
         mkdir /swap
-        dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
+        dd if=/dev/zero of=/swap/swapfile bs=1M count=4096
         mkswap /swap/swapfile
         chmod 0600 /swap/swapfile
         /sbin/swapon /swap/swapfile
