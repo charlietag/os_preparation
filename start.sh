@@ -28,9 +28,9 @@ else
   echo "Updating required lib to lastest version..."
 
   # Avoid newer version of git, will warn you to set pull strategy
-  # git pull --rebase=false
+  git pull --no-rebase
 
-  git pull
+  # git pull
 
   RC=$?
 fi

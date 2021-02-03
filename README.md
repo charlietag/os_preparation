@@ -1314,3 +1314,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * Make sure use systemd target "multi-user.target"
       * Change sample command - swapfile 2G -> 4G
       * display detail messages while installing rsyslog
+      * use git pull --no-rebase for os_preparation_lib
