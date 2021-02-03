@@ -39,8 +39,8 @@ echo "rsyslog"
 echo "------------"
 set -x
 dnf install -y plymouth rsyslog
-systemctl restart rsyslog
 systemctl enable rsyslog
+systemctl restart rsyslog
 set +x
 
 echo ""
