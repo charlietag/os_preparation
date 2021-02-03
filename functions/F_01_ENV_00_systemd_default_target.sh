@@ -2,10 +2,12 @@
 #systemctl list-units --type=target --all
 
 # --- List target dependencies ---
+# # systemctl list-dependencies multi-user.target
 # # systemctl list-dependencies multi-user.target  --reverse
 # multi-user.target
 # ● └─graphical.target
 #
+# systemctl list-dependencies graphical.target
 # systemctl list-dependencies graphical.target  --reverse
 # graphical.target
 #
