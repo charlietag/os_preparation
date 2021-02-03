@@ -28,6 +28,24 @@ shopt expand_aliases
 
 
 # ------------------------------------------------------------
+# rsyslog
+# ------------------------------------------------------------
+# Just in case, CentOS Stream remove these pkgs from Minimal Install in the future
+# This is now included in group "Server" and "Minimal Install"
+# But not installed in Vultr image
+echo ""
+echo "------------"
+echo "rsyslog"
+echo "------------"
+set -x
+dnf install -y plymouth rsyslog
+systemctl restart rsyslog
+systemctl enable rsyslog
+set +x
+
+echo ""
+
+# ------------------------------------------------------------
 # Main script
 # ------------------------------------------------------------
 echo "------------------------------------------------------"
@@ -49,21 +67,6 @@ echo "------------------------------------------------------"
 set -x
 dnf groupinstall -y "Minimal Install"
 set +x
-
-# Just in case, CentOS Stream remove these pkgs from Minimal Install in the future
-# This is now included in group "Server" and "Minimal Install"
-# But not installed in Vultr image
-echo ""
-echo "------------"
-echo "rsyslog"
-echo "------------"
-set -x
-dnf install -y plymouth rsyslog
-systemctl restart rsyslog
-systemctl enable rsyslog
-set +x
-
-echo ""
 
 # Same as:
 # dnf install -y @"Minimal Install"
