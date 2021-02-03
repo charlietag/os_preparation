@@ -1295,6 +1295,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.4...v2.0.5
       * Fix module version definition issue
       * Rename function name to make sure the installation order
+* 2021/02/03
   * tag: v2.0.6
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.5...v2.0.6
       * Make sure Installed Environment Groups are the same on each installation (rsyslog is removed from env groups "Server")
@@ -1308,3 +1309,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.8
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.7...v2.0.8
       * display more messages while installing rsyslog
+  * tag: v2.0.9
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.8...v2.0.9
+      * Make sure use systemd target "multi-user.target"
