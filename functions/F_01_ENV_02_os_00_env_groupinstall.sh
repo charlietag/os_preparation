@@ -44,22 +44,24 @@ echo "------------------------------------------------------"
 #    server-product-environment
 
 echo "------------------------------------------------------"
-echo 'dnf groupinstall -y "Minimal Install"'
+echo 'Environment Groups: "Minimal Install"'
 echo "------------------------------------------------------"
+set -x
 dnf groupinstall -y "Minimal Install"
+set +x
 
 # Just in case, CentOS Stream remove these pkgs from Minimal Install in the future
 # This is now included in group "Server" and "Minimal Install"
 # But not installed in Vultr image
 echo ""
-echo "--- dnf install -y plymouth rsyslog ---"
+echo "------------"
+echo "rsyslog"
+echo "------------"
+set -x
 dnf install -y plymouth rsyslog
-
-echo "--- systemctl restart rsyslog ---"
 systemctl restart rsyslog
-
-echo "--- systemctl enable rsyslog ---"
 systemctl enable rsyslog
+set +x
 
 echo ""
 
@@ -68,9 +70,11 @@ echo ""
 
 
 echo "------------------------------------------------------"
-echo 'dnf groupinstall -y "Server"'
+echo 'Environment Groups: "Server"'
 echo "------------------------------------------------------"
+set -x
 dnf groupinstall -y "Server"
+set +x
 
 # Same as:
 # dnf install -y @"Server"

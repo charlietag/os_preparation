@@ -9,12 +9,14 @@ if [[ -z "${current_default_target}" ]]; then
   echo "--------------------------------------------"
   echo "Change to ${default_target}"
   echo "--------------------------------------------"
-  echo "systemctl isolate ${default_target}"
+  set -x
   systemctl isolate ${default_target}
+  set +x
 
   echo "--------------------------------------------"
   echo "Set default to ${default_target}"
   echo "--------------------------------------------"
-  echo "systemctl set-default ${default_target}"
+  set -x
   systemctl set-default ${default_target}
+  set +x
 fi
