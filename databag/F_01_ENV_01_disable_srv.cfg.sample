@@ -1,18 +1,47 @@
 #Put local vars here for the specific function
-
 # Services to be stopped and disabled by default
+local disabled_services
+
+
+
+# -------------------------------------------------------------------------------------------------------
+# NetworkManager
+# -------------------------------------------------------------------------------------------------------
 # Package: avahi  # Like smb protocol to detect devices nearby
 #local disabled_services=(chronyd firewalld postfix NetworkManager NetworkManager-wait-online kdump avahi-daemon.socket avahi-daemon.service)
 # Enable NetworkManager , to replace network-scirpt (service network status)
 # 1. nmcli / nmcli connection
 # 2. nmtui <--- like deprecated command 'netconfig'
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
+disabled_services=(${disabled_services} chronyd firewalld postfix kdump)
 
+# -------------------------------------------------------------------------------------------------------
+# cups avahi
+# -------------------------------------------------------------------------------------------------------
 # (Service: "cups" - is not installed by default...) - it's added after installing redhat-lsb, removed from here.
 # (Service: "avahi-daemon.socket avahi-daemon.service" - are not installed by default...)
 #   - it's added after
 #                       dnf groupinstall -y "Development Tools"
+disabled_services=(${disabled_services} avahi-daemon.service avahi-daemon.socket cups)
 
+# -------------------------------------------------------------------------------------------------------
+# Server with GUI
+# -------------------------------------------------------------------------------------------------------
 # Server with GUI : rpcbind.service rpcbind.socket irqbalance gssproxy dnsmasq
-local disabled_services=(chronyd firewalld postfix kdump avahi-daemon.service avahi-daemon.socket cups rpcbind.service rpcbind.socket irqbalance gssproxy dnsmasq)
+disabled_services=(${disabled_services} rpcbind.service rpcbind.socket irqbalance gssproxy dnsmasq)
+
+# -------------------------------------------------------------------------------------------------------
+# systemd-resolved (NSS)
+# -------------------------------------------------------------------------------------------------------
+# systemd-resolved: New tools like Name Service Switch NSS, but supports DNSSEC , DNS over TLS
+disabled_services=(${disabled_services} systemd-resolved)
+
+
+# -------------------------------------------------------------------------------------------------------
+# graphical.target denpendencies
+# -------------------------------------------------------------------------------------------------------
+# systemctl list-dependencies graphical.target
+# Ref. https://access.redhat.com/discussions/1528023
+# Ref. http://linux.vbird.org/linux_basic/0560daemons.php#systemctl_deps
+disabled_services=(${disabled_services} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
 

@@ -27,6 +27,10 @@
 #     /usr/lib/systemd/system/multipathd.service
 #     /usr/lib/systemd/system/multipathd.socket
 
+# ref. /etc/inittab
+# multi-user.target: analogous to runlevel 3
+# graphical.target: analogous to runlevel 5
+
 
 
 local default_target="multi-user.target"
