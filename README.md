@@ -43,6 +43,18 @@ This is a small light bash project.  Suit small companies which have only few se
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
+* **CentOS Stream release 8**
+  * Many VPS vendors are not really ready for CentOS Stream
+  * Better choose CentOS 8 image , then switch to CentOS Stream ([link](https://www.centos.org/centos-stream/))
+
+    ```bash
+    root@centos-linux# dnf install centos-release-stream
+    root@centos-linux# dnf swap centos-{linux,stream}-repos
+    root@centos-linux# dnf distro-sync
+    root@centos-stream# cat /etc/centos-release
+    CentOS Stream release 8
+    ```
+
 # Environment
   * CentOS Stream release 8
     * os_preparation
