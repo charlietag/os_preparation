@@ -105,7 +105,7 @@ This is a small light bash project.  Suit small companies which have only few se
     * **Default** target (*[os_preparation](https://github.com/charlietag/os_preparation) will force to use this target*)
       * **multi-user.target**
     * Ref. /etc/inittab
-      *  multi-user.target: analogous to runlevel 3
+      *  **multi-user.target: analogous to runlevel 3**
       *  graphical.target: analogous to runlevel 5
 
 
