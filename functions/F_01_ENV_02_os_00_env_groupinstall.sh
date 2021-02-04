@@ -101,7 +101,7 @@ for env_group in "${unused_env_groups[@]}"; do
     echo "Remove: ${env_group}"
     echo "-------------------------"
     set -x
-    dnf groupremove "${env_group}"
+    dnf groupremove -y "${env_group}"
     set +x
   fi
 done
