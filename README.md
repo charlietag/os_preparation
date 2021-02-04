@@ -92,6 +92,11 @@ This is a small light bash project.  Suit small companies which have only few se
         * For `dnf makecache` by daily
   * Before [os_security](https://github.com/charlietag/os_security)
     * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
+  * Environment Groups
+    * Based on
+      * **"Minimal Install"**
+    * **Removed** after [os_preparation](https://github.com/charlietag/os_preparation)
+      * "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
 
 # Warning
   * Please do this in fresh install OS
@@ -1327,3 +1332,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * Change sample command - swapfile 2G -> 4G
       * display detail messages while installing rsyslog
       * use git pull --no-rebase for os_preparation_lib
+* 2021/02/04
+  * tag: v2.0.10
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.9...v2.0.10
+      * Unused environment groups will be removed: "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
