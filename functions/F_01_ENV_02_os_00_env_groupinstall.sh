@@ -53,6 +53,9 @@ echo ""
 # ------------------------------------------------------------
 # Main script
 # ------------------------------------------------------------
+# must run this before remove unused env groups,
+# otherwise, this will raise error because of Core will be removed, and no other ENV group is installed
+
 echo "------------------------------------------------------"
 echo "Make sure use the same Installed Environment Groups"
 echo "------------------------------------------------------"
@@ -69,8 +72,6 @@ echo "------------------------------------------------------"
 echo "------------------------------------------------------"
 echo 'Environment Groups: "Minimal Install"'
 echo "------------------------------------------------------"
-# must run this before remove unused env groups,
-# otherwise, this will raise error because of Core will be removed, and no other ENV group is installed
 set -x
 dnf groupinstall -y "Minimal Install"
 set +x
@@ -79,13 +80,12 @@ set +x
 # dnf install -y @"Minimal Install"
 
 
-# --- Comment out, use "Minimal Install" as base ENV group
-# echo "------------------------------------------------------"
-# echo 'Environment Groups: "Server"'
-# echo "------------------------------------------------------"
-# set -x
-# dnf groupinstall -y "Server"
-# set +x
+echo "------------------------------------------------------"
+echo 'Environment Groups: "Server"'
+echo "------------------------------------------------------"
+set -x
+dnf groupinstall -y "Server"
+set +x
 
 # Same as:
 # dnf install -y @"Server"
@@ -96,11 +96,13 @@ echo ""
 # Remove unused environment groups
 # ------------------------------------------------------------
 local installed_env_groups="$(dnf grouplist --installed)"
-local is_installed
+local nouse_found
+local is_nouse_found
 for env_group in "${unused_env_groups[@]}"; do
-  is_installed="$(echo -e "${installed_env_groups}" | grep "${env_group}")"
+  nouse_found="$(echo -e "${installed_env_groups}" | grep "${env_group}")"
 
-  if [[ -n "${is_installed}" ]]; then
+  if [[ -n "${nouse_found}" ]]; then
+    is_nouse_found=1
     echo "-------------------------"
     echo "Remove: ${env_group}"
     echo "-------------------------"
@@ -110,10 +112,19 @@ for env_group in "${unused_env_groups[@]}"; do
   fi
 done
 
-echo "------------------------------------------------------"
-echo 'Install ENV group again: "Minimal Install"'
-echo "------------------------------------------------------"
-# To make sure required packages is not removed, while removing unused ENV groups, install env group "Minimal Install" again
-set -x
-dnf groupinstall -y "Minimal Install"
-set +x
+if [[ ${is_nouse_found} -eq 1 ]]; then
+  # To make sure required packages is not removed, while removing unused ENV groups, install env group "Minimal Install" again
+  echo "------------------------------------------------------"
+  echo 'Install ENV group again: "Minimal Install"'
+  echo "------------------------------------------------------"
+  set -x
+  dnf groupinstall -y "Minimal Install"
+  set +x
+
+  echo "------------------------------------------------------"
+  echo 'Environment Groups: "Server"'
+  echo "------------------------------------------------------"
+  set -x
+  dnf groupinstall -y "Server"
+  set +x
+fi
