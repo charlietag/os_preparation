@@ -64,6 +64,8 @@ echo "------------------------------------------------------"
 echo "------------------------------------------------------"
 echo 'Environment Groups: "Minimal Install"'
 echo "------------------------------------------------------"
+# must run this before remove unused env groups,
+# otherwise, this will raise error because of Core will be removed, and no other ENV group is installed
 set -x
 dnf groupinstall -y "Minimal Install"
 set +x
@@ -100,8 +102,14 @@ for env_group in "${unused_env_groups[@]}"; do
     echo "-------------------------"
     set -x
     dnf groupremove "${env_group}"
-    dnf groupinstall -y "Minimal Install"
     set +x
   fi
-
 done
+
+echo "------------------------------------------------------"
+echo 'Install ENV group again: "Minimal Install"'
+echo "------------------------------------------------------"
+# To make sure required packages is not removed, while removing unused ENV groups, install env group "Minimal Install" again
+set -x
+dnf groupinstall -y "Minimal Install"
+set +x
