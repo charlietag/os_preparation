@@ -93,10 +93,14 @@ This is a small light bash project.  Suit small companies which have only few se
   * Before [os_security](https://github.com/charlietag/os_security)
     * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
   * Environment Groups
-    * Based on
+    * Based on (*[os_preparation](https://github.com/charlietag/os_preparation) will make sure this environment group is installed*)
       * **"Minimal Install"**
-    * **Removed** after [os_preparation](https://github.com/charlietag/os_preparation)
-      * "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
+    * **Removing** Environment Groups (*[os_preparation](https://github.com/charlietag/os_preparation) will remove these environment groups by default*)
+      * **"Server with GUI"**
+      * **"Workstation"**
+      * **"KDE Plasma Workspaces"**
+      * **"Virtualization Host"**
+      * **"Custom Operating System"**
 
 # Warning
   * Please do this in fresh install OS

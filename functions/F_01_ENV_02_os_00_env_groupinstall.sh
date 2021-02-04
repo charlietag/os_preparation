@@ -91,7 +91,6 @@ echo ""
 # Remove unused environment groups
 # ------------------------------------------------------------
 local installed_env_groups="$(dnf grouplist --installed)"
-local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System")
 local is_installed
 for env_group in "${unused_env_groups[@]}"; do
   is_installed="$(echo -e "${installed_env_groups}" | grep "${env_group}")"
