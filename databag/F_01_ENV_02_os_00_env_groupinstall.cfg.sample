@@ -1,0 +1,5 @@
+# -------------------------------------------------------------------------------------------------------
+# Unused Environment Groups
+# -------------------------------------------------------------------------------------------------------
+local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System")
+

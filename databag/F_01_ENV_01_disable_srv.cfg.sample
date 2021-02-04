@@ -50,9 +50,3 @@ disabled_services=(${disabled_services[@]} systemd-resolved)
 # disabled_services=(${disabled_services[@]} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
 
 
-
-
-# -------------------------------------------------------------------------------------------------------
-# Unused Environment Groups
-# -------------------------------------------------------------------------------------------------------
-local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System")
