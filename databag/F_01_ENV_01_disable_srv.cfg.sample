@@ -13,7 +13,7 @@ local disabled_services
 # 1. nmcli / nmcli connection
 # 2. nmtui <--- like deprecated command 'netconfig'
 # 3. nmtui <--- activate / deactivate <--- means ifup / ifdown
-disabled_services=(${disabled_services} chronyd firewalld postfix kdump)
+disabled_services=(${disabled_services[@]} chronyd firewalld postfix kdump)
 
 # -------------------------------------------------------------------------------------------------------
 # cups avahi
@@ -22,11 +22,11 @@ disabled_services=(${disabled_services} chronyd firewalld postfix kdump)
 # (Service: "avahi-daemon.socket avahi-daemon.service" - are not installed by default...)
 #   - it's added after
 #                       dnf groupinstall -y "Development Tools"
-disabled_services=(${disabled_services} avahi-daemon.service avahi-daemon.socket cups)
+disabled_services=(${disabled_services[@]} avahi-daemon.service avahi-daemon.socket cups)
 
 # systemd-resolved (NSS)
 # systemd-resolved: New tools like Name Service Switch NSS, but supports DNSSEC , DNS over TLS
-disabled_services=(${disabled_services} systemd-resolved)
+disabled_services=(${disabled_services[@]} systemd-resolved)
 # -------------------------------------------------------------------------------------------------------
 # Server with GUI
 # -------------------------------------------------------------------------------------------------------
@@ -36,16 +36,16 @@ disabled_services=(${disabled_services} systemd-resolved)
 #         # This command must be ran after command : dnf groupinstall -y "Minimal Install"
 #
 # Server with GUI : rpcbind.service rpcbind.socket gssproxy dnsmasq
-# disabled_services=(${disabled_services} rpcbind.service rpcbind.socket gssproxy dnsmasq)
+# disabled_services=(${disabled_services[@]} rpcbind.service rpcbind.socket gssproxy dnsmasq)
 
 # systemd-resolved (NSS)
 # systemd-resolved: New tools like Name Service Switch NSS, but supports DNSSEC , DNS over TLS
-# disabled_services=(${disabled_services} systemd-resolved)
+# disabled_services=(${disabled_services[@]} systemd-resolved)
 
 
 # graphical.target denpendencies
 # systemctl list-dependencies graphical.target
 # Ref. https://access.redhat.com/discussions/1528023
 # Ref. http://linux.vbird.org/linux_basic/0560daemons.php#systemctl_deps
-# disabled_services=(${disabled_services} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
+# disabled_services=(${disabled_services[@]} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
 
