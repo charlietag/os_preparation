@@ -72,14 +72,36 @@ set +x
 # dnf install -y @"Minimal Install"
 
 
-echo "------------------------------------------------------"
-echo 'Environment Groups: "Server"'
-echo "------------------------------------------------------"
-set -x
-dnf groupinstall -y "Server"
-set +x
+# --- Comment out, use "Minimal Install" as base ENV group
+# echo "------------------------------------------------------"
+# echo 'Environment Groups: "Server"'
+# echo "------------------------------------------------------"
+# set -x
+# dnf groupinstall -y "Server"
+# set +x
 
 # Same as:
 # dnf install -y @"Server"
 
 echo ""
+
+# ------------------------------------------------------------
+# Remove unused environment groups
+# ------------------------------------------------------------
+local installed_env_groups="$(dnf grouplist --installed)"
+local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System")
+local is_installed
+for env_group in "${unused_env_groups[@]}"; do
+  is_installed="$(echo -e "${installed_env_groups}" | grep "${env_group}")"
+
+  if [[ -n "${is_installed}" ]]; then
+    echo "-------------------------"
+    echo "Remove: ${env_group}"
+    echo "-------------------------"
+    set -x
+    dnf groupremove "${env_group}"
+    dnf groupinstall -y "Minimal Install"
+    set +x
+  fi
+
+done
