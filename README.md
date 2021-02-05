@@ -1355,8 +1355,14 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
 * 2021/02/04
   * tag: v2.0.10
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.9...v2.0.10
+      * Add warning if under **graphical.target (Server with GUI)**
       * More services specified to be disabled
-      * Unused environment groups will be removed: "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
+      * Unused environment groups will be **removed**
+        * **"Server with GUI"**
+        * **"Workstation"**
+        * **"KDE Plasma Workspaces"**
+        * **"Virtualization Host"**
+        * **"Custom Operating System"**
       * Description about how to remove booting spinning ico in 'graphical.target -> multi-user.target'
         * Reference description here
           * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
