@@ -92,6 +92,15 @@ This is a small light bash project.  Suit small companies which have only few se
         * For `dnf makecache` by daily
   * Before [os_security](https://github.com/charlietag/os_security)
     * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
+   * **WARNING** If you are under **graphical.target** **NOT** under **multi-user.target**.
+     * It is highly recommended that you do the following:
+       1. `systemctl set-default multi-user`
+       2. `reboot`
+       3. `dnf groupremove 'Server with GUI'`
+       4. you can start with `os_prepation` now
+    * Reference description here
+      * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
+      * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
   * **Environment Groups**
     * **Based on** (*[os_preparation](https://github.com/charlietag/os_preparation) will make sure this environment group is installed*)
       * **"Minimal Install"**
@@ -1348,6 +1357,9 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.9...v2.0.10
       * Unused environment groups will be removed: "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
       * Description about how to remove booting spinning ico in 'graphical.target -> multi-user.target'
+        * Reference description here
+          * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
+          * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
         * `systemctl set-default multi-user`
         * `reboot`
         * `dnf groupremove -y 'Server with GUI'`

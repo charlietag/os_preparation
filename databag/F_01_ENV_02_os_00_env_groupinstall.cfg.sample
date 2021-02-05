@@ -6,3 +6,13 @@ local remove_unused_env_groups="enable"
 
 local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System")
 
+# ------------------
+# recommend
+# ------------------
+# If you are not under multi-user.target.
+# It is highly recommended that you do the following:
+#
+# 1. systemctl set-default multi-user
+# 2. reboot
+# 3. dnf groupremove 'Server with GUI'
+# 4. you can start with os_prepation now
