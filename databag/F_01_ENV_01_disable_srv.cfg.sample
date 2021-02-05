@@ -47,8 +47,8 @@ disabled_services=(${disabled_services[@]} systemd-resolved)
 # systemctl list-dependencies graphical.target
 # Ref. https://access.redhat.com/discussions/1528023
 # Ref. http://linux.vbird.org/linux_basic/0560daemons.php#systemctl_deps
-disabled_services=(${disabled_services[@]} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
+# disabled_services=(${disabled_services[@]} accounts-daemon.service gdm.service rtkit-daemon.service systemd-update-utmp-runlevel.service udisks2.service)
 
-
+# Compared one by one between "multi-user" "Server with GUI"
 disabled_services=(${disabled_services[@]} accounts-daemon.service avahi-daemon.service avahi-daemon.socket bluetooth.service chronyd.service cups.path cups.service cups.socket dbus-org.bluez.service dbus-org.freedesktop.Avahi.service dbus-org.freedesktop.ModemManager1.service display-manager.service gdm.service iscsid.socket iscsi-onboot.service iscsi.service iscsiuio.socket kdump.service ksm.service ksmtuned.service libvirtd-ro.socket libvirtd.service libvirtd.socket ModemManager.service multipathd.service multipathd.socket nfs-client.target nvmefc-boot-connections.service rpcbind.service rpcbind.socket rtkit-daemon.service udisks2.service virtlockd.socket virtlogd.socket)
 
