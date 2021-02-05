@@ -1347,3 +1347,9 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.10
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.9...v2.0.10
       * Unused environment groups will be removed: "Server with GUI" "Workstation" "KDE Plasma Workspaces" "Virtualization Host" "Custom Operating System"
+      * Description about how to remove booting spinning ico in 'graphical.target -> multi-user.target'
+        * `systemctl set-default multi-user`
+        * `reboot`
+        * `dnf groupremove -y 'Server with GUI'`
+        * `reboot`
+        * `success`

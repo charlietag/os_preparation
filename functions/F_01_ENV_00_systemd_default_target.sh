@@ -31,6 +31,26 @@
 # multi-user.target: analogous to runlevel 3
 # graphical.target: analogous to runlevel 5
 
+# If in graphical.target
+#   there is boot screen with rotating activity icon spinning,
+# If eager to remove this spinning icon:
+# Success:
+#    1. systemctl set-default multi-user
+#    2. reboot
+#    3. dnf groupremove 'Server with GUI'
+#    4. done
+# Fail:
+#    1. systemctl set-default multi-user
+#    2. systemctl isolate multi-user
+#    3. dnf groupremove 'Server with GUI'
+#    4. reboot
+#    5. failed
+#    6. dnf remove plymouth -y
+#    7. failed again
+#    8. remove rhgb quiet from /etc/default/grub ; grub2-mkconfig -o /boot/grub2/grub.cfg
+#    9. failed again
+#     ->  Because if no reboot is triggered, spinning icon will not be able to removed
+#     ->  Even some packages, some libs, cannot be fully removed
 
 
 local default_target="multi-user.target"
