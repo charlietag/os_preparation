@@ -34,9 +34,10 @@ if [[ -z "${check_target}" ]]; then
     echo "-- HOW TO: --"
     echo "1. systemctl set-default multi-user"
     echo "2. reboot"
-    echo "3. dnf groupremove 'Server with GUI'"
-    echo "4. reboot"
-    echo "5. you can start with os_prepation now"
+    echo "3. dnf groupinstall 'Minimal Install'"
+    echo "4. dnf groupremove 'Server with GUI'"
+    echo "5. reboot"
+    echo "6. you can start with os_prepation now"
     echo ""
 
     exit

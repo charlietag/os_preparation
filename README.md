@@ -96,8 +96,10 @@ This is a small light bash project.  Suit small companies which have only few se
      * It is highly recommended that you do the following:
        * `systemctl set-default multi-user`
        * `reboot`
+       * `dnf groupinstall 'Minimal Install'`
        * `dnf groupremove 'Server with GUI'`
-       * you can start with `os_prepation` now
+       * `reboot`
+       * you can start with **os_prepation** now
      * Reference description here
        * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
        * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
@@ -1363,12 +1365,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * **"KDE Plasma Workspaces"**
         * **"Virtualization Host"**
         * **"Custom Operating System"**
-      * Description about how to remove booting spinning ico in 'graphical.target -> multi-user.target'
-        * Reference description here
-          * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
-          * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
-        * `systemctl set-default multi-user`
-        * `reboot`
-        * `dnf groupremove -y 'Server with GUI'`
-        * `reboot`
-        * `success`
+      * Add how to: remove booting spinning ico in 'graphical.target -> multi-user.target'
