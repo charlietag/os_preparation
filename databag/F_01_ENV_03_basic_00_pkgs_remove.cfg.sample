@@ -12,8 +12,12 @@
 #     spinner
 #     three square dots
 
+# local remove_pkg_names=(
+#   "bash-completion"
+#   "cockpit*"
+#   "plymouth"
+# )
 local remove_pkg_names=(
   "bash-completion"
   "cockpit*"
-  "plymouth"
 )
