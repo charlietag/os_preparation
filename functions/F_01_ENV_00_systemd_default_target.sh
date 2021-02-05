@@ -47,10 +47,10 @@
 #    5. failed
 #    6. dnf remove plymouth -y
 #    7. failed again
-#    8. remove rhgb quiet from /etc/default/grub ; grub2-mkconfig -o /boot/grub2/grub.cfg
-#    9. failed again
 #     ->  Because if no reboot is triggered, spinning icon will not be able to removed
 #     ->  Even some packages, some libs, cannot be fully removed
+#    8. remove rhgb quiet from /etc/default/grub ; grub2-mkconfig -o /boot/grub2/grub.cfg
+#    9. sucess, but not clean
 
 
 local default_target="multi-user.target"
