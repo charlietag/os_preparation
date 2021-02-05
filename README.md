@@ -98,9 +98,9 @@ This is a small light bash project.  Suit small companies which have only few se
        * `reboot`
        * `dnf groupremove 'Server with GUI'`
        * you can start with `os_prepation` now
-   * Reference description here
-     * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
-     * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
+     * Reference description here
+       * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
+       * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
   * **Environment Groups**
     * **Based on** (*[os_preparation](https://github.com/charlietag/os_preparation) will make sure this environment group is installed*)
       * **"Minimal Install"**
