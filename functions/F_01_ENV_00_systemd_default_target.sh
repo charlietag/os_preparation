@@ -1,3 +1,54 @@
+# =====================
+# Enable databag
+# =====================
+# DATABAG_CFG:enable
+
+
+# -------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------
+local current_default_target="$(systemctl get-default)"
+local check_target="$(echo ${current_default_target} | grep "${default_target}")"
+
+if [[ -z "${check_target}" ]]; then
+  if [[ "${wrong_default_target_found}" = "force" ]]; then
+    echo "--------------------------------------------"
+    echo "Set default to ${default_target}"
+    echo "--------------------------------------------"
+    set -x
+    systemctl set-default ${default_target}
+    set +x
+
+    echo "--------------------------------------------"
+    echo "Change to ${default_target}"
+    echo "--------------------------------------------"
+    set -x
+    systemctl isolate ${default_target}
+    set +x
+  else
+    echo "--------------------------------------------"
+    echo "You are under \"${current_default_target}\""
+    echo "--------------------------------------------"
+    echo "Please be sure to set default target to \"${default_target}\" the reboot first"
+    echo ""
+    echo "-- HOW TO: --"
+    echo "1. systemctl set-default multi-user"
+    echo "2. reboot"
+    echo "3. dnf groupremove 'Server with GUI'"
+    echo "4. reboot"
+    echo "5. you can start with os_prepation now"
+    echo ""
+
+    exit
+  fi
+
+
+fi
+
+
+# -------------------------------------------------------------------------------------
+# Reference
+# -------------------------------------------------------------------------------------
 # --- List all available targets ---
 #systemctl list-units --type=target --all
 
@@ -51,25 +102,3 @@
 #     ->  Even some packages, some libs, cannot be fully removed
 #    8. remove rhgb quiet from /etc/default/grub ; grub2-mkconfig -o /boot/grub2/grub.cfg
 #    9. sucess, but not clean
-
-
-local default_target="multi-user.target"
-local current_default_target="$(systemctl get-default | grep "${default_target}")"
-
-if [[ -z "${current_default_target}" ]]; then
-
-  echo "--------------------------------------------"
-  echo "Set default to ${default_target}"
-  echo "--------------------------------------------"
-  set -x
-  systemctl set-default ${default_target}
-  set +x
-
-  echo "--------------------------------------------"
-  echo "Change to ${default_target}"
-  echo "--------------------------------------------"
-  set -x
-  systemctl isolate ${default_target}
-  set +x
-
-fi

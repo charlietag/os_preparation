@@ -1,0 +1,16 @@
+# ------------------------------------------------------------------------------
+# default target name
+# ------------------------------------------------------------------------------
+local default_target="multi-user.target"
+
+# ------------------------------------------------------------------------------
+# If not default_target found, what to do
+# ------------------------------------------------------------------------------
+# [ warn | force ]
+# force:
+#   switch to 'multi-user.target' right away, and go on os_preparation
+# warn:
+#   (default , and recommended)
+#   if you are under graphical.target (known as runlevel 5)
+#   show message about how to switch to 'multi-user.target' first and stop going on
+local wrong_default_target_found="warn"
