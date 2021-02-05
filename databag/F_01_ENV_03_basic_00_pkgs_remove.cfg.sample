@@ -7,7 +7,13 @@
 #  Install -> dnf install cockpit
 #  Remove  -> dnf remove cockpit*
 
+# plymouth: boot startup loading screen
+# such as,
+#     spinner
+#     three square dots
+
 local remove_pkg_names=(
   "bash-completion"
   "cockpit*"
+  "plymouth"
 )
