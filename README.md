@@ -53,6 +53,9 @@ This is a small light bash project.  Suit small companies which have only few se
     root@centos-linux# dnf distro-sync
     root@centos-stream# cat /etc/centos-release
     CentOS Stream release 8
+    # -------------------------
+    # Better Do a Reboot Now
+    root@centos-stream# reboot
     ```
 
 # Environment
