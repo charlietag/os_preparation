@@ -10,7 +10,9 @@ local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces"
 # recommend
 # ------------------
 # If you are not under multi-user.target.
-# It is highly recommended that you do the following:
+# It is highly recommended that you REINSTALL Whole CentOS using "Minimal Install"
+# OR
+# Please try to do the following:
 #
 # -- HOW TO: --
 # 1. systemctl set-default multi-user

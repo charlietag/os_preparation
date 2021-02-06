@@ -103,6 +103,8 @@ This is a small light bash project.  Suit small companies which have only few se
       *  graphical.target: analogous to runlevel 5
     * **WARNING** If you are under **graphical.target** **NOT** under **multi-user.target**.
       * It is highly recommended that you do the following:
+        * **Reinstall whole CentOS** using **"Minimal Install" / "Server"**
+      * Or at try the following:
         * `systemctl set-default multi-user`
         * `reboot`
         * `dnf groupinstall 'Minimal Install'` (If this is not working, try also `dnf groupinstall 'Server'`)
