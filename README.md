@@ -1374,3 +1374,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.11
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.10...v2.0.11
       * fix conflicts between pkg "selinux-policy-targeted" and "mariadb-server"
+  * tag: v2.0.12
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.11...v2.0.12
+      * small script changes
