@@ -1370,3 +1370,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * **"Virtualization Host"**
         * **"Custom Operating System"**
       * Add how to: remove booting spinning ico in 'graphical.target -> multi-user.target'
+* 2021/02/06
+  * tag: v2.0.11
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.10...v2.0.11
+      * fix conflicts between pkg "selinux-policy-targeted" and "mariadb-server"

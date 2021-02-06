@@ -29,8 +29,19 @@ local pkgs_list=""
 # For using dnf module
 # ###########################################################
 # selinux-policy-targeted conflicts with mariadb-server:10.5 (mysql-selinux if selinux-policy-targeted)
-dnf remove -y selinux-policy-targeted
+# dnf remove -y selinux-policy-targeted
 
+# --- This bug seems to be fixed for newer version of CentOS Stream (mysql-selinux) ---
+# Installing:
+#  mariadb                     x86_64  3:10.5.8-1.module_el8.4.0+601+d931aa0b  appstream  6.2  M
+#  mariadb-server              x86_64  3:10.5.8-1.module_el8.4.0+601+d931aa0b  appstream  18   M
+# Installing dependencies:
+#  mysql-selinux               noarch  1.0.2-4.el8                             appstream  37   k
+
+
+# ###########################################################
+# To be installed packages
+# ###########################################################
 # The following packages contain all pkgs in module install mariadb:{version}/server
 pkgs_list="${pkgs_list} mariadb mariadb-server"
 pkgs_list="${pkgs_list} mariadb-devel mariadb-connector-c-devel"
