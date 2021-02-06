@@ -22,6 +22,7 @@ alias b='cd -'
 
 # List TCP listening port and UNIX sockets
 alias llnn='echo "TCP listening:"; netstat -palunt | grep -i listen ; echo ""; echo "UNIX sockets:" ; lsof | grep "\.sock "; echo ""'
+alias llee='echo "TCP established:"; netstat -palunt | grep ESTABLISHED ; echo ""'
 alias ssnn='echo "TCP listening:"; ss -palunt | grep -i listen ; echo ""; echo "UNIX sockets:" ; lsof | grep "\.sock "; echo ""'
 
 # tmux aliases
