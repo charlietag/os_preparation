@@ -1383,3 +1383,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.13
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.12...v2.0.13
       * small changes for command alias
+  * tag: v2.0.14
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.13...v2.0.14
+      * small changes for README document
