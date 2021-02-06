@@ -96,7 +96,7 @@ This is a small light bash project.  Suit small companies which have only few se
      * It is highly recommended that you do the following:
        * `systemctl set-default multi-user`
        * `reboot`
-       * `dnf groupinstall 'Minimal Install'`
+       * `dnf groupinstall 'Minimal Install'` (If this is not working, try also `dnf groupinstall 'Server'`)
        * `dnf groupremove 'Server with GUI'`
        * `reboot`
        * you can start with **os_prepation** now

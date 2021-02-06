@@ -12,7 +12,9 @@ local unused_env_groups=("Server with GUI" "Workstation" "KDE Plasma Workspaces"
 # If you are not under multi-user.target.
 # It is highly recommended that you do the following:
 #
+# -- HOW TO: --
 # 1. systemctl set-default multi-user
 # 2. reboot
-# 3. dnf groupremove 'Server with GUI'
-# 4. you can start with os_prepation now
+# 3. dnf groupinstall "Minimal Install" (If this is not working, try also: dnf groupinstall "Server")
+# 4. dnf groupremove 'Server with GUI'
+# 5. reboot
