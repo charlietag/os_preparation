@@ -31,7 +31,7 @@ if [[ -z "${check_target}" ]]; then
     echo "--------------------------------------------"
     echo "It is highly recommended to:"
     echo ""
-    echo "    \"REINSTALL Whole CentOS using \"${default_target}\""
+    echo "    \"REINSTALL Whole CentOS using \"Minimal Install\""
     echo ""
     echo "Or please be sure to set default target to \"${default_target}\" then reboot first"
     echo ""
