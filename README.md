@@ -92,17 +92,25 @@ This is a small light bash project.  Suit small companies which have only few se
         * For `dnf makecache` by daily
   * Before [os_security](https://github.com/charlietag/os_security)
     * After finish first run [os_preparation](https://github.com/charlietag/os_preparation), you'd better **DO A REBOOT** before implementing [os_security](https://github.com/charlietag/os_security)
-   * **WARNING** If you are under **graphical.target** **NOT** under **multi-user.target**.
-     * It is highly recommended that you do the following:
-       * `systemctl set-default multi-user`
-       * `reboot`
-       * `dnf groupinstall 'Minimal Install'` (If this is not working, try also `dnf groupinstall 'Server'`)
-       * `dnf groupremove 'Server with GUI'`
-       * `reboot`
-       * you can start with **os_prepation** now
-     * Reference description here
-       * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
-       * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
+  * **Systemd target**
+    * **Default** target (*[os_preparation](https://github.com/charlietag/os_preparation) will force to use this target*)
+      * **multi-user.target**
+    * Ref. /etc/inittab
+      *  **multi-user.target: analogous to runlevel 3**
+      *  graphical.target: analogous to runlevel 5
+    * **WARNING** If you are under **graphical.target** **NOT** under **multi-user.target**.
+      * It is highly recommended that you do the following:
+        * `systemctl set-default multi-user`
+        * `reboot`
+        * `dnf groupinstall 'Minimal Install'` (If this is not working, try also `dnf groupinstall 'Server'`)
+        * `dnf groupremove 'Server with GUI'`
+        * `reboot`
+        * you can start with **os_prepation** now
+      * Reference description here
+        * [F_01_ENV_02_os_00_env_groupinstall.cfg.sample](https://github.com/charlietag/os_preparation/blob/master/databag/F_01_ENV_02_os_00_env_groupinstall.cfg.sample)
+         * [F_01_ENV_00_systemd_default_target.sh](https://github.com/charlietag/os_preparation/blob/master/functions/F_01_ENV_00_systemd_default_target.sh)
+    * **Check method**
+      * `systemctl get-default`
   * **Environment Groups**
     * **Based on** (*[os_preparation](https://github.com/charlietag/os_preparation) will make sure this environment group is installed*)
       * **"Minimal Install"**
@@ -112,12 +120,8 @@ This is a small light bash project.  Suit small companies which have only few se
       * **"KDE Plasma Workspaces"**
       * **"Virtualization Host"**
       * **"Custom Operating System"**
-  * **Systemd target**
-    * **Default** target (*[os_preparation](https://github.com/charlietag/os_preparation) will force to use this target*)
-      * **multi-user.target**
-    * Ref. /etc/inittab
-      *  **multi-user.target: analogous to runlevel 3**
-      *  graphical.target: analogous to runlevel 5
+    * **Check method**
+      * `dnf grouplist`
 
 
 # Warning
