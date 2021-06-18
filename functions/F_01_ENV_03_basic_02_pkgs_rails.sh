@@ -25,6 +25,11 @@ pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-deve
 
 pkgs_list="${pkgs_list} ruby"
 
+# --- For RVM 1.29.12 - Requirement glibc-headers obsolete on Fedora 33 ---
+
+pkgs_list="${pkgs_list} glibc-headers"
+
+
 # ----- Rails 6+ Preview use -----
 # FFmpeg for video
 if ! $(rpm --quiet -q rpmfusion-free-release) ; then
