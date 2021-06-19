@@ -209,6 +209,14 @@ if [[ -n "${redmine_default_lang}" ]]; then
 fi
 su -l $current_user -c "cd ${redmine_web_root} && bundle _${this_redmine_bundler_version}_ exec rake redmine:plugins RAILS_ENV=production"
 
+# ------------------------------------------------------
+# Redmine 4.2 contains file , yarn.lock package.json
+# This is for frontend css stylelint. Only for dev use
+# No need to run "yarn" , if you're not editing css and style format of css
+# Webpack is not installed for this version.
+# Redmine still puts all js and css files under public folder
+# ------------------------------------------------------
+
 echo "---------------------------------------------------------------------------"
 # ====== Stop database after finishing installation =======
 systemctl stop mariadb
