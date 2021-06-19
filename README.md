@@ -445,7 +445,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * Ruby 3.0.0
   * Rails 6.1
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
-  * Redmine 4.1.1
+  * Redmine 4.2.1
     * ruby 2.5.1
     * rails 5.2
   * Useful tools
