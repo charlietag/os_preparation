@@ -1388,3 +1388,17 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.14
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.13...v2.0.14
       * small changes for README document
+* 2019/06/19
+  * tag: v2.0.15
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.14...v2.0.15
+      * RVM
+        * 1.29.11 ---> 1.29.12
+      * Redmine
+        * 4.1.1 ---> 4.2.1
+      * Redmine bundler version
+        * 2.1.x ---> 2.2.x
+      * Redmine Plugins
+        * redmine_agile
+          * 1.5.4 ---> 1.6.1
+        * redmine_checklists
+          * 3.1.18 ---> 3.1.19

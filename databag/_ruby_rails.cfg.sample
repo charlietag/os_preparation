@@ -6,7 +6,7 @@ local current_user="rubyuser"
 _task_check_and_useradd
 
 # Specify rvm version
-local rvm_version="1.29.11"
+local rvm_version="1.29.12"
 
 # Specify ruby version (installing with rvm)
 #local ruby_version="2.6.0"
