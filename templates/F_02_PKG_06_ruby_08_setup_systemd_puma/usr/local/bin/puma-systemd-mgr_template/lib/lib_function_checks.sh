@@ -16,6 +16,7 @@ check_rvm_installation () {
 }
 
 check_if_gem_wrappers_installed () {
+  local rails_path="$1"
   local gem_dir="$(su -l ${RAILS_USER} -c "cd ${rails_path} && gem env gemdir" | tail -n 1)/gems"
   local gem_wrappers_exits="$(ls ${gem_dir} | grep 'gem-wrappers')"
   if [[ -z "${gem_wrappers_exits}" ]]; then

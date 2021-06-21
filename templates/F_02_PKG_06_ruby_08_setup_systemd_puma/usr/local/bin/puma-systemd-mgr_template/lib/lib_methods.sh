@@ -22,7 +22,6 @@ list_puma_services () {
 
 generate_systemd_config () {
   check_is_root
-  check_if_gem_wrappers_installed
 
   # ---------------------------------------------------------------
   local rvm_wrapper_puma
@@ -40,7 +39,10 @@ generate_systemd_config () {
   echo ""
 
   for puma_service_name in ${PUMA_SERVICE_NAMES[@]}; do
+
     rails_path="/home/${RAILS_USER}/rails_sites/${puma_service_name}"
+    check_if_gem_wrappers_installed "${rails_path}"
+
     rvm_wrapper_puma="$(su -l ${RAILS_USER} -c "cd ${rails_path} && gem wrapper show puma" | tail -n 1)"
 
     render_cp_sed ${puma_systemd_template} ${systemd_path}/puma_${puma_service_name}.service
