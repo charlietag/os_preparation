@@ -15,6 +15,20 @@ check_rvm_installation () {
   fi
 }
 
+check_if_gem_wrappers_installed () {
+  local gem_dir="$(su -l ${RAILS_USER} -c "cd ${rails_path} && gem env gemdir" | tail -n 1)/gems"
+  local gem_wrappers_exits="$(ls ${gem_dir} | grep 'gem-wrappers')"
+  if [[ -z "${gem_wrappers_exits}" ]]; then
+    echo ""
+    echo "--------------------------------------------"
+    echo "Gem 'gem-wrappers' not found under ${rails_path}"
+    echo "command: gem install gem-wrappers"
+    su -l ${RAILS_USER} -c "cd ${rails_path} && gem install gem-wrappers"
+    echo "--------------------------------------------"
+    echo ""
+  fi
+}
+
 check_nginx_conf_exists () {
   if [[ -z "${PUMA_SERVICE_NAMES}" ]]; then
     echo "(WARN) No Nginx configs for rails sites found!"

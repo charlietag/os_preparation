@@ -1402,3 +1402,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           * 1.5.4 ---> 1.6.1
         * redmine_checklists
           * 3.1.18 ---> 3.1.19
+* 2019/06/21
+  * tag: v2.0.16
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.15...v2.0.16
+      * Fix rvm wrapper issue (gem install gem-wrappers failed)
