@@ -78,6 +78,7 @@ done
 # Activate config
 sysctl -p /etc/sysctl.d/99-custom-sysctl.conf
 
+set -x
 # To make sure NM config is loaded into memory (such as: /etc/NetworkManager/conf.d/90-dns-none.conf)
 systemctl restart NetworkManager
 sleep 1
@@ -85,6 +86,7 @@ sleep 1
 # NM should not be stopped or started, using nmcli to manipulate NM instead
 nmcli c reload
 sleep 1
+set +x
 #if [[ $? -eq 0 ]]; then
 #  nmcli n off; nmcli n on
 #fi
