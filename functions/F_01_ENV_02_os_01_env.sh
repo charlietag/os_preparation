@@ -20,7 +20,7 @@ hostnamectl set-hostname ${host_name}
 #-----------------------------------------------------------------------------------------
 # NetworkManager (NM)
 #-----------------------------------------------------------------------------------------
-#* NM is like puma in-memory config , you change config file, you `nmcli c reload` to load it into in-memory config, but you want to reactivate this config, 
+#* NM is like puma in-memory config , you change config file, you `nmcli c reload` to load it into in-memory config, but you want to reactivate this config,
 #  * you need to `nmcli n off; nmcli n on`
 #  * or `nmcli c down ethxxx; nmcli c up ethxxx`
 #
@@ -50,7 +50,11 @@ do
   sed -i /PEERDNS/d $eth_card
 
   echo "PEERDNS=\"no\"" >> $eth_card
+  echo "DNS1=\"${nameserver1}\"" >> $eth_card
+  echo "DNS2=\"${nameserver2}\"" >> $eth_card
+
   echo "IPV6_PEERDNS=\"no\"" >> $eth_card
+
 
   # Totally disable IPV6
   if [[ $disable_ipv6 -eq 1 ]] ; then

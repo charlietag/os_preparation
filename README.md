@@ -1406,3 +1406,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.16
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.15...v2.0.16
       * Fix rvm wrapper issue (gem install gem-wrappers failed)
+  * tag: v2.0.17
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.16...v2.0.17
+      * add DNS config into network-scripts to make sure DNS will not override by DHCP
