@@ -1425,3 +1425,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * 3.1c ---> 3.2a
       * Redmine
         * 4.2.1 ---> 4.2.2
+  * tag: v2.1.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.0...v2.1.1
+      * ruby (os default)
+        * 2.7 ---> 3.0
