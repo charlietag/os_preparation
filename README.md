@@ -440,12 +440,12 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * PHP-FPM (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * Laravel 8.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
-  * nodejs (AppStream) (stable version - 14)
-  * Nginx (AppStream) 1.18 ~~(latest version - via Nginx Official Repo)~~
+  * nodejs (AppStream) (stable version - 16)
+  * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
   * Ruby 3.0.0
   * Rails 6.1
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
-  * Redmine 4.2.1
+  * Redmine 4.2.2
     * ruby 2.5.1
     * rails 5.2
   * Useful tools
@@ -457,6 +457,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
         * ls | ack keyword
         * ack -i keyword *
           * default options (-r, -R, --recurse             Recurse into subdirectories (default: on))
+  * Tmux 3.2a
   * VIM Plugins
     * ref https://github.com/charlietag/vim_settings
   * TMUX Plugins
@@ -1413,3 +1414,14 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.0.18
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.17...v2.0.18
       * small change for vim - open multiple files in vim tab by default
+* 2021/10/10
+  * tag: v2.1.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.0.18...v2.1.0
+      * Nodejs
+        * 14 ---> 16
+      * Nginx
+        * 1.18 ---> 1.20
+      * Tmux
+        * 3.1c ---> 3.2a
+      * Redmine
+        * 4.2.1 ---> 4.2.2

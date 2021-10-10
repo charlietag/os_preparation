@@ -24,6 +24,6 @@ local nginx_concurrency_reached_http_code="503"
 #                                         dnf module list pkgname #
 # ----------------------------------------------------------
 
-local nginx_dnf_module_version="1.18"
+local nginx_dnf_module_version="1.20"
 
 
