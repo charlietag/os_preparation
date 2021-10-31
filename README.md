@@ -1434,3 +1434,10 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.1...v2.1.2
       * Redmine
         * 4.2.2 ---> 4.2.3
+* 2021/11/01
+  * tag: v2.1.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.2...v2.1.3
+      * rvm
+        * move gpg server source to databag, it seems changing all the time
+      * ruby
+        * exit rvm installation if prefered ruby version exists in OS

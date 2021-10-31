@@ -6,7 +6,12 @@
 echo "========================================="
 echo "      Install ruby ${ruby_version}"
 echo "========================================="
-su -l $current_user -c "rvm install ${ruby_version}"
+local ruby_version_found="$(su -l $current_user -c "ruby -v 2>/dev/null" | grep -Eo "ruby[[:space:]]+${ruby_version}")"
+
+# if defined ruby version exists in OS built-in version, then skip rvm install
+if [[ -z "${ruby_version_found}" ]]; then
+  su -l $current_user -c "rvm install ${ruby_version}"
+fi
 
 echo "========================================="
 echo "      gem update --system"

@@ -5,12 +5,19 @@ local current_user="rubyuser"
 
 _task_check_and_useradd
 
+# Specify rvm gpg key source
+# ref. https://rvm.io/rvm/security
+# default hkp port tcp/udp 11371, to prevent from firewall issue, force it to port 80 (make sure vendor provides port 80)
+local rvm_gpg_key_src="hkp://pgp.mit.edu:80"
+
 # Specify rvm version
 local rvm_version="1.29.12"
 
 # Specify ruby version (installing with rvm)
 #local ruby_version="2.6.0"
-local ruby_version="3.0.0"
+# do not specify 3.0.0, because ruby version in os might be 3.0.2, and in rvm might be 3.0.0
+#   so just 3.0 is good here
+local ruby_version="3.0"
 
 # Specify rails version here
 # ex. 5.0 presents ~> 5.0.0
