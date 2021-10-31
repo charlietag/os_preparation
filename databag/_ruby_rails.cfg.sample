@@ -15,7 +15,7 @@ local rvm_version="1.29.12"
 
 # Specify ruby version (installing with rvm)
 #local ruby_version="2.6.0"
-local ruby_version="3.0.2"
+local ruby_version="3.0.0"
 
 # Specify rails version here
 # ex. 5.0 presents ~> 5.0.0

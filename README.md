@@ -1445,3 +1445,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.3...v2.1.4
       * ruby
         * always exec rvm installation even if prefered ruby version exists in OS, because general user (rubyuser) doesn't have permission using OS gem path while install gems
+  * tag: v2.1.5
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.4...v2.1.5
+      * ruby
+        * back to 3.0.0 (for compaitable with rails 6.1)
