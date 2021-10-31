@@ -1441,3 +1441,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * move gpg server source to databag, it seems changing all the time
       * ruby
         * exit rvm installation if prefered ruby version exists in OS
+  * tag: v2.1.4
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.3...v2.1.4
+      * ruby
+        * always exec rvm installation even if prefered ruby version exists in OS, because general user (rubyuser) doesn't have permission using OS gem path while install gems
