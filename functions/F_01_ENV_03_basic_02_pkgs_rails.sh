@@ -15,7 +15,7 @@ pkgs_list="${pkgs_list} sqlite-devel"
 
 # --- For compile latest ruby ---
 #dnf install -y libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel
-pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel"
+pkgs_list="${pkgs_list} libffi-devel libyaml-devel readline-devel zlib zlib-devel tk-devel dotconf-devel valgrind-devel graphviz-devel jemalloc-devel ruby-devel"
 
 # --- For RVM 1.29.8+ - Add system ruby as dependency for CentOS ---
 

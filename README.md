@@ -1465,3 +1465,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.6...v2.1.7
       * locale (LC_ALL, LANG)
         * ask user to disable terminal locale setting
+  * tag: v2.1.8
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.7...v2.1.8
+      * ruby
+        * add pkg `ruby-devel`
