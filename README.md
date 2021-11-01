@@ -442,7 +442,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
-  * Ruby 3.0.0
+  * Ruby 3.0.2
   * Rails 6.1
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
   * Redmine 4.2.3
@@ -1449,3 +1449,13 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.4...v2.1.5
       * ruby
         * back to 3.0.0 (for compaitable with rails 6.1)
+  * tag: v2.1.6
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.5...v2.1.6
+      * ruby
+        * upgrade to 3.0.2 (compaitability with rails 6.1 is OK)
+      * make sure locale (LC_ALL, LANG) is set to "en_US.UTF-8" to avoid errors while compiling programs
+
+        ```bash
+        export LC_ALL="en_US.UTF-8"
+        export LANG="en_US.UTF-8"
+        ```
