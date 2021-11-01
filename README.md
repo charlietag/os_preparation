@@ -1459,3 +1459,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         export LC_ALL="en_US.UTF-8"
         export LANG="en_US.UTF-8"
         ```
+  * tag: v2.1.7
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.6...v2.1.7
+      * locale (LC_ALL, LANG)
+        * ask user to disable terminal locale setting
