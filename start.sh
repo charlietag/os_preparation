@@ -4,7 +4,7 @@
 #*****************************************************************************
 
 # --- Fix locale error (LC_ALL) ---
-LOCALE_EN_US_FOUND="$(locale -a |grep -i en_us | grep -i utf)"
+LOCALE_EN_US_FOUND="$(locale -a 2>&1 |grep -i en_us | grep -i utf)"
 if [[ -z "${LOCALE_EN_US_FOUND}" ]]; then
   echo "Make sure your os supports language: en_US.UTF-8   !!"
   echo ""
