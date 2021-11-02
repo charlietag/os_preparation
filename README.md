@@ -1484,6 +1484,8 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * add pkg `ruby-devel`
   * tag: v2.1.9
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.8...v2.1.9
+      * rvm
+        * install gpg keys from rvm.io web server
       * rubygems
         * Do not `gem update --system` && `gem update` manually
           * for instance, this time I'm facing issue that pathname upgraded from `0.1.0` to `0.2.0` and this cause rails 6.1.4.1 failed to start

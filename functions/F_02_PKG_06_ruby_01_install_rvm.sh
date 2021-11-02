@@ -35,7 +35,17 @@ for ((i=1; ; i++)); do
   # ---------- Remove gpg key and install gpg -----------
   rm -fr ${current_user_home}/.gnupg
   # default hkp port tcp/udp 11371, to prevent from firewall issue, force it to port 80 (make sure vendor provides port 80)
-  su -l $current_user -c "gpg --keyserver ${rvm_gpg_key_src} --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
+  # su -l $current_user -c "gpg --keyserver ${rvm_gpg_key_src} --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
+
+  # (less secure way) comment out above to manually install through rvm.io
+  su -l $current_user -c "curl -sSL https://rvm.io/mpapis.asc | gpg --import - ; \
+                          curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -; \
+                          echo 409B6B1796C275462A1703113804BB82D39DC0E3:6: | gpg2 --import-ownertrust ; \
+                          echo 7D2BAF1CF37B13E2069D6956105BD0E739499BDB:6: | gpg2 --import-ownertrust; \
+                          echo --------------------------------------------- ; \
+                          gpg --list-keys; \
+                          echo ---------------------------------------------"
+
   if [[ $? -ne 0 ]]; then
     echo "rvm gpg keyserver installation failed!"
     continue

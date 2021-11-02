@@ -8,7 +8,12 @@ _task_check_and_useradd
 # Specify rvm gpg key source
 # ref. https://rvm.io/rvm/security
 # default hkp port tcp/udp 11371, to prevent from firewall issue, force it to port 80 (make sure vendor provides port 80)
-local rvm_gpg_key_src="hkp://pgp.mit.edu:80"
+# local rvm_gpg_key_src="hkp://pgp.mit.edu:80"
+#
+# (better)
+# local rvm_gpg_key_src="hkp://keyserver.ubuntu.com:80"
+
+# (less secure way) comment out above to manually install through rvm.io
 
 # Specify rvm version
 local rvm_version="1.29.12"
