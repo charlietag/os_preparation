@@ -7,8 +7,14 @@ echo "========================================="
 echo "      Install ruby ${redmine_ruby_version}"
 echo "========================================="
 su -l $current_user -c "rvm install ${redmine_ruby_version}"
+
+
+# ------------------------------------------------------------
+# do not gem update to avoid rails compatibility
+# ------------------------------------------------------------
 #su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update ; gem cleanup)"  # DO NOT cleanup gems, in case cleanup legacy gems which are still in use, for the same ruby version
-su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update)"
+# su -l $current_user -c "rvm use ${redmine_ruby_version} && (gem update --system ; gem update)"
+# ------------------------------------------------------------
 
 echo "========================================="
 echo "      gem install bundler"
@@ -166,7 +172,8 @@ fi
 echo "========================================="
 echo "      gem install bundler -v ${redmine_bundler_version}  # Bundler 1.x for Redmine3.x (Rails 4) / Bundler 2.x for Redmine4.x (Rails 5)"
 echo "========================================="
-su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v '~> ${redmine_bundler_version}.0')"
+# su -l $current_user -c "cd ${redmine_web_root} && (gem update --system ;  gem install bundler -v '~> ${redmine_bundler_version}.0')"
+su -l $current_user -c "cd ${redmine_web_root} && (gem install bundler -v '~> ${redmine_bundler_version}.0')"
 echo ""
 
 local this_redmine_bundler_version="$(su -l $current_user -c "cd ${redmine_web_root} && gem list | grep '^bundler '" | grep -Eo "${redmine_bundler_version}.[[:digit:]\.]+" | sort -n | tail -n 1)"

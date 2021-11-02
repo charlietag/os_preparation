@@ -1482,3 +1482,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.7...v2.1.8
       * ruby
         * add pkg `ruby-devel`
+  * tag: v2.1.9
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.8...v2.1.9
+      * rubygems
+        * Do not `gem update --system` && `gem update` manually
