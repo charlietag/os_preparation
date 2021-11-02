@@ -156,6 +156,19 @@ This is a small light bash project.  Suit small companies which have only few se
 
 
 # Configuration
+  * ssh `without` `SendEnv`
+    * command `ssh`
+      * [ssh_to](https://github.com/charlietag/bash_script/blob/master/ssh_to.sh)
+      * config `/etc/ssh/ssh_config`
+
+        ```bash
+        # SendEnv LANG LC_*
+        ```
+
+    * iTerm2 [setting](https://github.com/charlietag/tmux_settings#ssh-client)
+      ![iterm2_disable_setting_LC_ALL.png](https://raw.githubusercontent.com/charlietag/github_share_folder/master/doc_images/tmux_settings/iTerm2/iterm2_disable_setting_LC_ALL.png)
+
+
   * Before installation
 
     ```bash
