@@ -21,3 +21,5 @@ done
 SAFE_DELETE "/usr/lib/systemd/system/cloud-init-hotplugd.s*"
 SAFE_DELETE "/usr/src/cloud-init"
 SAFE_DELETE "/etc/cloud"
+
+systemctl daemon-reload
