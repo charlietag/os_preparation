@@ -1,0 +1,3 @@
+local remove_pkg_names=(
+  "cloud-init"
+)
