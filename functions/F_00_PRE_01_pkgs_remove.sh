@@ -18,7 +18,13 @@ done
 
 
 # Delete cloud-init related file
-SAFE_DELETE "/usr/lib/systemd/system/cloud-init-hotplugd.s*"
+readlink -m /usr/lib/systemd/system/cloud-* | xargs -i basename {} | xargs -i systemctl stop {}
+systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -i systemctl stop {}
+
+readlink -m /usr/lib/systemd/system/cloud-* | xargs -i basename {} | xargs -i systemctl disable {}
+systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -i systemctl disable {}
+
+SAFE_DELETE "/usr/lib/systemd/system/cloud-*"
 SAFE_DELETE "/usr/src/cloud-init"
 SAFE_DELETE "/etc/cloud"
 
