@@ -15,3 +15,9 @@ for remove_pkg_name in ${remove_pkg_names[@]}; do
   fi
 done
 
+
+
+# Delete cloud-init related file
+SAFE_DELETE "/usr/lib/systemd/system/cloud-init-hotplugd.s*"
+SAFE_DELETE "/usr/src/cloud-init"
+SAFE_DELETE "/etc/cloud"
