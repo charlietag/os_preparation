@@ -1493,3 +1493,13 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.1.10
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.9...v2.1.10
       * remove pkg cloud-init if exists
+* 2021/11/28
+  * tag: v2.2.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.1.10...v2.2.0
+      * Add default nginx config for perf (ex. gzip)
+        * config references
+          * https://stackoverflow.com/questions/12640014/enable-gzip-for-css-and-js-files-on-nginx-server-for-magento
+          * https://github.com/darktable/html5-boilerplate-server-configs/blob/master/nginx.conf
+        * Perf test
+          * https://tools.pingdom.com
+          * https://pagespeed.web.dev
