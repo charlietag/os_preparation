@@ -449,14 +449,14 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
 # Note
 
 ## Installed Packages
-  * PHP7.4 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
+  * PHP 8.0 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * PHP-FPM (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * Laravel 8.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
-  * Ruby 3.0.2
-  * Rails 6.1
+  * Ruby 3.1.0
+  * Rails 7.0
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
   * Redmine 4.2.3
     * ruby 2.5.1
@@ -1503,3 +1503,9 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
         * Perf test
           * https://tools.pingdom.com
           * https://pagespeed.web.dev
+* 2022/01/22
+  * tag: v2.3.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.2.0...v2.3.0
+      * PHP 7.4 ---> 8.0
+      * Ruby 3.0.2 ---> 3.1.0
+      * Rails 6.1 ---> 7.0
