@@ -101,7 +101,6 @@ dnf install -y \
   php-snmp \
   php-soap \
   php-xml \
-  php-xmlrpc \
   libzip \
   php-json \
   php-pecl-zip
@@ -120,6 +119,7 @@ dnf install -y \
   # php-pspell \
   # php-sodium \
   # php-tidy \
+  # php-xmlrpc \
 
 # --- For connecting to SQL server ---
 # dnf install -y unixODBC-devel

@@ -1509,3 +1509,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * PHP 7.4 ---> 8.0
       * Ruby 3.0.2 ---> 3.1.0
       * Rails 6.1 ---> 7.0
+  * tag: v2.3.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.3.0...v2.3.1
+      * php 8.0 has removed php-xmlrpc, and move it to pecl
