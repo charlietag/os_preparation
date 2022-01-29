@@ -1516,3 +1516,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.4.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.3.1...v2.4.0
       * Install libvips through repo `remi` for rails 7 - Action Text (Active Storage - gem: ruby-vips)
+  * tag: v2.4.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.4.0...v2.4.1
+      * No need to `skip-spring` while `rails new project`, **spring** is not included by **Rails 7**

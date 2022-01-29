@@ -11,12 +11,15 @@
 # --------------------------------------------------------
 
 echo "========================================="
-echo "(Rails:${rails_version}) rails new myrails -d mysql --skip-spring"
+# Spring is not included started from rails 7
+# echo "(Rails:${rails_version}) rails new myrails -d mysql --skip-spring"
+echo "(Rails:${rails_version}) rails new myrails -d mysql"
 echo "========================================="
 
 su -l $current_user -c "test -d ${web_sites} || mkdir -p ${web_sites}"
 
-su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql --skip-spring" #Create rails project, to verify
+# su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql --skip-spring" #Create rails project, to verify
+su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql" #Create rails project, to verify
 
 su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -i cp -a {} {}.sample"
 
