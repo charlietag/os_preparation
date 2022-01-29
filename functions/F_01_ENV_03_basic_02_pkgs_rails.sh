@@ -51,6 +51,17 @@ pkgs_list="${pkgs_list} poppler poppler-devel"
 # ImageMagick latest version - 6.9+
 pkgs_list="${pkgs_list} ImageMagick ImageMagick-libs ImageMagick-devel"
 
+# ----- Rails 7+ Active Storage (gem 'ruby-vips') -----
+# libvips for images variant
+if ! $(rpm --quiet -q remi-release) ; then
+  dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  #L_UPDATE_REPO 5000
+fi
+
+# libvips
+# dnf install -y vips vips-tools
+pkgs_list="${pkgs_list} vips vips-tools"
+
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
