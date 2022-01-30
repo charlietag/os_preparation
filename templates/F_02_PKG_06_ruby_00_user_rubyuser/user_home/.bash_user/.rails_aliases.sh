@@ -154,3 +154,28 @@ alias bs='
       echo ""; \
     }
   '
+
+# -----------------------------------------------------
+# For Rails 7
+# -----------------------------------------------------
+alias bdev='
+  grep -q "spring" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Spring Stop"; \
+      echo "==================================="; \
+      bundle exec spring stop ; \
+      echo ""; \
+    }; \
+  grep -q "rails" Gemfile.lock 2>/dev/null && \
+    { \
+      echo "==================================="; \
+      echo "     Start Rails in Dev Mode"; \
+      echo "==================================="; \
+      bin/dev ; \
+      echo ""; \
+    }
+  '
+
+alias bmap='bin/importmap'
+
