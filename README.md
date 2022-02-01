@@ -1523,5 +1523,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.5.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.4.1...v2.5.0
       * Add alias for **rails 7** command
-        * `bdev` for `bin/dev`
-        * `bmap` for `bin/importmap`
+* 2022/02/01
+  * tag: v2.5.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.5.0...v2.5.1
+      * Change alias for rubyuser (**rails 7** command)
