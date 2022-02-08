@@ -10,7 +10,7 @@ _task_check_and_useradd
 # ex. 7   presents 7.*
 # ex. 6.0 presents 6.0.*  #-> 6.0 requires php7.2+
 # ex. 5.8 presents 5.8.*
-local laravel_version="8"
+local laravel_version="9"
 
 
 # ----------------------------------------------------

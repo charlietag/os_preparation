@@ -451,7 +451,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
 ## Installed Packages
   * PHP 8.0 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * PHP-FPM (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
-  * Laravel 8.x (Ref. https://laravel.com/)
+  * Laravel 9.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
@@ -1527,3 +1527,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.5.1
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.5.0...v2.5.1
       * Change alias for rubyuser (**rails 7** command)
+* 2022/02/09
+  * tag: v2.6.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.5.1...v2.6.0
+      * Laravel `8.x` ---> `9.x`
