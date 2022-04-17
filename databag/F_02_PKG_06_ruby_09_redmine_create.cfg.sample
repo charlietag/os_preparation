@@ -17,14 +17,18 @@ local redmine_db_name="redmine"
 #)
 
 # --- Redmine 4.x ---
-local redmine_ruby_version="2.5.1"
-local redmine_version="4.2.3"
+# local redmine_ruby_version="2.5.1"
+# local redmine_version="4.2.3"
+
+# --- Redmine 5.x ---
+local redmine_ruby_version="3.1.1"
+local redmine_version="5.0.0"
 
 # Specify gem:bundler version here
 # ex. 2.1 presents ~> 2.1.0
 #     this means 2.1.x
 # local redmine_bundler_version="2.1"
-local redmine_bundler_version="2.2"
+local redmine_bundler_version="2.3.11"
 
 # -------------------------- Redmine Plugins ----------------------------
 # -- redmine_wysiwyg_editor --
@@ -43,19 +47,21 @@ local redmine_bundler_version="2.2"
 # -- Disable default --
 #  "https://github.com/haru/redmine_code_review/archive/1.0.0.zip"
 #  "https://github.com/tkusukawa/redmine_work_time/archive/0.4.0.zip"
+#  "https://github.com/akiko-pusu/redmine_issue_templates/archive/1.1.0.zip"
 local redmine_plugins=(
-  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.1.zip"
-  "https://github.com/akiko-pusu/redmine_issue_templates/archive/1.1.0.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_6_1-light.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_checklists-3_1_19-light.zip"
-  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.1.x.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_agile-1_6_3-light.zip"
+  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_checklists-3_1_21-light.zip"
 )
+
+# -- May not be compatible with Redmine 5 anymore --
+#  "https://github.com/paginagmbh/redmine_lightbox2/archive/v0.5.1.zip"
+#  "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_plugins/redmine_issues_tree-4.1.x.zip"
 
 # -------------------------- Redmine Plugins ----------------------------
 
 # -------------------------- Redmine Themes ----------------------------
 local redmine_themes=(
-  "https://github.com/mrliptontea/PurpleMine2/archive/v2.12.1.zip"
+  "https://github.com/mrliptontea/PurpleMine2/archive/v2.15.0.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/a1_theme-3_0_0.zip"
   "https://raw.githubusercontent.com/charlietag/github_share_folder/master/redmine_themes/circle_theme-2_1_5.zip"
 )

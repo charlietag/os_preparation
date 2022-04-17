@@ -458,9 +458,9 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * Ruby 3.1.0
   * Rails 7.0
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
-  * Redmine 4.2.3
-    * ruby 2.5.1
-    * rails 5.2
+  * Redmine 5.0.0
+    * ruby 3.1.1
+    * rails 6.1.4.7
   * Useful tools
     * Enhanced tail
       * multitail
@@ -1531,3 +1531,18 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.6.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.5.1...v2.6.0
       * Laravel `8.x` ---> `9.x`
+* 2022/04/17
+  * tag: v2.7.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.6.0...v2.7.0
+      * Ruby default version 3.1.0 ---> 3.1.1
+      * Redmine 4 ---> 5.0.0
+        * ruby 3.1.1
+        * rails 6.1.4.7
+      * Only enable Redmine plugins, themes below (disabled other Redmine plugins)
+        * Plugins
+          * redmine_agile
+          * redmine_checklists
+        * Themes
+          * PurpleMine2
+          * a1_theme
+          * circle_theme
