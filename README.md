@@ -455,11 +455,11 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
-  * Ruby 3.1.0
+  * Ruby 3.1.2
   * Rails 7.0
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
   * Redmine 5.0.0
-    * ruby 3.1.1
+    * ruby 3.1.2
     * rails 6.1.4.7
   * Useful tools
     * Enhanced tail
@@ -1546,3 +1546,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           * PurpleMine2
           * a1_theme
           * circle_theme
+* 2022/04/27
+  * tag: v2.7.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.0...v2.7.1
+      * Ruby default version 3.1.1 ---> 3.1.2
