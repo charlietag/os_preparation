@@ -21,11 +21,17 @@ su -l $current_user -c "rvm install ${ruby_version}"
 # ------------------------------------------------------------
 # do not gem update to avoid rails compatibility
 # ------------------------------------------------------------
-# echo "========================================="
-# echo "      gem update --system"
-# echo "========================================="
-# su -l $current_user -c "gem update --system"
-# echo ""
+echo "========================================="
+echo "      gem update --system"
+echo "========================================="
+su -l $current_user -c "gem update --system"
+echo ""
+
+echo "========================================="
+echo "      gem install bundler"
+echo "========================================="
+su -l $current_user -c "gem install bundler"
+echo ""
 #
 # echo "========================================="
 # echo "      gem update"

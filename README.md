@@ -1550,3 +1550,8 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.7.1
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.0...v2.7.1
       * Ruby default version 3.1.1 ---> 3.1.2
+  * tag: v2.7.2
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.1...v2.7.2
+      * By default do the following to make sure using the latest version of commands "gem , bundle" to avoid rails compatibility
+        * gem update --system
+        * gem install bundler
