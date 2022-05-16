@@ -1555,3 +1555,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * By default do the following to make sure using the latest version of commands "gem , bundle" to avoid rails compatibility
         * gem update --system
         * gem install bundler
+* 2022/05/16
+  * tag: v2.7.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.2...v2.7.3
+      * Fix typo

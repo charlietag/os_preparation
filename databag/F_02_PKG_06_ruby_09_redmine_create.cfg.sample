@@ -28,7 +28,7 @@ local redmine_version="5.0.0"
 # ex. 2.1 presents ~> 2.1.0
 #     this means 2.1.x
 # local redmine_bundler_version="2.1"
-local redmine_bundler_version="2.3.11"
+local redmine_bundler_version="2.3"
 
 # -------------------------- Redmine Plugins ----------------------------
 # -- redmine_wysiwyg_editor --
