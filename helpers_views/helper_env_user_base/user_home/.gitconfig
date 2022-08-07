@@ -33,3 +33,6 @@
   default = simple
 [pull]
   rebase = false
+[init]
+  # main / master
+  defaultBranch = ${git_default_branch}

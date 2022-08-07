@@ -1563,3 +1563,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v2.7.4
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.3...v2.7.4
       * Redmine 5.0.1
+* 2022/08/07
+  * tag: v2.7.5
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.4...v2.7.5
+      * Change git default branch name from `master` to `main`
