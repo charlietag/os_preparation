@@ -125,7 +125,9 @@ COLOR_ORANGE_BOLD='\[\e[1;38;5;214m\]'
 USER_COLOR="${COLOR_GREEN}"
 
 # OS Version
-OS_VER="$(lsb_release -irs | cut -d'.' -f-2)"
+# -- RHEL 9 does not support lsb_release command ---
+# OS_VER="$(lsb_release -irs | cut -d'.' -f-2)"
+OS_VER="$(cat /etc/os-release |grep -i pretty_name | cut -d'"' -f2 | grep -Eo "[[:print:]]+[[:digit:]\.]+")"
 
 # vim Session.vim , *.swp
 vim_session() {

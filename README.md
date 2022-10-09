@@ -1568,3 +1568,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.4...v2.7.5
       * Change git default branch name from `master` to `main`
       * Redmine 5.0.2
+* 2022/10/09
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.5...v2.7.6
+    * Fix bash prompt - os version (rhel 9 does not support lsb_release command)
