@@ -444,6 +444,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
+  * Redis 6.2
   * Ruby 3.1.2
   * Rails 7.0
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
@@ -1613,4 +1614,5 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * rvm 1.29.12
     * Rails 7.0.4
     * Laravel 9
+    * Redis 6.2
     * **Container Management** installed

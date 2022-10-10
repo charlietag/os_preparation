@@ -62,6 +62,10 @@ fi
 # dnf install -y vips vips-tools
 pkgs_list="${pkgs_list} vips vips-tools"
 
+# redis
+pkgs_list="${pkgs_list} redis redis-devel"
+
+
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
