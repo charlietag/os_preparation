@@ -452,7 +452,7 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
     * rails 6.1.7
   * Useful tools
     * Enhanced tail
-      * multitail
+      * ~~multitail~~ (not found in RHEL 9)
         * multitail /var/log/nginx/*.access.log
     * Enhanced grep
       * ack
