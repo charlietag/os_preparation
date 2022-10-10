@@ -6,3 +6,9 @@ local current_user="pythonuser"
 _task_check_and_useradd
 
 
+# ----------------------------------------------------
+# DO NOT MODIFY HERE
+# ----------------------------------------------------
+# User home dir
+. ${PLUGINS}/plugin_load_databag.sh __current_user_home.cfg
+
