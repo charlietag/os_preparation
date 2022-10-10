@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:enable
+# DATABAG_CFG:disable
 
 local pkgs_list=""
 
