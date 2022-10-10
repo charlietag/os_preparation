@@ -1607,7 +1607,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           * 1.20
         * PHP (~~remi~~)
           * 8.1
-        * Tmux
+        * Tmux (~~manually compile~~)
           * 3.2a
         * Ruby
           * 3.1 (rvm use system --default)
@@ -1615,3 +1615,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * rvm 1.29.12
     * Rails 7.0.4
     * Laravel 9
+    * **Container Management** installed
