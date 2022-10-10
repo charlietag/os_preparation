@@ -1,0 +1,14 @@
+. ${PLUGINS}/plugin_load_databag.sh _gitconfig.cfg
+
+# Specify ruby user
+local current_user="jsuser"
+
+_task_check_and_useradd
+
+
+# ----------------------------------------------------
+# DO NOT MODIFY HERE
+# ----------------------------------------------------
+# User home dir
+. ${PLUGINS}/plugin_load_databag.sh __current_user_home.cfg
+

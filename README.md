@@ -1618,3 +1618,4 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
     * **Container Management** installed
     * Add dev users
       * pythonuser (alias pu)
+      * jsuser (alias ju)
