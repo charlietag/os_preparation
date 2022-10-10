@@ -50,7 +50,7 @@ This is a small light bash project.  Suit small companies which have only few se
 
   * CentOS Stream release 8
     * os_preparation
-      * release : `master` `v2.x.x`
+      * release : `v2.x.x`
 
   * CentOS 8 (8.x)
     * os_preparation
