@@ -27,6 +27,9 @@ pkgs_list="${pkgs_list} gawk"
 #dnf install -y tmux
 pkgs_list="${pkgs_list} tmux"
 
+# for compare float in shell script
+pkgs_list="${pkgs_list} bc"
+
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
 #-----------------------------------------------------------------------------------------
