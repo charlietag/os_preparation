@@ -1629,3 +1629,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v3.0.2
     * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.1...v3.0.2
       * pythonuser -> vim , tabline = 2
+  * tag: v3.0.3
+    * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.2...v3.0.3
+      * Add disabled service 'dnsmasq', installed through podman-compose dep
