@@ -564,6 +564,39 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
         nmcli n off; nmcli n on
         ```
 
+    * Since RHEL 9 , no more configs under `/etc/sysconfig/network-scripts/`, instead, keyfile under `/etc/NetworkManager/system-connections` only. So config network using `nmcli` will be a better method
+
+    * Modify network static IP using `nmcli`
+      * Setup static ip
+
+        ```bash
+        nmcli connection modify eth0 \
+          ipv4.addresses 192.168.122.7/24 \
+          ipv4.gateway 192.168.122.1 \
+          ipv4.dns 192.168.122.1 \
+          ipv4.method manual
+        ```
+
+      * Disable IPv6, and peerDNS
+
+        ```bash
+        nmcli connection modify eth0 \
+          ipv4.ignore-auto-dns "true"
+
+        nmcli connection modify eth0 \
+          ipv6.method "disabled" \
+          ipv6.addr-gen-mode "stable-privacy" \
+          ipv6.ignore-auto-dns "true" \
+          ipv6.ignore-auto-routes "true" \
+          ipv6.never-default "true"
+        ```
+
+      * List only device name except loop 0 using `nmcli`
+
+        ```bash
+        nmcli -g name connection show
+        ```
+
 
 ## Ruby gem config
 * gem install without making document
