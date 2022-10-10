@@ -16,7 +16,14 @@ echo "========================================="
 # fi
 # -------------------------------------------------------------------------------------------------
 
-su -l $current_user -c "rvm install ${ruby_version}"
+local current_ruby_ver_float="$(ruby -v | grep -Eo 'ruby[[:space:]]+[[:digit:]\.]+' | grep -Eo '[[:digit:]\.]+')"
+
+if [[ 1 -eq "$(echo "${current_ruby_ver_float} < ${ruby_version}" | bc)" ]]; then
+  su -l $current_user -c "rvm install ${ruby_version}"
+else
+  su -l $current_user -c "rvm use system --default"
+
+fi
 
 # ------------------------------------------------------------
 # do not gem update to avoid rails compatibility
@@ -46,13 +53,13 @@ echo ""
 #echo "========================================="
 #su -l $current_user -c "gem cleanup"
 #echo ""
-# --- Comment these lines , in case cleanup lagacy gems which are still in use, for the same ruby version ---
 
-echo "========================================="
-echo "      gem install bundler"
-echo "========================================="
-su -l $current_user -c "gem install bundler"
-echo ""
+#echo "========================================="
+#echo "      gem install bundler"
+#echo "========================================="
+#su -l $current_user -c "gem install bundler"
+#echo ""
+# --- Comment these lines , in case cleanup lagacy gems which are still in use, for the same ruby version ---
 
 echo "========================================="
 echo "(Rails:${rails_version}) gem install rails"

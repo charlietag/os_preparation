@@ -20,9 +20,10 @@ function set_ruby {
   local rails_ver=""
   local rvm_prompt=""
 
-  if [[ -s "$HOME/.rvm/bin/rvm-prompt" ]]; then
-    rvm_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
-  fi
+  #if [[ -s "$HOME/.rvm/bin/rvm-prompt" ]]; then
+  #  rvm_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
+  #fi
+  rvm_prompt="${ruby_dark_yellow}($(ruby -v 2>/dev/null| grep -Eo 'ruby[[:space:]]+[[:digit:]\.]+'))${ruby_color_end}"
 
   local prompt_for_ruby="${rvm_prompt}"
 
