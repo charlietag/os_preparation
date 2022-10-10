@@ -1616,6 +1616,9 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * Laravel 9
       * Redis 6.2
       * **Container Management** installed
+        * podman buildah skopeo
+        * podman-compose
+        * runc conmon criu udica container-selinux
       * Add dev users
         * pythonuser (alias pu)
         * jsuser (alias ju)
@@ -1623,3 +1626,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v3.0.1
     * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.0...v3.0.1
       * Add `GeoIP` `GeoIP-devel` back, install through remi-safe repo
+  * tag: v3.0.2
+    * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.1...v3.0.2
+      * pythonuser -> vim , tabline = 2

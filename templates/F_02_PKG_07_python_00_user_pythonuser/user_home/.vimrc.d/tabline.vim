@@ -1,0 +1,1 @@
+set showtabline=2
