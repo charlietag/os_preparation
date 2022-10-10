@@ -1609,8 +1609,6 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
           * 8.1
         * Tmux (~~manually compile~~)
           * 3.2a
-        * Ruby
-          * 3.1 (rvm use system --default)
     * [ssh] GSSAPIAuthentication disabled
     * rvm 1.29.12
     * Rails 7.0.4

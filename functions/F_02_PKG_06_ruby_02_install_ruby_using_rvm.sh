@@ -16,14 +16,7 @@ echo "========================================="
 # fi
 # -------------------------------------------------------------------------------------------------
 
-local current_ruby_ver_float="$(ruby -v | grep -Eo 'ruby[[:space:]]+[[:digit:]\.]+' | grep -Eo '[[:digit:]\.]+')"
-
-if [[ 1 -eq "$(echo "${current_ruby_ver_float} < ${ruby_version}" | bc)" ]]; then
-  su -l $current_user -c "rvm install ${ruby_version}"
-else
-  su -l $current_user -c "rvm use system --default"
-
-fi
+su -l $current_user -c "rvm install ${ruby_version}"
 
 # ------------------------------------------------------------
 # do not gem update to avoid rails compatibility
