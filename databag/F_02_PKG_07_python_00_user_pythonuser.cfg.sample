@@ -1,0 +1,8 @@
+. ${PLUGINS}/plugin_load_databag.sh _gitconfig.cfg
+
+# Specify ruby user
+local current_user="pythonuser"
+
+_task_check_and_useradd
+
+
