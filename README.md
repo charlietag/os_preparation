@@ -1598,24 +1598,28 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
 * 2022/10/10
   * tag: v3.0.0
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.6...v3.0.0
-    * Migrate to CentOS Stream 9
-      * No need to use 3rd dnf repo below anymore, built-in AppStream contains all the latest version of packages
-        * MariaDB (~~yum.mariadb.org~~)
-          * 10.5
-        * NodeJS (~~nodejs.org~~)
-          * 16
-        * Nginx (~~nginx.org~~)
-          * 1.20
-        * PHP (~~remi~~)
-          * 8.1
-        * Tmux (~~manually compile~~)
-          * 3.2a
-    * [ssh] GSSAPIAuthentication disabled
-    * rvm 1.29.12
-    * Rails 7.0.4
-    * Laravel 9
-    * Redis 6.2
-    * **Container Management** installed
-    * Add dev users
-      * pythonuser (alias pu)
-      * jsuser (alias ju)
+      * Migrate to CentOS Stream 9
+        * No need to use 3rd dnf repo below anymore, built-in AppStream contains all the latest version of packages
+          * MariaDB (~~yum.mariadb.org~~)
+            * 10.5
+          * NodeJS (~~nodejs.org~~)
+            * 16
+          * Nginx (~~nginx.org~~)
+            * 1.20
+          * PHP (~~remi~~)
+            * 8.1
+          * Tmux (~~manually compile~~)
+            * 3.2a
+      * [ssh] GSSAPIAuthentication disabled
+      * rvm 1.29.12
+      * Rails 7.0.4
+      * Laravel 9
+      * Redis 6.2
+      * **Container Management** installed
+      * Add dev users
+        * pythonuser (alias pu)
+        * jsuser (alias ju)
+* 2022/10/11
+  * tag: v3.0.1
+    * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.0...v3.0.1
+      * Add `GeoIP` `GeoIP-devel` back, install through remi-safe repo

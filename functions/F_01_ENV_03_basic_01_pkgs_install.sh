@@ -91,7 +91,7 @@ pkgs_list="${pkgs_list} openssl openssl-libs openssl-devel"
 pkgs_list="${pkgs_list} freetds freetds-devel"
 
 # For GeoIP purpose
-# RHEL 9 - no GeoIP
+# RHEL 9 - no GeoIP, move to remi
 # pkgs_list="${pkgs_list} GeoIP GeoIP-devel"
 
 # For Nginx HTTP rewrite module

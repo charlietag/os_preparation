@@ -58,6 +58,8 @@ if ! $(rpm --quiet -q remi-release) ; then
   #L_UPDATE_REPO 5000
 fi
 
+pkgs_list="${pkgs_list} GeoIP GeoIP-devel"
+
 # libvips
 # dnf install -y vips vips-tools
 pkgs_list="${pkgs_list} vips vips-tools"
