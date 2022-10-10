@@ -45,7 +45,7 @@ local rails_version="7.0"
 # ----------------------------------------------------------
 
 # Enabled dnf module version of ruby by default
-local ruby_dnf_module_version="3.0"
+local ruby_dnf_module_version="3.1"
 
 
 

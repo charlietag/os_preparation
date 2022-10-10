@@ -37,31 +37,20 @@ This is a small light bash project.  Suit small companies which have only few se
 > **centos stream release 8 server environment settings**
 
 * This is useful when
-  * You have less than 5 CentOS-Stream-8 servers to maintain.
+  * You have less than 5 CentOS-Stream-9 servers to maintain.
   * You are deploying monolithic architecture app.
 
 * This repo is TOTALLY transfer from passenger to puma for rails.
   * **NGINX + PUMA + PHP-FPM + MariaDB + Rails + Laravel + Redmine**
 
-* **CentOS Stream release 8**
-  * Many VPS vendors are not really ready for CentOS Stream
-  * Better choose CentOS 8 image , then switch to CentOS Stream ([link](https://www.centos.org/centos-stream/))
-
-    ```bash
-    root@centos-linux# dnf install centos-release-stream
-    root@centos-linux# dnf swap centos-{linux,stream}-repos
-    root@centos-linux# dnf distro-sync
-    root@centos-stream# cat /etc/centos-release
-    CentOS Stream release 8
-    # -------------------------
-    # Better Do a Reboot Now, to use updated kernel
-    root@centos-stream# reboot
-    ```
-
 # Environment
+  * CentOS Stream release 9
+    * os_preparation
+      * release : `master` `v3.x.x`
+
   * CentOS Stream release 8
     * os_preparation
-      * release : `master` `v2.x.x`
+      * release : `v2.x.x`
 
   * CentOS 8 (8.x)
     * os_preparation
@@ -449,21 +438,22 @@ HELPER_VIEW_FOLDER : /root/os_preparation/helpers_views/helper_debug
 # Note
 
 ## Installed Packages
-  * PHP 8.0 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
+  * PHP 8.1 (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * PHP-FPM (AppStream) ~~(Ref. https://rpms.remirepo.net/wizard/)~~
   * Laravel 9.x (Ref. https://laravel.com/)
   * MariaDB 10.5 (AppStream) (equals to MySQL 5.7)
   * nodejs (AppStream) (stable version - 16)
   * Nginx 1.20 (dnf module) ~~(latest version - via Nginx Official Repo)~~
+  * Redis 6.2
   * Ruby 3.1.2
   * Rails 7.0
     * puma 5 (systemd integrated, puma-systemd-mgr, ~~puma-mgr~~)
-  * Redmine 5.0.1
+  * Redmine 5.0.3
     * ruby 3.1.2
-    * rails 6.1.6
+    * rails 6.1.7
   * Useful tools
     * Enhanced tail
-      * multitail
+      * ~~multitail~~ (not found in RHEL 9)
         * multitail /var/log/nginx/*.access.log
     * Enhanced grep
       * ack
@@ -573,6 +563,39 @@ After this installation repo, the server will setup with "Nginx + Puma (socket)"
 
         ```bash
         nmcli n off; nmcli n on
+        ```
+
+    * Since RHEL 9 , no more configs under `/etc/sysconfig/network-scripts/`, instead, keyfile under `/etc/NetworkManager/system-connections` only. So config network using `nmcli` will be a better method
+
+    * Modify network static IP using `nmcli`
+      * Setup static ip
+
+        ```bash
+        nmcli connection modify eth0 \
+          ipv4.addresses 192.168.122.7/24 \
+          ipv4.gateway 192.168.122.1 \
+          ipv4.dns 192.168.122.1 \
+          ipv4.method manual
+        ```
+
+      * Disable IPv6, and peerDNS
+
+        ```bash
+        nmcli connection modify eth0 \
+          ipv4.ignore-auto-dns "true"
+
+        nmcli connection modify eth0 \
+          ipv6.method "disabled" \
+          ipv6.addr-gen-mode "stable-privacy" \
+          ipv6.ignore-auto-dns "true" \
+          ipv6.ignore-auto-routes "true" \
+          ipv6.never-default "true"
+        ```
+
+      * List only device name except loop 0 using `nmcli`
+
+        ```bash
+        nmcli -g name connection show
         ```
 
 
@@ -1569,5 +1592,30 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
       * Change git default branch name from `master` to `main`
       * Redmine 5.0.2
 * 2022/10/09
+  * tag: v2.7.6
     * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.5...v2.7.6
-    * Fix bash prompt - os version (rhel 9 does not support lsb_release command)
+      * Fix bash prompt - os version (rhel 9 does not support lsb_release command)
+* 2022/10/10
+  * tag: v3.0.0
+    * changelog: https://github.com/charlietag/os_preparation/compare/v2.7.6...v3.0.0
+    * Migrate to CentOS Stream 9
+      * No need to use 3rd dnf repo below anymore, built-in AppStream contains all the latest version of packages
+        * MariaDB (~~yum.mariadb.org~~)
+          * 10.5
+        * NodeJS (~~nodejs.org~~)
+          * 16
+        * Nginx (~~nginx.org~~)
+          * 1.20
+        * PHP (~~remi~~)
+          * 8.1
+        * Tmux (~~manually compile~~)
+          * 3.2a
+    * [ssh] GSSAPIAuthentication disabled
+    * rvm 1.29.12
+    * Rails 7.0.4
+    * Laravel 9
+    * Redis 6.2
+    * **Container Management** installed
+    * Add dev users
+      * pythonuser (alias pu)
+      * jsuser (alias ju)

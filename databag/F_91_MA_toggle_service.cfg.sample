@@ -1,4 +1,4 @@
 
 local toggle="disable" # enable | disable
-local toggle_services=(mariadb php-fpm nginx)
+local toggle_services=(mariadb php-fpm nginx redis chronyd)
 

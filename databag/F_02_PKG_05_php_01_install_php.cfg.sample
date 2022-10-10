@@ -20,5 +20,5 @@
 # ----------------------------------------------------------
 
 # Enabled dnf module version of php by default
-local php_dnf_module_version="8.0"
+local php_dnf_module_version="8.1"
 

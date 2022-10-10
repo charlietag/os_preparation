@@ -46,13 +46,13 @@ echo ""
 #echo "========================================="
 #su -l $current_user -c "gem cleanup"
 #echo ""
-# --- Comment these lines , in case cleanup lagacy gems which are still in use, for the same ruby version ---
 
-echo "========================================="
-echo "      gem install bundler"
-echo "========================================="
-su -l $current_user -c "gem install bundler"
-echo ""
+#echo "========================================="
+#echo "      gem install bundler"
+#echo "========================================="
+#su -l $current_user -c "gem install bundler"
+#echo ""
+# --- Comment these lines , in case cleanup lagacy gems which are still in use, for the same ruby version ---
 
 echo "========================================="
 echo "(Rails:${rails_version}) gem install rails"

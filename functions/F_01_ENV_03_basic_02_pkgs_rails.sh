@@ -33,7 +33,7 @@ pkgs_list="${pkgs_list} glibc-headers"
 # ----- Rails 6+ Preview use -----
 # FFmpeg for video
 if ! $(rpm --quiet -q rpmfusion-free-release) ; then
-  rpm -Uvh https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+  rpm -Uvh https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
   #L_UPDATE_REPO 5000
 fi
 #dnf install -y ffmpeg ffmpeg-devel
@@ -54,13 +54,17 @@ pkgs_list="${pkgs_list} ImageMagick ImageMagick-libs ImageMagick-devel"
 # ----- Rails 7+ Active Storage (gem 'ruby-vips') -----
 # libvips for images variant
 if ! $(rpm --quiet -q remi-release) ; then
-  dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
   #L_UPDATE_REPO 5000
 fi
 
 # libvips
 # dnf install -y vips vips-tools
 pkgs_list="${pkgs_list} vips vips-tools"
+
+# redis
+pkgs_list="${pkgs_list} redis redis-devel"
+
 
 #-----------------------------------------------------------------------------------------
 #Package Start to Install

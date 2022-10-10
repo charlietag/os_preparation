@@ -10,6 +10,13 @@
 #     *  `bundle install`
 # --------------------------------------------------------
 
+# --------------------DB-------------------------------
+systemctl start redis
+systemctl start mariadb
+echo -n "starting mariadb and redis"
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
+# --------------------DB-------------------------------
+
 echo "========================================="
 # Spring is not included started from rails 7
 # echo "(Rails:${rails_version}) rails new myrails -d mysql --skip-spring"
@@ -23,9 +30,6 @@ su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql" #Create r
 
 su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -i cp -a {} {}.sample"
 
-systemctl start mariadb
-echo -n "starting mariadb"
-sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 
 # Create PROD(require database.yml info. so PROD will failed due to wrong username/password for mysql db server), DEV, TEST env database in mysql
 # bundle exec rails db:create:all
@@ -33,9 +37,6 @@ sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 su -l $current_user -c "cd ${web_sites}/myrails && bundle exec rails db:create"
 
 
-systemctl stop mariadb
-echo -n "stopping mariadb"
-sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
 
 
 # Add extra config into .gitignore file
@@ -60,3 +61,10 @@ echo "# sd_notify - puma5 integrated with Systemd(type=notify)" >> ${web_sites}/
 echo "gem 'sd_notify', group: 'production'" >> ${web_sites}/myrails/Gemfile
 
 su -l $current_user -c "cd ${web_sites}/myrails && bundle install"
+
+# --------------------DB-------------------------------
+systemctl stop redis
+systemctl stop mariadb
+echo -n "stopping mariadb and redis"
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; echo ""
+# --------------------DB-------------------------------

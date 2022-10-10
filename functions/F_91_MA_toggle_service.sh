@@ -24,7 +24,9 @@ do
   if [ "${toggle}" == "enable" ]
   then
     systemctl enable ${service_name}
+    systemctl start ${service_name}
   else
     systemctl disable ${service_name}
+    systemctl stop ${service_name}
   fi
 done

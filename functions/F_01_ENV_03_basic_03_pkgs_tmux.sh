@@ -24,8 +24,11 @@ pkgs_list="${pkgs_list} autoconf automake pkgconf-pkg-config"
 pkgs_list="${pkgs_list} gawk"
 
 # Add this to avoid unknown dependencies
-#dnf install -y tmux 
+#dnf install -y tmux
 pkgs_list="${pkgs_list} tmux"
+
+# for compare float in shell script
+pkgs_list="${pkgs_list} bc"
 
 #-----------------------------------------------------------------------------------------
 #Package Start to Install
@@ -35,13 +38,21 @@ dnf install -y ${pkgs_list}
 #-----------------------------------------------------------------------------------------
 # Compile and install tmux
 #-----------------------------------------------------------------------------------------
-cd $TMP
-git clone --depth 1 --branch "${tmux_tag_ver}" https://github.com/tmux/tmux.git
-cd tmux
+local tmux_current_ver_float="$(tmux -V  | grep -Eo "[[:digit:]\.]+")"
+local tmux_tag_ver_float="$(echo ${tmux_tag_ver} | grep -Eo "[[:digit:]\.]+")"
+if [[ 1 -eq "$(echo "${tmux_current_ver_float} < ${tmux_tag_ver_float}" | bc)" ]]; then
 
-sh autogen.sh
-./configure && make
-make install
+  # ---------------------- Compile tmux if needed --------------------
+  cd $TMP
+  git clone --depth 1 --branch "${tmux_tag_ver}" https://github.com/tmux/tmux.git
+  cd tmux
 
-cd $TMP
-SAFE_DELETE "tmux"
+  sh autogen.sh
+  ./configure && make
+  make install
+
+  cd $TMP
+  SAFE_DELETE "tmux"
+  # ---------------------- Compile tmux if needed --------------------
+
+fi

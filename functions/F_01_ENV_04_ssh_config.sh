@@ -6,8 +6,9 @@
 #-----------------------------------------------------------------------------------------
 #Solve sshd login waiting issue (GSSAuth)
 #-----------------------------------------------------------------------------------------
-sed -i s/'#GSSAPIAuthentication yes'/'GSSAPIAuthentication no'/ /etc/ssh/sshd_config
-sed -i s/'GSSAPIAuthentication yes'/'#GSSAPIAuthentication yes'/ /etc/ssh/sshd_config
+sed -ri s/'#[[:space:]]+GSSAPIAuthentication yes'/'GSSAPIAuthentication no'/ /etc/ssh/sshd_config /etc/ssh/ssh_config /etc/ssh/sshd_config.d/* /etc/ssh/ssh_config.d/*
+sed -ri s/'#[[:space:]]+GSSAPIAuthentication no'/'GSSAPIAuthentication no'/ /etc/ssh/sshd_config /etc/ssh/ssh_config /etc/ssh/sshd_config.d/* /etc/ssh/ssh_config.d/*
+sed -i s/'GSSAPIAuthentication yes'/'#GSSAPIAuthentication yes'/ /etc/ssh/sshd_config /etc/ssh/ssh_config /etc/ssh/sshd_config.d/* /etc/ssh/ssh_config.d/*
 # Disable sshd acceptenv
 sed -e '/^AcceptEnv/ s/^#*/#/' -i /etc/ssh/sshd_config
 

@@ -7,8 +7,9 @@
 #   -> Ignoring unnecessary profile: common
 #dnf module enable perl:5.26 -y
 #   -> default, use latest version stream
-dnf module enable perl -y
+# dnf module enable perl -y
 
 #perl-DBI is used by MariaDB, enable it first
 #   -> default, use latest version stream
-dnf module enable perl-DBI -y
+# dnf module enable perl-DBI -y
+dnf install -y perl perl-DBI

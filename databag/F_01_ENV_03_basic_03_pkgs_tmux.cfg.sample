@@ -2,4 +2,5 @@
 # Tmux version (github tag)
 #----------------------------------------
 #local tmux_tag_ver="3.0"
+# RHEL 9 default 3.2a , no need to compile manually. It will compile automatically if defined version here > RHEL 9 tmux version
 local tmux_tag_ver="3.2a"

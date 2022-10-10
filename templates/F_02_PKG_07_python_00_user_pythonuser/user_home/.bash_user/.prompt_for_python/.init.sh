@@ -18,22 +18,22 @@ function set_ruby {
   local ruby_dark_cyan="\e[36m"
   local ruby_color_end="\033[00m"
   local rails_ver=""
-  local rvm_prompt=""
+  local python_prompt=""
 
   #if [[ -s "$HOME/.rvm/bin/rvm-prompt" ]]; then
-  #  rvm_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
+  #  python_prompt="${ruby_dark_yellow}($($HOME/.rvm/bin/rvm-prompt))${ruby_color_end}"
   #fi
-  rvm_prompt="${ruby_dark_yellow}($(ruby -v 2>/dev/null| grep -Eo 'ruby[[:space:]]+[[:digit:]\.]+'))${ruby_color_end}"
+  python_prompt="${ruby_dark_yellow}($(python3 -V))${ruby_color_end}"
 
-  local prompt_for_ruby="${rvm_prompt}"
+  local prompt_for_python="${python_prompt}"
 
   [[ -f "Gemfile.lock" ]] && rails_ver="$(cat Gemfile.lock |sed 's/ //g' |grep -E '^rails\([[:digit:]]+' | sed 's/(/ /g' | tr -d ')')"
 
   if [[ -n "${rails_ver}" ]]; then
     rails_ver="${ruby_dark_cyan}(${rails_ver})${ruby_color_end}"
-    prompt_for_ruby="${prompt_for_ruby} ${rails_ver}"
+    prompt_for_python="${prompt_for_python} ${rails_ver}"
   fi
-  echo -e "${prompt_for_ruby}"
+  echo -e "${prompt_for_python}"
 }
 
 
