@@ -62,35 +62,45 @@ for module_version in ${dnf_enabled_modules_versions[@]}; do
   module="$(echo ${module_version} | cut -d':' -f1)"
   if [[ -z "$(echo "${enabled_modules}" | grep "${module}")" ]] ; then
 
-    echo "==================================================="
-    echo "@AppStream"
-    echo "Enabling module : ${module_version}"
-    echo "==================================================="
-    module_arr="${module_arr} $(echo ${module_version} | cut -d':' -f1)"
-    module_version_arr="${module_version_arr} ${module_version}"
+    # For RHEL 9 (Lots of module does not exists yet)
+    if [[ -n "$(dnf module list ${module_version} 2>/dev/null >/dev/null && echo "module:version exists")" ]]; then
+      echo "==================================================="
+      echo "@AppStream"
+      echo "Enabling module : ${module_version}"
+      echo "==================================================="
+      module_arr="${module_arr} $(echo ${module_version} | cut -d':' -f1)"
+      module_version_arr="${module_version_arr} ${module_version}"
 
-    # ----------------
-    # used variable defined
-    # ----------------
-    # ex: nginx
-    # module="$(echo ${module_version} | cut -d':' -f1)"
-    # ex: 1.18
-    # version="$(echo ${module_version} | cut -d':' -f2)"
-    # ex: nginx:1.18
-    # ${module_version}
-    # echo "${module_version}"
-    # ----------------
-    # dnf module reset ${module} -y
-    # dnf module enable ${module_version} -y
-    # echo ""
-    # echo ""
-    # echo ">>>>>>>>>>>>>>>>"
-    # echo "Enabled module:"
-    # echo ">>>>>>>>>>>>>>>>"
-    # dnf module list ${module} --enabled | grep -B 1 ${module}
-    # echo "--------------------------------------------------"
-    # echo ""
-    # echo ""
+      # ----------------
+      # used variable defined
+      # ----------------
+      # ex: nginx
+      # module="$(echo ${module_version} | cut -d':' -f1)"
+      # ex: 1.18
+      # version="$(echo ${module_version} | cut -d':' -f2)"
+      # ex: nginx:1.18
+      # ${module_version}
+      # echo "${module_version}"
+      # ----------------
+      # dnf module reset ${module} -y
+      # dnf module enable ${module_version} -y
+      # echo ""
+      # echo ""
+      # echo ">>>>>>>>>>>>>>>>"
+      # echo "Enabled module:"
+      # echo ">>>>>>>>>>>>>>>>"
+      # dnf module list ${module} --enabled | grep -B 1 ${module}
+      # echo "--------------------------------------------------"
+      # echo ""
+      # echo ""
+    else
+      echo "==================================================="
+      echo "This does not exist in ==> $(cat /etc/os-release |grep -i pretty_name | cut -d'"' -f2 | grep -Eo "[[:print:]]+[[:digit:]\.]+")  "
+      echo "Module : ${module_version}"
+      echo "==================================================="
+
+
+    fi
 
     # -----------> do module reset / enable one time only
   fi
