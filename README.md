@@ -34,7 +34,7 @@ You want initialize your linux server by your own script.  But you **DO NOT** wa
 
 This is a small light bash project.  Suit small companies which have only few servers to maintain.  **GIVE IT A TRY!!**
 
-> **centos stream release 8 server environment settings**
+> **centos stream release 9 server environment settings**
 
 * This is useful when
   * You have less than 5 CentOS-Stream-9 servers to maintain.
@@ -1635,3 +1635,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v3.0.4
     * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.3...v3.0.4
       * pythonuser -> vim , tabline = 2
+* 2022/10/13
+  * tag: v3.0.5
+    * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.4...v3.0.5
+      * vultr or some other VPS will still use `network-scripts` to manage network through `cloud-init`

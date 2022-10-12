@@ -42,41 +42,41 @@ hostnamectl set-hostname ${host_name}
 task_copy_using_render_sed
 
 # set ethernet card PEERDNS to "no" , avoid DHCP modify /etc/resolv.conf
-#local eth_cards="$(ls /etc/sysconfig/network-scripts/ifcfg-* |grep -v "lo$")"
-#for eth_card in $eth_cards
-#do
-#  # avoid /etc/resolv.conf being changed by NM
-#  sed -re '/DNS[[:digit:]]+=/d' -i $eth_card
-#  sed -i /PEERDNS/d $eth_card
-#
-#  echo "PEERDNS=\"no\"" >> $eth_card
-#  echo "DNS1=\"${nameserver1}\"" >> $eth_card
-#  echo "DNS2=\"${nameserver2}\"" >> $eth_card
-#
-#  echo "IPV6_PEERDNS=\"no\"" >> $eth_card
-#
-#
-#  # Totally disable IPV6
-#  if [[ $disable_ipv6 -eq 1 ]] ; then
-#    sed -i /IPV6/d $eth_card
-#    echo "
-#      #####IPV6#####
-#      IPV6_DISABLED=yes
-#      IPV6INIT=no
-#      IPV6_DEFROUTE=no
-#      IPV6_FAILURE_FATAL=no
-#      IPV6_ADDR_GEN_MODE=stable-privacy
-#      IPV6_AUTOCONF=no
-#      IPV6_PEERDNS=no
-#      IPV6_PEERROUTES=no
-#      #####IPV6#####
-#    " | sed -r -e '/^\s*$/d' -e 's/\s+//g' >> $eth_card
-#  fi
-#done
+local eth_cards="$(ls /etc/sysconfig/network-scripts/ifcfg-* |grep -v "lo$")"
+for eth_card in $eth_cards
+do
+  # avoid /etc/resolv.conf being changed by NM
+  sed -re '/DNS[[:digit:]]+=/d' -i $eth_card
+  sed -i /PEERDNS/d $eth_card
+
+  echo "PEERDNS=\"no\"" >> $eth_card
+  echo "DNS1=\"${nameserver1}\"" >> $eth_card
+  echo "DNS2=\"${nameserver2}\"" >> $eth_card
+
+  echo "IPV6_PEERDNS=\"no\"" >> $eth_card
+
+
+  # Totally disable IPV6
+  if [[ $disable_ipv6 -eq 1 ]] ; then
+    sed -i /IPV6/d $eth_card
+    echo "
+      #####IPV6#####
+      IPV6_DISABLED=yes
+      IPV6INIT=no
+      IPV6_DEFROUTE=no
+      IPV6_FAILURE_FATAL=no
+      IPV6_ADDR_GEN_MODE=stable-privacy
+      IPV6_AUTOCONF=no
+      IPV6_PEERDNS=no
+      IPV6_PEERROUTES=no
+      #####IPV6#####
+    " | sed -r -e '/^\s*$/d' -e 's/\s+//g' >> $eth_card
+  fi
+done
 
 # nmcli help connection
 # -g, --get-values <field,...>|all|common  shortcut for -m tabular -t -f
-local eth_cards="$(nmcli -g name connection show)"
+eth_cards="$(nmcli -g name connection show)"
 for eth_card in $eth_cards
 do
   nmcli connection modify $eth_card \
