@@ -146,12 +146,12 @@ vim_session() {
 
 # Logged On (pty , tty) who - show who is logged on (tty/pts) (terminal / ssh)
 logged_on_session() {
-  local logged_on_session="$(who | wc -l)"
+  local logged_on_session="$(who | grep -Eiv "tmux|s\.[[:digit:]]+" | wc -l)"
   local logged_red="\e[1;31m"
   local logged_color_end="\033[00m"
   local logged_on_msg="${logged_red}(LoggedOn: ${logged_on_session})${logged_color_end}"
 
-  [[ "${logged_on_session}" -ne 1 ]] && echo -e " ${logged_on_msg}"
+  [[ "${logged_on_session}" -gt 1 ]] && echo -e " ${logged_on_msg}"
 }
 
 # PS1

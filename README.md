@@ -1639,3 +1639,7 @@ For some cases, we need to upgrade MariaDB without data lost.  Here is my note a
   * tag: v3.0.5
     * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.4...v3.0.5
       * vultr or some other VPS will still use `network-scripts` to manage network through `cloud-init`
+* 2022/10/18
+  * tag: v3.0.6
+    * changelog: https://github.com/charlietag/os_preparation/compare/v3.0.5...v3.0.6
+      * fix logged on user count prompt for screen / tmux
