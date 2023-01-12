@@ -79,6 +79,6 @@ dnf install -y ${pkgs_list}
 # gem - Rmagick requires ImageMagick 6.7.7+
 # gem - mini_magick requires ImageMagick 6.8.8-3+
 # ImageMagick latest version - 6.9+
-#local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -i bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
+#local image_magick_packages="$(curl -s https://imagemagick.org/download/linux/CentOS/x86_64/ |grep -Eo '"(ImageMagick-|ImageMagick-devel-|ImageMagick-libs-)+6.(\S)+(\.rpm)"' |xargs -I{} bash -c "echo https://imagemagick.org/download/linux/CentOS/x86_64/{}" | sed ':a;N;$!ba;s/\n/ /g')"
 #dnf localinstall -y ${image_magick_packages}
 

@@ -62,7 +62,7 @@ local git_fetch_concurrency=10
 local git_repos=${redmine_plugins[@]}
 
 echo "${git_repos[@]}" | tr ' ' '\n' | \
-  xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+  xargs -P ${git_fetch_concurrency} -I{} bash -c \
   "echo ----- Downloading Redmine Plugin : {} -----; wget {}; echo "
 
 # ---- Start Fetching plugins from github END----
@@ -70,7 +70,7 @@ echo "${git_repos[@]}" | tr ' ' '\n' | \
 
 # ~~~ unzip & install plugins ~~~
 echo "Downloaded ZIP file unzipped already..."
-ls *.zip 2>/dev/null | xargs -i unzip -q {}
+ls *.zip 2>/dev/null | xargs -I{} unzip -q {}
 SAFE_DELETE "*.zip"
 if [ -n "${redmine_plugins}" ]; then
   local redmine_plugins_with_ver_names="$(ls ${redmine_web_plugin_path_tmp})"
@@ -102,7 +102,7 @@ local git_fetch_concurrency=10
 local git_repos=${redmine_themes[@]}
 
 echo "${git_repos[@]}" | tr ' ' '\n' | \
-  xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+  xargs -P ${git_fetch_concurrency} -I{} bash -c \
   "echo ----- Downloading Redmine Theme : {} -----; wget {}; echo "
 
 # ---- Start Fetching plugins from github END----
@@ -110,7 +110,7 @@ echo "${git_repos[@]}" | tr ' ' '\n' | \
 
 # ~~~ unzip & install themes ~~~
 echo "Downloaded ZIP file unzipped already..."
-ls *.zip 2>/dev/null | xargs -i unzip -q {}
+ls *.zip 2>/dev/null | xargs -I{} unzip -q {}
 SAFE_DELETE "*.zip"
 if [ -n "${redmine_themes}" ]; then
   local redmine_themes_with_ver_names="$(ls ${redmine_web_theme_path_tmp})"

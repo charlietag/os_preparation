@@ -28,7 +28,7 @@ su -l $current_user -c "test -d ${web_sites} || mkdir -p ${web_sites}"
 # su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql --skip-spring" #Create rails project, to verify
 su -l $current_user -c "cd ${web_sites} && rails new myrails -d mysql" #Create rails project, to verify
 
-su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -i cp -a {} {}.sample"
+su -l $current_user -c "cd ${web_sites}/myrails/config && ls *.yml | xargs -I{} cp -a {} {}.sample"
 
 
 # Create PROD(require database.yml info. so PROD will failed due to wrong username/password for mysql db server), DEV, TEST env database in mysql

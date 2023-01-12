@@ -16,7 +16,7 @@ THIS_PATH_BASE="$(dirname "${THIS_SCRIPT}")"
 
 NGINX_RAILS_PATH="/etc/nginx/rails_sites"
 PUMA_SERVICE_NAMES="$(cat $NGINX_RAILS_PATH/*.conf 2>/dev/null | grep 'root ' | grep -Ev '^[[:space:]]*#' | awk '{print $2}' | \
-                      sed 's/ //g' | sed 's/;//g' | grep 'public' | sed 's/\/public//g' | sort | uniq | xargs -i basename {})"
+                      sed 's/ //g' | sed 's/;//g' | grep 'public' | sed 's/\/public//g' | sort | uniq | xargs -I{} basename {})"
 
 RAILS_ENV="production"
 

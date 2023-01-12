@@ -16,11 +16,11 @@ for remove_pkg_name in ${remove_pkg_names[@]}; do
 
   if [[ "${pkg_exists}" = "cloud-init" ]]; then
     # Delete cloud-init related file
-    readlink -m /usr/lib/systemd/system/cloud-* | xargs -i basename {} | xargs -i systemctl stop {}
-    systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -i systemctl stop {}
+    readlink -m /usr/lib/systemd/system/cloud-* | xargs -I{} basename {} | xargs -I{} systemctl stop {}
+    systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -I{} systemctl stop {}
 
-    readlink -m /usr/lib/systemd/system/cloud-* | xargs -i basename {} | xargs -i systemctl disable {}
-    systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -i systemctl disable {}
+    readlink -m /usr/lib/systemd/system/cloud-* | xargs -I{} basename {} | xargs -I{} systemctl disable {}
+    systemctl list-unit-files |grep 'cloud\-' | awk '{print $1}' | xargs -I{} systemctl disable {}
 
     SAFE_DELETE "/usr/lib/systemd/system/cloud-*"
     SAFE_DELETE "/usr/src/cloud-init"

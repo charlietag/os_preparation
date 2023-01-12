@@ -56,7 +56,7 @@ test -f /etc/screenrc && mv /etc/screenrc /etc/screenrc.bak
 # )
 
 # echo "${vim_git_repos[@]}" | tr ' ' '\n' | \
-#   xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+#   xargs -P ${git_fetch_concurrency} -I{} bash -c \
 #   "echo ----- Downloading Vim Plugin : {} -----; git clone https://github.com/{}.git; echo "
 
 
@@ -80,7 +80,7 @@ su -l ${current_user} -c 'bash <(curl -LSs https://raw.githubusercontent.com/cha
 # ---- Start Fetching tmux plugins from github ----
 # local git_fetch_concurrency=10
 # cat $HELPER_VIEW_FOLDER/user_home/.tmux.conf |grep '@plugin' |grep -Ev "^#" | awk -F"'" '{print $2}' | \
-#   xargs -n 1 -P ${git_fetch_concurrency} -i bash -c \
+#   xargs -P ${git_fetch_concurrency} -I{} bash -c \
 #   "echo ----- Downloading Tmux Plugin : {} -----; git clone https://github.com/{}.git; echo "
 # ---- Start Fetching tmux plugins from github END----
 

@@ -52,8 +52,8 @@ main() {
     echo ""
   else
 
-    #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-    repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+    #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -I{} bash -c "date -d '{}' +'%s'" | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+    repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
     if [[ $repo_check_days_ago -gt $repo_expired_days ]]; then
       echo "---------------------------------------"
       echo "Last metadata expiration check: ${repo_check_days_ago} days ago!"
@@ -62,8 +62,8 @@ main() {
       echo "---------------------------------------"
       echo ""
       dnf_makecache
-      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -I{} bash -c "date -d '{}' +'%s'" | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""
@@ -81,8 +81,8 @@ main() {
       echo "---------------------------------------"
       echo ""
       dnf_makecache
-      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -i bash -c "date -d '{}' +'%s'" | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
-      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -i bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      #repo_check_days_ago="$(dnf updateinfo 2>&1 | grep "Last metadata expiration check" | awk -F' on ' '{print $2}' | xargs -I{} bash -c "date -d '{}' +'%s'" | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
+      repo_check_days_ago="$(stat -c "%Z" /var/cache/dnf/packages.db | xargs -I{} bash -c 'echo "scale=0; ($(date +%s) - {})/86400"' |bc)"
       echo ""
       echo ""
       echo ""

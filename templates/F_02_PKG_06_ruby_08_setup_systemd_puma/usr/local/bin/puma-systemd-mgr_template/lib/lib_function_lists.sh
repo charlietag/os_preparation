@@ -56,7 +56,7 @@ list_puma_services_zombie () {
   echo "-------------------------------------------------------"
   echo "Puma Zombie Processes:"
   echo "-------------------------------------------------------"
-  local puma_service_names_pattern="$(echo -e "${PUMA_SERVICE_NAMES}" | xargs -i echo '\[{}\]' | sed -re ':a;N;$!ba;s/\n/|/g')"
+  local puma_service_names_pattern="$(echo -e "${PUMA_SERVICE_NAMES}" | xargs -I{} echo '\[{}\]' | sed -re ':a;N;$!ba;s/\n/|/g')"
   local puma_running_processes="$(ps aux |grep -E '[[:digit:]]+[[:space:]]+puma' | sed -re 's/^/    /g')"
   echo -e "${puma_running_processes}" | grep -vE "${puma_service_names_pattern}"
   echo ""
