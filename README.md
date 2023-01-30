@@ -29,6 +29,9 @@ Table of Contents
     + [How to Upgrade](#how-to-upgrade)
 - [CHANGELOG](#changelog)
 
+# Try Ubuntu now
+**Try Ubuntu World ===> https://github.com/charlietag/ubuntu_preparation**
+
 # CentOS Linux Server OS Preparation
 You want initialize your linux server by your own script.  But you **DO NOT** want to use **PUPPET , CHEF , Ansible**.  You can just leverage my initialization project here.
 
